@@ -46,7 +46,7 @@ def read_file_as_str(file_path):
     # print type(all_the_text)
     return all_the_text
 
-updater = Updater(token='1353459308:AAFQny3-KvxJch5aGKgMm6v0W9Y3zxFet0Y', use_context=True)
+updater = Updater(token='NOPE', use_context=True)
 dispatcher = updater.dispatcher
 
 start_handler = CommandHandler('start', start)
