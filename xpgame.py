@@ -1,7 +1,10 @@
 import random
 import os
 import logging
+<<<<<<< HEAD
 import asd
+=======
+>>>>>>> e7b1ea2ac1a67ca3d9b6eb7cedd38823d817dc95
 from telegram.ext import Updater
 from telegram.ext import CommandHandler
 from telegram.ext import MessageHandler, Filters
@@ -18,6 +21,19 @@ def rewards(update,context):
             random.randint(50,150)))
     else :
         context.bot.send_message(chat_id=update.effective_chat.id, text=randomReward)
+<<<<<<< HEAD
+=======
+def penalties(update,context):
+    penalties = ["Great! You do not have to lose XP!", "Uh-oh, you lose 100XP!", "NOOOOO!!! You lose 200XP!", "Let BOTGOD decide your fate!"]
+    randomPenalty = random.choice(penalties)
+    if randomPenalty == penalties[3]:
+        context.bot.send_message(chat_id=update.effective_chat.id, text="%s\nDear %s, BOTGOD has taken %s XP away from you, peace."%(
+            randomPenalty,
+            update.message.from_user.first_name,
+            random.randint(120,300)))
+    else:
+        context.bot.send_message(chat_id=update.effective_chat.id, text=randomPenalty)
+>>>>>>> e7b1ea2ac1a67ca3d9b6eb7cedd38823d817dc95
 def start(update, context):
     msg = "I'm a bot, please talk to me!"
     context.bot.send_message(chat_id=update.effective_chat.id, text=msg)
@@ -37,7 +53,11 @@ def read_file_as_str(file_path):
     # print type(all_the_text)
     return all_the_text
 
+<<<<<<< HEAD
 updater = Updater(token='1293770094:AAFlINaaTdxuGCGT7_jeKQgVzpkoevFE3vk', use_context=True)
+=======
+updater = Updater(token='NOPE', use_context=True)
+>>>>>>> e7b1ea2ac1a67ca3d9b6eb7cedd38823d817dc95
 dispatcher = updater.dispatcher
 
 start_handler = CommandHandler('start', start)
@@ -45,6 +65,14 @@ dispatcher.add_handler(start_handler)
 echo_handler = MessageHandler(Filters.text & (~Filters.command), echo)
 dispatcher.add_handler(echo_handler)
 goodHandler = CommandHandler('gainxp', rewards)
+<<<<<<< HEAD
 asd.addHandler(dispatcher)
 
 updater.start_polling()
+=======
+dispatcher.add_handler(goodHandler)
+badHandler = CommandHandler('losexp', penalties)
+dispatcher.add_handler(badHandler)
+
+updater.start_polling()
+>>>>>>> e7b1ea2ac1a67ca3d9b6eb7cedd38823d817dc95

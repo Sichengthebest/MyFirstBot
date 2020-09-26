@@ -1,7 +1,10 @@
 import random
 import os
 import logging
+<<<<<<< HEAD
 import guess
+=======
+>>>>>>> e7b1ea2ac1a67ca3d9b6eb7cedd38823d817dc95
 from telegram.ext import Updater
 from telegram.ext import CommandHandler
 from telegram.ext import MessageHandler, Filters
@@ -22,11 +25,19 @@ def hunt(update, context):
     result = random.choice(huntArr)
     update.message.reply_text("%s\nCreator/作者: Sichengthebest"%result)
 def search(update, context):
+<<<<<<< HEAD
     searchArr = ["You searched the COVID testing centre and found a box full of masks! You sold them for 55GP!\n您搜索了COVID测试中心，发现里面装满了口罩！您以55GP的价格出售了它们","You searched the COVID testing centre. BAD IDEA, you got infected! Lose 40GP for hospital fees.\n您搜索了COVID测试中心。坏主意，您被感染了！损失40GP的住院费。", "You found 20GP in the basement. How long had it been here?\n您在地下室发现了20GP。已经在这里有多久了？", "You tried to rob Gringotts, but a random dude named The One Who Must Not Be Named said Avada Kedavra and you died.\n您试图抢劫古灵阁，但是一个名叫连名字都不能提的的家伙说阿瓦达索命，您死了。", "You decided to rob Gringotts. You chose the vault 713, which has nothing in it! Didn't you read The Philospher's Stone? Duh.\n您决定抢劫古灵阁。您选择了其中空的713号金库！您没读过《魔法石》吗？咄。", "You decided to rob Gringotts, and got 300GP! HOP ON THE DRAGON, QUICK!\n您决定抢劫古灵阁，并获得300GP！往龙上跳，快！", "You searched Le Parc National des L, not knowing it's a park for losers. Anyway, at least you got 9 GP from a bet with another loser.\n您搜索了 L 国家公园，却不知道它是输家的公园。无论如何，至少您与另一个失败者的下注获得9 GP。", "You searched a desert island and found buried treasure worth 270GP. GG!\n您搜索了一个荒岛，发现了价值270GP的埋藏宝藏。 棒棒哒！", "You searched the White House and found a secret vault. You opened it and found 400GP! Luckily there was no guards inside.\n您搜索了白宫，并找到了一个秘密保险库。您打开它，找到400GP！幸运的是里面没有警卫。", "You searched the White House, but came face-to-face with Donald Trump! You got fined 400GP.\n您搜索了白宫，但是与唐纳德·特朗普面对面了！您被罚款400GP。"]
     result = random.choice(searchArr)
     update.message.reply_text("%s\nCreator/作者: Sichengthebest"%result)
 def help(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="/start - Random command that makes the bot say \"I'm THE GOD OF BOTS...\" // 使机器人说“我是机器人的上帝”的随机命令。\n/hunt - Gain XP by catching animals. // 以捕捉动物的方式获得XP。\n/search - Go fetch the GP falling from the sky!!! // 去获取从天上掉下来的GP吧！！！\n/searchap - Go to Hogwarts to fetch the AP falling from the sky!!! // 去霍格沃茨获取从天上掉下来的AP吧！！！\n/fish -  Gain XP by fishing. // 以钓鱼的方式获得XP。\n\nFor Classcraft users // 对于Classcraft用户:\n-------------\n/gainxp - Use when you get a reward in Classcraft. // 当您在Classcraft中获得奖励时使用。\n/losexp - Use when you die in Classcraft. // 当您在Classcraft中死亡时使用。")
+=======
+    searchArr = ["You searched the COVID testing centre and found a box full of masks! You sold them for 55GP!\n您搜索了COVID测试中心，发现里面装满了口罩！您以55GP的价格出售了它们","You searched the COVID testing centre. BAD IDEA, you got infected! Lose 40GP for hospital fees.\n您搜索了COVID测试中心。坏主意，您被感染了！损失40GP的住院费。", "You found 20GP in the basement. How long had it been here?\n您在地下室发现了20GP。已经在这里有多久了？", "You tried to rob Gringotts, but a random dude named The One Who Must Not Be Named said Avada Kedavra and you died.\n您试图抢劫古灵阁，但是一个名叫连名字都不能提的的家伙说阿瓦达索命，您死了。", "You decided to rob Gringotts. You chose the vault 713, which has nothing in it! Didn't you read The Philospher's Stone? Duh.\n您决定抢劫古灵阁。您选择了其中空的713号金库！您没读过《魔法石》吗？咄。", "You decided to rob Gringotts, and got 300GP! HOP ON THE DRAGON, QUICK! 您决定抢劫古灵阁，并获得300GP！往龙上跳，快！", "You searched Le Parc National des L, not knowing it's a park for losers. Anyway, at least you got 9 GP from a bet with another loser.\n您搜索了 L 国家公园，却不知道它是输家的公园。无论如何，至少您与另一个失败者的下注获得9 GP。", "You searched a desert island and found buried treasure worth 270GP. GG!\n您搜索了一个荒岛，发现了价值270GP的埋藏宝藏。 棒棒哒！", "You searched the White House and found a secret vault. You opened it and found 400GP! Luckily there was no guards inside.\n您搜索了白宫，并找到了一个秘密保险库。您打开它，找到400GP！幸运的是里面没有警卫。", "You searched the White House, but came face-to-face with Donald Trump! You got fined 400GP.\n您搜索了白宫，但是与唐纳德·特朗普面对面了！您被罚款400GP。"]
+    result = random.choice(searchArr)
+    update.message.reply_text("%s\nCreator/作者: Sichengthebest"%result)
+def help(update, context):
+    context.bot.send_message(chat_id=update.effective_chat.id, text="/start - Random command that makes the bot say \"I'm THE GOD OF BOTS...\"\n/hunt - Gain XP by catching animals.\n/search - Go fetch the GP falling from the sky!!!")
+>>>>>>> e7b1ea2ac1a67ca3d9b6eb7cedd38823d817dc95
 def penalties(update,context):
     penalties = ["Great! You do not have to lose XP! 爽！您不必丢失XP！", "Uh-oh, you lose 400XP! 哎哟，你丢了400XP！", "NOOOOO!!! You lose 900XP! 好惨！您损失了900XP！", "Let BOTGOD decide your fate! 让BOTGOD决定您的命运吧！"]
     randomPenalty = random.choice(penalties)
@@ -54,6 +65,7 @@ def rewards(update,context):
     else:
         update.message.reply_text("%s\nCreator/作者: Sichengthebest"%(randomPenalty))
 def fish(update, context):
+<<<<<<< HEAD
     fishes = ["You caught a herring! +8XP!\n你钓到了一条鲱鱼！+8XP！","You caught a herring! +8XP!\n你钓到了一条鲱鱼！+8XP！","You caught a herring! +8XP!\n你钓到了一条鲱鱼！+8XP！","You caught two herrings! +15XP!\n你钓到了二条鲱鱼！+15XP！", "You caught three herrings! +25XP!\n你钓到了三条鲱鱼！+25XP！", "You caught four herrings! +32XP!\n你钓到了四条鲱鱼！+32XP！", "You caught a lake trout! +50XP!\n你钓到了一条湖鳟！+50XP！", "You caught two lake trout! Yeah! +100XP!\n你钓到了两条湖鳟！+100XP！耶～", "You forgot your fishing pole!\n你忘了钓鱼竿！", "You forgot your lure!\n你忘了诱饵！", "YOU HAVE CAUGHT A GREAT WHITE SHARK! How did you do that? +250XP!\n您钓到了一条大白鲨！你是怎么做到的？+ 250XP！", "You have caught a Great White Shark, but it pulled you into the ocean and ate you! You died.\n您捕获了一条大白鲨，但是它把您拖入海中并吞噬了您！您挂了。", "You caught a lake trout, but it was too large and the police fined you 40GP!\n您抓到一条鳟鱼，但是它太大了，警察罚款了您40GP！", "You caught nothing. Keep working on it...\n你什么都没钓到。在修炼一万年吧～"]
     result = random.choice(fishes)
     update.message.reply_text("%s\nCreator/作者: Sichengthebest"%result)
@@ -61,6 +73,11 @@ def potions(update, context):
     potions = ["You searched the Gryffindor common room and found a COMMON potion! +3AP!\n您搜索了格兰芬多公共休息室，发现了一瓶普通药水！+3AP！", "You searched the Gryffindor common room and found two COMMON potions! +6AP!\n您搜索了格兰芬多公共休息室，发现了两瓶普通药水！+6AP！", "You searched the Gryffindor common room, and found... nothing.\n您搜索了格兰芬多公共休息室，却发现……一无所获。", "You searched the Great Hall, and found a COMMON potion! +3AP!\n您搜索了大厅，发现了一瓶普通药水！+3AP！", "You searched the Great Hall, and Errol crashed into your face! You spent the rest of the day cleaning your hair.\n您搜索了大厅，但是埃罗尔撞到了您的脸上！您在一天的剩余时间里都在清理头发。", "You searched the Potions classroom, and found a COMMON potion! +3AP!\n您搜索了魔药教室，发现了一瓶普通药水！+3AP！", "You searched the Potions classroom, and found three COMMON potions! +9AP!\n您搜索了魔药教室，发现三瓶普通药水！+9AP！", "You searched the Potions classroom, and found one RARE potion! 20AP!\n您搜索了魔药教室，发现了一瓶稀有药水！+20AP！", "You searched the Potions classroom, and found Severus Snape! You lost 20HP!\n您搜索了魔药教室，发现了西弗勒斯·斯内普！您损失了20HP"]
     result = random.choice(potions)
     update.message.reply_text("%s\nCreator/作者: Sichengthebest"%result)
+=======
+    fishes = ["You caught a herring! +8XP!\n你钓到了一条了鲱鱼！+8XP！","You caught a herring! +8XP!\n你钓到了一条鲱鱼！+8XP！","You caught a herring! +8XP!\n你钓到了一条鲱鱼！+8XP！","You caught two herrings! +15XP!\n你钓到了二条鲱鱼！+15XP！", "You caught three herrings! +25XP!\n你钓到了三条鲱鱼！+25XP！", "You caught four herrings! +32XP!\n你钓到了四条鲱鱼！+32XP！", "You caught a lake trout! +50XP!\n你钓到了一条湖鳟！+50XP！", "You caught two lake trout! +100XP!\n你钓到了两条湖鳟！+100XP！", "You forgot your fishing pole!\n你忘了钓鱼竿！", "You forgot your lure!\n你忘了诱饵！", "YOU HAVE CAUGHT A GREAT WHITE SHARK! How did you do that? +250XP!\n您钓到了一条大白鲨！你是怎么做到的？+ 250XP！", "You have caught a Great White Shark, but it pulled you into the ocean and ate you! You died.\n您捕获了一条大白鲨，但是它把您拖入海中并吞噬了您！您挂了。", "You caught a lake trout, but it was too large and the police fined you 40GP!\n您抓到一条鳟鱼，但是它太大了，警察罚款了您40GP！"]
+    result = random.choice(fishes)
+    update.message.reply_text("%s\nCreator/作者: Sichengthebest"%result)
+>>>>>>> e7b1ea2ac1a67ca3d9b6eb7cedd38823d817dc95
 def read_file_as_str(file_path):
     # 判断路径文件存在
     if not os.path.isfile(file_path):
@@ -82,7 +99,10 @@ help_handler = CommandHandler('help', help)
 badHandler = CommandHandler('losexp', penalties)
 goodHandler = CommandHandler('gainxp', rewards)
 fish_handler = CommandHandler('fish', fish)
+<<<<<<< HEAD
 apHandler = CommandHandler('searchap', potions)
+=======
+>>>>>>> e7b1ea2ac1a67ca3d9b6eb7cedd38823d817dc95
 dispatcher.add_handler(start_handler)
 dispatcher.add_handler(hunt_handler)
 echo_handler = MessageHandler(Filters.text & (~Filters.command), echo)
@@ -92,7 +112,10 @@ dispatcher.add_handler(help_handler)
 dispatcher.add_handler(badHandler)
 dispatcher.add_handler(goodHandler)
 dispatcher.add_handler(fish_handler)
+<<<<<<< HEAD
 dispatcher.add_handler(apHandler)
 guess.addHandler(dispatcher)
+=======
+>>>>>>> e7b1ea2ac1a67ca3d9b6eb7cedd38823d817dc95
 
 updater.start_polling()
