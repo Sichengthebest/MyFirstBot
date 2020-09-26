@@ -17,6 +17,4 @@ Find my bot at : t.me/sdhkfshjkfhjskdfksbot!
 
 
 
-
-
 我的机器人在：t.me/sdhkfshjkfhjskdfksbot
