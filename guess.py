@@ -23,13 +23,13 @@ def guess(update, context):
                     randomNum = random.randint(1,99)
                     times = 0
                 elif randomNum > number :
+                    times += 1
                     update.message.reply_text("""WRONG! %s, you are dumb. Can't you see the number's bigger you idiot??? Number of tries: %s
 错！ %s，你真傻。你看不出这个数字更大吗？你已经用了%s次了，你真差。"""%(update.message.from_user.first_name, times, update.message.from_user.first_name, times))
-                    times += 1
                 elif randomNum < number :
+                    times += 1
                     update.message.reply_text("""WRONG! %s, you are dumb. Can't you see the number's smaller you idiot??? Number of tries: %s
 错！ %s，你真傻。你看不出这个数字更小吗？你已经用了%s次了，你真差。"""%(update.message.from_user.first_name, times, update.message.from_user.first_name, times))
-                    times += 1
             else:
                 update.message.reply_text("""WRONG! %s, you are dumb. I SAID BETWEEN 0 AND 100. Going back to elementry school?
 错！ %s，你真傻。我说的是0和100之间。要回去上小学喽？"""%(update.message.from_user.first_name, update.message.from_user.first_name))
