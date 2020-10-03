@@ -18,6 +18,8 @@ help - Know this bot's commands. // 了解该机器人的命令。
 gainxp - Use when you get a reward in Classcraft. // 当您在Classcraft中获得奖励时使用。
 
 losexp - Use when you die in Classcraft. // 当您在Classcraft中死亡时使用。
+
+guess - Guess a number between 1 and 100. Try and do it with the least number of tries possible! // 猜一个0-100之间的数字。尝试尽可能减少尝试次数！
 ```
 Find my bot at : [https://t.me/sdhkfshjkfhjskdfksbot](https://t.me/sdhkfshjkfhjskdfksbot)!
 
