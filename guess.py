@@ -12,9 +12,9 @@ def guess(update, context):
         """)
     else :
         global randomNum
+        name = update.message.from_user.first_name
         if context.args[0].isdigit():
             number = int(context.args[0])
-            name = update.message.from_user.first_name
             if name in tries:
                 tries[name] += 1
             else:
