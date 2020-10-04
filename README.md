@@ -18,6 +18,6 @@ gainxp - Use when you get a reward in Classcraft. // 当您在Classcraft中获�
 losexp - Use when you die in Classcraft. // 当您在Classcraft中死亡时使用。
 ```
 
-Find my bot at : [https://t.me/sdhkfshjkfhjskdfksbot](https://t.me/sdhkfshjkfhjskdfksbot)!
+Find my bot at : [https://t.me/god_of_every_bot](https://t.me/god_of_every_bot)!
 
-我的机器人在：[https://t.me/sdhkfshjkfhjskdfksbot](https://t.me/sdhkfshjkfhjskdfksbot)
+我的机器人在：[https://t.me/god_of_every_bot](https://t.me/god_of_every_bot)
