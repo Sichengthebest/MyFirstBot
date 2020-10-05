@@ -7,12 +7,12 @@ def search(update, context):
 为了获得GP而玩的游戏。
 -------------------------------------------------------------------------------------
 COMMANDS:
-/search covid : Search the COVID testing centre! Watch out for infected dudes...
-/search garage : Seach the abandoned garage.
-/search gringotts : Go rob the legendary bank in Harry Potter!
-/search lpark : Search in the hiking trails of Le Parc National des L!
-/search island : Land ho!! Set sail for the sandy shores of an island in the tropics, in the hope of finding treasures! Watch out for coconut crabs!
-/search whitehouse : Search the President's Residence! Watch out for the Orange-Faced dude himself!""")
+/search covid : Search the COVID testing centre! Watch out for infected dudes... // 搜寻COVID测试中心！当心被感染的家伙...
+/search garage : Seach the abandoned garage. // 搜索废弃的修车厂。
+/search gringotts : Go rob the legendary bank in Harry Potter! // 抢劫哈利·波特里传奇的银行！
+/search lpark : Search in the hiking trails of Le Parc National des L! // 搜索L国家公园的徒步路线吧！
+/search island : Land ho!! Set sail for the sandy shores of an island in the tropics, in the hope of finding treasures! Watch out for coconut crabs! // 陆地！启航前往热带岛屿的沙摊，希望能找到宝藏！当心椰子蟹！
+/search whitehouse : Search the President's Residence! Watch out for the Orange-Faced dude himself! // 搜索总统官邸！提防所有橙色脸蛋的家伙！""")
     else :
         place = str(context.args[0])
         if place == "covid":
