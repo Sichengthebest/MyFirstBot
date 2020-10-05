@@ -2,8 +2,7 @@ from telegram.ext import CommandHandler, dispatcher
 import random
 
 def search(update, context):
-    place = str(context.args)
-    if len(place) == 0 :
+    if len(context.args) == 0 :
         update.message.reply_text("""A game you play to gain GP.
 为了获得GP而玩的游戏。
 -------------------------------------------------------------------------------------
@@ -15,6 +14,7 @@ COMMANDS:
 /search island : Land ho!! Set sail for the sandy shores of an island in the tropics, in the hope of finding treasures! Watch out for coconut crabs!
 /search whitehouse : Search the President's Residence! Watch out for the Orange-Faced dude himself!""")
     else :
+        place = str(context.args[0])
         if place == "covid":
             covidArr = ["You searched the COVID testing centre and found a box full of masks! You sold them for 55GP!\n您搜索了COVID测试中心，发现里面装满了口罩！您以55GP的价格出售了它们","You searched the COVID testing centre. BAD IDEA, you got infected! Lose 40GP for hospital fees.\n您搜索了COVID测试中心。坏主意，您被感染了！损失40GP的住院费。"]
             covid19r = random.choice(covidArr)
