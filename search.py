@@ -14,7 +14,7 @@ COMMANDS:
 /search lpark : Search in the hiking trails of Le Parc National des L!
 /search island : Land ho!! Set sail for the sandy shores of an island in the tropics, in the hope of finding treasures! Watch out for coconut crabs!
 /search whitehouse : Search the President's Residence! Watch out for the Orange-Faced dude himself!""")
-    else:
+    else :
         if place == "covid":
             covidArr = ["You searched the COVID testing centre and found a box full of masks! You sold them for 55GP!\n您搜索了COVID测试中心，发现里面装满了口罩！您以55GP的价格出售了它们","You searched the COVID testing centre. BAD IDEA, you got infected! Lose 40GP for hospital fees.\n您搜索了COVID测试中心。坏主意，您被感染了！损失40GP的住院费。"]
             covid19r = random.choice(covidArr)
@@ -43,11 +43,9 @@ COMMANDS:
             whResult = random.choice(whArr)
             update.message.reply_text("%s\nCreator/作者: Sichengthebest"%whResult)
         elif place == "space":
-            spaceArr = ["You photographed an alien! You gained 250GP!\n你拍到了一个外星人！您获得了250GP！", "Your spaceship blew up just after you saw the alien! Your photo got burnt, and so did you...\n刚看到外星人后，您的飞船爆炸了！您的照片被烧毁了，您也是..."]
+            spaceArr = ["You photographed an alien! You gained 250GP!\n你拍到了一个外星人！您获得了250GP！", "Your spaceship blew up just after you saw the alien! Your photo got burnt, and so did you...\n刚看到外星人后，您的飞船爆炸了！您的照片被烧毁了，您也是...", "You photographed an alien, but everyone thought it was photoshop, and so you got nothing.\n您拍摄了一个外星人，但所有人都认为这是假的，所以您一无所获。"]
             spaceR = random.choice(spaceArr)
             update.message.reply_text("%s\nCreator/作者: Sichengthebest"%spaceR)
-        else:
-            update.message.reply_text("What in the world did you just say??? Muy no comprendo...\n你刚才在说什么？？？ 我不太明白...\nCreator/作者: Sichengthebest")
 
 def addHandler(dispatcher):
     srchHandler = CommandHandler('search', search)
