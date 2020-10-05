@@ -16,7 +16,7 @@ def start(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text=msg)
 
 def help(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="/start - Random command that makes the bot say \"I'm THE GOD OF BOTS...\" // 使机器人说“我是机器人的上帝”的随机命令。\n/hunt - Gain XP by catching animals. // 以捕捉动物的方式获得XP。\n/search - Go fetch the GP falling from the sky!!! // 去获取从天上掉下来的GP吧！！！\n/fish - Gain XP by fishing. // 以钓鱼的方式获得XP。\n/gainap - Go to Hogwarts to fetch the AP falling from the sky!!! // 去霍格沃茨获取从天上掉下来的AP吧！！！")
+    context.bot.send_message(chat_id=update.effective_chat.id, text="/start - Random command that makes the bot say \"I'm THE GOD OF BOTS...\" // 使机器人说“我是机器人的上帝”的随机命令。\n/hunt - Gain XP by catching animals. // 以捕捉动物的方式获得XP。\n/search - Go fetch the GP falling from the sky!!! /search: help // 去获取从天上掉下来的GP吧！！！/search：帮助 \n/fish - Gain XP by fishing. // 以钓鱼的方式获得XP。\n/gainap - Go to Hogwarts to fetch the AP falling from the sky!!! // 去霍格沃茨获取从天上掉下来的AP吧！！！")
 def read_file_as_str(file_path):
     # 判断路径文件存在
     if not os.path.isfile(file_path):
