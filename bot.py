@@ -8,7 +8,7 @@ import rewards
 import punishs
 import ap
 import search
-from telegram.ext import CommandHandler, MessageHandler, InlineQueryHandler, Updater
+from telegram.ext import CommandHandler, InlineQueryHandler, Updater
 from telegram import InlineQueryResultArticle, InputTextMessageContent
 
 def start(update, context):
