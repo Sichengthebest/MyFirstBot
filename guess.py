@@ -1,7 +1,5 @@
 from telegram import Update,User
 from telegram.ext import Dispatcher,CommandHandler
-from telegram import Update, User
-from telegram.ext import Dispatcher,CommandHandler,CallbackContext
 import random
 randomNum = random.randint(1,99)
 tries = {}
