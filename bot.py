@@ -12,7 +12,7 @@ from telegram.ext import CommandHandler, InlineQueryHandler, Updater
 from telegram import InlineQueryResultArticle, InputTextMessageContent
 
 def start(update, context):
-    msg = "I'M THE GOD OF BOTS...\nVersion: 3.1.2\n我是机器人的上帝...\n版本：3.1.2"
+    msg = "I'M THE GOD OF BOTS...\nVersion: 3.1.3\n我是机器人的上帝...\n版本：3.1.3"
     context.bot.send_message(chat_id=update.effective_chat.id, text=msg)
 
 def help(update, context):
