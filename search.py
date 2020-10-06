@@ -31,8 +31,8 @@ COMMANDS:
             bankResult = random.choice(bankArr)
             update.message.reply_text("%s\nCreator/作者: Sichengthebest"%bankResult)
         elif place == "lpark":
-            betnum = random.randint(1,20)
-            lArr ="You searched Le Parc National des L, not knowing it's a park for losers. Anyway, at least you got %s GP from a bet with another loser.\n您搜索了 L 国家公园，却不知道它是输家的公园。无论如何，至少您与另一个失败者的下注获得%s GP。"%(betnum, betnum)
+            betnum = random.randint(0,10)
+            lArr ="You searched Le Parc National des L, not knowing it's a park for losers. Anyway, at least you got %s GP from a bet with another loser.\n您搜索了 L 国家公园，却不知道它是输家的公园。无论如何，至少您与另一个失败者的下注获得了%s GP。"%(betnum, betnum)
             update.message.reply_text("%s\nCreator/作者: Sichengthebest"%lArr)
         elif place == "island":
             treasurenum = random.randint(10,300)
