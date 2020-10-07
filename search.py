@@ -13,7 +13,9 @@ COMMANDS:
 /search lpark : Search in the hiking trails of Le Parc National des L! // 搜索L国家公园的徒步路线吧！
 /search island : Land ho!! Set sail for the sandy shores of an island in the tropics, in the hope of finding treasures! Watch out for coconut crabs! // 陆地！启航前往热带岛屿的沙摊，希望能找到宝藏！当心椰子蟹！
 /search whitehouse : Search the President's Residence! Watch out for the Orange-Faced dude himself! // 搜索总统官邸！提防所有橙色脸蛋的家伙！
-/search space : BLAST-OFF! Go fly into space, in the hope of finding aliens! // 发射！飞入太空，目的是找到外星人！""")
+/search space : BLAST-OFF! Go fly into space, in the hope of finding aliens! // 发射！飞入太空，目的是找到外星人！
+/search castle : Search the royal palace! You can gain lots of GP, but it's hard to get! // 搜索皇宫！您可以获得很多GP，但很难获得！
+/search zoo : Search the place where animals are held in cages! // 搜索将动物关在笼子里的地方！""")
     else :
         place = str(context.args[0])
         if place == "covid":
@@ -47,6 +49,15 @@ COMMANDS:
             spaceArr = ["You photographed an alien! You gained 250GP!\n你拍到了一个外星人！您获得了250GP！", "Your spaceship blew up just after you saw the alien! Your photo got burnt, and so did you...\n刚看到外星人后，您的飞船爆炸了！您的照片被烧毁了，您也是...", "You photographed an alien, but everyone thought it was photoshop, and so you got nothing.\n您拍摄了一个外星人，但所有人都认为这是假的，所以您一无所获。"]
             spaceR = random.choice(spaceArr)
             update.message.reply_text("%s\nCreator/作者: Sichengthebest"%spaceR)
+        elif place == "castle":
+            serial = random.randint(25,70)
+            castleArr = ["You found a treasure chest! Gain 500GP!\n您发现了一个宝藏箱！获得500GP！", "A serial killer was hiding behind the throne, and you lost %s HP.\n一个连环杀手躲在王位后面，您失去了%sHP。"%(serial, serial), "You got lost in the corridors of the castle, and you starved to death.\n您在城堡的走廊里迷路了，饿死了。"]
+            castleR = random.choice(castleArr)
+            update.message.reply_text("%s\nCreator/作者: Sichengthebest"%castleR)
+        elif place == "zoo":
+            zooArr = ["You killed a zebra and sold its skin for 125GP!", "You tried to kill a giraffe, but a random dude saw you! You got arrested and got fined 260GP."]
+            zooResult = random.choice(zooArr)
+            update.message.reply_text("%s\nCreator/作者: Sichengthebest"%zooResult)
 
 def addHandler(dispatcher):
     srchHandler = CommandHandler('search', search)
