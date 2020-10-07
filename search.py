@@ -5,9 +5,7 @@ def search(update, context):
     if len(context.args) == 0 :
         update.message.reply_text("""A game you play to gain GP.
 为了获得GP而玩的游戏。
-
 -------------------------------------------------------------------------------------
-
 COMMANDS:
 /search covid : Search the COVID testing centre! Watch out for infected dudes... // 搜寻COVID测试中心！当心被感染的家伙...
 /search garage : Seach the abandoned garage. // 搜索废弃的修车厂。
