@@ -6,7 +6,6 @@ import hunt
 import fish
 import rewards
 import punishs
-import ap
 import search
 from telegram.ext import CommandHandler, InlineQueryHandler, Updater
 from telegram import InlineQueryResultArticle, InputTextMessageContent
@@ -40,7 +39,6 @@ hunt.addHandler(dispatcher)
 fish.addHandler(dispatcher)
 rewards.addHandler(dispatcher)
 punishs.addHandler(dispatcher)
-ap.addHandler(dispatcher)
 search.addHandler(dispatcher)
 
 updater.start_polling()
