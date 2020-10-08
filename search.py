@@ -16,7 +16,7 @@ COMMANDS:
 /search space : BLAST-OFF! Go fly into space, in the hope of finding aliens!  //  发射！飞入太空，目的是找到外星人！
 /search castle : Search the royal palace! You can gain lots of GP, but it's hard to get!  //  搜索皇宫！您可以获得很多GP，但很难获得！
 /search zoo : Search the place where animals are held in cages!  //  搜索将动物关在笼子里的地方！
-/search neighbor : Break in to your neighbour's house! Is he rich, or is he just a beggar?  //  闯入邻居家！他很有钱吗，还是他只是一个乞钱的？""")
+/search neighbour : Break in to your neighbour's house! Is he rich, or is he just a beggar?  //  闯入邻居家！他很有钱吗，还是他只是一个乞钱的？""")
     else :
         place = str(context.args[0])
         if place == "covid":
@@ -59,7 +59,7 @@ COMMANDS:
             zooArr = ["You killed a zebra and sold its skin for 225GP!\n您杀死了斑马，并以225GP的价格出售了它的皮！", "You tried to kill a giraffe, but a random dude saw you! You got arrested and got fined 260GP.\n您试图杀死长颈鹿，但一个随机的家伙看见了您！您被捕并被罚款260GP。", "You got ate by a tiger.\n你被老虎吃了。", "You killed a goldfish, but no one wanted to buy a DEAD pet...\n您杀死了一条金鱼，但没人愿意买一个死的金鱼。"]
             zooResult = random.choice(zooArr)
             update.message.reply_text("%s\nCreator/作者: Sichengthebest"%zooResult)
-        elif place == "neighbor":
+        elif place == "neighbour":
             neiArr = ["You found 200GP under the master bed!\n您在主床下找到200GP！", "You penetrated in a mansion, but then realize that the dude who lived here was broke! HAAAHAHAHAHAA...\n您进入了一个豪宅，但随后意识到住在这里的那个家伙已经把钱都花了！哈哈哈哈哈哈...", "You got seen by another neighbor, and he called the cops on you! You got fined 400GP and lost 45HP.\n你被另一个邻居看见了，他叫了警察！您被罚款400GP，损失了45HP。"]
             nResult = random.choice(neiArr)
             update.message.reply_text("%s\nCreator/作者: Sichengthebest"%nResult)
