@@ -16,7 +16,8 @@ COMMANDS:
 /search space : BLAST-OFF! Go fly into space, in the hope of finding aliens!  //  发射！飞入太空，目的是找到外星人！
 /search castle : Search the royal palace! You can gain lots of GP, but it's hard to get!  //  搜索皇宫！您可以获得很多GP，但很难获得！
 /search zoo : Search the place where animals are held in cages!  //  搜索将动物关在笼子里的地方！
-/search neighbour : Break in to your neighbour's house! Is he rich, or is he just a beggar?  //  闯入邻居家！他很有钱吗，还是他只是一个乞钱的？""")
+/search neighbour : Break in to your neighbour's house! Is he rich, or is he just a beggar?  //  闯入邻居家！他很有钱吗，还是他只是一个乞钱的？
+/search jungle: Search the lush rainforests of Amazonia! Watch out for alligators...  //  搜索亚马逊茂密的热带雨林！当心鳄鱼...""")
     else :
         place = str(context.args[0])
         if place == "covid":
@@ -38,7 +39,7 @@ COMMANDS:
             lArr ="You searched Le Parc National des L, not knowing it's a park for losers. Anyway, at least you got %s GP from a bet with another loser.\n您搜索了 L 国家公园，却不知道它是输家的公园。无论如何，至少您与另一个失败者的下注获得了%s GP。"%(betnum, betnum)
             update.message.reply_text("%s\nCreator/作者: Sichengthebest"%lArr)
         elif place == "island":
-            treasurenum = random.randint(10,300)
+            treasurenum = random.randint(50,300)
             islandArr = ["You searched a desert island and found buried treasure worth %sGP!\n您搜索了一个荒岛，发现了价值%sGP的埋藏宝藏！"%(treasurenum, treasurenum), "You searched a desert island and... found out that coconut crabs are really aggressive! Lose 20HP due to their deadly pincers.\n您搜索了一个荒岛，发现椰子蟹确实具有侵略性！由于他们致命的钳子而损失20HP。"]
             islandR = random.choice(islandArr)
             update.message.reply_text("%s\nCreator/作者: Sichengthebest"%islandR)
@@ -63,6 +64,11 @@ COMMANDS:
             neiArr = ["You found 200GP under the master bed!\n您在主床下找到200GP！", "You penetrated in a mansion, but then realize that the dude who lived here was broke! HAAAHAHAHAHAA...\n您进入了一个豪宅，但随后意识到住在这里的那个家伙已经把钱都花了！哈哈哈哈哈哈...", "You got seen by another neighbor, and he called the cops on you! You got fined 400GP and lost 45HP.\n你被另一个邻居看见了，他叫了警察！您被罚款400GP，损失了45HP。"]
             nResult = random.choice(neiArr)
             update.message.reply_text("%s\nCreator/作者: Sichengthebest"%nResult)
+        elif place == "jungle":
+            jungleNum = random.randint(10,90)
+            jungleArr = ["You found treasure on a tree! Gain %sGP.\n您在树上发现了宝藏！获得%sGP。"%(jungleNum, jungleNum), "You got eaten by an alligator.\n你被鳄鱼咬死了。"]
+            jResult = random.choice(jungleArr)
+            update.message.reply_text("%s\nCreator/作者: Sichengthebest"%jResult)
 
 def addHandler(dispatcher):
     srchHandler = CommandHandler('search', search)
