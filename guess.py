@@ -1,17 +1,20 @@
 from telegram import Update,User
 from telegram.ext import Dispatcher,CommandHandler
 import random
-randomNum = random.randint(1,99)
-tries = {}
+rooms = {}
 
 def guess(update, context):
+    chatid = update.message.chat.id
+    if not (chatid in rooms):
+        rooms[chatid] = {'randomNum': random.randint(1,99), 'tries': {}}
+    tries = rooms[chatid]['tries']
+    randomNum = rooms[chatid]['randomNum']
     if len(context.args) == 0 :
         update.message.reply_text("""猜一个0-100之间的数字。Guess a number from 0 - 100.
-/guess 查看现在的状态和获取帮助。Check your current status and get help.
-/guess *your number here* 输入数字，看谁用的次数最少就能猜到。Enter number and see who uses it the least often to guess the number.
+/guessnum 查看现在的状态和获取帮助。Check your current status and get help.
+/guessnum *your number here* 输入数字，看谁用的次数最少就能猜到。Enter number and see who uses it the least often to guess the number.
         """)
     else :
-        global randomNum
         name = update.message.from_user.first_name
         if context.args[0].isdigit():
             number = int(context.args[0])
@@ -40,5 +43,5 @@ def guess(update, context):
 错！ %s，你真傻。你看不出 %s 都不是数字吗？你已经用了%s次了，你真差。"""%(name, context.args[0], tries[name], name, context.args[0], tries[name]))
 
 def addHandler(dispatcher):
-    guessHandler = CommandHandler('guess', guess)
+    guessHandler = CommandHandler('guessnum', guess)
     dispatcher.add_handler(guessHandler)
