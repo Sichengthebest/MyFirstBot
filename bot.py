@@ -7,12 +7,11 @@ import fish
 import rewards
 import punishs
 import search
-import kill
 from telegram.ext import CommandHandler, InlineQueryHandler, Updater
 from telegram import InlineQueryResultArticle, InputTextMessageContent
 
 def start(update, context):
-    msg = "I'M THE GOD OF BOTS...\nVersion: 3.2.1\n我是机器人的上帝...\n版本：3.2.1"
+    msg = "I'M THE GOD OF BOTS...\nVersion: 3.4.0\n我是机器人的上帝...\n版本：3.4.0"
     context.bot.send_message(chat_id=update.effective_chat.id, text=msg)
 
 def help(update, context):
@@ -41,6 +40,5 @@ fish.addHandler(dispatcher)
 rewards.addHandler(dispatcher)
 punishs.addHandler(dispatcher)
 search.addHandler(dispatcher)
-kill.addHandler(dispatcher)
 
 updater.start_polling()
