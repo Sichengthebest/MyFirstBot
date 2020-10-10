@@ -10,7 +10,7 @@ import search
 from telegram.ext import CommandHandler, Updater
 
 def start(update, context):
-    msg = "I'M THE GOD OF BOTS...\nVersion: 3.4.0\n我是机器人的上帝...\n版本：3.4.0"
+    msg = "I'M THE GOD OF BOTS...\nVersion: 3.4.1\n我是机器人的上帝...\n版本：3.4.1"
     context.bot.send_message(chat_id=update.effective_chat.id, text=msg)
 
 def help(update, context):
