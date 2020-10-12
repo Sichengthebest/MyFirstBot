@@ -11,7 +11,7 @@ COMMANDS:
 /search garage : Seach the abandoned garage.  //  搜索废弃的修车厂。
 /search gringotts : Go rob the legendary bank in Harry Potter!  //  抢劫哈利·波特里传奇的银行！
 /search lpark : Search in the hiking trails of Le Parc National des L!  //  搜索L国家公园的徒步路线吧！
-/search island : Land ho!! Set sail for the sandy shores of an island in the tropics, in the hope of finding treasures! Watch out for coconut crabs!  //  陆地！启航前往热带岛屿的沙摊，希望能找到宝藏！当心椰子蟹！
+/search island : Land ho!! Set sail for the sandy shores of an island in the tropics, in the hope of finding treasure! Watch out for coconut crabs!  //  陆地！启航前往热带岛屿的沙摊，希望能找到宝藏！当心椰子蟹！
 /search whitehouse : Search the President's Residence! Watch out for the Orange-Faced dude himself!  //  搜索总统官邸！提防所有橙色脸蛋的家伙！
 /search space : BLAST-OFF! Go fly into space, in the hope of finding aliens!  //  发射！飞入太空，目的是找到外星人！
 /search castle : Search the royal palace! You can gain lots of GP, but it's hard to get!  //  搜索皇宫！您可以获得很多GP，但很难获得！
@@ -69,6 +69,10 @@ COMMANDS:
             jungleArr = ["You found treasure on a tree! Gain %sGP.\n您在树上发现了宝藏！获得%sGP。"%(jungleNum, jungleNum), "You got eaten by an alligator.\n你被鳄鱼咬死了。"]
             jResult = random.choice(jungleArr)
             update.message.reply_text("%s\nCreator/作者: Sichengthebest"%jResult)
+        elif place == "mountains":
+            mountArr = ["You shot a mountain goat and sold it for 60GP!\n您宰杀了一只山羊，并以60GP的价格将其出售！", "You fell off a cliff and bumped your head. Lose 30HP.\n您从悬崖上摔下来并且撞了头。损失30HP。"]
+            mtResult = random.choice(mountArr)
+            update.message.reply_text("%s\nCreator/作者: Sichengthebest"%mtResult)
 
 def addHandler(dispatcher):
     srchHandler = CommandHandler('search', search)
