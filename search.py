@@ -17,7 +17,8 @@ COMMANDS:
 /search castle : Search the royal palace! You can gain lots of GP, but it's hard to get!  //  搜索皇宫！您可以获得很多GP，但很难获得！
 /search zoo : Search the place where animals are held in cages!  //  搜索将动物关在笼子里的地方！
 /search neighbour : Break in to your neighbour's house! Is he rich, or is he just a beggar?  //  闯入邻居家！他很有钱吗，还是他只是一个乞钱的？
-/search jungle: Search the lush rainforests of Amazonia! Watch out for alligators...  //  搜索亚马逊茂密的热带雨林！当心鳄鱼...""")
+/search jungle: Search the lush rainforests of Amazonia! Watch out for alligators...  //  搜索亚马逊茂密的热带雨林！当心鳄鱼...
+/search mountains: Search the bare alpine environment of the Rockies!  //  搜索落基山脉的高山环境！""")
     else :
         place = str(context.args[0])
         if place == "covid":
