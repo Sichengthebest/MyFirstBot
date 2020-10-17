@@ -70,10 +70,10 @@ def betCallback(update, context):
         if thing == 0:
             query.answer("You haven't chosen anything.\n您还没有选择任何东西", show_alert=True)
         elif thing == 1:
-            query.answer("You won the bet! Gain 1000GP, lucky you!\n您赢了赌注！获得1000GP，幸运的你！", show_alert=True)
+            query.answer("You won the bet! Gain 1000GP, lucky you! How did you know it was %s?\n您赢了赌注！获得1000GP，幸运的你！你怎么知道数字是%s的？"%(sum,sum), show_alert=True)
             thing = 0
         elif thing == 2:
-            query.answer("You lost the bet. Lose 50GP.\n你输掉了50GP", show_alert=True)
+            query.answer("You lost the bet. Lose 50GP. Number was: %s\n你输掉了50GP。正确数字为：%s"%(sum,sum), show_alert=True)
             thing = 0
         randomNum1 = random.randint(1,6)
         randomNum2 = random.randint(1,6)
