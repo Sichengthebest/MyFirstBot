@@ -40,7 +40,7 @@ def guess(update, context):
 错！ %s，你真傻。我说的是0和100之间。要回去上小学喽？你已经用了%s次了，你真差。"""%(name, tries[name], name, tries[name]))
         else:
             update.message.reply_text("""WRONG! %s, you are dumb. CAN'T YOU SEE %s IS NOT A NUMBER? Number of tries: %s          
-错！ %s，你真傻。你看不出 %s 都不是数字吗？你已经用了%s次了，你真差。"""%(name, context.args[0], tries[name], name, context.args[0], tries[name]))
+错！ %s，你真傻。你看不出 %s 都不是数字吗？你已经用了%s次了，你真差。\n\nTips: NO DECIMALS PLS!\n请不要加小数点！"""%(name, context.args[0], tries[name], name, context.args[0], tries[name]))
 
 def addHandler(dispatcher):
     guessHandler = CommandHandler('guessnum', guess)

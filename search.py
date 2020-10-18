@@ -1,9 +1,13 @@
-from telegram.ext import CommandHandler, dispatcher
+from telegram.ext import CommandHandler, dispatcher, CallbackQueryHandler
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 import random
 
+buttons = [InlineKeyboardButton("Covid Testing Centre", callback_data="covid"), InlineKeyboardButton("Garage", callback_data="garage"), InlineKeyboardButton("Gringotts", callback_data="gringotts"), InlineKeyboardButton("L-Park", callback_data="lpark"), InlineKeyboardButton("Desert Island", callback_data="island"), InlineKeyboardButton("White House", callback_data="whitehouse"), InlineKeyboardButton("Space", callback_data="space"), InlineKeyboardButton("Castle", callback_data="castle"), InlineKeyboardButton("Zoo", callback_data="zoo"), InlineKeyboardButton("Neighbour's House", callback_data="neighbour"), InlineKeyboardButton("Jungle", callback_data="jungle"), InlineKeyboardButton("Mountains", callback_data="mountains")]
+chosen = random.choices(buttons, k=3)
+kb = ([[chosen[0],chosen[1],chosen[2]]])
+
 def search(update, context):
-    if len(context.args) == 0 :
-        update.message.reply_text("""A game you play to gain GP.
+    msg = """A game you play to gain GP.
 为了获得GP而玩的游戏。
 -------------------------------------------------------------------------------------
 COMMANDS:
@@ -18,7 +22,9 @@ COMMANDS:
 /search zoo : Search the place where animals are held in cages!  //  搜索将动物关在笼子里的地方！
 /search neighbour : Break in to your neighbour's house! Is he rich, or is he just a beggar?  //  闯入邻居家！他很有钱吗，还是他只是一个乞钱的？
 /search jungle: Search the lush rainforests of Amazonia! Watch out for alligators...  //  搜索亚马逊茂密的热带雨林！当心鳄鱼...
-/search mountains: Search the bare alpine environment of the Rockies!  //  搜索落基山脉的高山环境！""")
+/search mountains: Search the bare alpine environment of the Rockies!  //  搜索落基山脉的高山环境！"""
+    if len(context.args) == 0 :
+        update.message.reply_text("%s"%msg, reply_markup=kb)
     else :
         place = str(context.args[0])
         if place == "covid":
