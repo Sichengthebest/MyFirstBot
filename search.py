@@ -1,13 +1,14 @@
 from telegram.ext import CommandHandler, dispatcher
 import random
 
-buttons = ["covid","garage","gringotts","lpark","island","whitehouse","space","castle","zoo","neighbour","jungle","mountains"]
+buttons = ["covid","garage","gringotts","lpark","island","whitehouse","space","castle","zoo","neighbour","jungle","mountains","car"]
 chosen = random.choices(buttons, k=3)
 
 def search(update, context):
     global buttons
     global chosen
     if len(context.args) == 0 :
+        chosen = random.choices(buttons, k=3)
         update.message.reply_text("""A game you play to gain GP.
 为了获得GP而玩的游戏。
 -------------------------------------------------------------------------------------
@@ -81,6 +82,22 @@ Choices are reset after each round! // 每轮结束后，选项会重置！
                 mountArr = ["You shot a mountain goat and sold it for 60GP!\n您宰杀了一只山羊，并以60GP的价格将其出售！", "You fell off a cliff and bumped your head. Lose 30HP.\n您从悬崖上摔下来并且撞了头。损失30HP。"]
                 mtResult = random.choice(mountArr)
                 update.message.reply_text("%s\nCreator/作者: Sichengthebest"%mtResult)
+                chosen = random.choices(buttons, k=3)
+            elif place == "car":
+                normalgp = random.randint(500,2000)
+                badgp = random.randint(100,200)
+                year = random.randint(2008,2017)
+                badyear = random.randint(1985,1995)
+                greatyear = random.randint(2016,2020)
+                carsluxe = ["Tesla Model S","BMW 750i","Mercedes-Benz S63 AMG","Audi A8","Jaguar XJ","Rolls-Royce Phantom","Lamborghini Aventador","Ferrari GTC4Lusso","Range Rover"]
+                carsbad = ["Toyota Tercel","Honda Civic","Chevrolet Cavalier","Ford Escort","Mazda 323","Nissan Sentra","Pontiac Grand Am","Hyundai Pony"]
+                carsnormal = ["Ford F-150","Honda Pilot","Toyota Camry","Chevrolet Malibu","Kia Sorento","Mitsubishi Lancer","Toyota Pruis","Hyundai Elantra","Mini Cooper","Dodge Durango","Infiniti G35 / Q50","Subaru Impreza"]
+                normalcar = random.choice(carsnormal)
+                badcar = random.choice(carsbad)
+                shiningcar = random.choice(carsluxe)
+                carArr = ["You stole a %s %s, worth %sGP!"%(normalcar,year,normalgp),"You stole a totally broken and useless %s %s, nobody wanted to buy it."%(badcar,badyear),"You got caught while trying to steal a %s %s. You got fined %sGP. Next time try doing it with less noice."%(shiningcar,greatyear,badgp)]
+                carResult = random.choice(carArr)
+                update.message.reply_text("%s\nCreator/作者: Sichengthebest"%carResult)
                 chosen = random.choices(buttons, k=3)
         else:
            update.message.reply_text("Bruh what are you doing this place isn't even in the list!\n呃，您在做什么？这个地点都不在列表中！\nCreator/作者: Sichengthebest") 
