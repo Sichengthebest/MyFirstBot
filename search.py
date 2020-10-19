@@ -85,12 +85,12 @@ Choices are reset after each round! // 每轮结束后，选项会重置！
                 chosen = random.choices(buttons, k=3)
             elif place == "car":
                 normalgp = random.randint(500,2000)
-                badgp = random.randint(100,200)
+                badgp = random.randint(150,250)
                 year = random.randint(2008,2017)
-                badyear = random.randint(1985,1995)
+                badyear = random.randint(1985,1994)
                 greatyear = random.randint(2016,2020)
-                carsluxe = ["Tesla Model S","BMW 750i","Mercedes-Benz S63 AMG","Audi A8","Jaguar XJ","Rolls-Royce Phantom","Lamborghini Aventador","Ferrari GTC4Lusso","Range Rover"]
-                carsbad = ["Toyota Tercel","Honda Civic","Chevrolet Cavalier","Ford Escort","Mazda 323","Nissan Sentra","Pontiac Grand Am","Hyundai Pony"]
+                carsluxe = ["Tesla Model S","BMW 750i","Mercedes-Benz S63 AMG","Audi A8","Jaguar XJ","Rolls-Royce Phantom","Lamborghini Aventador","Ferrari GTC4Lusso","Range Rover","Infiniti Q70","Maserati Quattroporte","Volvo XC90"]
+                carsbad = ["Toyota Tercel","Honda Civic","Chevrolet Cavalier","Ford Escort","Mazda 323","Nissan Sentra","Pontiac Grand Am","Hyundai Pony","Dodge Ram","Ford Taurus","Mercury Topaz"]
                 carsnormal = ["Ford F-150","Honda Pilot","Toyota Camry","Chevrolet Malibu","Kia Sorento","Mitsubishi Lancer","Toyota Pruis","Hyundai Elantra","Mini Cooper","Dodge Durango","Infiniti G35 / Q50","Subaru Impreza"]
                 normalcar = random.choice(carsnormal)
                 badcar = random.choice(carsbad)

@@ -19,7 +19,7 @@ thing = 0
 msg = """I rolled two dice. Please choose one button, then press Start Game to confirm your choice.
 - Press Surrender to give up (and lose 10GP).
 - If you get the right answer, you win 1000GP.
-- If you get the wrong answer, you lose 50GP.
+- If you get the wrong answer, you lose 100GP.
 --------------------------------------------------------------------
 我掷了两个骰子。请选择一个按钮，然后按开始来确认选择。
 -按逃跑来放弃（丢失10GP）。
@@ -79,7 +79,7 @@ def betCallback(update, context):
         randomNum2 = random.randint(1,6)
         sum = randomNum1 + randomNum2
     else:
-        query.answer("You lost the bet. Lose 150GP. Number is reset.", show_alert=True)
+        query.answer("You lost the bet. Lose 100GP. Number is reset.", show_alert=True)
         randomNum1 = random.randint(1,6)
         randomNum2 = random.randint(1,6)
         sum = randomNum1 + randomNum2
