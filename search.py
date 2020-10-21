@@ -84,18 +84,25 @@ Choices are reset after each round! // 每轮结束后，选项会重置！
                 update.message.reply_text("%s\nCreator/作者: Sichengthebest"%mtResult)
                 chosen = random.choices(buttons, k=3)
             elif place == "car":
+                index = random.randint(0,11)
                 normalgp = random.randint(500,2000)
                 badgp = random.randint(150,250)
                 year = random.randint(2008,2017)
                 badyear = random.randint(1985,1994)
                 greatyear = random.randint(2016,2020)
                 carsluxe = ["Tesla Model S","BMW 750i","Mercedes-Benz S63 AMG","Audi A8","Jaguar XJ","Rolls-Royce Phantom","Lamborghini Aventador","Ferrari GTC4Lusso","Range Rover","Infiniti Q70","Maserati Quattroporte","Volvo XC90"]
+                carsluxCH = ["特斯拉S系","宝马750i","奔驰S63 AMG","奥迪A8","捷豹XJ","劳斯莱斯 幻影","兰博基尼 Aventador","法拉利GTC4Lusso","路虎揽胜","英菲尼迪Q70","玛莎拉蒂 Quattroporte","沃尔沃 XC90"]
                 carsbad = ["Toyota Tercel","Honda Civic","Chevrolet Cavalier","Ford Escort","Mazda 323","Nissan Sentra","Pontiac Grand Am","Hyundai Pony","Dodge Ram","Ford Taurus","Mercury Topaz"]
+                carsbadCH = ["丰田 Tercel","本田 思域","雪佛兰 骑士","福特 护航","马自达323","日产 Sentra","庞蒂亚克 Grand Am","现代 小马","道奇 Ram","福特 金牛座","水星 黄玉"]
                 carsnormal = ["Ford F-150","Honda Pilot","Toyota Camry","Chevrolet Malibu","Kia Sorento","Mitsubishi Lancer","Toyota Pruis","Hyundai Elantra","Mini Cooper","Dodge Durango","Infiniti G35 / Q50","Subaru Impreza"]
-                normalcar = random.choice(carsnormal)
-                badcar = random.choice(carsbad)
-                shiningcar = random.choice(carsluxe)
-                carArr = ["You stole a %s %s, worth %sGP!"%(normalcar,year,normalgp),"You stole a totally broken and useless %s %s, nobody wanted to buy it."%(badcar,badyear),"You got caught while trying to steal a %s %s. You got fined %sGP. Next time try doing it with less noice."%(shiningcar,greatyear,badgp)]
+                carsnormalCH = ["福特F-150","本田 Pilot","丰田 凯美瑞","雪佛兰 马里布","起亚 索兰托","三菱 蓝瑟","丰田 普鲁斯","现代 Elantra","迷你库珀","道奇 杜兰戈","英菲尼迪G35 / Q50","斯巴鲁 翼豹"]
+                normalcar = carsnormal[index]
+                badcar = carsbad[index]
+                shiningcar = carsluxe[index]
+                normalcarCH = carsnormalCH[index]
+                badcarCH = carsbadCH[index]
+                bestcarCH = carsluxCH[index]
+                carArr = ["You stole a %s %s, worth %sGP!\n您偷了一个%s %s，价值%sGP！"%(normalcar,year,normalgp,normalcarCH,year,normalgp),"You stole a totally broken and useless %s %s, nobody wanted to buy it.\n您偷了一个完全破碎且无用的%s %s，没人愿意买。"%(badcar,badyear,badcarCH,badyear),"You got caught while trying to steal a %s %s. You got fined %sGP. Next time try doing it with less noice.\n您在尝试窃取一辆%s %s时被抓到。您被罚款%sGP。下次尝试减少杂音吧～"%(shiningcar,greatyear,badgp,bestcarCH,greatyear,badgp)]
                 carResult = random.choice(carArr)
                 update.message.reply_text("%s\nCreator/作者: Sichengthebest"%carResult)
                 chosen = random.choices(buttons, k=3)
