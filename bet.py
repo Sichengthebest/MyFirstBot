@@ -17,7 +17,7 @@ sum = randomNum1 + randomNum2
 guessedNum = 0
 thing = 0
 msg = """I rolled two dice. Please choose one button, then press Start Game to confirm your choice.
-- Press Surrender to give up (and lose 10GP).
+- Press Surrender to give up and lose 10GP.
 - If you get the right answer, you win 1000GP.
 - If you get the wrong answer, you lose 100GP.
 --------------------------------------------------------------------
@@ -66,6 +66,7 @@ def betCallback(update, context):
         query.answer("You chose more than nine\n您选择了比九大", show_alert=True)
     elif query.data == 'flee':
         query.answer("You coundn't afford to lose, that's why you gave 10GP to the casino staff to run away.\n您输不起，这就是为什么您给赌场工作人员10GP为了逃走。", show_alert=True)
+        thing = 0
     elif query.data == 'ok':
         if thing == 0:
             query.answer("You haven't chosen anything.\n您还没有选择任何东西", show_alert=True)
@@ -83,6 +84,7 @@ def betCallback(update, context):
         randomNum1 = random.randint(1,6)
         randomNum2 = random.randint(1,6)
         sum = randomNum1 + randomNum2
+        thing = 0
 
 
 def addHandler(dispatcher):
