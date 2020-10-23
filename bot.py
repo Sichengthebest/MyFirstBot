@@ -8,6 +8,7 @@ import rewards
 import punishs
 import search
 import bet
+import capitals
 from telegram.ext import CommandHandler, Updater
 
 def start(update, context):
@@ -41,5 +42,6 @@ rewards.addHandler(dispatcher)
 punishs.addHandler(dispatcher)
 search.addHandler(dispatcher)
 bet.addHandler(dispatcher)
+capitals.add_handler(dispatcher)
 
 updater.start_polling()
