@@ -34,12 +34,7 @@ def bet(update, context):
     update.message.reply_text("%s"%msg, reply_markup = keyb)
 
 def betCallback(update, context):
-    global sum
-    global randomNum1
-    global randomNum2
-    global thing
-    global record
-    global recordCH
+    global sum,randomNum1,randomNum2,thing,record,recordCH
     query = update.callback_query
     if query.data == 'less than five' and sum < 6:
         thing = 1
