@@ -44,7 +44,7 @@ def sumGame(chatid):
         elif games[chatid][u] == game:
             games[chatid][u] = ' ✅'
         else:
-            games[chatid][u] = ' No'
+            games[chatid][u] = ' ❌'
     msg += getUsers(chatid)
     return msg 
 
@@ -56,7 +56,7 @@ def getUsers(chatid):
 
 def guess(update, context):
     global gametime
-    update.message.reply_text("请选择大或小",reply_markup=startkb)
+    update.message.reply_text("快来加入吧～\n加入之后，来点大或小吧！\nCreator/作者: Sichengthebest",reply_markup=startkb)
     gametime = datetime.now() + timedelta(seconds=5)
 
 def buttonCallback(update, context):
@@ -73,8 +73,6 @@ def buttonCallback(update, context):
     if not update.effective_user.first_name in games[chatid].keys():
         query.answer("大笨蛋%s，这不是你的游戏，别乱点！"%update.effective_user.first_name,show_alert=True)
         return
-    
-
     if query.data == 'start':
         t = datetime.now() 
         if t >= gametime:
