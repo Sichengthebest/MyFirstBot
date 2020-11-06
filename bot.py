@@ -12,7 +12,7 @@ import groupguess
 from telegram.ext import CommandHandler, Updater
 
 def start(update, context):
-    msg = "I'M THE GOD OF BOTS...\n/help for commands.\nVersion: 5.4.19n------------------------------\n我是机器人的上帝...\n/help 来看命令。\n版本：5.4.19\n------------------------------\nCreator/作者: Sichengthebest"
+    msg = "I'M THE GOD OF BOTS...\n/help for commands.\nVersion: 5.4.21------------------------------\n我是机器人的上帝...\n/help 来看命令。\n版本：5.4.21\n------------------------------\nCreator/作者: Sichengthebest"
     context.bot.send_message(chat_id=update.effective_chat.id, text=msg)
 
 def help(update, context):

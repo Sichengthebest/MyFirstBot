@@ -43,6 +43,11 @@ countries = {
             "yes": "Tokyo // 东京",
             "no": ["Osaka // 大阪","Nagasaki // 长崎","Hiroshima // 广岛","Fukushima // 福岛"],
             "haha": ["Toyota City // 丰田城", "Beaconsfield // 比肯斯菲尔德"]
+        },
+        "🇺🇸 USA // 美国 🇺🇸": {
+            "yes": "Washington DC // 华盛顿 DC",
+            "no": ["New York // 纽约", "New Youk // 新约","Washington DD // 华盛顿 DD","Philadelphia // 费城"],
+            "haha": ["The Place Where There Is A Very Messy Election? // 选举非常混乱的地方？","Beaconsfield // 比肯斯菲尔德"]
         }
     },
     'normal':{
@@ -98,7 +103,13 @@ countries = {
             "yes": "Riga // 里加",
             "no": ["Daugavpils // 陶格夫匹尔斯","Liepāja // 利耶帕亚"],
             "haha": ["Ventspils // 文茨皮尔斯","Rēzekne // 雷泽克内"]
+        },
+        "🇬🇪 Georgia // 格鲁吉亚 🇬🇪": {
+            "yes": "Tbilisi // 第比利斯",
+            "no" : ["Kutaisi // 库塔伊西","Batumi // 巴统"],
+            "haha" : ["Borjomi // 博尔若米","Rustavi // 鲁斯塔维"] 
         }
+
     },
     'extreme':{
         "🇵🇬 Papua New Guinea // 巴布亚新几内亚 🇵🇬" : {
@@ -120,6 +131,11 @@ countries = {
             "yes": "Podgorica // 波德戈里察",
             "no": ["Skopje // 斯科普里","Nikšić // 尼克希奇"],
             "haha": ["Berane // 贝拉内","Kotor // 科托尔"]
+        },
+        "🇱🇹 Lithuania // 立陶宛 🇱🇹": {
+            "yes": "Vilnius // 维尔纽斯",
+            "no": ["Kaunas // 考纳斯","Šiauliai // 希奥利艾","Klaipėda // 克莱佩达"],
+            "haha": ["Panevėžys // 帕内韦日斯","Palanga // 帕兰加"]
         }
     }
 }
@@ -166,7 +182,14 @@ def capitals(update,context):
         rkey = random.choice([*countries.keys()])
         country = countries[rkey]
     c = random.choice([*country.keys()])
-    update.effective_message.reply_text("What is the capital of %s?"%c,reply_markup=init_markup(update,country[c]))
+    update.effective_message.reply_text("""What is the capital of %s?
+-------------------------------------------------------------------------
+Warning: These buttons may not completely appear on mobile devices, but @TheRandomDudeHimself is trying to find a solution quickly!
+Pro tip: if the button text does not completely appear, it's because it's not the right answer!
+警告：这些按钮可能不会完全显示在移动设备上，但是 @TheRandomDudeHimself 正在试图快速找到解决方案！
+专家提示：如果按钮文本没有完全显示，那是因为这不是正确的答案！
+-------------------------------------------------------------------------
+Please choose one // 请选一个:"""%c,reply_markup=init_markup(update,country[c]))
     
 
 def capitals_old(update,context):
