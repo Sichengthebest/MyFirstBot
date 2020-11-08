@@ -2,6 +2,41 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Dispatcher, CommandHandler, CallbackQueryHandler
 import random
 
+#  ==================================================
+#  start
+#  /capitals
+#  a;ldfja;lfghfghftyfukh;[pkyjggjfj;alsfas; help
+#  /capitals_easy
+# 
+#  ==================================================
+#  help
+#  这是 老房东 的 capitals game
+#  helpmsg
+#  |  easy  | noah  |  hard |
+# 
+#  ==================================================
+#  question
+#  这是 老房东 的 capitals game
+#  What is the capital of...
+#  a.lasdf;aljflasj
+#  b.alfj;aljfd;laj
+#  c.aflfj;lfjal;fdjla;k
+#  d.dszfsfdsfsd'
+#  | a | b | c | d | 我也要参加 |
+#  
+#  ==================================================
+#  final
+#  这是 老房东 的 capitals game
+#  yes | No 
+#  easy 答对xx次/xx次 | hard答对xx/xx次
+#  | easy 再来一题? | 换一个级别 | 我也要参加 |
+#  ==================================================
+# 
+#  show_alert: 如果你也想玩，发 /capitals
+
+
+restart_button = InlineKeyboardButton('Play again? // 再来一遍？',callback_data='cap:restart')
+restart = InlineKeyboardButton([[restart_button]])
 countries = {
     'easy':{
         "🇫🇷 France // 法国 🇫🇷" : {
@@ -185,9 +220,7 @@ def capitals(update,context):
     update.effective_message.reply_text("""What is the capital of %s?
 -------------------------------------------------------------------------
 Warning: These buttons may not completely appear on mobile devices, but @TheRandomDudeHimself is trying to find a solution quickly!
-Pro tip: if the button text does not completely appear, it's because it's not the right answer!
 警告：这些按钮可能不会完全显示在移动设备上，但是 @TheRandomDudeHimself 正在试图快速找到解决方案！
-专家提示：如果按钮文本没有完全显示，那是因为这不是正确的答案！
 -------------------------------------------------------------------------
 Please choose one // 请选一个:"""%c,reply_markup=init_markup(update,country[c]))
     

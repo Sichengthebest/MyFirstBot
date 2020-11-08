@@ -5,14 +5,10 @@ import random
 
 smallButton = InlineKeyboardButton('小',callback_data='small')
 bigButton = InlineKeyboardButton('大',callback_data='big')
-
 sumButton = InlineKeyboardButton('结算',callback_data='sum')
-
 gamekb = InlineKeyboardMarkup([[bigButton,smallButton,sumButton]])
-
 joinButton = InlineKeyboardButton('加入',callback_data='join')
 startButton = InlineKeyboardButton('开始',callback_data='start')
-
 startkb = InlineKeyboardMarkup([[joinButton,startButton]])
 
 # 计时器
