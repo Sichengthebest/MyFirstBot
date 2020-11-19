@@ -1,5 +1,5 @@
 from telegram.ext import CommandHandler, dispatcher, CallbackQueryHandler
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, BotCommand
 from datetime import datetime,timedelta
 import random
 import coins
@@ -304,6 +304,9 @@ def srchCallback(update, context):
         while index1 == index2:
             index2 = random.randint(0,12)
         chosen = [buttons[index],buttons[index1],buttons[index2]]
+
+def get_command():
+    return [BotCommand('search','Go fetch the GP falling from the sky!!! // 去获取从天上掉下来的GP吧！！！')]
 
 def addHandler(dispatcher):
     srchHandler = CommandHandler('search', search)

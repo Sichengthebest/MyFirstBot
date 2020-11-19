@@ -1,4 +1,4 @@
-from telegram import Update,User
+from telegram import Update,User,BotCommand
 from telegram.ext import Dispatcher,CommandHandler
 import random
 rooms = {}
@@ -42,6 +42,9 @@ Creator/作者: Sichengthebest
         else:
             update.message.reply_text("""WRONG! %s, you are dumb. CAN'T YOU SEE %s IS NOT A NUMBER? Number of tries: %s          
 错！ %s，你真傻。你看不出 %s 都不是数字吗？你已经用了%s次了，你真差。\n\nTips: NO DECIMALS PLS!\n请不要加小数点！\nCreator/作者: Sichengthebest"""%(name, context.args[0], tries[name], name, context.args[0], tries[name]))
+
+def get_command():
+    return [BotCommand('guessnum','Try your luck in this single player game! // 在这个单人游戏中试试运气！')]
 
 def addHandler(dispatcher):
     guessHandler = CommandHandler('guessnum', guess)

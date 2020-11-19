@@ -1,5 +1,5 @@
 from telegram.ext import Dispatcher,CommandHandler,CallbackQueryHandler
-from telegram import InlineKeyboardMarkup,InlineKeyboardButton
+from telegram import InlineKeyboardMarkup,InlineKeyboardButton,BotCommand
 from datetime import datetime,timedelta
 import random
 
@@ -93,7 +93,8 @@ def buttonCallback(update, context):
         else:
             query.answer("等下，别急，至少要等五秒给别人一点机会嘛",show_alert=True)
 
-
+def get_command():
+    return [BotCommand('groupguess','Try your luck in this multiplayer game! // 在这个多人游戏中试试运气！')]
 
 def add_handler(dispatcher):
     guess_handler = CommandHandler('groupguess', guess)
