@@ -1,6 +1,9 @@
+import config
 import random
+import beg
 from datetime import datetime,timedelta
 from telegram.ext import Dispatcher,CommandHandler
+from telegram import BotCommand
 
 # {
 #   uid : {
@@ -12,72 +15,201 @@ from telegram.ext import Dispatcher,CommandHandler
 #       }
 # }
 
-coins = {}
+coins = config.CONFIG["coins"]
+
+def save():
+    config.CONFIG["coins"] = coins
+    config.save_config()
 
 def check_user(user):
-    uid = user.id
+    uid = str(user.id)
     first_name = user.first_name
     if not uid in coins.keys():
-        coins[uid] = {'name':first_name,'coins':0,'dailytime':datetime.now(),'hourlytime':datetime.now(),'hp':100}
+        coins[uid] = {'name':first_name,'coins':0,'dailytime':datetime.now().strftime("%Y/%m/%d %H:%M:%S"),'hourlytime':datetime.now().strftime("%Y/%m/%d %H:%M:%S"),'hp':100,'items':[]}
+        save()
 
 def check_hp(user):
     check_user(user)
-    uid = user.id
+    uid = str(user.id)
     if coins[uid]['hp'] == 0:
         coins[uid]['coins'] = 0
         coins[uid]['hp'] = 100
+        save()
 
 def show_user(user):
-    uid = user.id
+    uid = str(user.id)
     check_user(user)
     #  老房东(10):200
     return f"{coins[uid]['name']}, you have {coins[uid]['coins']} GP and {coins[uid]['hp']} HP"
 
 def add_coins(user,c):
     check_user(user)
-    uid = user.id
+    uid = str(user.id)
     coins[uid]['coins'] += c
+    save()
 
 def add_hp(user,c):
     check_user(user)
-    uid = user.id
+    uid = str(user.id)
     if c == -100:
         coins[uid]['hp'] = 0
         check_hp(user)
     else:
         coins[uid]['hp'] += c
         check_hp(user)
+    save()
 
 def hourly(update,context):
     user = update.effective_user
     check_user(user)
-    uid = user.id
-    if datetime.now() > coins[uid]['hourlytime']:
+    uid = str(user.id)
+    hourlytime = datetime.strptime(coins[uid]['hourlytime'],"%Y/%m/%d %H:%M:%S")
+    if datetime.now() > hourlytime:
         c = random.randint(50,200)
         coins[uid]['coins'] += c
-        coins[uid]['dailytime'] = datetime.now() + timedelta(hours=1)
+        hourlytime = datetime.now() + timedelta(hours=1)
         update.message.reply_text("Here are your hourly coins, %s\n%s coins were placed in your wallet."%(user.first_name,c))
     else:
         update.message.reply_text("Slow it down, cmon!!! I'm not made of money dude, one hour hasn't passed yet!")
+    coins[uid]['hourlytime'] = hourlytime.strftime("%Y/%m/%d %H:%M:%S")
+    save()
 
 def daily(update,context):
     user = update.effective_user
     check_user(user)
-    uid = user.id
-    if datetime.now() > coins[uid]['dailytime']:
+    uid = str(user.id)
+    dailytime = datetime.strptime(coins[uid]['dailytime'],"%Y/%m/%d %H:%M:%S")
+    if datetime.now() > dailytime:
         c = random.randint(500,2000)
         coins[uid]['coins'] += c
-        coins[uid]['dailytime'] = datetime.now() + timedelta(hours=24)
+        dailytime = datetime.now() + timedelta(hours=24)
         update.message.reply_text("Here are your daily coins, %s\n%s coins were placed in your wallet."%(user.first_name,c))
     else:
         update.message.reply_text("Slow it down, cmon!!! I'm not made of money dude, one day hasn't passed yet!")
+    coins[uid]['dailytime'] = dailytime.strftime("%Y/%m/%d %H:%M:%S")    
+    save()
+
+def shop(update, context):
+    user = update.effective_user
+    check_user(user)
+    markets = ["Walmart","Costco","Super C","Central Supermarket+"]
+    if len(context.args) == 0:
+        update.message.reply_text("""Here are some stuff you can buy at %s.
+FOOD:
+--------------------------------------
+Buy apples! 🍎:
+Description: An apple a day keeps the doctors away! When you eat one, gain 10HP!
+500GP per 🍎
+/shop apple
+--------------------------------------
+Buy brocolis! 🥦:
+Description: Eat your vegetables, it's actually good for you, you can gain 20HP!
+900GP per 🥦
+/shop brocoli
+--------------------------------------
+Buy ramen! 🍜:
+Description: Good hot ramen is great for your health! You can gain 35HP per bowl!
+1500GP per 🍜
+/shop ramen
+--------------------------------------
+Buy Super Interesting Magic Potions! 🍾:
+Description: Several Snap has developed a new potion that actually doesn't kill you! Instead, it makes you gain 50HP!
+2000GP per 🍾
+/shop simp
+--------------------------------------
+TOOLS:
+--------------------------------------
+Buy a hunting rifle! 🔫:
+Description: With it, you can go use the command /hunt!
+10,500 GP per 🔫
+/shop rifle
+--------------------------------------
+Buy a fishing pole! 🎣:
+Description: With it, you can go use the command /fish!
+10,000 GP per 🎣
+/shop fish
+"""%(random.choice(markets)))
+    elif context.args[0] == "apple":
+        update.message.reply_text("%s"%buy_stuff(user,"apple",500))
+    elif context.args[0] == "brocoli":
+        update.message.reply_text("%s"%buy_stuff(user,"brocoli",900))
+    elif context.args[0] == "ramen":
+        update.message.reply_text("%s"%buy_stuff(user,"ramen",1500))
+    elif context.args[0] == "simp":
+        update.message.reply_text("%s"%buy_stuff(user,"simp",2000))
+
+def eat(update, context):
+    user = update.effective_user
+    check_user(user)
+    if len(context.args) == 0:
+        update.message.reply_text("""Enjoy your meal! What are you eating tho?
+/eat apple for a nice juicy red apple.
+/eat brocoli for some ugly green miniature trees.
+/eat ramen to enjoy some delicious noodles in soup.
+/eat simp to drink Several Snap's new potion.""")
+    elif context.args[0] == "apple":
+        update.message.reply_text("%s"%eat_stuff(user,"apple",10))
+    elif context.args[0] == "brocoli":
+        update.message.reply_text("%s"%eat_stuff(user,"brocoli",20))
+    elif context.args[0] == "ramen":
+        update.message.reply_text("%s"%eat_stuff(user,"ramen",35))
+    elif context.args[0] == "simp":
+        update.message.reply_text("%s"%eat_stuff(user,"simp",50))
+        
+def eat_stuff(user,aliment,c):
+    uid = str(user.id)
+    hpmax = coins[uid]['hp'] - c
+    if aliment == "apple" or aliment == "brocoli" or aliment == "ramen" or aliment == "simp":
+        for item in coins[uid]['items']:
+            if item == aliment:
+                if coins[uid]['hp'] < hpmax:
+                    coins[uid]['items'].remove(item)
+                    coins[uid]['hp'] += c
+                elif coins[uid]['hp'] >= hpmax and coins[uid]['hp'] < 100:
+                    coins[uid]['items'].remove(item)
+                    coins[uid]['hp'] = 100
+                elif coins[uid]['hp'] >= 100:
+                    return "Bruh your HP is maxed out, try losing some."
+                save()
+                return "You ate/drank a/an/some %s! Gain %sHP."%(aliment,c)
+            else:
+                return "You do not own this item lol"
+    else:
+        return "Bruh this item doesn't even exist"
+
+def show_items(update,context):
+    user = update.effective_user
+    check_user(user)
+    uid = user.id
+    update.message.reply_text("%s"%coins[uid]['items'])
+
+def buy_stuff(user,object,c):
+    uid = str(user.id)
+    if coins[uid]['coins'] < c:
+        return "No disrespect but... LMFAO ur so poor u need %s more GP "%(c-coins[uid]['coins'])
+    coins[uid]['items'].append(object)
+    coins[uid]['coins'] -= c
+    save()
+    return "Success! You have bought a/an/some %s! You still have %s GP."%(object,coins[uid]['coins'])
 
 def get_coins(update, context):
     user = update.effective_user
     check_user(user)
     update.message.reply_text(f"{show_user(user)}")
 
+def get_command():
+    return [
+        BotCommand('bal','Check the amount of money you have. // 检查您有多少GP。'),
+        BotCommand('daily','Get daily GP! // 每日打卡！'),
+        BotCommand('hourly','Get hourly GP! // 每小时打卡！'),
+        BotCommand('shop',' Buy nice useful stuff! // 购买有用的东西！'),
+        BotCommand('eat','Eat to gain HP // 吃东西来增加HP'),
+        BotCommand('inv','BETA] Check the items you have in your inventory. // [测试] 检查库存中的物品。')]
+
 def add_handler(dp:Dispatcher):
     dp.add_handler(CommandHandler('bal', get_coins))
     dp.add_handler(CommandHandler('daily', daily))
     dp.add_handler(CommandHandler('hourly', hourly))
+    dp.add_handler(CommandHandler('shop', shop))
+    dp.add_handler(CommandHandler('eat', eat))
+    dp.add_handler(CommandHandler('inv', show_items))
