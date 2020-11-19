@@ -96,7 +96,7 @@ def check_rifle(user):
     elif huntgame[user]['riflelvl'] == 4:
         huntgame[user]['lvluprifle'] = "358"
     elif huntgame[user]['riflelvl'] == 5:
-        huntgame[user]['lvluprifle'] = "Sorry, you are already at max level"
+        huntgame[user]['lvluprifle'] = "Sorry, ur already at max level"
 
 def shop(update, context):
     user = update.effective_user
