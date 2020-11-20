@@ -33,6 +33,7 @@ def help(update, context):
 /inv - [BETA] Check the items you have in your inventory. // [测试] 检查库存中的物品。
 /daily - Get daily GP! // 每日打卡！
 /hourly - Get hourly GP! // 每时打卡！
+/beg - Go beg, peasant // 去讨钱吧，穷人
 Creator/作者: Sichengthebest""")
 def read_file_as_str(file_path):
     # 判断路径文件存在
