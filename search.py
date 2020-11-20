@@ -145,7 +145,7 @@ def srchCallback(update, context):
             index2 = random.randint(0,12)
         chosen = [buttons[index],buttons[index1],buttons[index2]]
     elif place == "searched: white house":
-        whArr =["You searched the White House and found a secret vault. You opened it and found 400GP! Luckily there was no guards inside.\n您搜索了白宫，并找到了一个秘密保险库。您打开它，找到400GP！幸运的是里面没有警卫。", "You searched the White House, but came face-to-face with... A Random Orange Dude? You got corona and died.\n您搜索了白宫，但是与唐纳德·特朗普面对面了！您被感染新型冠状病毒然后挂了。"]
+        whArr =["You searched the White House and found a secret vault. You opened it and found 400GP! Luckily there was no guards inside.\n您搜索了白宫，并找到了一个秘密保险库。您打开它，找到400GP！幸运的是里面没有警卫。", "You searched the White House, but came face-to-face with... A Random Orange Dude? He was so depressed after losing the elctions that he injected Clorox into you and you died.\n您搜索了白宫，但是与唐纳德·特朗普面对面了！您被注射高乐氏然后挂了。"]
         whResult = random.choice(whArr)
         query.edit_message_text("You %s\n%s\nCreator/作者: Sichengthebest"%(place,whResult))
         if whResult == whArr[0]:

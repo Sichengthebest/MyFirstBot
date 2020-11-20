@@ -116,18 +116,6 @@ Buy Super Interesting Magic Potions! 🍾:
 Description: Several Snap has developed a new potion that actually doesn't kill you! Instead, it makes you gain 50HP!
 2000GP per 🍾
 /shop simp
---------------------------------------
-TOOLS:
---------------------------------------
-Buy a hunting rifle! 🔫:
-Description: With it, you can go use the command /hunt!
-10,500 GP per 🔫
-/shop rifle
---------------------------------------
-Buy a fishing pole! 🎣:
-Description: With it, you can go use the command /fish!
-10,000 GP per 🎣
-/shop fish
 """%(random.choice(markets)))
     elif context.args[0] == "apple":
         update.message.reply_text("%s"%buy_stuff(user,"apple",500))
@@ -137,6 +125,8 @@ Description: With it, you can go use the command /fish!
         update.message.reply_text("%s"%buy_stuff(user,"ramen",1500))
     elif context.args[0] == "simp":
         update.message.reply_text("%s"%buy_stuff(user,"simp",2000))
+    else:
+        update.message.reply_text("Bruh this item doesn't even exist")
 
 def eat(update, context):
     user = update.effective_user
