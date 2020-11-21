@@ -1,1 +1,108 @@
+<<<<<<< Updated upstream
 {}
+=======
+{
+    "coins": {
+        "932729306": {
+            "name": "Sichengthebest",
+            "coins": 0,
+            "dailytime": "2020/11/22 13:07:15",
+            "hourlytime": "2020/11/21 15:42:22",
+            "hp": 100,
+            "items": []
+        }
+    },
+    "hunt": {
+        "932729306": {
+            "huntArr": [
+                "You brought back a skunk! Gain 10 beastcoins. BTW I wonder who would want a skunk...\n你带回了一只臭鼬！获得10野兽币。顺便说一句，我想知道谁会想要臭鼬...",
+                "You brought back a skunk! Gain 10 beastcoins. You STINK!\n你带回了一只臭鼬！获得10野兽币。你好臭！",
+                "You have caught a deer! Gain 25 beastcoins. Good thing you didn't get lost in the forest!\n你抓到了一头鹿！获得25野兽币。很好，你没有在森林里迷路！",
+                "You have caught a deer! Gain 25 beastcoins. Good thing you brought your compass!\n你抓到了一头鹿！获得25野兽币。很好，你带了指南针！",
+                "You have caught a fox! Nice work! Gain 30 beastcoins.\n你抓到了一只狐狸！干得好！获得30野兽币",
+                "You have caught a deer! Gain 25 beastcoins.\n你抓到了一头鹿！获得25野兽币。",
+                "You have caught a rhinoceros! Was that even legal? Anyways, the buyer gave you 100 beastcoins.\n你抓到了犀牛！那合法吗？无论如何，卖家给了你100野兽币。",
+                "You have caught a BASILISK!! Where in the world did you find that??? These 250 beastcoins are for you, you earned them!!!\n您抓到了蛇怪！您在哪里找到的？？？这250野兽币是给你的，无敌战士！",
+                "You forgot your AK-47! Too bad.\n你忘记了你的AK-47！太糟糕了。",
+                "You caught a fox, but someone stole it from you!\n您捉住了一只狐狸，但有人偷走了它！",
+                "A bear caught you and you lost 30HP!\n一只熊抓住了您，您损失了30HP",
+                "You caught an elephant, but the ads you placed was found by someone, and he called the cops on you! You got fined 100 beastcoins. Maybe try the black market next time?\n您抓到一头大象，但您的猎物被某人发现，他叫了警察！您被罚款100野兽币。",
+                "You DIED while fighting the basilisk!\n您在与蛇怪战斗时死了！",
+                "You are so BAD, you didn't bring back anything!\n你好烂，你什么也没抓到！",
+                "You are so BAD, you didn't bring back anything!\n你好烂，你什么也没抓到！",
+                "You are so BAD, you didn't bring back anything!\n你好烂，你什么也没抓到！",
+                "You are so BAD, you didn't bring back anything!\n你好烂，你什么也没抓到！",
+                "You are so BAD, you didn't bring back anything!\n你好烂，你什么也没抓到！",
+                "LMAO you are so BAD, you didn't bring back anything!\n哈哈哈 你好烂，你什么也没抓到！",
+                "U suck, you didn't bring back anything!\n你好烂，你什么也没抓到！"
+            ],
+            "bcoins": 275,
+            "gametime": "2020/11/21 15:26:29",
+            "riflelvl": 1,
+            "lvluprifle": "120"
+        }
+    },
+    "fish": {
+        "932729306": {
+            "fishes": [
+                "You caught a herring! +8 fishcoins!\n你钓到了一条鲱鱼！+8鱼币！",
+                "You caught a herring! +8 fishcoins!\n你钓到了一条鲱鱼！+8鱼币！",
+                "You caught a herring! +8 fishcoins!\n你钓到了一条鲱鱼！+8鱼币！",
+                "You caught two herrings! +16 fishcoins!\n你钓到了两条鲱鱼！+16鱼币！",
+                "You caught three herrings! +24 fishcoins!\n你钓到了三条鲱鱼！+24鱼币！",
+                "You caught four herrings! +32 fishcoins!\n你钓到了四条鲱鱼！+32鱼币！",
+                "You caught a lake trout! +50 fishcoins!\n你钓到了一条湖鳟！+50鱼币！",
+                "You caught two lake trouts! Yeah! +100 fish coins!\n你钓到了两条湖鳟！+100鱼币！耶～",
+                "You forgot your fishing pole!\n你忘了钓鱼竿！",
+                "You forgot your lure!\n你忘了诱饵！",
+                "YOU HAVE CAUGHT A GREAT WHITE SHARK! How did you do that? +250 fishcoins!\n您钓到了一条大白鲨！你是怎么做到的？+250鱼币！",
+                "You have caught a Great White Shark, but it pulled you into the ocean and ate you! You died.\n您捕获了一条大白鲨，但是它把您拖入海中并吞噬了您！您挂了。",
+                "You caught a lake trout, but it was too large and the police fined you 40 fishcoins!\n您抓到一条鳟鱼，但是它太大了，警察罚款了您40鱼币！",
+                "You caught nothing. Keep working on it...\n你什么都没钓到。在修炼一万年吧～",
+                "You caught nothing. Keep working on it...\n你什么都没钓到。在修炼一万年吧～",
+                "LMAO you caught nothing. Keep working on it...\n嘻嘻嘻 你什么都没钓到。在修炼一万年吧～",
+                "You caught nothing. Keep working on it...\n你什么都没钓到。在修炼一万年吧～",
+                "LMFAO you caught nothing. Keep working on it...\n哈哈哈哈哈哈哈哈哈哈哈哈哈哈 你什么都没钓到。在修炼一万年吧～",
+                "LMAO you caught nothing. Keep working on it...\n哈哈哈哈哈 你什么都没钓到。在修炼一万年吧～"
+            ],
+            "fcoins": 150,
+            "gametime": "2020/11/21 13:05:23",
+            "fpolelvl": 0,
+            "herringlvl": 0,
+            "troutlvl": 0,
+            "sharklvl": 0,
+            "lvlupfpole": ""
+        },
+        "1360440667": {
+            "fishes": [
+                "You caught a herring! +8 fishcoins!\n你钓到了一条鲱鱼！+8鱼币！",
+                "You caught a herring! +8 fishcoins!\n你钓到了一条鲱鱼！+8鱼币！",
+                "You caught a herring! +8 fishcoins!\n你钓到了一条鲱鱼！+8鱼币！",
+                "You caught two herrings! +16 fishcoins!\n你钓到了两条鲱鱼！+16鱼币！",
+                "You caught three herrings! +24 fishcoins!\n你钓到了三条鲱鱼！+24鱼币！",
+                "You caught four herrings! +32 fishcoins!\n你钓到了四条鲱鱼！+32鱼币！",
+                "You caught a lake trout! +50 fishcoins!\n你钓到了一条湖鳟！+50鱼币！",
+                "You caught two lake trouts! Yeah! +100 fish coins!\n你钓到了两条湖鳟！+100鱼币！耶～",
+                "You forgot your fishing pole!\n你忘了钓鱼竿！",
+                "You forgot your lure!\n你忘了诱饵！",
+                "YOU HAVE CAUGHT A GREAT WHITE SHARK! How did you do that? +250 fishcoins!\n您钓到了一条大白鲨！你是怎么做到的？+250鱼币！",
+                "You have caught a Great White Shark, but it pulled you into the ocean and ate you! You died.\n您捕获了一条大白鲨，但是它把您拖入海中并吞噬了您！您挂了。",
+                "You caught a lake trout, but it was too large and the police fined you 40 fishcoins!\n您抓到一条鳟鱼，但是它太大了，警察罚款了您40鱼币！",
+                "You caught nothing. Keep working on it...\n你什么都没钓到。在修炼一万年吧～",
+                "You caught nothing. Keep working on it...\n你什么都没钓到。在修炼一万年吧～",
+                "LMAO you caught nothing. Keep working on it...\n嘻嘻嘻 你什么都没钓到。在修炼一万年吧～",
+                "You caught nothing. Keep working on it...\n你什么都没钓到。在修炼一万年吧～",
+                "LMFAO you caught nothing. Keep working on it...\n哈哈哈哈哈哈哈哈哈哈哈哈哈哈 你什么都没钓到。在修炼一万年吧～",
+                "LMAO you caught nothing. Keep working on it...\n哈哈哈哈哈 你什么都没钓到。在修炼一万年吧～"
+            ],
+            "fcoins": 0,
+            "gametime": "2020/11/21 13:00:51",
+            "fpolelvl": 0,
+            "herringlvl": 0,
+            "troutlvl": 0,
+            "sharklvl": 0,
+            "lvlupfpole": "100"
+        }
+    }
+}
+>>>>>>> Stashed changes
