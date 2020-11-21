@@ -11,9 +11,9 @@ def get_users(user):
         gametimes[user] = datetime.now()
 
 def beg(update,context):
-    ppl = ["BOTGOD","@TheRandomDudeHimself","Brad Pitt","A Discord mod","A Random Orange Dude","Joe","Bob","Spongebob","The Red Dude In Among Us","Ur mom","Meryl Streep","Google Translate","A Homeless Man"]
-    pplCH = ["BOTGOD","@TheRandomDudeHimself","布拉德·皮特","一个Discord管理员","唐纳德·特朗普","乔","鲍勃","海绵宝宝","《我们之中》红色的家伙","你老妈","梅丽尔·斯特里普","谷歌翻译","一个无家可归的人"]
-    badstuff = ["Sorry I used all my money to fund the Pfizer vaccine","Sorry I used all my money to fund the Moderna vaccine","Stop begging","NO","Of course not","Oh dang I forgot my purse","Let me think...NO","Yes...maybe...nvr mind","NEVER","Nah","I used all my money to fund the Biden campaign","I donated too much to @ZahJmPvjo3Hjz6CDNceG","Sorry I have no more money cuz I bought 10,000 rolls of toilet paper at the start of the pandemic"]
+    ppl = ["BOTGOD","@TheRandomDudeHimself","Brad Pitt","A Discord mod","A Random Orange Dude","Joe","Bob","Spongebob","The Red Dude In Among Us","Ur mom","Meryl Streep","Google Translate","A Homeless Man","@dankpbot"]
+    pplCH = ["BOTGOD","@TheRandomDudeHimself","布拉德·皮特","一个Discord管理员","唐纳德·特朗普","乔","鲍勃","海绵宝宝","《我们之中》红色的家伙","你老妈","梅丽尔·斯特里普","谷歌翻译","一个无家可归的人","@dankpbot"]
+    badstuff = ["Sorry I used all my money to fund the Pfizer vaccine","Sorry I used all my money to fund the Moderna vaccine","Stop begging","NO","NO","Of course not","Oh dang I forgot my purse","Let me think...NO","Yes...maybe...nvr mind","NEVER","Nah","I used all my money to fund the Biden campaign","I donated too much to @ZahJmPvjo3Hjz6CDNceG","Sorry I have no more money cuz I bought 10,000 rolls of toilet paper at the start of the pandemic"]
     index = random.randint(0,12)
     yesorno = random.randint(1,2)
     user = update.effective_user
@@ -36,7 +36,7 @@ def beg(update,context):
             update.message.reply_text("%s donated %s GP to you!\nCreator/作者: Sichengthebest"%(ppl[index],rwbrad))
             coins.add_coins(user,rwbrad)
         else:
-            update.message.reply_text("%s: %s"%(ppl[index],badstuff[index]))
+            update.message.reply_text("%s: %s\nCreator/作者: Sichengthebest"%(ppl[index],badstuff[index]))
     elif index == 4:
         update.message.reply_text("%s: STOP THE STEAL! STOP THE STEAL! STOP THE STEAL!\nCreator/作者: Sichengthebest"%(ppl[index]))
     elif index == 8:
@@ -50,9 +50,10 @@ def beg(update,context):
             coins.add_hp(user,-100)
     elif index == 9:
         update.message.reply_text("%s: I'm your mom, and too bad if ur poor\nCreator/作者: Sichengthebest"%(ppl[index]))
-    else:
+    elif index == 12:
         update.message.reply_text("%s: Bruh I need money why would you want some from me\nCreator/作者: Sichengthebest"%(ppl[index]))
     gametimes[user] = datetime.now() + timedelta(seconds=45)
+    
 
 def get_command():
     return [BotCommand('beg','Go beg, peasant // 去讨钱吧，穷人')]
