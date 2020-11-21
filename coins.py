@@ -40,7 +40,7 @@ def show_user(user):
     uid = str(user.id)
     check_user(user)
     #  老房东(10):200
-    return f"{coins[uid]['name']}, you have {coins[uid]['coins']} GP and {coins[uid]['hp']} HP"
+    return f"{coins[uid]['name']}, you have {coins[uid]['coins']} GP and {coins[uid]['hp']} HP\n{coins[uid]['name']}, 你有 {coins[uid]['coins']} GP 和 {coins[uid]['hp']} HP"
 
 def add_coins(user,c):
     check_user(user)
@@ -94,7 +94,7 @@ def shop(update, context):
     check_user(user)
     markets = ["Walmart","Costco","Super C","Central Supermarket+"]
     if len(context.args) == 0:
-        update.message.reply_text("""Here are some stuff you can buy at %s.
+        update.message.reply_animation('https://media1.giphy.com/media/fAhOtxIzrTxyE/200.gif',caption="""Here are some stuff you can buy at %s.
 FOOD:
 --------------------------------------
 Buy apples! 🍎:
@@ -132,7 +132,7 @@ def eat(update, context):
     user = update.effective_user
     check_user(user)
     if len(context.args) == 0:
-        update.message.reply_text("""Enjoy your meal! What are you eating tho?
+        update.message.reply_animation('https://i.gifer.com/RjWn.gif',caption="""Enjoy your meal! What are you eating tho?
 /eat apple for a nice juicy red apple.
 /eat brocoli for some ugly green miniature trees.
 /eat ramen to enjoy some delicious noodles in soup.
@@ -185,7 +185,7 @@ def buy_stuff(user,object,c):
 def get_coins(update, context):
     user = update.effective_user
     check_user(user)
-    update.message.reply_text(f"{show_user(user)}")
+    update.message.reply_animation('https://media4.giphy.com/media/3Z1basZxa2mGOSPBzR/200_d.gif',caption=f"{show_user(user)}")
 
 def get_command():
     return [
