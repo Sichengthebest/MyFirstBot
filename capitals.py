@@ -1,18 +1,17 @@
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup,BotCommand
 from telegram.ext import Dispatcher, CommandHandler, CallbackQueryHandler
 import random
+import coins
 
 #  ==================================================
 #  start
 #  /capitals
-#  a;ldfja;lfghfghftyfukh;[pkyjggjfj;alsfas; help
-#  /capitals_easy
 # 
 #  ==================================================
 #  help
 #  这是 老房东 的 capitals game
 #  helpmsg
-#  |  easy  | noah  |  hard |
+#  |  easy  |  normal  |   hard   | extreme |
 # 
 #  ==================================================
 #  question
@@ -26,8 +25,7 @@ import random
 #  
 #  ==================================================
 #  final
-#  这是 老房东 的 capitals game
-#  yes | No 
+#  这是 老房东 的 capitals game 数据 
 #  easy 答对xx次/xx次 | hard答对xx/xx次
 #  | easy 再来一题? | 换一个级别 | 我也要参加 |
 #  ==================================================
@@ -35,8 +33,73 @@ import random
 #  show_alert: 如果你也想玩，发 /capitals
 
 
-restart_button = InlineKeyboardButton('Play again? // 再来一遍？',callback_data='cap:restart')
-restart = InlineKeyboardButton([[restart_button]])
+# kb1 = [
+#     {
+#     "text":"callbackdata",
+#     "text2":"callbackdata2"
+#     },
+#     {
+#         "text3":"callbackdata3"
+#     }
+# ]
+
+# def init_markup_new(kb):
+#     kb1 = [
+#     {
+#     "text":"callbackdata",
+#     "text2":"callbackdata2"
+#     },
+#     {
+#         "text3":"callbackdata3"
+#     }]
+
+def init_q(choice,country,uid):
+    buttons = []
+    callbacks = []
+    yesIndex = random.randint(0,2)
+    no1 = random.choice(choice['no'])
+    no2 = random.choice(choice['no'])
+    while no1 == no2 :
+        no2 = random.choice(choice['no'])
+    no = [no1,no2]
+    haha = random.choice(choice['haha'])
+    yes = choice['yes']
+    for i in range(3):
+        if i == yesIndex:
+            buttons.append(yes)
+            # 我选a)fdgfdg
+            callbacks.append("cap:-%s-%s-%s"%(uid,yesIndex,i))
+        else:
+            buttons.append(no[0])
+            callbacks.append("cap:-%s-%s-%s"%(uid,yesIndex,i))
+            no.remove(no[0])
+    buttons.append(haha)
+    callbacks.append("cap:-%s-%s-%s"%(uid,yesIndex,3))
+    #  "cap:-uid-1-2    cap:-uid-正确的答案-当前答案"
+    #  "cap:-uid-1-1"
+    msg = """What is the capital of %s?
+A) %s
+B) %s
+C) %s
+D) %s
+------------------------
+Please choose one:"""%(country,buttons[0],buttons[1],buttons[2],buttons[3])
+    markup = InlineKeyboardMarkup([[
+        InlineKeyboardButton("A)",callback_data=callbacks[0]),
+        InlineKeyboardButton("B)",callback_data=callbacks[1]),
+        InlineKeyboardButton("C)",callback_data=callbacks[2]),
+        InlineKeyboardButton("D)",callback_data=callbacks[3])
+        ]])
+    return msg,markup
+
+easy_button = InlineKeyboardButton('Easy // 简单模式',callback_data='caplvl:easy')
+normal_button = InlineKeyboardButton('Normal // 普通模式',callback_data='caplvl:normal')
+hard_button = InlineKeyboardButton('Hard // 困难模式',callback_data='caplvl:hard')
+extreme_button = InlineKeyboardButton('Extreme // 地牢模式',callback_data='caplvl:extreme')
+random_button = InlineKeyboardButton('Random // 随机模式',callback_data='caplvl:random')
+restart_button = InlineKeyboardButton('Play again? // 再来一遍？',callback_data='capres:restart')
+lvlskb = InlineKeyboardMarkup([[easy_button],[normal_button],[hard_button],[extreme_button],[random_button]])
+restartkb = InlineKeyboardMarkup([[restart_button]])
 countries = {
     'easy':{
         "🇫🇷 France // 法国 🇫🇷" : {
@@ -175,92 +238,106 @@ countries = {
     }
 }
 
-def init_markup(update,choice):
-    mk = []
-    yesIndex = random.randint(0,2)
-    no1 = random.choice(choice['no'])
-    no2 = random.choice(choice['no'])
-    while no1 == no2 :
-        no2 = random.choice(choice['no'])
-    no = [no1,no2]
-    haha = random.choice(choice['haha'])
-    yes = choice['yes']
-    for i in range(3):
-        if i == yesIndex:
-            mk.append({yes:"cap:yes"})
-        else:
-            mk.append({no[0]:"cap:no"})
-            no.remove(no[0])
-    mk.append({haha:"cap:no"})
-    buttons = []
+def capitals_old(update,context):
+    update.message.reply_text("""这是%s的游戏，如果你不叫%s，请不要乱点，请点 /capitals
+-------------------------------
+A general knowledge game! The bot will randomly generate a country and a number of answer choices, depending on your chosen difficulty level. The choices are as shown:
+-------------------------------
+- Easy : You are supposed to be cultivated enough to know these countries's capitals.
+Rewards: 10GP per correct answer, lose 50GP per wrong answer.
+-------------------------------
+- Normal : Quite easy questions for those who have at least observed correctly a map.
+Rewards: 25GP per correct answer, lose 20GP per wrong answer.
+-------------------------------
+- Hard : Quite hard countries, but most of which you have heard of, but probably not the capitals...
+Rewards: 50GP per correct answer, lose 10GP per wrong answer.
+-------------------------------
+- Extreme : Countries you have never heard of! Big cash to win, though!
+Rewards: 125GP per correct answer, lose 5GP per wrong answer.
+-------------------------------
+- Random : A random level! The same parameters as the chosen level, but the rewards gain a 10GP bonus (for right answers, smh) for being brave!
+-------------------------------
+Creator/作者: Sichengthebest"""%(update.effective_user.first_name,update.effective_user.first_name),reply_markup=lvlskb)
+
+def capitalsCallback(update,context):
+    user = update.effective_user
+    query = update.callback_query
+# What is the capital of 🇯🇵 Japan // 日本 🇯🇵?
+# A) Fukushima // 福岛
+# B) Tokyo // 东京
+# C) Osaka // 大阪
+# D) Toyota City // 丰田城
+# ------------------------
+# Please choose one:
+    msg = query.message.text
+    lines = msg.split("\n")
+    # "cap:-uid-正确-当前"
+    _ ,curruid, ranswer, youranswer = update.callback_query.data.split('-')
     uid = update.effective_user.id
-    for line in mk:
-        button = []
-        for key in line.keys():
-            button.append(InlineKeyboardButton(key, callback_data="%s-%s"%(line[key],uid)))
-        buttons.append(button)
-    return InlineKeyboardMarkup(buttons)
+    if str(uid) != curruid:
+        query.answer("你是谁？你在哪儿？你想做啥？这是别人的，大笨蛋！",show_alert=True)
+        return
+    lines.remove(lines[8])
+    lines[int(ranswer)+3] += " ✅"
+    if youranswer != ranswer:
+        lines[int(youranswer)+3] += " ❌"
+    send_msg = ""
+    for line in lines:
+        send_msg += line
+        send_msg += "\n"
+    if youranswer == ranswer:
+        send_msg += "你答对了！🎉🎉🎉"
+        coins.add_coins(user, 50)
+    else:
+        send_msg += "你答错了！😭😭😭"
+        coins.add_coins(user, 15)
+    query.edit_message_text("%s"%send_msg,reply_markup=restartkb)
 
+def restartCallback(update,context):
+    query = update.callback_query
+    query.edit_message_text("""这是%s的游戏，如果你不叫%s，请不要乱点，请点 /capitals
+-------------------------------
+Which level?
+- Easy : You are supposed to be cultivated enough to know these countries's capitals.
+Rewards: 10GP per correct answer, lose 50GP per wrong answer.
+-------------------------------
+- Normal : Quite easy questions for those who have at least observed correctly a map.
+Rewards: 25GP per correct answer, lose 20GP per wrong answer.
+-------------------------------
+- Hard : Quite hard countries, but most of which you have heard of, but probably not the capitals...
+Rewards: 50GP per correct answer, lose 10GP per wrong answer.
+-------------------------------
+- Extreme : Countries you have never heard of! Big cash to win, though!
+Rewards: 125GP per correct answer, lose 5GP per wrong answer.
+-------------------------------
+- Random : A random level! The same parameters as the chosen level, but the rewards gain a 10GP bonus (for right answers, smh) for being brave!
+-------------------------------
+Creator/作者: Sichengthebest"""%(update.effective_user.first_name,update.effective_user.first_name),reply_markup=lvlskb)
 
-def capitals(update,context):
+def get_level(update,context):
+    query = update.callback_query
     country = {}
-    command = update.effective_message.text
-    if command == "/capitals_easy":
+    command = query.data
+    if command == "caplvl:easy":
         country = countries['easy']
-    elif command == "/capitals_normal":
+    elif command == "caplvl:normal":
         country = countries['normal']
-    elif command == "/capitals_hard":
+    elif command == "caplvl:hard":
         country = countries['hard']
-    elif command == "/capitals_extreme":
+    elif command == "caplvl:extreme":
         country = countries['extreme']
     elif command == "/capitals_random":
         rkey = random.choice([*countries.keys()])
         country = countries[rkey]
     c = random.choice([*country.keys()])
-    update.effective_message.reply_text("""What is the capital of %s?
--------------------------------------------------------------------------
-Warning: These buttons may not completely appear on mobile devices, but @TheRandomDudeHimself is trying to find a solution quickly!
-警告：这些按钮可能不会完全显示在移动设备上，但是 @TheRandomDudeHimself 正在试图快速找到解决方案！
--------------------------------------------------------------------------
-Please choose one // 请选一个:"""%c,reply_markup=init_markup(update,country[c]))
-    
+    msg,markup = init_q(country[c],c,update.effective_user.id)
+    query.edit_message_text("这是%s的游戏，如果你不叫%s，请不要乱点，请点 /capitals\n-------------------------------\n%s"%(update.effective_user.first_name,update.effective_user.first_name,msg),reply_markup=markup)
 
-def capitals_old(update,context):
-    update.message.reply_text("""A general knowledge game! The bot will randomly generate a country and a number of answer choices, depending on your chosen difficulty level. The choices are as shown:
--------------------------------------------------------------------------
-- /capitals_easy : You are supposed to be cultivated enough to know these countries's capitals.
-Rewards: 10GP per correct answer, lose 50GP per wrong answer.
--------------------------------------------------------------------------
-- /capitals_normal : Quite easy questions for those who have at least observed correctly a map.
-Rewards: 25GP per correct answer, lose 20GP per wrong answer.
--------------------------------------------------------------------------
-- /capitals_hard : Quite hard countries, but most of which you have heard of, but probably not the capitals...
-Rewards: 50GP per correct answer, lose 10GP per wrong answer.
--------------------------------------------------------------------------
-- /capitals_extreme : Countries you have never heard of! Big cash to win, though!
-Rewards: 125GP per correct answer, lose 5GP per wrong answer.
--------------------------------------------------------------------------
-- /capitals_random : A random level! The same parameters as the chosen level, but the rewards gain a 10GP bonus (for right answers, smh) for being brave!
--------------------------------------------------------------------------
-Creator/作者: Sichengthebest""")
-
-def capitalsCallback(update,context):
-    query = update.callback_query
-    callback, curruid = update.callback_query.data.split('-')
-    uid = update.effective_user.id
-    if str(uid) != curruid:
-        query.answer("你是谁？你在哪儿？你想做啥？这是别人的，大笨蛋！",show_alert=True)
-        return
-    if callback == 'cap:yes':
-        query.edit_message_text("Good job, @%s, you have got the right answer!\nCreator/作者: Sichengthebest"%(update.effective_user.username))
-    else:
-        query.edit_message_text("WRONG!!! @%s, you are so trash at this.\nCreator/作者: Sichengthebest"%(update.effective_user.username))
+def get_command():
+    return [BotCommand('capitals','How good are you at capitals? // 你了解所有首都吗？')]
 
 def add_handler(dispatcher):
     dispatcher.add_handler(CallbackQueryHandler(capitalsCallback,pattern="^cap:[A-Za-z0-9_-]*"))
-    dispatcher.add_handler(CommandHandler('capitals_easy', capitals))
-    dispatcher.add_handler(CommandHandler('capitals_normal', capitals))
-    dispatcher.add_handler(CommandHandler('capitals_hard', capitals))
-    dispatcher.add_handler(CommandHandler('capitals_extreme', capitals))
-    dispatcher.add_handler(CommandHandler('capitals_random', capitals))
+    dispatcher.add_handler(CallbackQueryHandler(restartCallback,pattern="^capres:[A-Za-z0-9_-]*"))
+    dispatcher.add_handler(CallbackQueryHandler(get_level,pattern="^caplvl:[A-Za-z0-9_-]*"))
     dispatcher.add_handler(CommandHandler('capitals', capitals_old))
