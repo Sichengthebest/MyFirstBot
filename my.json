@@ -2,9 +2,25 @@
     "coins": {
         "932729306": {
             "name": "Sichengthebest",
+            "coins": 945,
+            "dailytime": "2020/11/23 15:02:05",
+            "hourlytime": "2020/11/22 16:02:11",
+            "hp": 100,
+            "items": []
+        },
+        "611516537": {
+            "name": "Parker",
             "coins": 0,
-            "dailytime": "2020/11/22 13:07:15",
-            "hourlytime": "2020/11/21 15:42:22",
+            "dailytime": "2020/11/23 11:43:46",
+            "hourlytime": "2020/11/22 12:48:00",
+            "hp": 100,
+            "items": []
+        },
+        "465307161": {
+            "name": "老房东",
+            "coins": 65,
+            "dailytime": "2020/11/22 15:02:24",
+            "hourlytime": "2020/11/22 15:02:24",
             "hp": 100,
             "items": []
         }
@@ -28,15 +44,13 @@
                 "You are so BAD, you didn't bring back anything!\n你好烂，你什么也没抓到！",
                 "You are so BAD, you didn't bring back anything!\n你好烂，你什么也没抓到！",
                 "You are so BAD, you didn't bring back anything!\n你好烂，你什么也没抓到！",
-                "You are so BAD, you didn't bring back anything!\n你好烂，你什么也没抓到！",
-                "You are so BAD, you didn't bring back anything!\n你好烂，你什么也没抓到！",
                 "LMAO you are so BAD, you didn't bring back anything!\n哈哈哈 你好烂，你什么也没抓到！",
                 "U suck, you didn't bring back anything!\n你好烂，你什么也没抓到！"
             ],
-            "bcoins": 275,
-            "gametime": "2020/11/21 15:26:29",
-            "riflelvl": 1,
-            "lvluprifle": "120"
+            "bcoins": 62,
+            "gametime": "2020/11/22 12:15:55",
+            "riflelvl": 3,
+            "lvluprifle": "279"
         }
     },
     "fish": {
@@ -56,19 +70,18 @@
                 "You have caught a Great White Shark, but it pulled you into the ocean and ate you! You died.\n您捕获了一条大白鲨，但是它把您拖入海中并吞噬了您！您挂了。",
                 "You caught a lake trout, but it was too large and the police fined you 40 fishcoins!\n您抓到一条鳟鱼，但是它太大了，警察罚款了您40鱼币！",
                 "You caught nothing. Keep working on it...\n你什么都没钓到。在修炼一万年吧～",
-                "You caught nothing. Keep working on it...\n你什么都没钓到。在修炼一万年吧～",
                 "LMAO you caught nothing. Keep working on it...\n嘻嘻嘻 你什么都没钓到。在修炼一万年吧～",
                 "You caught nothing. Keep working on it...\n你什么都没钓到。在修炼一万年吧～",
                 "LMFAO you caught nothing. Keep working on it...\n哈哈哈哈哈哈哈哈哈哈哈哈哈哈 你什么都没钓到。在修炼一万年吧～",
                 "LMAO you caught nothing. Keep working on it...\n哈哈哈哈哈 你什么都没钓到。在修炼一万年吧～"
             ],
-            "fcoins": 150,
-            "gametime": "2020/11/21 13:05:23",
-            "fpolelvl": 0,
+            "fcoins": 18,
+            "gametime": "2020/11/22 11:41:11",
+            "fpolelvl": 1,
             "herringlvl": 0,
             "troutlvl": 0,
             "sharklvl": 0,
-            "lvlupfpole": ""
+            "lvlupfpole": "100"
         },
         "1360440667": {
             "fishes": [

@@ -66,6 +66,8 @@ def check_gif(uid,result):
         gif = 'https://media.tenor.com/images/b56c248026025ffb4677957bc9079c40/tenor.gif'
     elif result == huntArr[11]:
         gif = 'https://thumbs.gfycat.com/OffbeatTornBrant-size_restricted.gif'
+    elif result == huntArr[12]:
+        gif = 'https://i.pinimg.com/originals/35/97/03/359703d544dc70bb1a12852888198e66.gif'
     else:
         gif = 'https://i.imgur.com/A7JObT4.gif'
     return gif

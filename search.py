@@ -9,8 +9,7 @@ msg = """A game you play to gain GP.
 --------------------------------------------
 Please choose one // 请选一个:
 """
-gametime = datetime.now()
-gametime2 = datetime.now()
+gametime = {}
 buttons = ["covid testing centre","garage","gringotts","le parc national des l","island","white house","space","castle","zoo","neighbour","jungle","mountains","car"]
 buttonsCH = ["covid测试中心","修车厂","古灵阁","L 国家公园","荒岛","白宫","宇宙","城堡","动物园","邻居","热带雨林","山","汽车"]
 index = random.randint(0,12)
@@ -25,7 +24,7 @@ while index1 == index2:
 chosen = [buttons[index],buttons[index1],buttons[index2]]
 
 def search(update, context):
-    global buttons,chosen,index,index1,index2,gametime,gametime2
+    global buttons,chosen,index,index1,index2
     index = random.randint(0,12)
     index1 = random.randint(0,12)
     index2 = random.randint(0,12)
@@ -38,11 +37,12 @@ def search(update, context):
         index2 = random.randint(0,12)
     chosen = [buttons[index],buttons[index1],buttons[index2]]
     kb = InlineKeyboardMarkup([[InlineKeyboardButton("%s // %s"%(chosen[0],buttonsCH[index]), callback_data="searched: %s-%s"%(chosen[0],uid))],[InlineKeyboardButton("%s // %s"%(chosen[1],buttonsCH[index1]), callback_data="searched: %s-%s"%(chosen[1],uid))],[InlineKeyboardButton("%s // %s"%(chosen[2],buttonsCH[index2]), callback_data="searched: %s-%s"%(chosen[2],uid))]])
-    gametime = datetime.now() + timedelta(seconds=1)
+    if not uid in gametime:
+        gametime[uid] = datetime.now()
     t = datetime.now() 
-    if t >= gametime2:
+    if t >= gametime[uid]:
         update.message.reply_animation('https://media0.giphy.com/media/26n6WywJyh39n1pBu/200.gif',caption="%s"%msg, reply_markup = kb)
-        gametime2 = datetime.now() + timedelta(seconds=1)
+        gametime[uid] = datetime.now() + timedelta(seconds=15)
     else:
         update.message.reply_text("Slow it down, cmon!!! You've already scouted the area for GP, try again in a few more seconds!\nCreator/作者: Sichengthebest")
     
@@ -92,7 +92,7 @@ def srchCallback(update, context):
             index2 = random.randint(0,12)
         chosen = [buttons[index],buttons[index1],buttons[index2]]
     elif place == "searched: gringotts":
-        banknum = random.randint(200,500)
+        banknum = random.randint(250,1000)
         bankArr =["You tried to rob Gringotts, but a random dude named The One Who Must Not Be Named said Avada Kedavra and you died.\n您试图抢劫古灵阁，但是一个名叫连名字都不能提的的家伙说阿瓦达索命，您死了。", "You decided to rob Gringotts. You chose the vault 713, which has nothing in it! Didn't you read The Philospher's Stone? Duh.\n您决定抢劫古灵阁。您选择了其中空的713号金库！您没读过《魔法石》吗？咄。", "You decided to rob Gringotts, and got %sGP! HOP ON THE DRAGON, QUICK!\n您决定抢劫古灵阁，并获得%sGP！往龙上跳，快！"%(banknum, banknum)]
         bankResult = random.choice(bankArr)
         query.edit_message_caption("You %s\n%s\nCreator/作者: Sichengthebest"%(place,bankResult))
@@ -111,7 +111,7 @@ def srchCallback(update, context):
             index2 = random.randint(0,12)
         chosen = [buttons[index],buttons[index1],buttons[index2]]
     elif place == "searched: le parc national des l":
-        betnum = random.randint(0,10)
+        betnum = random.randint(0,25)
         lArr = "You searched Le Parc National des L, not knowing it's a park for losers. Anyway, at least you got %s GP from a bet with another loser.\n您搜索了 L 国家公园，却不知道它是输家的公园。无论如何，至少您与另一个失败者的下注获得了%s GP。"%(betnum, betnum)
         query.edit_message_caption("You %s\n%s\nCreator/作者: Sichengthebest"%(place,lArr))
         coins.add_coins(update.effective_user,betnum)
@@ -145,11 +145,11 @@ def srchCallback(update, context):
             index2 = random.randint(0,12)
         chosen = [buttons[index],buttons[index1],buttons[index2]]
     elif place == "searched: white house":
-        whArr =["You searched the White House and found a secret vault. You opened it and found 400GP! Luckily there was no guards inside.\n您搜索了白宫，并找到了一个秘密保险库。您打开它，找到400GP！幸运的是里面没有警卫。", "You searched the White House, but came face-to-face with... A Random Orange Dude? He was so depressed after losing the elctions that he injected Clorox into you and you died.\n您搜索了白宫，但是与唐纳德·特朗普面对面了！您被注射高乐氏然后挂了。"]
+        whArr =["You searched the White House and found a secret vault. You opened it and found 750GP! Luckily there was no guards inside.\n您搜索了白宫，并找到了一个秘密保险库。您打开它，找到400GP！幸运的是里面没有警卫。", "You searched the White House, but came face-to-face with... A Random Orange Dude? He was so depressed after losing the elctions that he injected Clorox into you and you died.\n您搜索了白宫，但是与唐纳德·特朗普面对面了！您被注射高乐氏然后挂了。"]
         whResult = random.choice(whArr)
         query.edit_message_caption("You %s\n%s\nCreator/作者: Sichengthebest"%(place,whResult))
         if whResult == whArr[0]:
-            coins.add_coins(update.effective_user,400)
+            coins.add_coins(update.effective_user,750)
         elif whResult == whArr[1]:
             coins.add_hp(update.effective_user,-100)
         index = random.randint(0,12)
@@ -163,13 +163,11 @@ def srchCallback(update, context):
             index2 = random.randint(0,12)
         chosen = [buttons[index],buttons[index1],buttons[index2]]
     elif place == "searched: space":
-        spaceArr = ["You photographed an alien! You gained 250GP!\n你拍到了一个外星人！您获得了250GP！", "Your spaceship blew up just after you saw the alien! Your photo got burnt, and so did you...\n刚看到外星人后，您的飞船爆炸了！您的照片被烧毁了，您也是...", "You photographed an alien, but everyone thought it was photoshop, and so you got nothing.\n您拍摄了一个外星人，但所有人都认为这是假的，所以您一无所获。", "You photographed an alien, but everyone thought it was photoshop, and so you got nothing.\n您拍摄了一个外星人，但所有人都认为这是假的，所以您一无所获。"]
+        spaceArr = ["You photographed an alien! You gained 250GP!\n你拍到了一个外星人！您获得了250GP！", "You didn't find anything in outer space... You gave the company 200GP for nothing...\n外太空里什么都没有...你给公司的200GP完全是白费...", "You photographed an alien, but everyone thought it was photoshop, and so you got nothing.\n您拍摄了一个外星人，但所有人都认为这是假的，所以您一无所获。", "You photographed an alien, but everyone thought it was photoshop, and so you got nothing.\n您拍摄了一个外星人，但所有人都认为这是假的，所以您一无所获。"]
         spaceR = random.choice(spaceArr)
         query.edit_message_caption("You %s\n%s\nCreator/作者: Sichengthebest"%(place,spaceR))
         if spaceR == spaceArr[0]:
             coins.add_coins(update.effective_user,250)
-        elif spaceR == spaceArr[1]:
-            coins.add_hp(update.effective_user,-100)
         index = random.randint(0,12)
         index1 = random.randint(0,12)
         index2 = random.randint(0,12)
@@ -182,11 +180,11 @@ def srchCallback(update, context):
         chosen = [buttons[index],buttons[index1],buttons[index2]]
     elif place == "searched: castle":
         serial = random.randint(-70,-25)
-        castleArr = ["You found a treasure chest! Gain 1000GP!\n您发现了一个宝藏箱！获得1000GP！", "A serial killer was hiding behind the throne, and you lost %s HP.\n一个连环杀手躲在王位后面，您失去了%sHP。"%(abs(serial), abs(serial)), "You got lost in the corridors of the castle, and you starved to death.\n您在城堡的走廊里迷路了，饿死了。"]
+        castleArr = ["You found a treasure chest! Gain 1500GP!\n您发现了一个宝藏箱！获得1500GP！", "A serial killer was hiding behind the throne, and you lost %s HP.\n一个连环杀手躲在王位后面，您失去了%sHP。"%(abs(serial), abs(serial)), "You got lost in the corridors of the castle, and you starved to death.\n您在城堡的走廊里迷路了，饿死了。"]
         castleR = random.choice(castleArr)
         query.edit_message_caption("You %s\n%s\nCreator/作者: Sichengthebest"%(place,castleR))
         if castleR == castleArr[0]:
-            coins.add_coins(update.effective_user,1000)
+            coins.add_coins(update.effective_user,1500)
         elif castleR == castleArr[1]:
             coins.add_hp(update.effective_user,serial)
         elif castleR == castleArr[2]:
@@ -213,14 +211,14 @@ def srchCallback(update, context):
             coins.add_hp(update.effective_user,-100)
         chosen = random.choices(buttons, k=3)
     elif place == "searched: neighbour":
-        neiArr = ["You found 200GP under the master bed!\n您在主床下找到200GP！", "You penetrated in a mansion, but then realize that the dude who lived here was broke! HAAAHAHAHAHAA...\n您进入了一个豪宅，但随后意识到住在这里的那个家伙已经把钱都花了！哈哈哈哈哈哈...", "You got seen by another neighbour, and he called the cops on you! You got fined 400GP and lost 45HP.\n你被另一个邻居看见了，他叫了警察！您被罚款400GP，损失了45HP。"]
+        neiArr = ["You found 200GP under the master bed!\n您在主床下找到200GP！", "You penetrated in a mansion, but then realize that the dude who lived here was broke! HAAAHAHAHAHAA...\n您进入了一个豪宅，但随后意识到住在这里的那个家伙已经把钱都花了！哈哈哈哈哈哈...", "You got seen by another neighbour, and he called the cops on you! You got fined 400GP and lost 15HP.\n你被另一个邻居看见了，他叫了警察！您被罚款400GP，损失了15HP。"]
         nResult = random.choice(neiArr)
         query.edit_message_caption("You %s\n%s\nCreator/作者: Sichengthebest"%(place,nResult))
         if nResult == neiArr[0]:
             coins.add_coins(update.effective_user,200)
         elif nResult == neiArr[2]:
             coins.add_coins(update.effective_user,-400)
-            coins.add_hp(update.effective_user,-45)
+            coins.add_hp(update.effective_user,-15)
         index = random.randint(0,12)
         index1 = random.randint(0,12)
         index2 = random.randint(0,12)
@@ -232,7 +230,7 @@ def srchCallback(update, context):
             index2 = random.randint(0,12)
         chosen = [buttons[index],buttons[index1],buttons[index2]]
     elif place == "searched: jungle":
-        jungleNum = random.randint(10,90)
+        jungleNum = random.randint(100,900)
         jungleArr = ["You found treasure on a tree! Gain %sGP.\n您在树上发现了宝藏！获得%sGP。"%(jungleNum, jungleNum), "You got eaten by an alligator.\n你被鳄鱼咬死了。"]
         jResult = random.choice(jungleArr)
         query.edit_message_caption("You %s\n%s\nCreator/作者: Sichengthebest"%(place,jResult))
@@ -251,11 +249,11 @@ def srchCallback(update, context):
             index2 = random.randint(0,12)
         chosen = [buttons[index],buttons[index1],buttons[index2]]
     elif place == "searched: mountains":
-        mountArr = ["You shot a mountain goat and sold it for 60GP!\n您宰杀了一只山羊，并以60GP的价格将其出售！", "You fell off a cliff and bumped your head. Lose 30HP.\n您从悬崖上摔下来并且撞了头。损失30HP。"]
+        mountArr = ["You shot a mountain goat and sold it for 360GP!\n您宰杀了一只山羊，并以360GP的价格将其出售！", "You fell off a cliff and bumped your head. Lose 30HP.\n您从悬崖上摔下来并且撞了头。损失30HP。"]
         mtResult = random.choice(mountArr)
         query.edit_message_caption("You %s\n%s\nCreator/作者: Sichengthebest"%(place,mtResult))
         if mtResult == mountArr[0]:
-            coins.add_coins(update.effective_user,60)
+            coins.add_coins(update.effective_user,360)
         elif mtResult == mountArr[1]:
             coins.add_hp(update.effective_user,-30)
         index = random.randint(0,12)
