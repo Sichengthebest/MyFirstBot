@@ -53,53 +53,7 @@ import coins
 #         "text3":"callbackdata3"
 #     }]
 
-def init_q(choice,country,uid):
-    buttons = []
-    callbacks = []
-    yesIndex = random.randint(0,2)
-    no1 = random.choice(choice['no'])
-    no2 = random.choice(choice['no'])
-    while no1 == no2 :
-        no2 = random.choice(choice['no'])
-    no = [no1,no2]
-    haha = random.choice(choice['haha'])
-    yes = choice['yes']
-    for i in range(3):
-        if i == yesIndex:
-            buttons.append(yes)
-            # 我选a)fdgfdg
-            callbacks.append("cap:-%s-%s-%s"%(uid,yesIndex,i))
-        else:
-            buttons.append(no[0])
-            callbacks.append("cap:-%s-%s-%s"%(uid,yesIndex,i))
-            no.remove(no[0])
-    buttons.append(haha)
-    callbacks.append("cap:-%s-%s-%s"%(uid,yesIndex,3))
-    #  "cap:-uid-1-2    cap:-uid-正确的答案-当前答案"
-    #  "cap:-uid-1-1"
-    msg = """What is the capital of %s?
-A) %s
-B) %s
-C) %s
-D) %s
-------------------------
-Please choose one:"""%(country,buttons[0],buttons[1],buttons[2],buttons[3])
-    markup = InlineKeyboardMarkup([[
-        InlineKeyboardButton("A)",callback_data=callbacks[0]),
-        InlineKeyboardButton("B)",callback_data=callbacks[1]),
-        InlineKeyboardButton("C)",callback_data=callbacks[2]),
-        InlineKeyboardButton("D)",callback_data=callbacks[3])
-        ]])
-    return msg,markup
 
-easy_button = InlineKeyboardButton('Easy // 简单模式',callback_data='caplvl:easy')
-normal_button = InlineKeyboardButton('Normal // 普通模式',callback_data='caplvl:normal')
-hard_button = InlineKeyboardButton('Hard // 困难模式',callback_data='caplvl:hard')
-extreme_button = InlineKeyboardButton('Extreme // 地牢模式',callback_data='caplvl:extreme')
-random_button = InlineKeyboardButton('Random // 随机模式',callback_data='caplvl:random')
-restart_button = InlineKeyboardButton('Play again? // 再来一遍？',callback_data='capres:restart')
-lvlskb = InlineKeyboardMarkup([[easy_button],[normal_button],[hard_button],[extreme_button],[random_button]])
-restartkb = InlineKeyboardMarkup([[restart_button]])
 countries = {
     'easy':{
         "🇫🇷 France // 法国 🇫🇷" : {
@@ -238,6 +192,55 @@ countries = {
     }
 }
 
+def init_q(choice,country,level,uid):
+    buttons = []
+    callbacks = []
+    yesIndex = random.randint(0,2)
+    no1 = random.choice(choice['no'])
+    no2 = random.choice(choice['no'])
+    while no1 == no2 :
+        no2 = random.choice(choice['no'])
+    no = [no1,no2]
+    haha = random.choice(choice['haha'])
+    yes = choice['yes']
+    for i in range(3):
+        if i == yesIndex:
+            buttons.append(yes)
+            # 我选a)fdgfdg
+            callbacks.append("cap:-%s-%s-%s-%s"%(uid,yesIndex,i,level))
+        else:
+            buttons.append(no[0])
+            callbacks.append("cap:-%s-%s-%s-%s"%(uid,yesIndex,i,level))
+            no.remove(no[0])
+    buttons.append(haha)
+    callbacks.append("cap:-%s-%s-%s-%s"%(uid,yesIndex,3,level))
+    print(callbacks)
+    #  "cap:-uid-1-2    cap:-uid-正确的答案-当前答案"
+    #  "cap:-uid-1-1"
+    msg = """What is the capital of %s?
+A) %s
+B) %s
+C) %s
+D) %s
+------------------------
+Please choose one:"""%(country,buttons[0],buttons[1],buttons[2],buttons[3])
+    markup = InlineKeyboardMarkup([[
+        InlineKeyboardButton("A)",callback_data=callbacks[0]),
+        InlineKeyboardButton("B)",callback_data=callbacks[1]),
+        InlineKeyboardButton("C)",callback_data=callbacks[2]),
+        InlineKeyboardButton("D)",callback_data=callbacks[3])
+        ]])
+    return msg,markup
+
+easy_button = InlineKeyboardButton('Easy // 简单模式',callback_data='caplvl:easy')
+normal_button = InlineKeyboardButton('Normal // 普通模式',callback_data='caplvl:normal')
+hard_button = InlineKeyboardButton('Hard // 困难模式',callback_data='caplvl:hard')
+extreme_button = InlineKeyboardButton('Extreme // 地牢模式',callback_data='caplvl:extreme')
+random_button = InlineKeyboardButton('Random // 随机模式',callback_data='caplvl:random')
+restart_button = InlineKeyboardButton('Play again? // 再来一遍？',callback_data='capres:restart')
+lvlskb = InlineKeyboardMarkup([[easy_button],[normal_button],[hard_button],[extreme_button],[random_button]])
+restartkb = InlineKeyboardMarkup([[restart_button]])
+
 def capitals_old(update,context):
     update.message.reply_text("""这是%s的游戏，如果你不叫%s，请不要乱点，请点 /capitals
 -------------------------------
@@ -272,7 +275,7 @@ def capitalsCallback(update,context):
     msg = query.message.text
     lines = msg.split("\n")
     # "cap:-uid-正确-当前"
-    _ ,curruid, ranswer, youranswer = update.callback_query.data.split('-')
+    _ ,curruid,ranswer,youranswer,level = update.callback_query.data.split('-')
     uid = update.effective_user.id
     if str(uid) != curruid:
         query.answer("你是谁？你在哪儿？你想做啥？这是别人的，大笨蛋！",show_alert=True)
@@ -287,14 +290,41 @@ def capitalsCallback(update,context):
         send_msg += "\n"
     if youranswer == ranswer:
         send_msg += "你答对了！🎉🎉🎉"
-        coins.add_coins(user, 50)
+        if level == "easy":
+            coins.add_coins(user,10)
+            send_msg += "\n真厉害！你赢了10GP！🎊🎊🎊"
+        elif level == "normal":
+            coins.add_coins(user,25)
+            send_msg += "\n真厉害！你赢了25GP！🎊🎊🎊"
+        elif level == "hard":
+            coins.add_coins(user,50)
+            send_msg += "\n真厉害！你赢了50GP！🎊🎊🎊"
+        else:
+            coins.add_coins(user,125)
+            send_msg += "\n真厉害！你赢了125GP！🎊🎊🎊"
     else:
         send_msg += "你答错了！😭😭😭"
-        coins.add_coins(user, 15)
+        if level == "easy":
+            coins.add_coins(user,-50)
+            send_msg += "\n你输惨了！丢了50GP！"
+        elif level == "normal":
+            coins.add_coins(user,-20)
+            send_msg += "\n你输惨了！丢了20GP！"
+        elif level == "hard":
+            coins.add_coins(user,-10)
+            send_msg += "\n你输惨了！丢了10GP！"
+        else:
+            coins.add_coins(user,-5)
+            send_msg += "\n你输惨了！丢了5GP！"
     query.edit_message_text("%s"%send_msg,reply_markup=restartkb)
 
 def restartCallback(update,context):
     query = update.callback_query
+    uid = update.effective_user.id
+    _ ,curruid,ranswer,youranswer,level = update.callback_query.data.split('-')
+    if str(uid) != curruid:
+        query.answer("你是谁？你在哪儿？你想做啥？这是别人的，大笨蛋！",show_alert=True)
+        return
     query.edit_message_text("""这是%s的游戏，如果你不叫%s，请不要乱点，请点 /capitals
 -------------------------------
 Which level?
@@ -310,14 +340,20 @@ Rewards: 50GP per correct answer, lose 10GP per wrong answer.
 - Extreme : Countries you have never heard of! Big cash to win, though!
 Rewards: 125GP per correct answer, lose 5GP per wrong answer.
 -------------------------------
-- Random : A random level! The same parameters as the chosen level, but the rewards gain a 10GP bonus (for right answers, smh) for being brave!
+- Random : A random level, the same parameters as the chosen level!
 -------------------------------
 Creator/作者: Sichengthebest"""%(update.effective_user.first_name,update.effective_user.first_name),reply_markup=lvlskb)
 
 def get_level(update,context):
+    uid = update.effective_user.id
     query = update.callback_query
+    _ ,curruid, ranswer, youranswer, level = update.callback_query.data.split('-')
+    if str(uid) != curruid:
+        query.answer("你是谁？你在哪儿？你想做啥？这是别人的，大笨蛋！",show_alert=True)
+        return
     country = {}
     command = query.data
+    level = command.split(":")[1]
     if command == "caplvl:easy":
         country = countries['easy']
     elif command == "caplvl:normal":
@@ -326,11 +362,12 @@ def get_level(update,context):
         country = countries['hard']
     elif command == "caplvl:extreme":
         country = countries['extreme']
-    elif command == "/capitals_random":
+    elif command == "caplvl:random":
         rkey = random.choice([*countries.keys()])
         country = countries[rkey]
+        level = rkey
     c = random.choice([*country.keys()])
-    msg,markup = init_q(country[c],c,update.effective_user.id)
+    msg,markup = init_q(country[c],c,level,update.effective_user.id)
     query.edit_message_text("这是%s的游戏，如果你不叫%s，请不要乱点，请点 /capitals\n-------------------------------\n%s"%(update.effective_user.first_name,update.effective_user.first_name,msg),reply_markup=markup)
 
 def get_command():
