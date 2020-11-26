@@ -23,6 +23,6 @@ The bot's commands (for now) // 机器人的命令:
 /convert - Convert one currency into another! // 将一种货币转换为另一种货币！
 ```
 
-Find my bot [https://t.me/SichengsGodBot](here)!
+Find my bot [here](https://t.me/SichengsGodBot!)!
 
-我的机器人在：[https://t.me/SichengsGodBot](这里)！
+我的机器人在：[这里](https://t.me/SichengsGodBot!)！
