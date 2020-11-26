@@ -129,7 +129,7 @@ def shop(update, context):
     if len(context.args) == 0:
         update.message.reply_text("""Here's some stuff you can buy at %s.
 --------------------------------------
-Upgrade your hunting rifle! %s fishcoins for upgrade.
+Upgrade your hunting rifle! %s beastcoins for upgrade.
 /huntshop rifle
 Current level: %s"""%(random.choice(markets),huntgame[uid]['lvluprifle'],huntgame[uid]['riflelvl']))
     elif context.args[0] == "rifle":
@@ -146,7 +146,7 @@ def buy_rifle(uid):
             huntgame[uid]['riflelvl'] += 1
             huntgame[uid]['huntArr'].remove(huntgame[uid]['huntArr'][14])
             save()
-            return "Nice! Your current level: %s\nYou still have %s fishcoins"%(huntgame[uid]['riflelvl'],huntgame[uid]['bcoins'])
+            return "Nice! Your current level: %s\nYou still have %s beastcoins"%(huntgame[uid]['riflelvl'],huntgame[uid]['bcoins'])
         else:
             return "No offense but... HAHAHAHAHA YOU ARE SO POOR YOU CANNOT BUY THIS OBJECT"
     else:
