@@ -25,4 +25,4 @@ The bot's commands (for now) // 机器人的命令:
 
 Find my bot [here](https://t.me/SichengsGodBot)!
 
-我的机器人在[这里](https://t.me/SichengsGodBot!)！
+我的机器人在 [这里](https://t.me/SichengsGodBot!)！
