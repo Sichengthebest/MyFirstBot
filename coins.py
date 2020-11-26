@@ -1,6 +1,7 @@
 import config
 import random
-import beg
+import fish
+import hunt
 from datetime import datetime,timedelta
 from telegram.ext import Dispatcher,CommandHandler
 from telegram import BotCommand
@@ -182,6 +183,100 @@ def buy_stuff(user,object,c):
     save()
     return "Success! You have bought a/an/some %s! You still have %s GP."%(object,coins[uid]['coins'])
 
+def convert(update,context):
+    user = update.effective_user
+    uid = user.id
+    if len(context.args) == 0:
+        update.message.reply_animation('https://thumbs.gfycat.com/AliveWelloffAtlanticspadefish-max-1mb.gif',caption="""What are you about to convert?
+/convert gptofc {amount of GP} : Convert 5 GP into 1 fishcoin!
+/convert gptobc {amount of GP} : Convert 5 GP into 1 beastcoin!
+/convert fctobc {amount of fishcoins} : Convert 1 fishcoin into 1 beastcoin!
+/convert bctofc {amount of beastcoins} : Convert 1 beastcoin into 1 fishcoin!
+/convert fctogp {amount of fishcoins} : Convert 1 fishcoin into 5 GP!
+/convert bctogp {amount of beastcoins} : Convert 1 beastcoin into 5 GP!""")
+    elif context.args[0] == "gptofc":
+        if len(context.args) == 1:
+            update.message.reply_text("You need to enter a valid amount!")
+        elif context.args[1].isdigit():
+            if int(context.args[1]) > coins[str(uid)]['coins']:
+                update.message.reply_text("Ur too poor u can't convert that many GP")
+            elif int(context.args[1]) <= 0 or int(context.args[1]) % 5 != 0:
+                update.message.reply_text("You need to enter a valid amount that can be divisible by 5!")
+            else:
+                add_coins(user,-(int(context.args[1])))
+                fish.fishgame[str(uid)]['fcoins'] += int(int(context.args[1]) / 5)
+                update.message.reply_text("Success! You now have %s GP and %s fishcoins!"%(coins[str(uid)]['coins'],fish.fishgame[str(uid)]['fcoins']))
+        else:
+            update.message.reply_text("You need to enter a valid amount!")
+    elif context.args[0] == "gptobc":
+        if len(context.args) == 1:
+            update.message.reply_text("You need to enter a valid amount!")
+        elif context.args[1].isdigit():
+            if int(context.args[1]) > coins[str(uid)]['coins']:
+                update.message.reply_text("Ur too poor u can't convert that many GP")
+            elif int(context.args[1]) <= 0 or int(context.args[1]) % 5 != 0:
+                update.message.reply_text("You need to enter a valid amount that can be divisible by 5!")
+            else:
+                add_coins(user,-(int(context.args[1])))
+                hunt.huntgame[str(uid)]['bcoins'] += int(int(context.args[1]) / 5)
+                update.message.reply_text("Success! You now have %s GP and %s beastcoins!"%(coins[str(uid)]['coins'],hunt.huntgame[str(uid)]['bcoins']))
+    elif context.args[0] == "fctobc":
+        if len(context.args) == 1:
+            update.message.reply_text("You need to enter a valid amount!")
+        elif context.args[1].isdigit():
+            if int(context.args[1]) > fish.fishgame[str(uid)]['fcoins']:
+                update.message.reply_text("Ur too poor u can't convert that many fishcoins")
+            elif int(context.args[1]) <= 0:
+                update.message.reply_text("You need to enter a valid amount")
+            else:
+                fish.fishgame[str(uid)]['fcoins'] -= int(context.args[1])
+                hunt.huntgame[str(uid)]['bcoins'] += int(context.args[1])
+                update.message.reply_text("Success! You now have %s fishcoins and %s beastcoins!"%(fish.fishgame[str(uid)]['fcoins'],hunt.huntgame[str(uid)]['bcoins']))
+        else:
+            update.message.reply_text("You need to enter a valid amount!")
+    elif context.args[0] == "bctofc":
+        if len(context.args) == 1:
+            update.message.reply_text("You need to enter a valid amount!")
+        elif context.args[1].isdigit():
+            if int(context.args[1]) > hunt.huntgame[str(uid)]['bcoins']:
+                update.message.reply_text("Ur too poor u can't convert that many beastcoins")
+            elif int(context.args[1]) <= 0:
+                update.message.reply_text("You need to enter a valid amount")
+            else:
+                fish.fishgame[str(uid)]['fcoins'] += int(context.args[1])
+                hunt.huntgame[str(uid)]['bcoins'] -= int(context.args[1])
+                update.message.reply_text("Success! You now have %s fishcoins and %s beastcoins!"%(fish.fishgame[str(uid)]['fcoins'],hunt.huntgame[str(uid)]['bcoins']))
+        else:
+            update.message.reply_text("You need to enter a valid amount!")
+    elif context.args[0] == "fctogp":
+        if len(context.args) == 1:
+            update.message.reply_text("You need to enter a valid amount!")
+        elif context.args[1].isdigit():
+            if int(context.args[1]) > fish.fishgame[str(uid)]['fcoins']:
+                update.message.reply_text("Ur too poor u can't convert that many fishcoins")
+            elif int(context.args[1]) <= 0:
+                update.message.reply_text("You need to enter a valid amount")
+            else:
+                add_coins(user,int(int(context.args[1]) * 5))
+                fish.fishgame[str(uid)]['fcoins'] -= int(context.args[1])
+                update.message.reply_text("Success! You now have %s GP and %s fishcoins!"%(coins[str(uid)]['coins'],fish.fishgame[str(uid)]['fcoins']))
+        else:
+            update.message.reply_text("You need to enter a valid amount!")
+    elif context.args[0] == "bctogp":
+        if len(context.args) == 1:
+            update.message.reply_text("You need to enter a valid amount!")
+        elif context.args[1].isdigit():
+            if int(context.args[1]) > hunt.huntgame[str(uid)]['bcoins']:
+                update.message.reply_text("Ur too poor u can't convert that many fishcoins")
+            elif int(context.args[1]) <= 0:
+                update.message.reply_text("You need to enter a valid amount")
+            else:
+                add_coins(user,int(int(context.args[1]) * 5))
+                hunt.huntgame[str(uid)]['bcoins'] -= int(context.args[1])
+                update.message.reply_text("Success! You now have %s GP and %s beastcoins!"%(coins[str(uid)]['coins'],hunt.huntgame[str(uid)]['bcoins']))
+        else:
+            update.message.reply_text("You need to enter a valid amount!")
+
 def get_coins(update, context):
     user = update.effective_user
     check_user(user)
@@ -194,7 +289,8 @@ def get_command():
         BotCommand('hourly','Get hourly GP! // 每小时打卡！'),
         BotCommand('shop',' Buy nice useful stuff! // 购买有用的东西！'),
         BotCommand('eat','Eat to gain HP // 吃东西来增加HP'),
-        BotCommand('inv','BETA] Check the items you have in your inventory. // [测试] 检查库存中的物品。')]
+        BotCommand('inv','[BETA] Check the items you have in your inventory. // [测试] 检查库存中的物品。'),
+        BotCommand('convert','[BETA] Convert')]
 
 def add_handler(dp:Dispatcher):
     dp.add_handler(CommandHandler('bal', get_coins))
@@ -203,3 +299,4 @@ def add_handler(dp:Dispatcher):
     dp.add_handler(CommandHandler('shop', shop))
     dp.add_handler(CommandHandler('eat', eat))
     dp.add_handler(CommandHandler('inv', show_items))
+    dp.add_handler(CommandHandler('convert', convert))
