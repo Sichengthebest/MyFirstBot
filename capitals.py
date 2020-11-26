@@ -214,7 +214,6 @@ def init_q(choice,country,level,uid):
             no.remove(no[0])
     buttons.append(haha)
     callbacks.append("cap:-%s-%s-%s-%s"%(uid,yesIndex,3,level))
-    print(callbacks)
     #  "cap:-uid-1-2    cap:-uid-正确的答案-当前答案"
     #  "cap:-uid-1-1"
     msg = """What is the capital of %s?
@@ -232,14 +231,17 @@ Please choose one:"""%(country,buttons[0],buttons[1],buttons[2],buttons[3])
         ]])
     return msg,markup
 
-easy_button = InlineKeyboardButton('Easy // 简单模式',callback_data='caplvl:easy')
-normal_button = InlineKeyboardButton('Normal // 普通模式',callback_data='caplvl:normal')
-hard_button = InlineKeyboardButton('Hard // 困难模式',callback_data='caplvl:hard')
-extreme_button = InlineKeyboardButton('Extreme // 地牢模式',callback_data='caplvl:extreme')
-random_button = InlineKeyboardButton('Random // 随机模式',callback_data='caplvl:random')
-restart_button = InlineKeyboardButton('Play again? // 再来一遍？',callback_data='capres:restart')
-lvlskb = InlineKeyboardMarkup([[easy_button],[normal_button],[hard_button],[extreme_button],[random_button]])
-restartkb = InlineKeyboardMarkup([[restart_button]])
+def get_kb(update):
+    uid = update.effective_user.id
+    easy_button = InlineKeyboardButton('Easy // 简单模式',callback_data='caplvl:easy-%s'%uid)
+    normal_button = InlineKeyboardButton('Normal // 普通模式',callback_data='caplvl:normal-%s'%uid)
+    hard_button = InlineKeyboardButton('Hard // 困难模式',callback_data='caplvl:hard-%s'%uid)
+    extreme_button = InlineKeyboardButton('Extreme // 地牢模式',callback_data='caplvl:extreme-%s'%uid)
+    random_button = InlineKeyboardButton('Random // 随机模式',callback_data='caplvl:random-%s'%uid)
+    restart_button = InlineKeyboardButton('Play again? // 再来一遍？',callback_data='capres:restart-%s'%uid)
+    lvlskb = InlineKeyboardMarkup([[easy_button],[normal_button],[hard_button],[extreme_button],[random_button]])
+    restartkb = InlineKeyboardMarkup([[restart_button]])
+    return [lvlskb,restartkb]
 
 def capitals_old(update,context):
     update.message.reply_text("""这是%s的游戏，如果你不叫%s，请不要乱点，请点 /capitals
@@ -260,7 +262,7 @@ Rewards: 125GP per correct answer, lose 5GP per wrong answer.
 -------------------------------
 - Random : A random level! The same parameters as the chosen level, but the rewards gain a 10GP bonus (for right answers, smh) for being brave!
 -------------------------------
-Creator/作者: Sichengthebest"""%(update.effective_user.first_name,update.effective_user.first_name),reply_markup=lvlskb)
+Creator/作者: Sichengthebest"""%(update.effective_user.first_name,update.effective_user.first_name),reply_markup=get_kb(update)[0])
 
 def capitalsCallback(update,context):
     user = update.effective_user
@@ -275,7 +277,7 @@ def capitalsCallback(update,context):
     msg = query.message.text
     lines = msg.split("\n")
     # "cap:-uid-正确-当前"
-    _ ,curruid,ranswer,youranswer,level = update.callback_query.data.split('-')
+    _ , curruid,ranswer,youranswer,level = update.callback_query.data.split('-')
     uid = update.effective_user.id
     if str(uid) != curruid:
         query.answer("你是谁？你在哪儿？你想做啥？这是别人的，大笨蛋！",show_alert=True)
@@ -316,12 +318,12 @@ def capitalsCallback(update,context):
         else:
             coins.add_coins(user,-5)
             send_msg += "\n你输惨了！丢了5GP！"
-    query.edit_message_text("%s"%send_msg,reply_markup=restartkb)
+    query.edit_message_text("%s"%send_msg,reply_markup=get_kb(update)[1])
 
 def restartCallback(update,context):
     query = update.callback_query
     uid = update.effective_user.id
-    _ ,curruid,ranswer,youranswer,level = update.callback_query.data.split('-')
+    _ , curruid = update.callback_query.data.split('-')
     if str(uid) != curruid:
         query.answer("你是谁？你在哪儿？你想做啥？这是别人的，大笨蛋！",show_alert=True)
         return
@@ -342,17 +344,17 @@ Rewards: 125GP per correct answer, lose 5GP per wrong answer.
 -------------------------------
 - Random : A random level, the same parameters as the chosen level!
 -------------------------------
-Creator/作者: Sichengthebest"""%(update.effective_user.first_name,update.effective_user.first_name),reply_markup=lvlskb)
+Creator/作者: Sichengthebest"""%(update.effective_user.first_name,update.effective_user.first_name),reply_markup=get_kb(update)[0])
 
 def get_level(update,context):
     uid = update.effective_user.id
     query = update.callback_query
-    _ ,curruid, ranswer, youranswer, level = update.callback_query.data.split('-')
+    data,curruid = update.callback_query.data.split('-')
     if str(uid) != curruid:
         query.answer("你是谁？你在哪儿？你想做啥？这是别人的，大笨蛋！",show_alert=True)
         return
     country = {}
-    command = query.data
+    command = data
     level = command.split(":")[1]
     if command == "caplvl:easy":
         country = countries['easy']
