@@ -77,14 +77,19 @@ def check_animal(uid,user):
     result = random.choice(huntArr)
     if result == huntArr[0] or result == huntArr[1]:
         huntgame[uid]['bcoins'] += 10
+        coins.add_item(user,"skunk",1)
     elif result == huntArr[2] or result == huntArr[3] or result == huntArr[5]:
         huntgame[uid]['bcoins'] += 25
+        coins.add_item(user,"deer",1)
     elif result == huntArr[4]:
         huntgame[uid]['bcoins'] += 30
+        coins.add_item(user,"fox",1)
     elif result == huntArr[6]:
         huntgame[uid]['bcoins'] += 100
+        coins.add_item(user,"rhino",1)
     elif result == huntArr[7]:
         huntgame[uid]['bcoins'] += 250
+        coins.add_item(user,"basilisk",1)
     elif result == huntArr[11]:
         coins.add_hp(user,-30)
     elif result == huntArr[12]:

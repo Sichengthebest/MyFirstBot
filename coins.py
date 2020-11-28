@@ -49,6 +49,13 @@ def add_coins(user,c):
     coins[uid]['coins'] += c
     save()
 
+def add_item(user,c,times):
+    check_user(user)
+    uid = str(user.id)
+    for _i in range(0,times):
+        coins[uid]['items'].append("%s"%c)
+    save()
+
 def add_hp(user,c):
     check_user(user)
     uid = str(user.id)
@@ -135,9 +142,27 @@ def eat(update, context):
     if len(context.args) == 0:
         update.message.reply_animation('https://i.gifer.com/RjWn.gif',caption="""Enjoy your meal! What are you eating tho?
 /eat apple for a nice juicy red apple.
+Gain 10 HP.
 /eat brocoli for some ugly green miniature trees.
+Gain 20 HP.
 /eat ramen to enjoy some delicious noodles in soup.
-/eat simp to drink Several Snap's new potion.""")
+Gain 35 HP.
+/eat simp to drink Several Snap's new potion.
+Gain 50 HP.
+/eat herring to eat herring that you caught.
+Gain 5 HP.
+/eat trout to eat trout that you caught.
+Gain 30 HP.
+/eat shark to eat sharks that you caught.
+Gain 60 HP.
+/eat skunk to eat STINKY skunk that you caught.
+Gain 20 HP.
+/eat deer to eat deer that you caught.
+Gain 20 HP.
+/eat rhino to eat rhinoceros that you caught.
+Gain 45 HP.
+/eat basilisk to eat basilisk that you caught.
+Gain 69 HP.""")
     elif context.args[0] == "apple":
         update.message.reply_text("%s"%eat_stuff(user,"apple",10))
     elif context.args[0] == "brocoli":
@@ -146,32 +171,45 @@ def eat(update, context):
         update.message.reply_text("%s"%eat_stuff(user,"ramen",35))
     elif context.args[0] == "simp":
         update.message.reply_text("%s"%eat_stuff(user,"simp",50))
+    elif context.args[0] == "herring":
+        update.message.reply_text("%s"%eat_stuff(user,"herring",5))
+    elif context.args[0] == "trout":
+        update.message.reply_text("%s"%eat_stuff(user,"trout",30))
+    elif context.args[0] == "shark":
+        update.message.reply_text("%s"%eat_stuff(user,"shark",60))
+    elif context.args[0] == "skunk":
+        update.message.reply_text("%s"%eat_stuff(user,"skunk",20))
+    elif context.args[0] == "deer":
+        update.message.reply_text("%s"%eat_stuff(user,"deer",20))
+    elif context.args[0] == "rhino":
+        update.message.reply_text("%s"%eat_stuff(user,"rhino",45))
+    elif context.args[0] == "basilisk":
+        update.message.reply_text("%s"%eat_stuff(user,"basilisk",69))
+    else:
+        update.message.reply_text("Bruh the thing you want to eat is not edible!")
         
 def eat_stuff(user,aliment,c):
     uid = str(user.id)
     hpmax = coins[uid]['hp'] - c
-    if aliment == "apple" or aliment == "brocoli" or aliment == "ramen" or aliment == "simp":
-        for item in coins[uid]['items']:
-            if item == aliment:
-                if coins[uid]['hp'] < hpmax:
-                    coins[uid]['items'].remove(item)
-                    coins[uid]['hp'] += c
-                elif coins[uid]['hp'] >= hpmax and coins[uid]['hp'] < 100:
-                    coins[uid]['items'].remove(item)
-                    coins[uid]['hp'] = 100
-                elif coins[uid]['hp'] >= 100:
-                    return "Bruh your HP is maxed out, try losing some."
-                save()
-                return "You ate/drank a/an/some %s! Gain %sHP."%(aliment,c)
-            else:
-                return "You do not own this item lol"
-    else:
-        return "Bruh this item doesn't even exist"
+    for item in coins[uid]['items']:
+        if item == aliment:
+            if coins[uid]['hp'] < hpmax:
+                coins[uid]['items'].remove(item)
+                coins[uid]['hp'] += c
+            elif coins[uid]['hp'] >= hpmax and coins[uid]['hp'] < 100:
+                coins[uid]['items'].remove(item)
+                coins[uid]['hp'] = 100
+            elif coins[uid]['hp'] >= 100:
+                return "Bruh your HP is maxed out, try losing some."
+            save()
+            return "You ate/drank a/an/some %s! Gain %sHP."%(aliment,c)
+        else:
+            return "You do not own this item lol"
 
 def show_items(update,context):
     user = update.effective_user
     check_user(user)
-    uid = user.id
+    uid = str(user.id)
     update.message.reply_text("%s"%coins[uid]['items'])
 
 def buy_stuff(user,object,c):
@@ -290,7 +328,7 @@ def get_command():
         BotCommand('shop',' Buy nice useful stuff! // 购买有用的东西！'),
         BotCommand('eat','Eat to gain HP // 吃东西来增加HP'),
         BotCommand('inv','[BETA] Check the items you have in your inventory. // [测试] 检查库存中的物品。'),
-        BotCommand('convert','[BETA] Convert')]
+        BotCommand('convert','Convert one currency into another! // 将一种货币转换为另一种货币！')]
 
 def add_handler(dp:Dispatcher):
     dp.add_handler(CommandHandler('bal', get_coins))

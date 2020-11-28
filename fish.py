@@ -85,24 +85,31 @@ def check_gif(uid,fish):
         gif = 'https://i.gifer.com/3kcZ.gif'
     return gif
 
-def check_fish(uid,fish):
+def check_fish(uid,user,fish):
     check_fishes(uid)
     if fish == fishgame[uid]['fishes'][0]:
         fishgame[uid]['fcoins'] += 8
+        coins.add_item(user,"herring",1)
     elif fish == fishgame[uid]['fishes'][3]:
         fishgame[uid]['fcoins'] += 16
+        coins.add_item(user,"herring",2)
     elif fish == fishgame[uid]['fishes'][4]:
         fishgame[uid]['fcoins'] += 24
+        coins.add_item(user,"herring",3)
     elif fish == fishgame[uid]['fishes'][5]:
         fishgame[uid]['fcoins'] += 32
+        coins.add_item(user,"herring",4)
     elif fish == fishgame[uid]['fishes'][6]:
         fishgame[uid]['fcoins'] += 50
+        coins.add_item(user,"trout",1)
     elif fish == fishgame[uid]['fishes'][7]:
         fishgame[uid]['fcoins'] += 100
+        coins.add_item(user,"trout",2)
     elif fish == fishgame[uid]['fishes'][10]:
         fishgame[uid]['fcoins'] += 250
+        coins.add_item(user,"shark",1)
     elif fish == fishgame[uid]['fishes'][11]:
-        coins.add_hp(uid,-100)
+        coins.add_hp(user,-100)
     elif fish == fishgame[uid]['fishes'][12]:
         fishgame[uid]['fcoins'] -= 40
     save()
@@ -182,13 +189,14 @@ def buy_baitshark(uid):
         return "Bruh stop being so greedy ur already at max level"
 
 def fish(update, context):
+    user = update.effective_user
     uid = str(update.effective_user.id)
     check_fishes(uid)
     result = random.choice(fishgame[uid]['fishes'])
     t = datetime.now() 
     if t >= datetime.strptime(fishgame[uid]['gametime'],"%Y/%m/%d %H:%M:%S"):
         update.message.reply_animation('%s'%check_gif(uid,result),caption="%s\n/fishbal to see the number of fishcoins you have!\n/fishbal 来看看你有多少鱼币！\nCreator/作者: Sichengthebest"%result)
-        check_fish(uid,result)
+        check_fish(uid,user,result)
         fishgame[uid]['gametime'] = datetime.strftime(datetime.now() + timedelta(seconds=30),"%Y/%m/%d %H:%M:%S")
         save()
     else:
