@@ -132,8 +132,17 @@ countries = {
             "yes": "Algiers // 阿尔及尔",
             "no": ["Ouargla // 瓦尔格拉","Constantine // 君士坦丁","Bejaïa // 贝贾亚"],
             "haha": ["Annaba // 安那巴","Oran // 奥兰"]
+        },
+        "🇵🇪 Peru // 秘鲁 🇵🇪" : {
+            "yes": "Lima // 利马",
+            "no": ["Trujillo // 特鲁希略","Cuzco // 库斯科"],
+            "haha": ["Areqipa // 阿雷基帕","Iquitos // 伊基托斯"]
+        },
+        "🇳🇿 New Zealand // 新西兰 🇳🇿": {
+            "yes": "Wellington // 惠灵顿",
+            "no": ["Auckland // 奥克兰","Hamilton // 哈密尔顿(新西兰)"],
+            "haha": ["Christchurch // 基督城","Dunedin // 达尼丁"]
         }
-
     },
     'hard':{
         "🇻🇪 Venezuela // 委内瑞拉 🇻🇪" : {
@@ -160,8 +169,17 @@ countries = {
             "yes": "Tbilisi // 第比利斯",
             "no" : ["Kutaisi // 库塔伊西","Batumi // 巴统"],
             "haha" : ["Borjomi // 博尔若米","Rustavi // 鲁斯塔维"] 
+        },
+        "🇨🇬 Congo // 刚果 🇨🇬": {
+            "yes": "Brazzaville // 布拉柴维尔",
+            "no": ["Kinshasa // 金夏沙","Pointe-Noire // 黑角","Dolisie // 卢博莫"],
+            "haha": ["Libreville // 利伯维尔","Mbandaka // 姆班达卡"]
+        },
+        "🇨🇱 Chile // 智利 🇨🇱": {
+            "yes": "Santiago // 圣地亚哥",
+            "no": ["Antofagasta // 安托法加斯塔","Concepción // 康塞普西翁","Valparaíso // 瓦尔帕莱索"],
+            "haha": ["Punta Arenas // 蓬塔阿雷纳斯","Copiapó // 科皮亚波"]
         }
-
     },
     'extreme':{
         "🇵🇬 Papua New Guinea // 巴布亚新几内亚 🇵🇬" : {
@@ -171,7 +189,7 @@ countries = {
         },
         "🇸🇮 Slovenia 🇸🇮" : {
             "yes": "Ljubljana // 卢布尔雅那",
-            "no":["Bratislava // 布拉迪斯拉发","Koper // 科珀","Maribor // 马里博尔"],
+            "no":["Bratislava // 布拉迪斯拉发","Maribor // 马里博尔"],
             "haha":["Velenje // 维伦耶","Koper // 科珀"]
         },
         "🇲🇰 North Macedonia // 马其顿 🇲🇰": {
@@ -188,6 +206,11 @@ countries = {
             "yes": "Vilnius // 维尔纽斯",
             "no": ["Kaunas // 考纳斯","Šiauliai // 希奥利艾","Klaipėda // 克莱佩达"],
             "haha": ["Panevėžys // 帕内韦日斯","Palanga // 帕兰加"]
+        },
+        "🇧🇯 Benin // 贝宁 🇧🇯": {
+            "yes": "Porto-Novo // 波多诺伏",
+            "no": ["Parakou // 帕拉库","Natitinqou // 纳蒂丁古"],
+            "haha": ["Cotonou // 科托努","Kandi // 坎迪"]
         }
     }
 }
