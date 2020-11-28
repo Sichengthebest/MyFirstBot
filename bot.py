@@ -13,13 +13,13 @@ from telegram.ext import CommandHandler, Updater
 from telegram import BotCommand
 
 def start(update, context):
-    msg = "I'M THE GOD OF BOTS...\n/help for commands.\nVersion: 5.7.6\n------------------------------\n我是机器人的上帝...\n/help 来看命令。\n版本：5.7.6\n------------------------------\nCreator/作者: Sichengthebest"
+    msg = "I'M THE GOD OF BOTS...\n/help for commands.\nVersion: 5.9.3\n------------------------------\n我是机器人的上帝...\n/help 来看命令。\n版本：5.9.3\n------------------------------\nCreator/作者: Sichengthebest"
     context.bot.send_message(chat_id=update.effective_chat.id, text=msg)
 
 def help(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="""Here's all my bot's commands. Have fun!
 这是我的机器人的所有命令。玩得开心点！
-------------------------------
+-------------------------------------------------
 /start - Random command that makes the bot say \"I'm THE GOD OF BOTS...\" // 使机器人说 “我是机器人的上帝” 的随机命令。
 /hunt - Gain XP by catching animals. // 以捕捉动物的方式获得XP。
 /huntbal - Check the amount of beastcoins you have. // 检查您有多少野兽币。
@@ -41,7 +41,6 @@ def read_file_as_str(file_path):
     # 判断路径文件存在
     if not os.path.isfile(file_path):
         raise TypeError(file_path + " does not exist")
-
     # 读取文件内容到all_the_text
     all_the_text = open(file_path).read()
     # print type(all_the_text)
