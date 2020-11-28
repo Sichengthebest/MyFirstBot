@@ -17,7 +17,10 @@ def start(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text=msg)
 
 def help(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="""/start - Random command that makes the bot say \"I'm THE GOD OF BOTS...\" // 使机器人说 “我是机器人的上帝” 的随机命令。
+    context.bot.send_message(chat_id=update.effective_chat.id, text="""Here's all my bot's commands. Have fun!
+这是我的机器人的所有命令。玩得开心点！
+------------------------------
+/start - Random command that makes the bot say \"I'm THE GOD OF BOTS...\" // 使机器人说 “我是机器人的上帝” 的随机命令。
 /hunt - Gain XP by catching animals. // 以捕捉动物的方式获得XP。
 /huntbal - Check the amount of beastcoins you have. // 检查您有多少野兽币。
 /huntshop - Buy nice useful stuff for catching more animals! // 购买帮忙捕捉动物的东西！
