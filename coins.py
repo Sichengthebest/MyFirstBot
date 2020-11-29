@@ -133,6 +133,8 @@ Description: Several Snap has developed a new potion that actually doesn't kill 
         update.message.reply_text("%s"%buy_stuff(user,"ramen",1500))
     elif context.args[0] == "simp":
         update.message.reply_text("%s"%buy_stuff(user,"simp",2000))
+    elif context.args[0] == "lifesaver":
+        update.message.reply_text("%s"%buy_stuff(user,"simp",3000))
     else:
         update.message.reply_text("Bruh this item doesn't even exist")
 
@@ -190,21 +192,20 @@ Gain 69 HP.""")
         
 def eat_stuff(user,aliment,c):
     uid = str(user.id)
-    hpmax = coins[uid]['hp'] - c
-    for item in coins[uid]['items']:
-        if item == aliment:
-            if coins[uid]['hp'] < hpmax:
-                coins[uid]['items'].remove(item)
-                coins[uid]['hp'] += c
-            elif coins[uid]['hp'] >= hpmax and coins[uid]['hp'] < 100:
-                coins[uid]['items'].remove(item)
-                coins[uid]['hp'] = 100
-            elif coins[uid]['hp'] >= 100:
-                return "Bruh your HP is maxed out, try losing some."
-            save()
-            return "You ate/drank a/an/some %s! Gain %sHP."%(aliment,c)
-        else:
-            return "You do not own this item lol"
+    hpmax = 100 - c
+    if aliment in coins[uid]['items']:
+        if coins[uid]['hp'] < hpmax:
+            coins[uid]['items'].remove("%s"%aliment)
+            coins[uid]['hp'] += c
+        elif coins[uid]['hp'] >= hpmax and coins[uid]['hp'] < 100:
+            coins[uid]['items'].remove("%s"%aliment)
+            coins[uid]['hp'] = 100
+        elif coins[uid]['hp'] >= 100:
+            return "Bruh your HP is maxed out, try losing some."
+        save()
+        return "You ate/drank a/an/some %s! Gain %sHP."%(aliment,c)
+    else:
+        return "You do not own this item lol" 
 
 def show_items(update,context):
     user = update.effective_user
