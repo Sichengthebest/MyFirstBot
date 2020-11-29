@@ -90,11 +90,11 @@ def check_animal(uid,user):
     elif result == huntArr[7]:
         huntgame[uid]['bcoins'] += 250
         coins.add_item(user,"basilisk",1)
-    elif result == huntArr[11]:
+    elif result == huntArr[10]:
         coins.add_hp(user,-30)
-    elif result == huntArr[12]:
+    elif result == huntArr[11]:
         huntgame[uid]['bcoins'] -= 100
-    elif result == huntArr[13]:
+    elif result == huntArr[12]:
         coins.add_hp(user,-100)
     save()
     return result
