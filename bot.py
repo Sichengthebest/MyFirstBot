@@ -22,7 +22,7 @@ def help(update, context):
 -------------------------------------------------
 /start - Random command that makes the bot say \"I'm THE GOD OF BOTS...\" // 使机器人说 “我是机器人的上帝” 的随机命令。
 /hunt - Gain XP by catching animals. // 以捕捉动物的方式获得XP。
-/huntbal - Check the amount of beastcoins you have. // 检查您有多少野兽币。
+/huntbal - Check the amount of beastcoins you have. // 检查您有多少兽币。
 /huntshop - Buy nice useful stuff for catching more animals! // 购买帮忙捕捉动物的东西！
 /fish - Gain XP by fishing. // 以钓鱼的方式获得XP。
 /fishbal - Check the amount of fishcoins you have. // 检查您有多少鱼币。
@@ -36,6 +36,7 @@ def help(update, context):
 /daily - Get daily GP! // 每日打卡！
 /hourly - Get hourly GP! // 每时打卡！
 /beg - Go beg, peasant! // 去讨钱吧，穷人！
+/convert - Convert one currency into another! // 将一种货币转换为另一种货币！
 /dep - Deposit money from your wallet to your bank! // 从钱包里存钱到银行！
 /banknote - Increase the amount of GP you can stuff into your bank! // 增加您可以存入银行的GP数量！
 /withdraw - Withdraw money from your bank to your wallet! // 从银行提款！
