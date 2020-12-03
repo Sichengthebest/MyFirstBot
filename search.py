@@ -111,7 +111,7 @@ def srchCallback(update, context):
             index2 = random.randint(0,12)
         chosen = [buttons[index],buttons[index1],buttons[index2]]
     elif place == "searched: le parc national des l":
-        betnum = random.randint(0,25)
+        betnum = random.randint(1,25)
         lArr = "You searched Le Parc National des L, not knowing it's a park for losers. Anyway, at least you got %s GP from a bet with another loser.\n您搜索了 L 国家公园，却不知道它是输家的公园。无论如何，至少您与另一个失败者的下注获得了%s GP。"%(betnum, betnum)
         query.edit_message_caption("You %s\n%s\nCreator/作者: Sichengthebest"%(place,lArr))
         coins.add_coins(update.effective_user,betnum)
