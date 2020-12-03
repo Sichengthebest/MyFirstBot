@@ -18,19 +18,19 @@ huntgame = config.CONFIG["hunt"]
 def check_user(uid):
     if not uid in huntgame:
         huntgame[uid] = {
-            'huntArr': ["You brought back a skunk! Gain 10 beastcoins. BTW I wonder who would want a skunk...\n你带回了一只臭鼬！获得10野兽币。顺便说一句，我想知道谁会想要臭鼬...",
-            "You brought back a skunk! Gain 10 beastcoins. You STINK!\n你带回了一只臭鼬！获得10野兽币。你好臭！",
-            "You have caught a deer! Gain 25 beastcoins. Good thing you didn't get lost in the forest!\n你抓到了一头鹿！获得25野兽币。很好，你没有在森林里迷路！",
-            "You have caught a deer! Gain 25 beastcoins. Good thing you brought your compass!\n你抓到了一头鹿！获得25野兽币。很好，你带了指南针！",
-            "You have caught a fox! Nice work! Gain 30 beastcoins.\n你抓到了一只狐狸！干得好！获得30野兽币",
-            "You have caught a deer! Gain 25 beastcoins.\n你抓到了一头鹿！获得25野兽币。",
-            "You have caught a rhinoceros! Was that even legal? Anyways, the buyer gave you 100 beastcoins.\n你抓到了犀牛！那合法吗？无论如何，卖家给了你100野兽币。",
-            "You have caught a BASILISK!! Where in the world did you find that??? These 250 beastcoins are for you, you earned them!!!\n您抓到了蛇怪！您在哪里找到的？？？这250野兽币是给你的，无敌战士！",
+            'huntArr': ["You brought back a skunk! Gain 10 beastcoins. BTW I wonder who would want a skunk...\n你带回了一只臭鼬！获得10兽币。顺便说一句，我想知道谁会想要臭鼬...",
+            "You brought back a skunk! Gain 10 beastcoins. You STINK!\n你带回了一只臭鼬！获得10兽币。你好臭！",
+            "You have caught a deer! Gain 25 beastcoins. Good thing you didn't get lost in the forest!\n你抓到了一头鹿！获得25兽币。很好，你没有在森林里迷路！",
+            "You have caught a deer! Gain 25 beastcoins. Good thing you brought your compass!\n你抓到了一头鹿！获得25兽币。很好，你带了指南针！",
+            "You have caught a fox! Nice work! Gain 30 beastcoins.\n你抓到了一只狐狸！干得好！获得30兽币",
+            "You have caught a deer! Gain 25 beastcoins.\n你抓到了一头鹿！获得25兽币。",
+            "You have caught a rhinoceros! Was that even legal? Anyways, the buyer gave you 100 beastcoins.\n你抓到了犀牛！那合法吗？无论如何，卖家给了你100兽币。",
+            "You have caught a BASILISK!! Where in the world did you find that??? These 250 beastcoins are for you, you earned them!!!\n您抓到了蛇怪！您在哪里找到的？？？这250兽币是给你的，无敌战士！",
             "You forgot your AK-47! Too bad.\n你忘记了你的AK-47！太糟糕了。",
             "You are so BAD, you didn't bring back anything!\n你好烂，你什么也没抓到！",
             "You caught a fox, but someone stole it from you!\n您捉住了一只狐狸，但有人偷走了它！",
             "A bear caught you and you lost 30HP!\n一只熊抓住了您，您损失了30HP",
-            "You caught an elephant, but the ads you placed was found by someone, and he called the cops on you! You got fined 100 beastcoins. Maybe try the black market next time?\n您抓到一头大象，但您的猎物被某人发现，他叫了警察！您被罚款100野兽币。",
+            "You caught an elephant, but the ads you placed was found by someone, and he called the cops on you! You got fined 100 beastcoins. Maybe try the black market next time?\n您抓到一头大象，但您的猎物被某人发现，他叫了警察！您被罚款100兽币。",
             "You DIED while fighting the basilisk!\n您在与蛇怪战斗时死了！",
             "You are so BAD, you didn't bring back anything!\n你好烂，你什么也没抓到！",
             "You are so BAD, you didn't bring back anything!\n你好烂，你什么也没抓到！",
@@ -106,7 +106,7 @@ def hunt(update, context):
     t = datetime.now() 
     if t >= datetime.strptime(huntgame[uid]['gametime'],"%Y/%m/%d %H:%M:%S"):
         result = check_animal(uid,user)
-        update.message.reply_animation('%s'%check_gif(uid,result),caption="%s\n/huntbal to see the number of beastcoins you have!\n/huntbal 来看看你有多少野兽币！\nCreator/作者: Sichengthebest"%result)
+        update.message.reply_animation('%s'%check_gif(uid,result),caption="%s\n/huntbal to see the number of beastcoins you have!\n/huntbal 来看看你有多少兽币！\nCreator/作者: Sichengthebest"%result)
         huntgame[uid]['gametime'] = datetime.strftime(datetime.now() + timedelta(seconds=30),"%Y/%m/%d %H:%M:%S")
         save()
     else:
