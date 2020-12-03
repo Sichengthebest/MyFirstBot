@@ -2,7 +2,7 @@ from telegram.ext import Dispatcher,CommandHandler,CallbackQueryHandler
 from telegram import BotCommand,InlineKeyboardMarkup,InlineKeyboardButton
 import random
 
-# messageid: [uid,uid,uid...]
+# msgid: {uid:👍,uid:👍,uid:👍}
 uservote = {}
 
 def vote(update,context):
@@ -40,41 +40,64 @@ def vote(update,context):
     #  [[👍,👎,😍]]
     kb = InlineKeyboardMarkup([[
         InlineKeyboardButton("👍(0)",callback_data="vote:👍:0"),
-        InlineKeyboardButton("👎(0)",callback_data="vote:👎:0"),
-        InlineKeyboardButton("😍(0)",callback_data="vote:😍:0")
+        InlineKeyboardButton("👎(0)",callback_data="vote:👎:0")
         ]])
     jif = random.choice(gifs)
     update.message.reply_animation(jif,reply_markup=kb)
 
-def add_user_vote(mid,uid):
-    if not mid in uservote :
-        uservote[mid] = []
-    if not uid in uservote[mid] :
-        uservote[mid].append(uid)
-        return True # 之没投过
-    return False # 之前投过票了
+def add_user_vote(msgid,uid,choice,buttons):
+    c = {"👍":0,"👎":1}
+    count = int(buttons[0][c[choice]].callback_data.split(":")[2])
+    if not msgid in uservote :
+        uservote[msgid] = {}
+    if not uid in uservote[msgid]:
+        uservote[msgid][uid] = choice
+        count += 1
+        buttons[0][c[choice]].text = f"{choice}({count})"
+        buttons[0][c[choice]].callback_data = f"vote:{choice}:{count}"
+    else:
+        if uservote[msgid][uid] == choice:
+            # if 👍 原来 👍 [0] -1
+            # if 👍 原来 👎 [0] -1 [1] + 1
+            count -= 1
+            buttons[0][c[choice]].text = f"{choice}({count})"
+            buttons[0][c[choice]].callback_data = f"vote:{choice}:{count}"
+            print(uid)
+            uservote[msgid].pop(uid)
+        else:
+            count += 1
+            buttons[0][c[choice]].text = f"{choice}({count})"
+            buttons[0][c[choice]].callback_data = f"vote:{choice}:{count}"
+            oldchoice = uservote[msgid][uid]
+            oldcount = int(buttons[0][c[oldchoice]].callback_data.split(":")[2])
+            oldcount -= 1
+            buttons[0][c[oldchoice]].text = f"{oldchoice}({oldcount})"
+            buttons[0][c[oldchoice]].callback_data = f"vote:{oldchoice}:{oldcount}"
+            uservote[msgid][uid] = choice
+    return buttons
 
 def vote_callback(update,context):
     query = update.callback_query
-    cmd = query.data.split(":") # ['vote','👍']
+    cmd = query.data.split(":") # ['vote','👍',100]
     buttons = query.message.reply_markup.inline_keyboard
-    mid = query.message.message_id
+    msgid = query.message.message_id
     uid = update.effective_user.id
 
-    if add_user_vote(mid,uid) :
-        count = int(cmd[2]) + 1
-        query.answer("投票成功")
-        if cmd[1] == '👍':
-            buttons[0][0] = InlineKeyboardButton(f"👍({count})",callback_data=f"vote:👍:{count}")
-            query.edit_message_reply_markup(InlineKeyboardMarkup(buttons))
-        elif cmd[1] == "👎":
-            buttons[0][1] = InlineKeyboardButton(f"👎({count})",callback_data=f"vote:👎:{count}")
-            query.edit_message_reply_markup(InlineKeyboardMarkup(buttons))
-        elif cmd[1] == "😍":
-            buttons[0][2] = InlineKeyboardButton(f"😍({count})",callback_data=f"vote:😍:{count}")
-            query.edit_message_reply_markup(InlineKeyboardMarkup(buttons))
-    else:
-        query.answer("大傻子你已经投了，表再投了，烦不烦",show_alert=True)
+    kb = add_user_vote(msgid,uid,cmd[1],buttons)
+    query.answer("投票成功")
+    query.edit_message_reply_markup(InlineKeyboardMarkup(kb))
+    # count = int(cmd[2])
+    # query.answer("投票成功")
+    # if cmd[1] == '👍':
+    #     buttons[0][0] = InlineKeyboardButton(f"👍({count})",callback_data=f"vote:👍:{count}")
+    #     query.edit_message_reply_markup(InlineKeyboardMarkup(buttons))
+    # elif cmd[1] == "👎":
+    #     buttons[0][1] = InlineKeyboardButton(f"👎({count})",callback_data=f"vote:👎:{count}")
+    #     query.edit_message_reply_markup(InlineKeyboardMarkup(buttons))
+    # elif cmd[1] == "😍":
+    #     buttons[0][2] = InlineKeyboardButton(f"😍({count})",callback_data=f"vote:😍:{count}")
+    #     query.edit_message_reply_markup(InlineKeyboardMarkup(buttons))
+    # query.answer("大傻子你已经投了，表再投了，烦不烦",show_alert=True)
 
 
 def add_handler(dp:Dispatcher):
