@@ -8,11 +8,13 @@ from telegram import BotCommand
 
 # {
 #   uid : {
-#       'name': first_name,
 #       'coins': 123,
 #       'dailytime' : time
 #       'hp' : 56
 #       'items' : ["herring","trout","shark","boar","fox","deer","skunk","basilisk"]
+#       'bank' : 456
+#       'bankspace' : 458
+#       'total' : 579
 #       }
 # }
 
@@ -24,9 +26,8 @@ def save():
 
 def check_user(user):
     uid = str(user.id)
-    first_name = user.first_name
     if not uid in coins.keys():
-        coins[uid] = {'name':first_name,'coins':0,'dailytime':datetime.now().strftime("%Y/%m/%d %H:%M:%S"),'hourlytime':datetime.now().strftime("%Y/%m/%d %H:%M:%S"),'hp':100,'items':[]}
+        coins[uid] = {'name':user.first_name,'coins':0,'dailytime':datetime.now().strftime("%Y/%m/%d %H:%M:%S"),'hourlytime':datetime.now().strftime("%Y/%m/%d %H:%M:%S"),'hp':100,'items':[],'bank':0,'bankspace':1000,'total':0}
         save()
 
 def check_hp(user):
@@ -40,13 +41,25 @@ def check_hp(user):
 def show_user(user):
     uid = str(user.id)
     check_user(user)
-    #  老房东(10):200
-    return f"{coins[uid]['name']}, you have {coins[uid]['coins']} GP and {coins[uid]['hp']} HP\n{coins[uid]['name']}, 你有 {coins[uid]['coins']} GP 和 {coins[uid]['hp']} HP"
+    return f"""{coins[uid]['name']}'s Balance:
+In wallet: {coins[uid]['coins']} GP
+In bank: {coins[uid]['bank']} GP / {coins[uid]['bankspace']} total bank space
+Total: {coins[uid]['total']} GP
+You have {coins[uid]['hp']} HP
+---------------------------------------
+{coins[uid]['name']} 的金钱数额： 
+钱包：{coins[uid]['coins']} GP
+银行：{coins[uid]['bank']} GP / {coins[uid]['bankspace']} 总银行空间
+总额：{coins[uid]['total']} GP
+你有 {coins[uid]['hp']} HP"""
 
 def add_coins(user,c):
     check_user(user)
     uid = str(user.id)
     coins[uid]['coins'] += c
+    if c > 0:
+        coins[uid]['bankspace'] += int(c/5)
+    coins[uid]['total'] += c
     save()
 
 def add_item(user,c,times):
@@ -60,8 +73,11 @@ def add_hp(user,c):
     check_user(user)
     uid = str(user.id)
     if c == -100:
-        coins[uid]['hp'] = 0
-        check_hp(user)
+        if not "lifesaver" in coins[uid]['items']:
+            coins[uid]['hp'] = 0
+            check_hp(user)
+        else:
+            coins[uid]['items'].remove("lifesaver")
     else:
         coins[uid]['hp'] += c
         check_hp(user)
@@ -102,7 +118,7 @@ def shop(update, context):
     check_user(user)
     markets = ["Walmart","Costco","Super C","Central Supermarket+"]
     if len(context.args) == 0:
-        update.message.reply_animation('https://media1.giphy.com/media/fAhOtxIzrTxyE/200.gif',caption="""Here are some stuff you can buy at %s.
+        update.message.reply_text("""Here are some stuff you can buy at %s.
 FOOD:
 --------------------------------------
 Buy apples! 🍎:
@@ -124,6 +140,18 @@ Buy Super Interesting Magic Potions! 🍾:
 Description: Several Snap has developed a new potion that actually doesn't kill you! Instead, it makes you gain 50HP!
 2000GP per 🍾
 /shop simp
+--------------------------------------
+TOOLS:
+--------------------------------------
+Buy lifesavers! 💖:
+Description: When you accidentally chug down some Clorox or blindly enter the Chamber of Secrets, have no fear, the lifesaver is here! You can avoid death (and avoid losing all your coins in your wallet)
+3000GP per 💖
+/shop lifesaver
+--------------------------------------
+Buy banknotes! 💸:
+Description: When your account in Gringotts can't handle the flow of coins, you can use the banknote to increase the amount of coins that you can stuff into it (1000 GP).
+1800GP per 💸
+/shop banknote
 """%(random.choice(markets)))
     elif context.args[0] == "apple":
         update.message.reply_text("%s"%buy_stuff(user,"apple",500))
@@ -134,9 +162,22 @@ Description: Several Snap has developed a new potion that actually doesn't kill 
     elif context.args[0] == "simp":
         update.message.reply_text("%s"%buy_stuff(user,"simp",2000))
     elif context.args[0] == "lifesaver":
-        update.message.reply_text("%s"%buy_stuff(user,"simp",3000))
+        update.message.reply_text("%s"%buy_stuff(user,"lifesaver",3000))
+    elif context.args[0] == "banknote":
+        update.message.reply_text("%s"%buy_stuff(user,"banknote",1800))
     else:
         update.message.reply_text("Bruh this item doesn't even exist")
+
+def banknote(update, context):
+    user = update.effective_user
+    check_user(user)
+    uid = str(user.id)
+    if "banknote" in coins[uid]['items']:
+        coins[uid]['bankspace'] += 1000
+        coins[uid]['items'].remove("banknote")
+        update.message.reply_text("Success! You now have %s GP of storage in your bank!"%coins[uid]['bankspace'])
+    else:
+        update.message.reply_text("You do not own a banknote lol")
 
 def eat(update, context):
     user = update.effective_user
@@ -315,6 +356,67 @@ def convert(update,context):
                 update.message.reply_text("Success! You now have %s GP and %s beastcoins!"%(coins[str(uid)]['coins'],hunt.huntgame[str(uid)]['bcoins']))
         else:
             update.message.reply_text("You need to enter a valid amount!")
+    save()
+
+def dep(update,context):
+    user = update.effective_user
+    uid = str(user.id)
+    check_user(user)
+    remspace = coins[uid]['bankspace'] - coins[uid]['bank']
+    if len(context.args) == 0:
+        update.message.reply_text("What are you depositing, idiot?")
+    elif context.args[0].isdigit():
+        num = int(context.args[0])
+        if num > remspace :
+            update.message.reply_text("Your argument should be no more the amount of storage left in your bank (%s)."%remspace)
+        elif coins[uid]['coins'] < num:
+            update.message.reply_text("Your argument should be either a number and no more than what you have in your wallet (%s)."%coins[uid]['coins'])
+        else:
+            coins[uid]['coins'] -= num
+            coins[uid]['bank'] += num
+            update.message.reply_text("Success! You have deposited %s GP and now have %s GP in your wallet and %s GP in your bank."%(num,coins[uid]['coins'],coins[uid]['bank']))
+    else:
+        if context.args[0] == "all":
+            if remspace == 0:
+                update.message.reply_text("Looks like you already have a full bank kiddo")
+            else:
+                if remspace > coins[uid]['coins']:
+                    coins[uid]['bank'] += coins[uid]['coins']
+                    coins[uid]['coins'] = 0
+                    update.message.reply_text("Success! You have deposited %s GP and now have %s GP in your wallet and %s GP in your bank."%(coins[uid]['coins'],coins[uid]['coins'],coins[uid]['bank']))
+                elif remspace <= coins[uid]['coins']:
+                    coins[uid]['coins'] -= remspace
+                    coins[uid]['bank'] += remspace
+                    update.message.reply_text("Success! You have deposited %s GP and now have %s GP in your wallet and %s GP in your bank."%(remspace,coins[uid]['coins'],coins[uid]['bank']))
+        else:
+            update.message.reply_text("Your argument should be a number, or /dep all , dumdum") 
+    save()
+
+def withdraw(update, context):
+    user = update.effective_user
+    uid = str(user.id)
+    check_user(user)
+    if len(context.args) == 0:
+        update.message.reply_text("What are you withdrawing, idiot?")
+    elif context.args[0].isdigit():
+        num = int(context.args[0])
+        if num > coins[uid]['bank'] :
+            update.message.reply_text("Your argument should be no more the amount of GP in your bank (%s)."%coins[uid]['bank'])
+        else:
+            coins[uid]['coins'] += num
+            coins[uid]['bank'] -= num
+            update.message.reply_text("Success! You have withdrawn %s GP and now have %s GP in your wallet and %s GP in your bank."%(num,coins[uid]['coins'],coins[uid]['bank']))
+    else:
+        if context.args[0] == "all":
+            if coins[uid]['bank'] == 0:
+                update.message.reply_text("Looks like you already have an empty bank kiddo")
+            else:
+                coins[uid]['coins'] += coins[uid]['bank']
+                coins[uid]['bank'] = 0
+                update.message.reply_text("Success! You now have %s GP in your wallet and %s GP in your bank."%(coins[uid]['coins'],coins[uid]['bank']))
+        else:
+            update.message.reply_text("Your argument should be a number, or /withdraw all , dumdum") 
+    save()
 
 def get_coins(update, context):
     user = update.effective_user
@@ -329,7 +431,11 @@ def get_command():
         BotCommand('shop',' Buy nice useful stuff! // 购买有用的东西！'),
         BotCommand('eat','Eat to gain HP // 吃东西来增加HP'),
         BotCommand('inv','[BETA] Check the items you have in your inventory. // [测试] 检查库存中的物品。'),
-        BotCommand('convert','Convert one currency into another! // 将一种货币转换为另一种货币！')]
+        BotCommand('convert','Convert one currency into another! // 将一种货币转换为另一种货币！'),
+        BotCommand('dep','Deposit money from your wallet to your bank! // 从钱包里存钱到银行！'),
+        BotCommand('banknote','Increase the amount of GP you can stuff into your bank! // 增加您可以存入银行的GP数量！'),
+        BotCommand('withdraw','Withdraw money from your bank to your wallet! // 从银行提款！')
+    ]
 
 def add_handler(dp:Dispatcher):
     dp.add_handler(CommandHandler('bal', get_coins))
@@ -339,3 +445,6 @@ def add_handler(dp:Dispatcher):
     dp.add_handler(CommandHandler('eat', eat))
     dp.add_handler(CommandHandler('inv', show_items))
     dp.add_handler(CommandHandler('convert', convert))
+    dp.add_handler(CommandHandler('dep', dep))
+    dp.add_handler(CommandHandler('banknote', banknote))
+    dp.add_handler(CommandHandler('withdraw', withdraw))
