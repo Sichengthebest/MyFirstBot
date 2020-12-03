@@ -187,7 +187,7 @@ countries = {
             "no":["Daru // 达鲁","Lae // 莱城"],
             "haha":["Jayapura // 查亚普拉"]
         },
-        "🇸🇮 Slovenia 🇸🇮" : {
+        "🇸🇮 Slovenia // 斯洛文尼亚 🇸🇮" : {
             "yes": "Ljubljana // 卢布尔雅那",
             "no":["Bratislava // 布拉迪斯拉发","Maribor // 马里博尔"],
             "haha":["Velenje // 维伦耶","Koper // 科珀"]
@@ -211,6 +211,11 @@ countries = {
             "yes": "Porto-Novo // 波多诺伏",
             "no": ["Parakou // 帕拉库","Natitinqou // 纳蒂丁古"],
             "haha": ["Cotonou // 科托努","Kandi // 坎迪"]
+        },
+        "🇸🇰 Slovakia // 斯洛伐克 🇸🇰": {
+            "yes": "Bratislava // 布拉迪斯拉发",
+            "no": ["Košice // 科希策","Ljubljana // 卢布尔雅那"],
+            "haha": ["Lučenec // 卢切内茨","Zvolen // 兹沃伦","Nové Zámky // 新扎姆基"]
         }
     }
 }
