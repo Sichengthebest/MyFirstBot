@@ -36,6 +36,9 @@ def help(update, context):
 /daily - Get daily GP! // 每日打卡！
 /hourly - Get hourly GP! // 每时打卡！
 /beg - Go beg, peasant! // 去讨钱吧，穷人！
+/dep - Deposit money from your wallet to your bank! // 从钱包里存钱到银行！
+/banknote - Increase the amount of GP you can stuff into your bank! // 增加您可以存入银行的GP数量！
+/withdraw - Withdraw money from your bank to your wallet! // 从银行提款！
 Creator/作者: Sichengthebest""")
 def read_file_as_str(file_path):
     # 判断路径文件存在
