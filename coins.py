@@ -90,7 +90,7 @@ def hourly(update,context):
     hourlytime = datetime.strptime(coins[uid]['hourlytime'],"%Y/%m/%d %H:%M:%S")
     if datetime.now() > hourlytime:
         c = random.randint(50,200)
-        coins[uid]['coins'] += c
+        add_coins(user,c)
         hourlytime = datetime.now() + timedelta(hours=1)
         update.message.reply_text("Here are your hourly coins, %s\n%s coins were placed in your wallet."%(user.first_name,c))
     else:
@@ -105,7 +105,7 @@ def daily(update,context):
     dailytime = datetime.strptime(coins[uid]['dailytime'],"%Y/%m/%d %H:%M:%S")
     if datetime.now() > dailytime:
         c = random.randint(500,2000)
-        coins[uid]['coins'] += c
+        add_coins(user,c)
         dailytime = datetime.now() + timedelta(hours=24)
         update.message.reply_text("Here are your daily coins, %s\n%s coins were placed in your wallet."%(user.first_name,c))
     else:
@@ -152,7 +152,43 @@ Buy banknotes! 💸:
 Description: When your account in Gringotts can't handle the flow of coins, you can use the banknote to increase the amount of coins that you can stuff into it (1000 GP).
 1800GP per 💸
 /shop banknote
-"""%(random.choice(markets)))
+_______________________________________
+
+您可以在%s购买一些东西。
+餐饮：
+--------------------------------------
+买苹果！ 🍎：
+描述：每天一个苹果能让健康顶呱呱！当您吃一个时，获得10HP！
+每GP 500GP
+/shop apple
+--------------------------------------
+买西兰花！ 🥦：
+描述：多吃蔬菜，实际上对您有好处，您可以获得20HP！
+每磅900GP
+/shop brocoli
+--------------------------------------
+买拉面！ 🍜：
+描述：好的热拉面对您的健康有益！每碗可获得35HP！
+每🍜1500GP
+/shop ramen
+--------------------------------------
+购买超级有趣的魔药！ 🍾：
+描述：西弗勒·斯纳普开发了一种新药水，实际上它并不会杀死您！相反，它使您获得50HP！
+每磅2000GP
+/shop simp
+--------------------------------------
+工具：
+--------------------------------------
+购买救生器！ 💖：
+描述：当您不小心喝掉一些高乐氏或盲目的进入密室时，不用担心，救生器就在这里！您可以避免死亡（并避免丢失钱包中的所有GP）
+每💖3000GP
+/shop lifesaver
+--------------------------------------
+买钞票！ 💸：
+描述：当您的古灵阁帐户无法处理您过多的钱时，可以使用钞票增加可放入其中的硬币数量（1000 GP）。
+每💸1800GP
+/shop banknote
+"""%(random.choice(markets),random.choice(markets)))
     elif context.args[0] == "apple":
         update.message.reply_text("%s"%buy_stuff(user,"apple",500))
     elif context.args[0] == "brocoli":
@@ -177,13 +213,13 @@ def banknote(update, context):
         coins[uid]['items'].remove("banknote")
         update.message.reply_text("Success! You now have %s GP of storage in your bank!"%coins[uid]['bankspace'])
     else:
-        update.message.reply_text("You do not own a banknote lol")
+        update.message.reply_text("You do not own a banknote lol\nYou can buty a banknote at the /shop")
 
 def eat(update, context):
     user = update.effective_user
     check_user(user)
     if len(context.args) == 0:
-        update.message.reply_animation('https://i.gifer.com/RjWn.gif',caption="""Enjoy your meal! What are you eating tho?
+        update.message.reply_text("""Enjoy your meal! What are you eating tho?
 /eat apple for a nice juicy red apple.
 Gain 10 HP.
 /eat brocoli for some ugly green miniature trees.
@@ -205,7 +241,31 @@ Gain 20 HP.
 /eat rhino to eat rhinoceros that you caught.
 Gain 45 HP.
 /eat basilisk to eat basilisk that you caught.
-Gain 69 HP.""")
+Gain 69 HP.
+------------------------------
+请享用！但是你在吃什么？
+/eat apple 来吃一个好吃的红苹果。
+获得10HP。
+/eat brocoli 来吃西兰花，一些丑陋的绿色微型树木。
+获得20HP。
+/eat ramen 来吃拉面，享受汤中的美味的面条。
+获得35HP。
+/eat simp 来喝一点斯纳普的新药水。
+获得50HP。
+/eat herring 来吃掉你抓到的鲱鱼。
+获得5HP。
+/eat trout 来吃掉你抓到的鳟鱼。
+获得30HP。
+/eat shark 来吃掉你抓到的鲨鱼。
+获得60HP。
+/eat skunk 来吃掉您抓到的臭臭鼬。
+获得20HP。
+/eat deer 来吃掉你抓到的鹿。
+获得20HP。
+/eat rhino 来吃您抓到的犀牛。
+获得45HP。
+/eat basilisk 来吃你抓到的蛇怪。
+获得69HP。""")
     elif context.args[0] == "apple":
         update.message.reply_text("%s"%eat_stuff(user,"apple",10))
     elif context.args[0] == "brocoli":
@@ -260,6 +320,7 @@ def buy_stuff(user,object,c):
         return "No disrespect but... LMFAO ur so poor u need %s more GP "%(c-coins[uid]['coins'])
     coins[uid]['items'].append(object)
     coins[uid]['coins'] -= c
+    coins[uid]['total'] -= c
     save()
     return "Success! You have bought a/an/some %s! You still have %s GP."%(object,coins[uid]['coins'])
 
@@ -273,7 +334,14 @@ def convert(update,context):
 /convert fctobc {amount of fishcoins} : Convert 1 fishcoin into 1 beastcoin!
 /convert bctofc {amount of beastcoins} : Convert 1 beastcoin into 1 fishcoin!
 /convert fctogp {amount of fishcoins} : Convert 1 fishcoin into 5 GP!
-/convert bctogp {amount of beastcoins} : Convert 1 beastcoin into 5 GP!""")
+/convert bctogp {amount of beastcoins} : Convert 1 beastcoin into 5 GP!
+------------------------------------------
+/convert gptofc {GP的数量}：将5 GP转换为1鱼币！
+/convert gptobc {GP的数量}：将5 GP转换为1兽币！
+/convert fctobc {鱼币的数量}：将1鱼币转换为1兽币！
+/convert bctofc {兽币的数量}：将1兽币转换为1鱼币！
+/convert fctogp {鱼币的数量}：将1鱼币转换为5GP！
+/convert bctogp {兽币的数量}：将1兽币转换为5GP！""")
     elif context.args[0] == "gptofc":
         if len(context.args) == 1:
             update.message.reply_text("You need to enter a valid amount!")
