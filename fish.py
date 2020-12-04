@@ -137,11 +137,11 @@ def buy_fishpole(uid):
             fishgame[uid]['fcoins'] -= int(fishgame[uid]['lvlupfpole'])
             fishgame[uid]['fpolelvl'] += 1
             fishgame[uid]['fishes'].remove(fishgame[uid]['fishes'][13])
-            return "Nice! Your current level: %s\nYou still have %s fishcoins"%(fishgame[uid]['fpolelvl'],fishgame[uid]['fcoins'])
+            return "Nice! Your current level: %s\nYou still have %s fishcoins\n耶！您当前的级别：%s \n您还有%s鱼币"%(fishgame[uid]['fpolelvl'],fishgame[uid]['fcoins'],fishgame[uid]['fpolelvl'],fishgame[uid]['fcoins'])
         else:
-            return "No offense but... HAHAHAHAHA YOU ARE SO POOR YOU CANNOT BUY THIS OBJECT"
+            return "No offense but... HAHAHAHAHA YOU ARE SO POOR YOU CANNOT BUY THIS OBJECT\n不想冒犯你，但是...哈哈哈哈哈，您太穷了，您无法购买此物品"
     else:
-        return "Bruh stop being so greedy ur already at max level"
+        return "Bruh stop being so greedy ur already at max level\n傻瓜不要这么贪婪，您已经处于最高等级"
     save()
 
 def buy_baitherring(uid):
@@ -153,11 +153,11 @@ def buy_baitherring(uid):
             fishgame[uid]['fishes'].append("You caught two herrings! +16 fishcoins!\n你钓到了两条鲱鱼！+16鱼币！")
             fishgame[uid]['herringlvl'] += 1
             save()
-            return "Nice! Your current level: 1"
+            return "Nice! Your current level: 1\n耶！您当前的等级：1"
         else:
-            return "No offense but... HAHAHAHAHA YOU ARE SO POOR YOU CANNOT BUY THIS OBJECT"
+            return "No offense but... HAHAHAHAHA YOU ARE SO POOR YOU CANNOT BUY THIS OBJECT\n不想冒犯你，但是...哈哈哈哈哈，您太穷了，您无法购买此物品"
     else:
-        return "Bruh stop being so greedy ur already at max level"
+        return "Bruh stop being so greedy ur already at max level\n傻瓜不要这么贪婪，您已经处于最高等级"
 
 def buy_baittrout(uid):
     check_fishes(uid)
@@ -167,11 +167,11 @@ def buy_baittrout(uid):
             fishgame[uid]['fishes'].append("You caught a lake trout! +50 fishcoins!\n你钓到了一条湖鳟！+50鱼币！")
             fishgame[uid]['troutlvl'] += 1
             save()
-            return "Nice! Your current level: MAX"
+            return "Nice! Your current level: 1\n耶！您当前的等级：1"
         else:
-            return "No offense but... HAHAHAHAHA YOU ARE SO POOR YOU CANNOT BUY THIS OBJECT"
+            return "No offense but... HAHAHAHAHA YOU ARE SO POOR YOU CANNOT BUY THIS OBJECT\n不想冒犯你，但是...哈哈哈哈哈，您太穷了，您无法购买此物品"
     else:
-        return "Bruh stop being so greedy ur already at max level"
+        return "Bruh stop being so greedy ur already at max level\n傻瓜不要这么贪婪，您已经处于最高等级"
 
 def buy_baitshark(uid):
     check_fishes(uid)
@@ -182,11 +182,11 @@ def buy_baitshark(uid):
             fishgame[uid]['fishes'].append("You have caught a Great White Shark, but it pulled you into the ocean and ate you! You died.\n您捕获了一条大白鲨，但是它把您拖入海中并吞噬了您！您挂了。")
             fishgame[uid]['sharklvl'] += 1
             save()
-            return "Nice! Your current level: MAX"
+            return "Nice! Your current level: 1\n耶！您当前的等级：1"
         else:
-            return "No offense but... HAHAHAHAHA YOU ARE SO POOR YOU CANNOT BUY THIS OBJECT"
+            return "No offense but... HAHAHAHAHA YOU ARE SO POOR YOU CANNOT BUY THIS OBJECT\n不想冒犯你，但是...哈哈哈哈哈，您太穷了，您无法购买此物品"
     else:
-        return "Bruh stop being so greedy ur already at max level"
+        return "Bruh stop being so greedy ur already at max level\n傻瓜不要这么贪婪，您已经处于最高等级"
 
 def fish(update, context):
     user = update.effective_user
@@ -200,12 +200,13 @@ def fish(update, context):
         fishgame[uid]['gametime'] = datetime.strftime(datetime.now() + timedelta(seconds=30),"%Y/%m/%d %H:%M:%S")
         save()
     else:
-        update.message.reply_text("Slow it down, cmon!!! The fish seem weary of fishermen right now, wait a few more seconds!\nCreator/作者: Sichengthebest")
+        update.message.reply_text("Slow it down, cmon!!! The fish seem weary of fishermen right now, wait a few more seconds!\n放慢速度，呆瓜！！！鱼现在似乎知道哪个是鱼饵哪个是鱼，还要再等几秒钟他们才变傻！\nCreator/作者: Sichengthebest")
 
 def shop(update, context):
     uid = str(update.effective_user.id)
     check_fishpole(uid)
     markets = ["The Fisher's BFF","The Ultimate Fishing Shop","Canadian Tire","Alfred-The-Angler's Hangar Of Magnificent Fishing Accessories At A Very Very Low Price","Mr.Loïc's Fishing Grounds"]
+    marketsCH = ["渔民的BFF","终极钓鱼店","加拿大轮胎","阿尔弗雷德·安格勒的华丽渔具机库，价格非常低廉","洛伊克先生的渔场"]
     if len(context.args) == 0:
         update.message.reply_text("""Here are some stuff you can buy at %s.
 --------------------------------------
@@ -221,7 +222,22 @@ Trout baits: 200 fishcoins to buy.
 Shark baits: 500 fishcoins to buy.
 /fishshop baitshark
 WARNING: BAITS DO NOT INCREASE SURVIVAL RATE
---------------------------------------"""%(random.choice(markets),fishgame[uid]['lvlupfpole'],fishgame[uid]['fpolelvl']))
+--------------------------------------
+您可以在%s购买一些东西。
+--------------------------------------
+升级您的钓鱼竿！ %s鱼币进行升级。
+/fishshop fishingpole
+当前级别：%s
+--------------------------------------
+购买特殊的诱饵来吸引不同类型的鱼！
+鲱鱼饵：50枚鱼币可供购买。
+/fishshop baitherring
+鳟鱼饵：200枚鱼币可供购买。
+/fishshop baittrout
+鲨鱼饵：500枚鱼币可供购买。
+/fishshop baitshark
+警告：诱饵不会增加生存率
+"""%(random.choice(markets),fishgame[uid]['lvlupfpole'],fishgame[uid]['fpolelvl'],random.choice(marketsCH),fishgame[uid]['lvlupfpole'],fishgame[uid]['fpolelvl']))
     elif context.args[0] == "fishingpole":
         update.message.reply_text("%s"%buy_fishpole(uid))
     elif context.args[0] == "baitherring":
@@ -231,14 +247,14 @@ WARNING: BAITS DO NOT INCREASE SURVIVAL RATE
     elif context.args[0] == "baitshark":
         update.message.reply_text("%s"%buy_baitshark(uid))
     else:
-        update.message.reply_text("Bruh what are you doing this item isn't even in the shop!")
+        update.message.reply_text("Bruh what are you doing this item isn't even in the shop!\n你真parker，你在做什么？这个东西不在商店里！")
     save()
 
 def bal(update,context):
     global fishgame
     uid = str(update.effective_user.id)
     check_fishes(uid)
-    update.message.reply_text("Your balance: %s fishcoins.\n/fishshop to buy items that increase your chances of catching fish!\n/fishshop 来购买可以增加您钓到鱼的机会的物品！"%fishgame[uid]['fcoins'])
+    update.message.reply_text("Your balance: %s fishcoins/鱼币.\n/fishshop to buy items that increase your chances of catching fish!\n/fishshop 来购买可以增加您钓到鱼的机会的物品！"%fishgame[uid]['fcoins'])
 
 def get_command():
     return [BotCommand('fish','Gain fishcoins by fishing. // 以钓鱼的方式获得鱼币。')]
