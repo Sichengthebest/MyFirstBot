@@ -105,4 +105,4 @@ def add_handler(dp:Dispatcher):
     dp.add_handler(CallbackQueryHandler(vote_callback,pattern="^vote:[A-Za-z0-9_:]*"))
 
 def get_command():
-    return [BotCommand('gif','投票哪个是你最喜欢的')]
+    return [BotCommand('gif','The bot will send you a funny gif // 机器人会向您发送有趣的GIF')]
