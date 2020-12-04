@@ -92,9 +92,9 @@ def hourly(update,context):
         c = random.randint(50,200)
         add_coins(user,c)
         hourlytime = datetime.now() + timedelta(hours=1)
-        update.message.reply_text("Here are your hourly coins, %s\n%s coins were placed in your wallet."%(user.first_name,c))
+        update.message.reply_text("Here are your hourly coins, %s\n%s coins were placed in your wallet.\n这是您的每小时打卡的金币，%s \n%s GP已被放置在您的钱包中。"%(user.first_name,c,user.first_name,c))
     else:
-        update.message.reply_text("Slow it down, cmon!!! I'm not made of money dude, one hour hasn't passed yet!")
+        update.message.reply_text("Slow it down, cmon!!! I'm not made of money dude, one hour hasn't passed yet!\n放慢速度，呆瓜！我不是用钱做的，小家伙，一个小时还没有过去！")
     coins[uid]['hourlytime'] = hourlytime.strftime("%Y/%m/%d %H:%M:%S")
     save()
 
@@ -106,10 +106,15 @@ def daily(update,context):
     if datetime.now() > dailytime:
         c = random.randint(500,2000)
         add_coins(user,c)
-        dailytime = datetime.now() + timedelta(hours=24)
-        update.message.reply_text("Here are your daily coins, %s\n%s coins were placed in your wallet."%(user.first_name,c))
+        dailytime = datetime.now() + timedelta(days=1)
+        banknote = random.choice(["True","False"])
+        if banknote == "True":
+            coins[uid]['items'].append("banknote")
+            update.message.reply_text("Here are your daily coins, %s\n%s coins were placed in your wallet.\nOh? And Gringotts offered you a free banknote to store your cash!\n这是您的每天打卡的金币，%s\n%s GP已被放置在您的钱包中。\n哦？古灵阁为您提供了免费的钞票来存储您的现金！"%(user.first_name,c,user.first_name,c))
+        else:
+            update.message.reply_text("Here are your daily coins, %s\n%s coins were placed in your wallet.\n这是您的每天打卡的金币，%s\n%s GP已被放置在您的钱包中。"%(user.first_name,c,user.first_name,c))
     else:
-        update.message.reply_text("Slow it down, cmon!!! I'm not made of money dude, one day hasn't passed yet!")
+        update.message.reply_text("Slow it down, cmon!!! I'm not made of money dude, one day hasn't passed yet!\n放慢速度，呆瓜！我不是用钱做的，小家伙，一天还没有过去！")
     coins[uid]['dailytime'] = dailytime.strftime("%Y/%m/%d %H:%M:%S")    
     save()
 
@@ -202,7 +207,7 @@ _______________________________________
     elif context.args[0] == "banknote":
         update.message.reply_text("%s"%buy_stuff(user,"banknote",1800))
     else:
-        update.message.reply_text("Bruh this item doesn't even exist")
+        update.message.reply_text("Bruh this item doesn't even exist\n这个东西根本不存在")
 
 def banknote(update, context):
     user = update.effective_user
@@ -211,9 +216,9 @@ def banknote(update, context):
     if "banknote" in coins[uid]['items']:
         coins[uid]['bankspace'] += 1000
         coins[uid]['items'].remove("banknote")
-        update.message.reply_text("Success! You now have %s GP of storage in your bank!"%coins[uid]['bankspace'])
+        update.message.reply_text("Success! You now have %s GP of storage in your bank!\n成功！您现在在银行中拥有%s GP的存储空间！"%(coins[uid]['bankspace'],coins[uid]['bankspace']))
     else:
-        update.message.reply_text("You do not own a banknote lol\nYou can buty a banknote at the /shop")
+        update.message.reply_text("You do not own a banknote lol\nYou can buy a banknote at the /shop\n您没有钞票哈哈哈\n您可以在 /shop 中购买钞票")
 
 def eat(update, context):
     user = update.effective_user
@@ -289,7 +294,7 @@ Gain 69 HP.
     elif context.args[0] == "basilisk":
         update.message.reply_text("%s"%eat_stuff(user,"basilisk",69))
     else:
-        update.message.reply_text("Bruh the thing you want to eat is not edible!")
+        update.message.reply_text("Bruh the thing you want to eat is not edible!\n您要吃的东西不能食用！")
         
 def eat_stuff(user,aliment,c):
     uid = str(user.id)
@@ -317,12 +322,12 @@ def show_items(update,context):
 def buy_stuff(user,object,c):
     uid = str(user.id)
     if coins[uid]['coins'] < c:
-        return "No disrespect but... LMFAO ur so poor u need %s more GP "%(c-coins[uid]['coins'])
+        return "No disrespect but... LMFAO ur so poor u need %s more GP\n没什么不尊重，但是...哈哈哈哈哈哈哈哈哈哈哈您如此贫穷，您需要多%s的GP"%(c-coins[uid]['coins'],c-coins[uid]['coins'])
     coins[uid]['items'].append(object)
     coins[uid]['coins'] -= c
     coins[uid]['total'] -= c
     save()
-    return "Success! You have bought a/an/some %s! You still have %s GP."%(object,coins[uid]['coins'])
+    return "Success! You have bought a/an/some %s! You still have %s GP.\n成功！您已经购买了一个/一些%s！您仍然有%sGP。"%(object,coins[uid]['coins'],object,coins[uid]['coins'])
 
 def convert(update,context):
     user = update.effective_user
@@ -344,86 +349,86 @@ def convert(update,context):
 /convert bctogp {兽币的数量}：将1兽币转换为5GP！""")
     elif context.args[0] == "gptofc":
         if len(context.args) == 1:
-            update.message.reply_text("You need to enter a valid amount!")
+            update.message.reply_text("You need to enter a valid amount!\n您需要输入有效的数量！")
         elif context.args[1].isdigit():
             if int(context.args[1]) > coins[str(uid)]['coins']:
-                update.message.reply_text("Ur too poor u can't convert that many GP")
+                update.message.reply_text("Ur too poor u can't convert that many GP\n您太穷了，您无法兑换那么多GP")
             elif int(context.args[1]) <= 0 or int(context.args[1]) % 5 != 0:
-                update.message.reply_text("You need to enter a valid amount that can be divisible by 5!")
+                update.message.reply_text("You need to enter a valid amount that can be divisible by 5!\n您需要输入一个可以被5整除的有效数量！")
             else:
                 add_coins(user,-(int(context.args[1])))
                 fish.fishgame[str(uid)]['fcoins'] += int(int(context.args[1]) / 5)
                 update.message.reply_text("Success! You now have %s GP and %s fishcoins!"%(coins[str(uid)]['coins'],fish.fishgame[str(uid)]['fcoins']))
         else:
-            update.message.reply_text("You need to enter a valid amount!")
+            update.message.reply_text("You need to enter a valid amount!\n您需要输入有效的数量！")
     elif context.args[0] == "gptobc":
         if len(context.args) == 1:
-            update.message.reply_text("You need to enter a valid amount!")
+            update.message.reply_text("You need to enter a valid amount!\n您需要输入有效的数量！")
         elif context.args[1].isdigit():
             if int(context.args[1]) > coins[str(uid)]['coins']:
-                update.message.reply_text("Ur too poor u can't convert that many GP")
+                update.message.reply_text("Ur too poor u can't convert that many GP\n您太穷了，您无法兑换那么多GP")
             elif int(context.args[1]) <= 0 or int(context.args[1]) % 5 != 0:
-                update.message.reply_text("You need to enter a valid amount that can be divisible by 5!")
+                update.message.reply_text("You need to enter a valid amount that can be divisible by 5!\n您需要输入一个可以被5整除的有效数量！")
             else:
                 add_coins(user,-(int(context.args[1])))
                 hunt.huntgame[str(uid)]['bcoins'] += int(int(context.args[1]) / 5)
                 update.message.reply_text("Success! You now have %s GP and %s beastcoins!"%(coins[str(uid)]['coins'],hunt.huntgame[str(uid)]['bcoins']))
     elif context.args[0] == "fctobc":
         if len(context.args) == 1:
-            update.message.reply_text("You need to enter a valid amount!")
+            update.message.reply_text("You need to enter a valid amount!\n您需要输入有效的数量！")
         elif context.args[1].isdigit():
             if int(context.args[1]) > fish.fishgame[str(uid)]['fcoins']:
-                update.message.reply_text("Ur too poor u can't convert that many fishcoins")
+                update.message.reply_text("Ur too poor u can't convert that many fishcoins\n您太穷了，您无法兑换那么多鱼币")
             elif int(context.args[1]) <= 0:
-                update.message.reply_text("You need to enter a valid amount")
+                update.message.reply_text("You need to enter a valid amount\n您需要输入有效的数量")
             else:
                 fish.fishgame[str(uid)]['fcoins'] -= int(context.args[1])
                 hunt.huntgame[str(uid)]['bcoins'] += int(context.args[1])
                 update.message.reply_text("Success! You now have %s fishcoins and %s beastcoins!"%(fish.fishgame[str(uid)]['fcoins'],hunt.huntgame[str(uid)]['bcoins']))
         else:
-            update.message.reply_text("You need to enter a valid amount!")
+            update.message.reply_text("You need to enter a valid amount!\n您需要输入有效的数量！")
     elif context.args[0] == "bctofc":
         if len(context.args) == 1:
-            update.message.reply_text("You need to enter a valid amount!")
+            update.message.reply_text("You need to enter a valid amount!\n您需要输入有效的数量！")
         elif context.args[1].isdigit():
             if int(context.args[1]) > hunt.huntgame[str(uid)]['bcoins']:
-                update.message.reply_text("Ur too poor u can't convert that many beastcoins")
+                update.message.reply_text("Ur too poor u can't convert that many beastcoins\n您太穷了，您无法兑换那么多兽币")
             elif int(context.args[1]) <= 0:
-                update.message.reply_text("You need to enter a valid amount")
+                update.message.reply_text("You need to enter a valid amount\n您需要输入有效的数量")
             else:
                 fish.fishgame[str(uid)]['fcoins'] += int(context.args[1])
                 hunt.huntgame[str(uid)]['bcoins'] -= int(context.args[1])
                 update.message.reply_text("Success! You now have %s fishcoins and %s beastcoins!"%(fish.fishgame[str(uid)]['fcoins'],hunt.huntgame[str(uid)]['bcoins']))
         else:
-            update.message.reply_text("You need to enter a valid amount!")
+            update.message.reply_text("You need to enter a valid amount!\n您需要输入有效的数量！")
     elif context.args[0] == "fctogp":
         if len(context.args) == 1:
-            update.message.reply_text("You need to enter a valid amount!")
+            update.message.reply_text("You need to enter a valid amount!\n您需要输入有效的数量！")
         elif context.args[1].isdigit():
             if int(context.args[1]) > fish.fishgame[str(uid)]['fcoins']:
-                update.message.reply_text("Ur too poor u can't convert that many fishcoins")
+                update.message.reply_text("Ur too poor u can't convert that many fishcoins\n您太穷了，您无法兑换那么多鱼币")
             elif int(context.args[1]) <= 0:
-                update.message.reply_text("You need to enter a valid amount")
+                update.message.reply_text("You need to enter a valid amount\n您需要输入有效的数量")
             else:
                 add_coins(user,int(int(context.args[1]) * 5))
                 fish.fishgame[str(uid)]['fcoins'] -= int(context.args[1])
                 update.message.reply_text("Success! You now have %s GP and %s fishcoins!"%(coins[str(uid)]['coins'],fish.fishgame[str(uid)]['fcoins']))
         else:
-            update.message.reply_text("You need to enter a valid amount!")
+            update.message.reply_text("You need to enter a valid amount!\n您需要输入有效的数量！")
     elif context.args[0] == "bctogp":
         if len(context.args) == 1:
-            update.message.reply_text("You need to enter a valid amount!")
+            update.message.reply_text("You need to enter a valid amount!\n您需要输入有效的数量！")
         elif context.args[1].isdigit():
             if int(context.args[1]) > hunt.huntgame[str(uid)]['bcoins']:
-                update.message.reply_text("Ur too poor u can't convert that many fishcoins")
+                update.message.reply_text("Ur too poor u can't convert that many beastcoins\n您太穷了，您无法兑换那么多兽币")
             elif int(context.args[1]) <= 0:
-                update.message.reply_text("You need to enter a valid amount")
+                update.message.reply_text("You need to enter a valid amount\n您需要输入有效的数量")
             else:
                 add_coins(user,int(int(context.args[1]) * 5))
                 hunt.huntgame[str(uid)]['bcoins'] -= int(context.args[1])
                 update.message.reply_text("Success! You now have %s GP and %s beastcoins!"%(coins[str(uid)]['coins'],hunt.huntgame[str(uid)]['bcoins']))
         else:
-            update.message.reply_text("You need to enter a valid amount!")
+            update.message.reply_text("You need to enter a valid amount!\n您需要输入有效的数量！")
     save()
 
 def dep(update,context):
