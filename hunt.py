@@ -110,7 +110,7 @@ def hunt(update, context):
         huntgame[uid]['gametime'] = datetime.strftime(datetime.now() + timedelta(seconds=30),"%Y/%m/%d %H:%M:%S")
         save()
     else:
-        update.message.reply_text("Slow it down, cmon!!! The forest seems a little empty right now, try again in a few more seconds!\nCreator/作者: Sichengthebest")
+        update.message.reply_text("Slow it down, cmon!!! The forest seems a little empty right now, try again in a few more seconds!\n慢下来，呆瓜！森林里的动物似乎已经都被杀了，请在几秒钟后再试一次！\nCreator/作者: Sichengthebest")
 
 def check_rifle(uid): 
     check_user(uid) 
@@ -131,16 +131,23 @@ def shop(update, context):
     uid = str(update.effective_user.id)
     check_rifle(uid)
     markets = ["The Hunter's House","The Trap Territory","The Deer Master","Mr.Rutland's Hunter Corner"]
+    marketsCH = ["猎人之家","陷阱领土","鹿王","拉特兰先生的猎人之角"]
     if len(context.args) == 0:
         update.message.reply_text("""Here's some stuff you can buy at %s.
 --------------------------------------
 Upgrade your hunting rifle! %s beastcoins for upgrade.
 /huntshop rifle
-Current level: %s"""%(random.choice(markets),huntgame[uid]['lvluprifle'],huntgame[uid]['riflelvl']))
+Current level: %s
+--------------------------------------
+您可以在%s购买一些东西。
+--------------------------------------
+升级您的狩猎步枪！ %s兽币进行升级。
+/huntshop rifle
+当前等级：%s"""%(random.choice(markets),huntgame[uid]['lvluprifle'],huntgame[uid]['riflelvl'],random.choice(marketsCH),huntgame[uid]['lvluprifle'],huntgame[uid]['riflelvl']))
     elif context.args[0] == "rifle":
         update.message.reply_text("%s"%buy_rifle(uid))
     else:
-        update.message.reply_text("Bruh what are you doing this item isn't even in the shop!")
+        update.message.reply_text("Bruh what are you doing this item isn't even in the shop!\n你真parker，你在做什么？这个东西不在商店里！")
     save()
 
 def buy_rifle(uid):
@@ -151,16 +158,17 @@ def buy_rifle(uid):
             huntgame[uid]['riflelvl'] += 1
             huntgame[uid]['huntArr'].remove(huntgame[uid]['huntArr'][14])
             save()
-            return "Nice! Your current level: %s\nYou still have %s beastcoins"%(huntgame[uid]['riflelvl'],huntgame[uid]['bcoins'])
+            return "Nice! Your current level: %s\nYou still have %s beastcoins\n耶！您当前的级别：%s \n您还有%s兽币"%(huntgame[uid]['riflelvl'],huntgame[uid]['bcoins'],huntgame[uid]['riflelvl'],huntgame[uid]['bcoins'])
         else:
-            return "No offense but... HAHAHAHAHA YOU ARE SO POOR YOU CANNOT BUY THIS OBJECT"
+            return "No offense but... HAHAHAHAHA YOU ARE SO POOR YOU CANNOT BUY THIS OBJECT\n不想冒犯你，但是...哈哈哈哈哈，您太穷了，您无法购买此物品"
     else:
-        return "Bruh stop being so greedy ur already at max level"
+        return "Bruh stop being so greedy ur already at max level\n傻瓜不要这么贪婪，您已经处于最高等级"
+    save()
 
 def bal(update,context):
     uid = str(update.effective_user.id)
     check_user(uid)
-    update.message.reply_text("Your balance: %s beastcoins.\n/huntshop to buy items that increase your chances of catching animals!\n/huntshop 来购买可以增加您抓到动物的机会的物品！"%huntgame[uid]['bcoins'])
+    update.message.reply_text("Your balance: %s beastcoins/兽币.\n/huntshop to buy items that increase your chances of catching animals!\n/huntshop 来购买可以增加您抓到动物的机会的物品！"%huntgame[uid]['bcoins'])
 
 def get_command():
     return [BotCommand('hunt','Gain XP by catching animals. // 以捕捉动物的方式获得XP。')]
