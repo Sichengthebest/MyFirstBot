@@ -21,6 +21,9 @@ The bot's commands (for now) // 机器人的命令:
 /hourly - Get hourly GP! // 每时打卡！
 /beg - Go beg, peasant! // 去讨钱吧，穷人！
 /convert - Convert one currency into another! // 将一种货币转换为另一种货币！
+/dep - Deposit money from your wallet to your bank! // 从钱包里存钱到银行！
+/banknote - Increase the amount of GP you can stuff into your bank! // 增加您可以存入银行的GP数量！
+/withdraw - Withdraw money from your bank to your wallet! // 从银行提款！
 ```
 
 Find my bot [here](https://t.me/SichengsGodBot)!
