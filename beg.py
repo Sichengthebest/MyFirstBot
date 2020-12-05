@@ -22,7 +22,7 @@ def beg(update,context):
     get_users(user)
     t = datetime.now()
     if t < gametimes[user]:
-        update.message.reply_text("Slow it down, cmon!!! Stop begging so much, it makes you look like a little baby.\nCreator/作者: Sichengthebest")
+        update.message.reply_text("Slow it down, cmon!!! Stop begging so much, it makes you look like a little baby.\n放慢速度，呆瓜！！！别再乞讨了，这会让你看起来像个小婴儿。\nCreator/作者: Sichengthebest")
         return
     if index == 0:
         rwbotgod = random.randint(10,250)
@@ -62,5 +62,3 @@ def get_command():
 
 def add_handler(dispatcher):
     dispatcher.add_handler(CommandHandler('beg',beg))
-
-        
