@@ -453,6 +453,9 @@ def dep(update,context):
             if remspace == 0:
                 update.message.reply_text("Looks like you already have a full bank kiddo")
             else:
+                if coins[uid]['coins'] <= 0:
+                    update.message.reply_text("Looks like you have no money dude")
+                    return
                 if remspace > coins[uid]['coins']:
                     coins[uid]['bank'] += coins[uid]['coins']
                     coins[uid]['coins'] = 0
