@@ -9,7 +9,10 @@ from telegram import BotCommand
 # {
 #   uid : {
 #       'coins': 123,
+#       'hourlytime' : time
 #       'dailytime' : time
+#       'weeklytime' : time
+#       'yearlytime' : time
 #       'hp' : 56
 #       'items' : ["herring","trout","shark","boar","fox","deer","skunk","basilisk"]
 #       'bank' : 456
@@ -27,13 +30,14 @@ def save():
 def check_user(user):
     uid = str(user.id)
     if not uid in coins.keys():
-        coins[uid] = {'name':user.first_name,'coins':0,'dailytime':datetime.now().strftime("%Y/%m/%d %H:%M:%S"),'hourlytime':datetime.now().strftime("%Y/%m/%d %H:%M:%S"),'hp':100,'items':[],'bank':0,'bankspace':1000,'total':0}
+        coins[uid] = {'name':user.first_name,'coins':0,'yearlytime':datetime.now().strftime("%Y/%m/%d %H:%M:%S"),'weeklytime':datetime.now().strftime("%Y/%m/%d %H:%M:%S"),'dailytime':datetime.now().strftime("%Y/%m/%d %H:%M:%S"),'hourlytime':datetime.now().strftime("%Y/%m/%d %H:%M:%S"),'hp':100,'items':[],'bank':0,'bankspace':1000,'total':0}
         save()
 
 def check_hp(user):
     check_user(user)
     uid = str(user.id)
     if coins[uid]['hp'] == 0:
+        coins[uid]['total'] -= coins[uid]['coins']
         coins[uid]['coins'] = 0
         coins[uid]['hp'] = 100
         save()
@@ -118,96 +122,39 @@ def daily(update,context):
     coins[uid]['dailytime'] = dailytime.strftime("%Y/%m/%d %H:%M:%S")    
     save()
 
-def shop(update, context):
+def weekly(update,context):
     user = update.effective_user
     check_user(user)
-    markets = ["Walmart","Costco","Super C","Central Supermarket+"]
-    if len(context.args) == 0:
-        update.message.reply_text("""Here are some stuff you can buy at %s.
-FOOD:
---------------------------------------
-Buy apples! 🍎:
-Description: An apple a day keeps the doctors away! When you eat one, gain 10HP!
-500GP per 🍎
-/shop apple
---------------------------------------
-Buy brocolis! 🥦:
-Description: Eat your vegetables, it's actually good for you, you can gain 20HP!
-900GP per 🥦
-/shop brocoli
---------------------------------------
-Buy ramen! 🍜:
-Description: Good hot ramen is great for your health! You can gain 35HP per bowl!
-1500GP per 🍜
-/shop ramen
---------------------------------------
-Buy Super Interesting Magic Potions! 🍾:
-Description: Several Snap has developed a new potion that actually doesn't kill you! Instead, it makes you gain 50HP!
-2000GP per 🍾
-/shop simp
---------------------------------------
-TOOLS:
---------------------------------------
-Buy lifesavers! 💖:
-Description: When you accidentally chug down some Clorox or blindly enter the Chamber of Secrets, have no fear, the lifesaver is here! You can avoid death (and avoid losing all your coins in your wallet)
-3000GP per 💖
-/shop lifesaver
---------------------------------------
-Buy banknotes! 💸:
-Description: When your account in Gringotts can't handle the flow of coins, you can use the banknote to increase the amount of coins that you can stuff into it (1000 GP).
-1800GP per 💸
-/shop banknote
-_______________________________________
-
-您可以在%s购买一些东西。
-餐饮：
---------------------------------------
-买苹果！ 🍎：
-描述：每天一个苹果能让健康顶呱呱！当您吃一个时，获得10HP！
-每GP 500GP
-/shop apple
---------------------------------------
-买西兰花！ 🥦：
-描述：多吃蔬菜，实际上对您有好处，您可以获得20HP！
-每磅900GP
-/shop brocoli
---------------------------------------
-买拉面！ 🍜：
-描述：好的热拉面对您的健康有益！每碗可获得35HP！
-每🍜1500GP
-/shop ramen
---------------------------------------
-购买超级有趣的魔药！ 🍾：
-描述：西弗勒·斯纳普开发了一种新药水，实际上它并不会杀死您！相反，它使您获得50HP！
-每磅2000GP
-/shop simp
---------------------------------------
-工具：
---------------------------------------
-购买救生器！ 💖：
-描述：当您不小心喝掉一些高乐氏或盲目的进入密室时，不用担心，救生器就在这里！您可以避免死亡（并避免丢失钱包中的所有GP）
-每💖3000GP
-/shop lifesaver
---------------------------------------
-买钞票！ 💸：
-描述：当您的古灵阁帐户无法处理您过多的钱时，可以使用钞票增加可放入其中的硬币数量（1000 GP）。
-每💸1800GP
-/shop banknote
-"""%(random.choice(markets),random.choice(markets)))
-    elif context.args[0] == "apple":
-        update.message.reply_text("%s"%buy_stuff(user,"apple",500))
-    elif context.args[0] == "brocoli":
-        update.message.reply_text("%s"%buy_stuff(user,"brocoli",900))
-    elif context.args[0] == "ramen":
-        update.message.reply_text("%s"%buy_stuff(user,"ramen",1500))
-    elif context.args[0] == "simp":
-        update.message.reply_text("%s"%buy_stuff(user,"simp",2000))
-    elif context.args[0] == "lifesaver":
-        update.message.reply_text("%s"%buy_stuff(user,"lifesaver",3000))
-    elif context.args[0] == "banknote":
-        update.message.reply_text("%s"%buy_stuff(user,"banknote",1800))
+    uid = str(user.id)
+    hourlytime = datetime.strptime(coins[uid]['weeklytime'],"%Y/%m/%d %H:%M:%S")
+    if datetime.now() > hourlytime:
+        c = random.randint(2000,5000)
+        fc = random.randint(20,50)
+        bc = random.randint(15,60)
+        add_coins(user,c)
+        hunt.huntgame[uid]['bcoins'] += bc
+        fish.fishgame[uid]['fcoins'] += fc
+        hourlytime = datetime.now() + timedelta(days=7)
+        update.message.reply_text("Here are your weekly coins, %s\n%s coins were placed in your wallet.\nYou also got %s huntcoins and %s fishcoins!\n这是您的每小时打卡的金币，%s \n%s GP已被放置在您的钱包中。\n您也得到了%s兽币和%s鱼币！"%(user.first_name,c,bc,fc,user.first_name,c,bc,fc))
     else:
-        update.message.reply_text("Bruh this item doesn't even exist\n这个东西根本不存在")
+        update.message.reply_text("Slow it down, cmon!!! I'm not made of money dude, one week hasn't passed yet!\n放慢速度，呆瓜！我不是用钱做的，小家伙，一个星期还没有过去！")
+    coins[uid]['weeklytime'] = hourlytime.strftime("%Y/%m/%d %H:%M:%S")
+    save()
+
+def yearly(update,context):
+    user = update.effective_user
+    check_user(user)
+    uid = str(user.id)
+    hourlytime = datetime.strptime(coins[uid]['yearlytime'],"%Y/%m/%d %H:%M:%S")
+    if datetime.now() > hourlytime:
+        c = 1
+        add_coins(user,c)
+        hourlytime = datetime.now() + timedelta(weeks=52)
+        update.message.reply_text("Here are your yearly coins, %s\n%s GP was placed in your wallet. Didn't you expect more?\n这是您的每年打卡的金币，%s \n%s GP已被放置在您的钱包中。你没期待更多吗？"%(user.first_name,c,user.first_name,c))
+    else:
+        update.message.reply_text("Slow it down, cmon!!! I'm not made of money dude, maybe you do hate 2020, but New Year did not pass yet!\n放慢速度，呆瓜！我不是用钱做的，也许您确实讨厌2020年，但新年还没有过去！")
+    coins[uid]['yearlytime'] = hourlytime.strftime("%Y/%m/%d %H:%M:%S")
+    save()
 
 def banknote(update, context):
     user = update.effective_user
@@ -319,16 +266,6 @@ def show_items(update,context):
     uid = str(user.id)
     update.message.reply_text("%s"%coins[uid]['items'])
 
-def buy_stuff(user,object,c):
-    uid = str(user.id)
-    if coins[uid]['coins'] < c:
-        return "No disrespect but... LMFAO ur so poor u need %s more GP\n没什么不尊重，但是...哈哈哈哈哈哈哈哈哈哈哈您如此贫穷，您需要多%s的GP"%(c-coins[uid]['coins'],c-coins[uid]['coins'])
-    coins[uid]['items'].append(object)
-    coins[uid]['coins'] -= c
-    coins[uid]['total'] -= c
-    save()
-    return "Success! You have bought a/an/some %s! You still have %s GP.\n成功！您已经购买了一个/一些%s！您仍然有%sGP。"%(object,coins[uid]['coins'],object,coins[uid]['coins'])
-
 def convert(update,context):
     user = update.effective_user
     uid = user.id
@@ -347,10 +284,11 @@ def convert(update,context):
 /convert bctofc {兽币的数量}：将1兽币转换为1鱼币！
 /convert fctogp {鱼币的数量}：将1鱼币转换为5GP！
 /convert bctogp {兽币的数量}：将1兽币转换为5GP！""")
-    elif context.args[0] == "gptofc":
-        if len(context.args) == 1:
-            update.message.reply_text("You need to enter a valid amount!\n您需要输入有效的数量！")
-        elif context.args[1].isdigit():
+    if len(context.args) == 1:
+        update.message.reply_text("You need to enter a valid amount!\n您需要输入有效的数量！")
+        return
+    if context.args[1].isdigit():
+        if context.args[0] == "gptofc":
             if int(context.args[1]) > coins[str(uid)]['coins']:
                 update.message.reply_text("Ur too poor u can't convert that many GP\n您太穷了，您无法兑换那么多GP")
             elif int(context.args[1]) <= 0 or int(context.args[1]) % 5 != 0:
@@ -359,12 +297,7 @@ def convert(update,context):
                 add_coins(user,-(int(context.args[1])))
                 fish.fishgame[str(uid)]['fcoins'] += int(int(context.args[1]) / 5)
                 update.message.reply_text("Success! You now have %s GP and %s fishcoins!"%(coins[str(uid)]['coins'],fish.fishgame[str(uid)]['fcoins']))
-        else:
-            update.message.reply_text("You need to enter a valid amount!\n您需要输入有效的数量！")
-    elif context.args[0] == "gptobc":
-        if len(context.args) == 1:
-            update.message.reply_text("You need to enter a valid amount!\n您需要输入有效的数量！")
-        elif context.args[1].isdigit():
+        elif context.args[0] == "gptobc":
             if int(context.args[1]) > coins[str(uid)]['coins']:
                 update.message.reply_text("Ur too poor u can't convert that many GP\n您太穷了，您无法兑换那么多GP")
             elif int(context.args[1]) <= 0 or int(context.args[1]) % 5 != 0:
@@ -373,10 +306,7 @@ def convert(update,context):
                 add_coins(user,-(int(context.args[1])))
                 hunt.huntgame[str(uid)]['bcoins'] += int(int(context.args[1]) / 5)
                 update.message.reply_text("Success! You now have %s GP and %s beastcoins!"%(coins[str(uid)]['coins'],hunt.huntgame[str(uid)]['bcoins']))
-    elif context.args[0] == "fctobc":
-        if len(context.args) == 1:
-            update.message.reply_text("You need to enter a valid amount!\n您需要输入有效的数量！")
-        elif context.args[1].isdigit():
+        elif context.args[0] == "fctobc":
             if int(context.args[1]) > fish.fishgame[str(uid)]['fcoins']:
                 update.message.reply_text("Ur too poor u can't convert that many fishcoins\n您太穷了，您无法兑换那么多鱼币")
             elif int(context.args[1]) <= 0:
@@ -385,12 +315,7 @@ def convert(update,context):
                 fish.fishgame[str(uid)]['fcoins'] -= int(context.args[1])
                 hunt.huntgame[str(uid)]['bcoins'] += int(context.args[1])
                 update.message.reply_text("Success! You now have %s fishcoins and %s beastcoins!"%(fish.fishgame[str(uid)]['fcoins'],hunt.huntgame[str(uid)]['bcoins']))
-        else:
-            update.message.reply_text("You need to enter a valid amount!\n您需要输入有效的数量！")
-    elif context.args[0] == "bctofc":
-        if len(context.args) == 1:
-            update.message.reply_text("You need to enter a valid amount!\n您需要输入有效的数量！")
-        elif context.args[1].isdigit():
+        elif context.args[0] == "bctofc":
             if int(context.args[1]) > hunt.huntgame[str(uid)]['bcoins']:
                 update.message.reply_text("Ur too poor u can't convert that many beastcoins\n您太穷了，您无法兑换那么多兽币")
             elif int(context.args[1]) <= 0:
@@ -399,12 +324,7 @@ def convert(update,context):
                 fish.fishgame[str(uid)]['fcoins'] += int(context.args[1])
                 hunt.huntgame[str(uid)]['bcoins'] -= int(context.args[1])
                 update.message.reply_text("Success! You now have %s fishcoins and %s beastcoins!"%(fish.fishgame[str(uid)]['fcoins'],hunt.huntgame[str(uid)]['bcoins']))
-        else:
-            update.message.reply_text("You need to enter a valid amount!\n您需要输入有效的数量！")
-    elif context.args[0] == "fctogp":
-        if len(context.args) == 1:
-            update.message.reply_text("You need to enter a valid amount!\n您需要输入有效的数量！")
-        elif context.args[1].isdigit():
+        elif context.args[0] == "fctogp":
             if int(context.args[1]) > fish.fishgame[str(uid)]['fcoins']:
                 update.message.reply_text("Ur too poor u can't convert that many fishcoins\n您太穷了，您无法兑换那么多鱼币")
             elif int(context.args[1]) <= 0:
@@ -413,12 +333,7 @@ def convert(update,context):
                 add_coins(user,int(int(context.args[1]) * 5))
                 fish.fishgame[str(uid)]['fcoins'] -= int(context.args[1])
                 update.message.reply_text("Success! You now have %s GP and %s fishcoins!"%(coins[str(uid)]['coins'],fish.fishgame[str(uid)]['fcoins']))
-        else:
-            update.message.reply_text("You need to enter a valid amount!\n您需要输入有效的数量！")
-    elif context.args[0] == "bctogp":
-        if len(context.args) == 1:
-            update.message.reply_text("You need to enter a valid amount!\n您需要输入有效的数量！")
-        elif context.args[1].isdigit():
+        elif context.args[0] == "bctogp":
             if int(context.args[1]) > hunt.huntgame[str(uid)]['bcoins']:
                 update.message.reply_text("Ur too poor u can't convert that many beastcoins\n您太穷了，您无法兑换那么多兽币")
             elif int(context.args[1]) <= 0:
@@ -428,7 +343,9 @@ def convert(update,context):
                 hunt.huntgame[str(uid)]['bcoins'] -= int(context.args[1])
                 update.message.reply_text("Success! You now have %s GP and %s beastcoins!"%(coins[str(uid)]['coins'],hunt.huntgame[str(uid)]['bcoins']))
         else:
-            update.message.reply_text("You need to enter a valid amount!\n您需要输入有效的数量！")
+            update.message.reply_text("You need to enter a valid conversion!\n您需要输入有效的换算！")
+    else:
+        update.message.reply_text("You need to enter a valid amount!\n您需要输入有效的数量！")
     save()
 
 def dep(update,context):
@@ -459,11 +376,12 @@ def dep(update,context):
                 if remspace > coins[uid]['coins']:
                     coins[uid]['bank'] += coins[uid]['coins']
                     coins[uid]['coins'] = 0
-                    update.message.reply_text("Success! You have deposited %s GP and now have %s GP in your wallet and %s GP in your bank."%(coins[uid]['coins'],coins[uid]['coins'],coins[uid]['bank']))
+                    update.message.reply_text("Success! You have deposited %s GP and now have %s GP in your wallet and %s GP in your bank."%(coins[uid]['bank'],coins[uid]['coins'],coins[uid]['bank']))
                 elif remspace <= coins[uid]['coins']:
+                    remmspace = remspace
                     coins[uid]['coins'] -= remspace
                     coins[uid]['bank'] += remspace
-                    update.message.reply_text("Success! You have deposited %s GP and now have %s GP in your wallet and %s GP in your bank."%(remspace,coins[uid]['coins'],coins[uid]['bank']))
+                    update.message.reply_text("Success! You have deposited %s GP and now have %s GP in your wallet and %s GP in your bank."%(remmspace,coins[uid]['coins'],coins[uid]['bank']))
         else:
             update.message.reply_text("Your argument should be a number, or /dep all , dumdum") 
     save()
@@ -504,7 +422,8 @@ def get_command():
         BotCommand('bal','Check the amount of money you have. // 检查您有多少GP。'),
         BotCommand('daily','Get daily GP! // 每日打卡！'),
         BotCommand('hourly','Get hourly GP! // 每小时打卡！'),
-        BotCommand('shop',' Buy nice useful stuff! // 购买有用的东西！'),
+        BotCommand('weekly','Get weekly GP! // 每星期打卡！'),
+        BotCommand('yearly','Get yearly GP! // 每年打卡！'),
         BotCommand('eat','Eat to gain HP // 吃东西来增加HP'),
         BotCommand('inv','[BETA] Check the items you have in your inventory. // [测试] 检查库存中的物品。'),
         BotCommand('convert','Convert one currency into another! // 将一种货币转换为另一种货币！'),
@@ -517,7 +436,8 @@ def add_handler(dp:Dispatcher):
     dp.add_handler(CommandHandler('bal', get_coins))
     dp.add_handler(CommandHandler('daily', daily))
     dp.add_handler(CommandHandler('hourly', hourly))
-    dp.add_handler(CommandHandler('shop', shop))
+    dp.add_handler(CommandHandler('weekly', weekly))
+    dp.add_handler(CommandHandler('yearly', yearly))
     dp.add_handler(CommandHandler('eat', eat))
     dp.add_handler(CommandHandler('inv', show_items))
     dp.add_handler(CommandHandler('convert', convert))
