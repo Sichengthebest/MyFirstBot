@@ -10,6 +10,7 @@ import coins
 import beg
 import gif
 import gamble
+import shop
 from telegram.ext import CommandHandler, Updater
 from telegram import BotCommand
 
@@ -74,7 +75,8 @@ coins.add_handler(dispatcher)
 beg.add_handler(dispatcher)
 gif.add_handler(dispatcher)
 gamble.add_handler(dispatcher)
-commands = coins.get_command() + capitals.get_command() + search.get_command() + guess.get_command() + fish.get_command() + hunt.get_command() + get_command() + beg.get_command() + gif.get_command() + gamble.get_command()
+shop.add_handler(dispatcher)
+commands = coins.get_command() + capitals.get_command() + search.get_command() + guess.get_command() + fish.get_command() + hunt.get_command() + get_command() + beg.get_command() + gif.get_command() + gamble.get_command() + shop.get_command()
 updater.bot.set_my_commands(commands)
 
 updater.start_polling()
