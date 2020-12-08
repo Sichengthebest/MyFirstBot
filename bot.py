@@ -19,29 +19,41 @@ def start(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text=msg)
 
 def help(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="""Here's all my bot's commands. Have fun!
-这是我的机器人的所有命令。玩得开心点！
+    context.bot.send_message(chat_id=update.effective_chat.id, text="""Here's all my commands. Have fun!
+这是我的所有命令。玩得开心点！
 -------------------------------------------------
+Start commmand:
 /start - Random command that makes the bot say \"I'm THE GOD OF BOTS...\" // 使机器人说 “我是机器人的上帝” 的随机命令。
-/hunt - Gain XP by catching animals. // 以捕捉动物的方式获得XP。
+-------------------------------------------------
+Currency commands:
+/hunt - Gain beastcoins by catching animals. // 以捕捉动物的方式获得兽币。
 /huntbal - Check the amount of beastcoins you have. // 检查您有多少兽币。
 /huntshop - Buy nice useful stuff for catching more animals! // 购买帮忙捕捉动物的东西！
-/fish - Gain XP by fishing. // 以钓鱼的方式获得XP。
+/fish - Gain fishcoins by fishing. // 以钓鱼的方式获得鱼币。
 /fishbal - Check the amount of fishcoins you have. // 检查您有多少鱼币。
 /fishshop - Buy nice useful stuff for catching more fish! // 购买帮忙捕捉鱼的东西！
 /search - Go fetch the GP falling from the sky!!! // 去获取从天上掉下来的GP吧！！！
-/guessnum - Guess a number between 1 and 100. Try and do it with the least number of tries possible! // 猜一个0-100之间的数字。尽量减少尝试次数！
-/capitals - How good are you at capitals? // 你了解所有首都吗？
-/bal - Check the amount of money you have. // 检查您有多少GP。
-/shop - Buy nice useful stuff! // 购买有用的东西！
-/inv - [BETA] Check the items you have in your inventory. // [测试] 检查库存中的物品。
 /daily - Get daily GP! // 每日打卡！
 /hourly - Get hourly GP! // 每时打卡！
 /beg - Go beg, peasant! // 去讨钱吧，穷人！
 /convert - Convert one currency into another! // 将一种货币转换为另一种货币！
+/bal - Check the amount of money you have. // 检查您有多少GP。
+-------------------------------------------------
+Inventory commands:
+/shop - Buy nice useful stuff! // 购买有用的东西！
+/sell - Sell useless stuff. // 出售无用的东西。
+/inv - [BETA] Check the items you have in your inventory. // [测试] 检查库存中的物品。
+-------------------------------------------------
+Bank commands:
 /dep - Deposit money from your wallet to your bank! // 从钱包里存钱到银行！
-/banknote - Increase the amount of GP you can stuff into your bank! // 增加您可以存入银行的GP数量！
 /withdraw - Withdraw money from your bank to your wallet! // 从银行提款！
+/banknote - Increase the amount of GP you can stuff into your bank! // 增加您可以存入银行的GP数量！
+-------------------------------------------------
+Fun commands:
+/guessnum - Guess a number between 1 and 100. Try and do it with the least number of tries possible! // 猜一个0-100之间的数字。尽量减少尝试次数！
+/capitals - How good are you at capitals? // 你了解所有首都吗？
+/gif - The bot will send you a funny gif. // 机器人会向您发送有趣的GIF。
+/gamble - Roll your dice against the bot, if you get higher than the bot you'll win! // 与机器人投骰子，如果得到的数比机器人高，您将获胜！
 Creator/作者: Sichengthebest""")
 def read_file_as_str(file_path):
     # 判断路径文件存在
