@@ -15,30 +15,105 @@ huntgame = config.CONFIG["hunt"]
 #       riflelvl: int
 #   }
 # }
+
+translater = {
+    "skunk1":{
+        "msg":"You brought back a skunk! Gain 10 beastcoins. BTW I wonder who would want a skunk...\n你带回了一只臭鼬！获得10兽币。顺便说一句，我想知道谁会想要臭鼬...",
+        "gif":'https://thumbs.gfycat.com/DeepSpryJanenschia-small.gif',
+        "bcoins":10
+    },
+    "skunk2":{
+        "msg":"You brought back a skunk! Gain 10 beastcoins. You STINK!\n你带回了一只臭鼬！获得10兽币。你好臭！",
+        "gif":'https://thumbs.gfycat.com/DeepSpryJanenschia-small.gif',
+        "bcoins":10
+    },
+    "deer1":{
+        "msg":"You have caught a deer! Gain 25 beastcoins. Good thing you didn't get lost in the forest!\n你抓到了一头鹿！获得25兽币。很好，你没有在森林里迷路！",
+        "gif":'https://media1.tenor.com/images/1100bff4414c3328797c3f39422e347e/tenor.gif?itemid=7246228',
+        "bcoins":25
+    },
+    "deer2":{
+        "msg":"You have caught a deer! Gain 25 beastcoins. Good thing you brought your compass!\n你抓到了一头鹿！获得25兽币。很好，你带了指南针！",
+        "gif":'https://media1.tenor.com/images/1100bff4414c3328797c3f39422e347e/tenor.gif?itemid=7246228',
+        "bcoins":25
+    },
+    "deer3":{
+        "msg":"You have caught a deer! Gain 25 beastcoins.\n你抓到了一头鹿！获得25兽币。",
+        "gif":'https://media1.tenor.com/images/1100bff4414c3328797c3f39422e347e/tenor.gif?itemid=7246228',
+        "bcoins":25
+    },
+    "fox":{
+        "msg":"You have caught a fox! Nice work! Gain 30 beastcoins.\n你抓到了一只狐狸！干得好！获得30兽币",
+        "gif":'https://i.imgur.com/NSxU6zi.gif',
+        "bcoins":30
+    },
+    "rhino":{
+        "msg":"You have caught a rhinoceros! Was that even legal? Anyways, the buyer gave you 100 beastcoins.\n你抓到了犀牛！那合法吗？无论如何，卖家给了你100兽币。",
+        "gif":'https://thumbs.gfycat.com/SnivelingInsidiousAfricanmolesnake-size_restricted.gif',
+        "bcoins":100
+    },
+    "basilisk":{
+        "msg":"You have caught a BASILISK!! Where in the world did you find that??? These 250 beastcoins are for you, you earned them!!!\n您抓到了蛇怪！您在哪里找到的？？？这250兽币是给你的，无敌战士！",
+        "gif":'https://pa1.narvii.com/6313/78f72b6a49d0b52d862f339ce9c957b9d1224ffb_hq.gif',
+        "bcoins":250
+    },
+    "not1":{
+        "msg":"You are so BAD, you didn't bring back anything!\n你好烂，你什么也没抓到！",
+        "gif":"https://i.imgur.com/A7JObT4.gif",
+        "bcoins":0
+    },
+    "not2":{
+        "msg":"U suck, you didn't bring back anything!\n你好烂，你什么也没抓到！",
+        "gif":"https://i.imgur.com/A7JObT4.gif",
+        "bcoins":0
+    },
+    "not3":{
+        "msg":"LMAO you are so BAD, you didn't bring back anything!\n哈哈哈 你好烂，你什么也没抓到！",
+        "gif":"https://i.imgur.com/A7JObT4.gif",
+        "bcoins":0
+    },
+    "not4":{
+        "msg":"You forgot your AK-47! Too bad.\n你忘记了你的AK-47！太糟糕了。",
+        "gif":"https://i.imgur.com/A7JObT4.gif",
+        "bcoins":0
+    },
+    "not5":{
+        "msg":"You have caught a fox, but some stole it from you!\n您捉住了一只狐狸，但是有人偷走了它！",
+        "gif":'https://i.imgur.com/NSxU6zi.gif',
+        "bcoins":0
+    },
+    "bear":{
+        "msg":"A bear caught you and you lost 30HP!\n一只熊抓住了您，您损失了30HP",
+        "gif":"https://media.tenor.com/images/b56c248026025ffb4677957bc9079c40/tenor.gif",
+        "bcoins":0
+    },
+    "basiliskdead":{
+        "msg":"You DIED while fighting the basilisk!\n您在与蛇怪战斗时死了！",
+        "gif":"https://i.pinimg.com/originals/35/97/03/359703d544dc70bb1a12852888198e66.gif",
+        "bcoins":0
+    },
+    "elephant":{
+        "msg":"You have caught an elephant, but some annoying dude found your ads, and called the cops on you! You got fined 100 beastcoins.\n您抓到了一头大象，但是一些恼人的家伙找到了您的广告，并叫了警察！您被罚款100枚野兽币。",
+        "gif":"https://static.wikia.nocookie.net/farcry/images/9/92/Giphy.gif/revision/latest/top-crop/width/220/height/220?cb=20180906101132",
+        "bcoins":-100
+    }
+}
+
+translater2 = {
+    "skunk1": "skunk",
+    "skunk2": "skunk",
+    "deer1": "deer",
+    "deer2": "deer",
+    "deer3": "deer"
+}
+
 def check_user(uid):
     if not uid in huntgame:
+#       item = random.choice(hg[uid]['huntArr'])
+#       send_msg( translater[item]['msg'] )
+#       send_anim( translater[item]['gif']  caption=translater[item]['msg'] )
         huntgame[uid] = {
-            'huntArr': ["You brought back a skunk! Gain 10 beastcoins. BTW I wonder who would want a skunk...\n你带回了一只臭鼬！获得10兽币。顺便说一句，我想知道谁会想要臭鼬...",
-            "You brought back a skunk! Gain 10 beastcoins. You STINK!\n你带回了一只臭鼬！获得10兽币。你好臭！",
-            "You have caught a deer! Gain 25 beastcoins. Good thing you didn't get lost in the forest!\n你抓到了一头鹿！获得25兽币。很好，你没有在森林里迷路！",
-            "You have caught a deer! Gain 25 beastcoins. Good thing you brought your compass!\n你抓到了一头鹿！获得25兽币。很好，你带了指南针！",
-            "You have caught a fox! Nice work! Gain 30 beastcoins.\n你抓到了一只狐狸！干得好！获得30兽币",
-            "You have caught a deer! Gain 25 beastcoins.\n你抓到了一头鹿！获得25兽币。",
-            "You have caught a rhinoceros! Was that even legal? Anyways, the buyer gave you 100 beastcoins.\n你抓到了犀牛！那合法吗？无论如何，卖家给了你100兽币。",
-            "You have caught a BASILISK!! Where in the world did you find that??? These 250 beastcoins are for you, you earned them!!!\n您抓到了蛇怪！您在哪里找到的？？？这250兽币是给你的，无敌战士！",
-            "You forgot your AK-47! Too bad.\n你忘记了你的AK-47！太糟糕了。",
-            "You are so BAD, you didn't bring back anything!\n你好烂，你什么也没抓到！",
-            "You caught a fox, but someone stole it from you!\n您捉住了一只狐狸，但有人偷走了它！",
-            "A bear caught you and you lost 30HP!\n一只熊抓住了您，您损失了30HP",
-            "You caught an elephant, but the ads you placed was found by someone, and he called the cops on you! You got fined 100 beastcoins. Maybe try the black market next time?\n您抓到一头大象，但您的猎物被某人发现，他叫了警察！您被罚款100兽币。",
-            "You DIED while fighting the basilisk!\n您在与蛇怪战斗时死了！",
-            "You are so BAD, you didn't bring back anything!\n你好烂，你什么也没抓到！",
-            "You are so BAD, you didn't bring back anything!\n你好烂，你什么也没抓到！",
-            "You are so BAD, you didn't bring back anything!\n你好烂，你什么也没抓到！",
-            "You are so BAD, you didn't bring back anything!\n你好烂，你什么也没抓到！",
-            "You are so BAD, you didn't bring back anything!\n你好烂，你什么也没抓到！",
-            "LMAO you are so BAD, you didn't bring back anything!\n哈哈哈 你好烂，你什么也没抓到！",
-            "U suck, you didn't bring back anything!\n你好烂，你什么也没抓到！"],
+            'huntArr': ["skunk1","skunk2","deer1","deer2","deer3","fox","rhino","basilisk","not1","not1","not1","not1","not1","not2","not3","not4","not5","bear","basiliskdead","elephant"],
             'bcoins':0,
             'gametime':datetime.now().strftime("%Y/%m/%d %H:%M:%S"),
             'riflelvl':0,
@@ -49,64 +124,19 @@ def save():
     config.CONFIG["hunt"] = huntgame
     config.save_config()
 
-def check_gif(uid,result):
-    huntArr = huntgame[uid]['huntArr']
-    gif = ''
-    if result == huntArr[0] or result == huntArr[1]:
-        gif = 'https://thumbs.gfycat.com/DeepSpryJanenschia-small.gif'
-    elif result == huntArr[2] or result == huntArr[3] or result == huntArr[5]:
-        gif = 'https://media1.tenor.com/images/1100bff4414c3328797c3f39422e347e/tenor.gif?itemid=7246228'
-    elif result == huntArr[4] or result == huntArr[9]:
-        gif = 'https://i.imgur.com/NSxU6zi.gif'
-    elif result == huntArr[6]:
-        gif = 'https://thumbs.gfycat.com/SnivelingInsidiousAfricanmolesnake-size_restricted.gif'
-    elif result == huntArr[7]:
-        gif = 'https://pa1.narvii.com/6313/78f72b6a49d0b52d862f339ce9c957b9d1224ffb_hq.gif'
-    elif result == huntArr[10]:
-        gif = 'https://media.tenor.com/images/b56c248026025ffb4677957bc9079c40/tenor.gif'
-    elif result == huntArr[11]:
-        gif = 'https://thumbs.gfycat.com/OffbeatTornBrant-size_restricted.gif'
-    elif result == huntArr[12]:
-        gif = 'https://i.pinimg.com/originals/35/97/03/359703d544dc70bb1a12852888198e66.gif'
-    else:
-        gif = 'https://i.imgur.com/A7JObT4.gif'
-    return gif
-
-def check_animal(uid,user):
-    huntArr = huntgame[uid]['huntArr']
-    result = random.choice(huntArr)
-    if result == huntArr[0] or result == huntArr[1]:
-        huntgame[uid]['bcoins'] += 10
-        coins.add_item(user,"skunk",1)
-    elif result == huntArr[2] or result == huntArr[3] or result == huntArr[5]:
-        huntgame[uid]['bcoins'] += 25
-        coins.add_item(user,"deer",1)
-    elif result == huntArr[4]:
-        huntgame[uid]['bcoins'] += 30
-        coins.add_item(user,"fox",1)
-    elif result == huntArr[6]:
-        huntgame[uid]['bcoins'] += 100
-        coins.add_item(user,"rhino",1)
-    elif result == huntArr[7]:
-        huntgame[uid]['bcoins'] += 250
-        coins.add_item(user,"basilisk",1)
-    elif result == huntArr[10]:
-        coins.add_hp(user,-30)
-    elif result == huntArr[11]:
-        huntgame[uid]['bcoins'] -= 100
-    elif result == huntArr[12]:
-        coins.add_hp(user,-100)
-    save()
-    return result
-
 def hunt(update, context):
-    uid = str(update.effective_user.id)
     user = update.effective_user
+    uid = str(user.id)
     check_user(uid)
     t = datetime.now() 
     if t >= datetime.strptime(huntgame[uid]['gametime'],"%Y/%m/%d %H:%M:%S"):
-        result = check_animal(uid,user)
-        update.message.reply_animation('%s'%check_gif(uid,result),caption="%s\n/huntbal to see the number of beastcoins you have!\n/huntbal 来看看你有多少兽币！\nCreator/作者: Sichengthebest"%result)
+        item = random.choice(huntgame[uid]['huntArr'])
+        update.message.reply_animation('%s'%translater[item]["gif"],caption="%s\n/huntbal to see the number of beastcoins you have!\n/huntbal 来看看你有多少兽币！\nCreator/作者: Sichengthebest"%translater[item]['msg'])
+        huntgame[uid]['bcoins'] += translater[item]["bcoins"]
+        if item == "skunk1" or item == "skunk2" or item == "deer1" or item == "deer2" or item == "deer3":
+            coins.add_item(user,translater2[item],1)
+        elif item == "rhino" or item == "fox" or item == "basilisk":
+            coins.add_item(user,item,1)
         huntgame[uid]['gametime'] = datetime.strftime(datetime.now() + timedelta(seconds=30),"%Y/%m/%d %H:%M:%S")
         save()
     else:
@@ -141,7 +171,7 @@ Current level: %s
 --------------------------------------
 您可以在%s购买一些东西。
 --------------------------------------
-升级您的狩猎步枪！ %s兽币进行升级。
+升级您的狩猎步枪！%s兽币进行升级。
 /huntshop rifle
 当前等级：%s"""%(random.choice(markets),huntgame[uid]['lvluprifle'],huntgame[uid]['riflelvl'],random.choice(marketsCH),huntgame[uid]['lvluprifle'],huntgame[uid]['riflelvl']))
     elif context.args[0] == "rifle":
@@ -156,7 +186,7 @@ def buy_rifle(uid):
         if huntgame[uid]['bcoins'] >= int(huntgame[uid]['lvluprifle']):
             huntgame[uid]['bcoins'] -= int(huntgame[uid]['lvluprifle'])
             huntgame[uid]['riflelvl'] += 1
-            huntgame[uid]['huntArr'].remove(huntgame[uid]['huntArr'][14])
+            huntgame[uid]['huntArr'].remove("not1")
             save()
             return "Nice! Your current level: %s\nYou still have %s beastcoins\n耶！您当前的级别：%s \n您还有%s兽币"%(huntgame[uid]['riflelvl'],huntgame[uid]['bcoins'],huntgame[uid]['riflelvl'],huntgame[uid]['bcoins'])
         else:
