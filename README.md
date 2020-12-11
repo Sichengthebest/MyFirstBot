@@ -39,4 +39,4 @@ Fun commands // 有趣的命令:
 
 Find my bot [here](https://t.me/SichengsGodBot)!
 
-我的机器人在 [这里](https://t.me/SichengsGodBot!)！
+我的机器人在 [这里](https://t.me/SichengsGodBot)！
