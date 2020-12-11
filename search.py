@@ -28,7 +28,7 @@ def search(update, context):
     index = random.randint(0,12)
     index1 = random.randint(0,12)
     index2 = random.randint(0,12)
-    uid = update.effective_user.id
+    uid = user.id
     while index == index1:
         index1 = random.randint(0,12)
     while index == index2:
@@ -49,7 +49,8 @@ def search(update, context):
 def srchCallback(update, context): 
     global index,index1,index2,chosen,msg
     place, curruid = update.callback_query.data.split('-')
-    uid = update.effective_user.id
+    user = update.effective_user
+    uid = user.id
     query = update.callback_query
     if str(uid) != curruid:
         query.answer("你是谁？你在哪儿？你想做啥？这是别人的，大笨蛋！",show_alert=True)
@@ -59,9 +60,9 @@ def srchCallback(update, context):
         covid19r = random.choice(covidArr)
         query.edit_message_caption("You %s\n\n%s\nCreator/作者: Sichengthebest"%(place,covid19r))
         if covid19r == covidArr[0]:
-            coins.add_coins(update.effective_user,55)
+            coins.add_coins(user,55)
         elif covid19r == covidArr[1]:
-            coins.add_coins(update.effective_user,-40)
+            coins.add_coins(user,-40)
         index = random.randint(0,12)
         index1 = random.randint(0,12)
         index2 = random.randint(0,12)
@@ -78,9 +79,9 @@ def srchCallback(update, context):
         gResult = random.choice(garageArr)
         query.edit_message_caption("You %s\n%s\nCreator/作者: Sichengthebest"%(place,gResult))
         if gResult == garageArr[0]:
-            coins.add_coins(update.effective_user,garagenum)
+            coins.add_coins(user,garagenum)
         elif gResult == garageArr[1]:
-            coins.add_hp(update.effective_user,-25)
+            coins.add_hp(user,-25)
         index = random.randint(0,12)
         index1 = random.randint(0,12)
         index2 = random.randint(0,12)
@@ -97,9 +98,9 @@ def srchCallback(update, context):
         bankResult = random.choice(bankArr)
         query.edit_message_caption("You %s\n%s\nCreator/作者: Sichengthebest"%(place,bankResult))
         if bankResult == bankArr[2]:
-            coins.add_coins(update.effective_user,banknum)
+            coins.add_coins(user,banknum)
         elif bankResult == bankArr[0]:
-            coins.add_hp(update.effective_user,-100)
+            coins.add_hp(user,-100)
         index = random.randint(0,12)
         index1 = random.randint(0,12)
         index2 = random.randint(0,12)
@@ -114,7 +115,7 @@ def srchCallback(update, context):
         betnum = random.randint(1,25)
         lArr = "You searched Le Parc National des L, not knowing it's a park for losers. Anyway, at least you got %s GP from a bet with another loser.\n您搜索了 L 国家公园，却不知道它是输家的公园。无论如何，至少您与另一个失败者的下注获得了%s GP。"%(betnum, betnum)
         query.edit_message_caption("You %s\n%s\nCreator/作者: Sichengthebest"%(place,lArr))
-        coins.add_coins(update.effective_user,betnum)
+        coins.add_coins(user,betnum)
         index = random.randint(0,12)
         index1 = random.randint(0,12)
         index2 = random.randint(0,12)
@@ -131,9 +132,9 @@ def srchCallback(update, context):
         islandR = random.choice(islandArr)
         query.edit_message_caption("You %s\n%s\nCreator/作者: Sichengthebest"%(place,islandR))
         if islandR == islandArr[0]:
-            coins.add_coins(update.effective_user,treasurenum)
+            coins.add_coins(user,treasurenum)
         elif islandR == islandArr[1]:
-            coins.add_hp(update.effective_user,-20)
+            coins.add_hp(user,-20)
         index = random.randint(0,12)
         index1 = random.randint(0,12)
         index2 = random.randint(0,12)
@@ -149,9 +150,9 @@ def srchCallback(update, context):
         whResult = random.choice(whArr)
         query.edit_message_caption("You %s\n%s\nCreator/作者: Sichengthebest"%(place,whResult))
         if whResult == whArr[0]:
-            coins.add_coins(update.effective_user,750)
+            coins.add_coins(user,750)
         elif whResult == whArr[1]:
-            coins.add_hp(update.effective_user,-100)
+            coins.add_hp(user,-100)
         index = random.randint(0,12)
         index1 = random.randint(0,12)
         index2 = random.randint(0,12)
@@ -167,7 +168,7 @@ def srchCallback(update, context):
         spaceR = random.choice(spaceArr)
         query.edit_message_caption("You %s\n%s\nCreator/作者: Sichengthebest"%(place,spaceR))
         if spaceR == spaceArr[0]:
-            coins.add_coins(update.effective_user,250)
+            coins.add_coins(user,250)
         index = random.randint(0,12)
         index1 = random.randint(0,12)
         index2 = random.randint(0,12)
@@ -184,11 +185,11 @@ def srchCallback(update, context):
         castleR = random.choice(castleArr)
         query.edit_message_caption("You %s\n%s\nCreator/作者: Sichengthebest"%(place,castleR))
         if castleR == castleArr[0]:
-            coins.add_coins(update.effective_user,1500)
+            coins.add_coins(user,1500)
         elif castleR == castleArr[1]:
-            coins.add_hp(update.effective_user,serial)
+            coins.add_hp(user,serial)
         elif castleR == castleArr[2]:
-            coins.add_hp(update.effective_user,-100)
+            coins.add_hp(user,-100)
         index = random.randint(0,12)
         index1 = random.randint(0,12)
         index2 = random.randint(0,12)
@@ -204,21 +205,21 @@ def srchCallback(update, context):
         zooResult = random.choice(zooArr)
         query.edit_message_caption("You %s\n%s\nCreator/作者: Sichengthebest"%(place,zooResult))
         if zooResult == zooArr[0]:
-            coins.add_coins(update.effective_user,225)
+            coins.add_coins(user,225)
         elif zooResult == zooArr[1]:
-            coins.add_coins(update.effective_user,-260)
+            coins.add_coins(user,-260)
         elif zooResult == zooArr[2]:
-            coins.add_hp(update.effective_user,-100)
+            coins.add_hp(user,-100)
         chosen = random.choices(buttons, k=3)
     elif place == "searched: neighbour":
         neiArr = ["You found 200GP under the master bed!\n您在主床下找到200GP！", "You penetrated in a mansion, but then realize that the dude who lived here was broke! HAAAHAHAHAHAA...\n您进入了一个豪宅，但随后意识到住在这里的那个家伙已经把钱都花了！哈哈哈哈哈哈...", "You got seen by another neighbour, and he called the cops on you! You got fined 400GP and lost 15HP.\n你被另一个邻居看见了，他叫了警察！您被罚款400GP，损失了15HP。"]
         nResult = random.choice(neiArr)
         query.edit_message_caption("You %s\n%s\nCreator/作者: Sichengthebest"%(place,nResult))
         if nResult == neiArr[0]:
-            coins.add_coins(update.effective_user,200)
+            coins.add_coins(user,200)
         elif nResult == neiArr[2]:
-            coins.add_coins(update.effective_user,-400)
-            coins.add_hp(update.effective_user,-15)
+            coins.add_coins(user,-400)
+            coins.add_hp(user,-15)
         index = random.randint(0,12)
         index1 = random.randint(0,12)
         index2 = random.randint(0,12)
@@ -235,9 +236,9 @@ def srchCallback(update, context):
         jResult = random.choice(jungleArr)
         query.edit_message_caption("You %s\n%s\nCreator/作者: Sichengthebest"%(place,jResult))
         if jResult == jungleArr[0]:
-            coins.add_coins(update.effective_user,jungleNum)
+            coins.add_coins(user,jungleNum)
         elif jResult == jungleArr[1]:
-            coins.add_hp(update.effective_user,-100)
+            coins.add_hp(user,-100)
         index = random.randint(0,12)
         index1 = random.randint(0,12)
         index2 = random.randint(0,12)
@@ -253,9 +254,9 @@ def srchCallback(update, context):
         mtResult = random.choice(mountArr)
         query.edit_message_caption("You %s\n%s\nCreator/作者: Sichengthebest"%(place,mtResult))
         if mtResult == mountArr[0]:
-            coins.add_coins(update.effective_user,360)
+            coins.add_coins(user,360)
         elif mtResult == mountArr[1]:
-            coins.add_hp(update.effective_user,-30)
+            coins.add_hp(user,-30)
         index = random.randint(0,12)
         index1 = random.randint(0,12)
         index2 = random.randint(0,12)
@@ -289,9 +290,9 @@ def srchCallback(update, context):
         carResult = random.choice(carArr)
         query.edit_message_caption("You %s\n\n%s\nCreator/作者: Sichengthebest"%(place,carResult))
         if carResult == carArr[0]:
-            coins.add_coins(update.effective_user,normalgp)
+            coins.add_coins(user,normalgp)
         elif carResult == carArr[2]:
-            coins.add_coins(update.effective_user,badgp)
+            coins.add_coins(user,badgp)
         index = random.randint(0,12)
         index1 = random.randint(0,12)
         index2 = random.randint(0,12)
