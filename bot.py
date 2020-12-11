@@ -40,9 +40,9 @@ Currency commands:
 /bal - Check the amount of money you have. // 检查您有多少GP。
 -------------------------------------------------
 Inventory commands:
-/shop - Buy nice useful stuff! // 购买有用的东西！
+/buy - Buy nice useful stuff! // 购买有用的东西！
 /sell - Sell useless stuff. // 出售无用的东西。
-/inv - [BETA] Check the items you have in your inventory. // [测试] 检查库存中的物品。
+/inv - Check the items you have in your inventory. // 检查库存中的物品。
 -------------------------------------------------
 Bank commands:
 /dep - Deposit money from your wallet to your bank! // 从钱包里存钱到银行！
