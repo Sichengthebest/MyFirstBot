@@ -190,6 +190,8 @@ Gain 60 HP.
 Gain 20 HP.
 /eat deer to eat deer that you caught.
 Gain 20 HP.
+/eat fox to eat fox that you caught.
+Gain 30 HP.
 /eat rhino to eat rhinoceros that you caught.
 Gain 45 HP.
 /eat basilisk to eat basilisk that you caught.
@@ -214,6 +216,8 @@ Gain 69 HP.
 获得20HP。
 /eat deer 来吃掉你抓到的鹿。
 获得20HP。
+/eat fox 来吃掉你抓到的狐狸。
+获得30HP。
 /eat rhino 来吃您抓到的犀牛。
 获得45HP。
 /eat basilisk 来吃你抓到的蛇怪。
@@ -236,6 +240,8 @@ Gain 69 HP.
         update.message.reply_text("%s"%eat_stuff(user,"skunk",20))
     elif context.args[0] == "deer":
         update.message.reply_text("%s"%eat_stuff(user,"deer",20))
+    elif context.args[0] == "fox":
+        update.message.reply_text("%s"%eat_stuff(user,"fox",30))
     elif context.args[0] == "rhino":
         update.message.reply_text("%s"%eat_stuff(user,"rhino",45))
     elif context.args[0] == "basilisk":
@@ -259,12 +265,6 @@ def eat_stuff(user,aliment,c):
         return "You ate/drank a/an/some %s! Gain %sHP."%(aliment,c)
     else:
         return "You do not own this item lol" 
-
-def show_items(update,context):
-    user = update.effective_user
-    check_user(user)
-    uid = str(user.id)
-    update.message.reply_text("%s"%coins[uid]['items'])
 
 def convert(update,context):
     user = update.effective_user
@@ -376,12 +376,10 @@ def dep(update,context):
                 if remspace > coins[uid]['coins']:
                     coins[uid]['bank'] += coins[uid]['coins']
                     coins[uid]['coins'] = 0
-                    update.message.reply_text("Success! You have deposited %s GP and now have %s GP in your wallet and %s GP in your bank."%(coins[uid]['bank'],coins[uid]['coins'],coins[uid]['bank']))
                 elif remspace <= coins[uid]['coins']:
-                    remmspace = remspace
                     coins[uid]['coins'] -= remspace
                     coins[uid]['bank'] += remspace
-                    update.message.reply_text("Success! You have deposited %s GP and now have %s GP in your wallet and %s GP in your bank."%(remmspace,coins[uid]['coins'],coins[uid]['bank']))
+                update.message.reply_text("Success! You now have %s GP in your wallet and %s GP in your bank."%(coins[uid]['coins'],coins[uid]['bank']))
         else:
             update.message.reply_text("Your argument should be a number, or /dep all , dumdum") 
     save()
@@ -425,7 +423,6 @@ def get_command():
         BotCommand('weekly','Get weekly GP! // 每星期打卡！'),
         BotCommand('yearly','Get yearly GP! // 每年打卡！'),
         BotCommand('eat','Eat to gain HP // 吃东西来增加HP'),
-        BotCommand('inv','[BETA] Check the items you have in your inventory. // [测试] 检查库存中的物品。'),
         BotCommand('convert','Convert one currency into another! // 将一种货币转换为另一种货币！'),
         BotCommand('dep','Deposit money from your wallet to your bank! // 从钱包里存钱到银行！'),
         BotCommand('banknote','Increase the amount of GP you can stuff into your bank! // 增加您可以存入银行的GP数量！'),
@@ -439,7 +436,6 @@ def add_handler(dp:Dispatcher):
     dp.add_handler(CommandHandler('weekly', weekly))
     dp.add_handler(CommandHandler('yearly', yearly))
     dp.add_handler(CommandHandler('eat', eat))
-    dp.add_handler(CommandHandler('inv', show_items))
     dp.add_handler(CommandHandler('convert', convert))
     dp.add_handler(CommandHandler('dep', dep))
     dp.add_handler(CommandHandler('banknote', banknote))
