@@ -16,6 +16,8 @@ Currency commands // 货币命令:
 /search - Go fetch the GP falling from the sky!!! // 去获取从天上掉下来的GP吧！！！
 /daily - Get daily GP! // 每日打卡！
 /hourly - Get hourly GP! // 每时打卡！
+/weekly - Get weekly GP! // 每星期打卡！
+/yearly - Get yearly GP! // 每年打卡！
 /beg - Go beg, peasant! // 去讨钱吧，穷人！
 /convert - Convert one currency into another! // 将一种货币转换为另一种货币！
 /bal - Check the amount of money you have. // 检查您有多少GP。
