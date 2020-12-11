@@ -36,16 +36,30 @@ def gamble(update,context):
                     coins.add_coins(user,-bet)
                     update.message.reply_text("""Your number: %s
 My number: %s
-You lost %s GP! You now have %s GP."""%(yournum,botnum,bet,coins.coins[uid]['coins']))
+You lost %s GP! You now have %s GP.
+-----------------------------
+您的数字：%s
+我的数字：%s
+您输了%sGP！您现在拥有%sGP。
+"""%(yournum,botnum,bet,coins.coins[uid]['coins'],yournum,botnum,bet,coins.coins[uid]['coins']))
                 elif botnum == yournum:
                     update.message.reply_text("""Your number: %s
 My number: %s
-You tied with your opponent! Your wallet hasn't changed! You still have %s GP."""%(yournum,botnum,coins.coins[uid]['coins']))
+You tied with your opponent! Your wallet hasn't changed! You still have %s GP.
+-----------------------------
+您的数字：%s
+我的数字：%s
+你和对手并列！您的钱包没有变！您仍然有%sGP。"""%(yournum,botnum,coins.coins[uid]['coins'],yournum,botnum,coins.coins[uid]['coins']))
                 else:
                     coins.add_coins(user,bet)
                     update.message.reply_text("""Your number: %s
 My number: %s
-You won %s GP! You now have %s GP."""%(yournum,botnum,bet,coins.coins[uid]['coins']))
+You won %s GP! You now have %s GP.
+-----------------------------
+您的数字：%s
+我的数字：%s
+您赢得了%sGP！您现在拥有%sGP。
+"""%(yournum,botnum,bet,coins.coins[uid]['coins'],yournum,botnum,bet,coins.coins[uid]['coins']))
     gametimes[user] = datetime.now() + timedelta(seconds=20)
 
 def get_command():
