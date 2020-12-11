@@ -15,7 +15,7 @@ from telegram.ext import CommandHandler, Updater
 from telegram import BotCommand
 
 def start(update, context):
-    msg = "I'M THE GOD OF BOTS...\n/help for commands.\nVersion: 5.11.4\n------------------------------\n我是机器人的上帝...\n/help 来看命令。\n版本：5.11.4\n------------------------------\nCreator/作者: Sichengthebest"
+    msg = "I'M THE GOD OF BOTS...\n/help for commands.\nVersion: 5.14.10\n------------------------------\n我是机器人的上帝...\n/help 来看命令。\n版本：5.14.10\n------------------------------\nCreator/作者: Sichengthebest"
     context.bot.send_message(chat_id=update.effective_chat.id, text=msg)
 
 def help(update, context):
