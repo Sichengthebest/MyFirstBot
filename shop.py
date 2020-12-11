@@ -106,7 +106,7 @@ def sell(update,context):
     user = update.effective_user
     coins.check_user(user)
     if len(context.args) == 0:
-        update.message("""Did you buy anything you dod not need? Sell them to me at 2/3 of the original price!
+        update.message.reply_text("""Did you buy anything you do not need? Sell them to me at 2/3 of the original price!
 Sell apples 🍎! 333 GP per 🍎
 /sell apple
 Sell brocolis 🥦! 600 GP per 🥦
@@ -125,6 +125,8 @@ Sell skunks 🦨! 250 GP per 🦨
 /sell skunk
 Sell deers 🦌! 500 GP per 🦌
 /sell deer
+Sell foxes 🦊! 800 GP per 🦊
+/sell fox
 Sell rhinoceros 🦏! 1250 GP per 🦏
 /sell rhino
 Sell basilisk 🐍! 2000 GP per 🐍
@@ -132,25 +134,121 @@ Sell basilisk 🐍! 2000 GP per 🐍
 Sell lifesavers 💖! 2000 GP per 💖
 /sell lifesaver
 Sell banknote 💸! 1200 GP per 💸
+/sell banknote
+-----------------------------
+您是否购买了不需要的东西？以原始价格的2/3卖给我！
+卖苹果🍎！每🍎333GP
+/sell apple
+卖西兰花！每🥦600GP
+/sell brocoli
+卖拉面🍜！每🍜1000GP
+/sell ramen
+卖超级有趣的魔药🍾！每🍾1333GP
+/sell simp
+卖鲱鱼🐟！每🐟150GP
+/sell herring
+卖鳟鱼🎏！每🎏800GP
+/sell trout
+卖鲨鱼🦈！每🦈1500GP
+/sell shark
+卖臭鼬🦨！每🦨250GP
+/sell skunk
+卖鹿🦌！每🦌500GP
+/sell deer
+卖狐狸🦊！每🦊800GP
+/sell fox
+卖犀牛🦏！每🦏1250GP
+/sell rhino
+卖蛇怪🐍！每🐍2000GP
+/sell basilisk
+卖救生器💖！每磅2000GP
+/sell lifesaver
+卖钞票💸！每💸1200GP
 /sell banknote""")
     elif context.args[0] == "apple":
-        sell_stuff(user,"apple",333)
+        update.messge.reply_text("%s"%sell_stuff(user,"apple",333))
     elif context.args[0] == "brocoli":
-        sell_stuff(user,"brocoli",600)
+        update.message.reply_text("%s"%sell_stuff(user,"brocoli",600))
+    elif context.args[0] == "ramen":
+        update.message.reply_text("%s"%sell_stuff(user,"ramen",1000))
+    elif context.args[0] == "simp":
+        update.message.reply_text("%s"%sell_stuff(user,"simp",1333))
+    elif context.args[0] == "herring":
+        update.message.reply_text("%s"%sell_stuff(user,"herring",150))
+    elif context.args[0] == "trout":
+        update.message.reply_text("%s"%sell_stuff(user,"trout",800))
+    elif context.args[0] == "shark":
+        update.message.reply_text("%s"%sell_stuff(user,"shark",1500))
+    elif context.args[0] == "skunk":
+        update.message.reply_text("%s"%sell_stuff(user,"skunk",250))
+    elif context.args[0] == "deer":
+        update.message.reply_text("%s"%sell_stuff(user,"deer",500))
+    elif context.agrs[0] == "fox":
+        update.message.reply_text("%s"%sell_stuff(user,"fox",800))
+    elif context.args[0] == "rhino":
+        update.message.reply_text("%s"%sell_stuff(user,"rhino",1250))
+    elif context.args[0] == "basilisk":
+        update.message.reply_text("%s"%sell_stuff(user,"basilisk",2000))
+    elif context.args[0] == "lifesaver":
+        update.message.reply_text("%s"%sell_stuff(user,"lifesaver",2000))
+    elif context.args[0] == "banknote":
+        update.message.reply_text("%s"%sell_stuff(user,"banknote",1200))
 
 def sell_stuff(user,object,c):
     uid = str(user.id)
     if not object in coins.coins[uid]['items']:
         return "You do not own this item lol"
-    coins.coins[uid]['items'].remove(object)
-    coins.add_coins(user,c)
-    coins.save()
-    return "Success! You have sold a/an/some %s! You now have %s GP.\n成功！您已经卖了一个/一些%s！您现在有%sGP。"%(object,coins.coins[uid]['coins'],object,coins.coins[uid]['coins'])
+    else:
+        coins.coins[uid]['items'].remove(object)
+        coins.add_coins(user,c)
+        coins.save()
+        return "Success! You have sold a/an/some %s! You now have %s GP.\n成功！您已经卖了一个/一些%s！您现在有%sGP。"%(object,coins.coins[uid]['coins'],object,coins.coins[uid]['coins'])
+
+def check_items(items):
+    item_count = {}
+    for i in items:
+        if not i in item_count:
+            item_count[i] = 0
+        item_count[i] += 1
+    return item_count   # {'herring':6,'trout':3}
+
+liewu = {
+    # 我是一个大笨蛋！！！
+    'herring': 'Herrings // 鲱鱼 🐟 —— Sellable and edible // 可出售并可食用',
+    'trout' : 'Trouts // 鳟鱼 🎏 —— Sellable and edible // 可出售并可食用',
+    'shark' : 'Sharks // 鲨鱼 🦈 —— Sellable and edible // 可出售并可食用',
+    'skunk' : 'Skunks // 臭鼬🦨 —— Sellable and edible // 可出售并可食用',
+    'deer' : 'Deers // 鹿 🦌 —— Sellable and edible // 可出售并可食用',
+    'fox' : 'Foxes // 狐狸 🦊 —— Sellable and edible // 可出售并可食用',
+    'rhino' : 'Rhinoceros // 犀牛 🦏 —— Sellable and edible // 可出售并可食用',
+    'basilisk' : 'Basilisks // 蛇怪 🐍 —— Sellable and edible // 可出售并可食用',
+    'apple' : 'Apples // 苹果 🍎 —— Edible // 可食用',
+    'brocoli' : 'Brocolis // 西兰花 🥦 —— Edible // 可食用',
+    'ramen' : 'Ramen // 拉面 🍜 —— Edible // 可食用',
+    'simp' : 'Super Interesting Magic Potions // 超级有趣的魔药 🍾 —— Edible // 可食用',
+    'lifesaver' : 'Lifesaver // 救生器 💖 —— Tool // 工具',
+    'banknote' : "Banknote // 钞票 💸 —— Tool // 工具"
+}
+
+def show_items(update,context):
+    # sicheng是个big bug
+    user = update.effective_user
+    coins.check_user(user)
+    uid = str(user.id)
+    count = check_items(coins.coins[uid]["items"])
+    msg = "Here's %s's inventory"%user.first_name
+    for key in count.keys():
+        msg = f"{msg}\n{liewu[key]}: {count[key]}"
+    update.message.reply_text(f"{msg}")
 
 def get_command():
     return [
-        BotCommand('buy',' Buy nice useful stuff! // 购买有用的东西！')
+        BotCommand('buy','Buy nice useful stuff! // 购买有用的东西！'),
+        BotCommand('sell','Sell useless stuff. // 出售无用的东西。'),
+        BotCommand('inv','Check the items you have in your inventory. // 检查库存中的物品。')
     ]
 
 def add_handler(dp):
     dp.add_handler(CommandHandler('buy', buy))
+    dp.add_handler(CommandHandler('sell',sell))
+    dp.add_handler(CommandHandler('inv', show_items))
