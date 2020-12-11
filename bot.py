@@ -1,7 +1,6 @@
 import random
 import os
 import logging
-import guess
 import hunt
 import fish
 import search
@@ -52,7 +51,6 @@ Bank commands // 银行命令:
 /banknote - Increase the amount of GP you can stuff into your bank! // 增加您可以存入银行的GP数量！
 -------------------------------------------------
 Fun commands // 有趣的命令:
-/guessnum - Guess a number between 1 and 100. Try and do it with the least number of tries possible! // 猜一个0-100之间的数字。尽量减少尝试次数！
 /capitals - How good are you at capitals? // 你了解所有首都吗？
 /gif - The bot will send you a funny gif. // 机器人会向您发送有趣的GIF。
 /gamble - Roll your dice against the bot, if you get higher than the bot you'll win! // 与机器人投骰子，如果得到的数比机器人高，您将获胜！
@@ -80,7 +78,6 @@ start_handler = CommandHandler('start', start)
 help_handler = CommandHandler('help', help)
 dispatcher.add_handler(start_handler)
 dispatcher.add_handler(help_handler)
-guess.addHandler(dispatcher)
 hunt.addHandler(dispatcher)
 fish.addHandler(dispatcher)
 search.addHandler(dispatcher)
@@ -90,7 +87,7 @@ beg.add_handler(dispatcher)
 gif.add_handler(dispatcher)
 gamble.add_handler(dispatcher)
 shop.add_handler(dispatcher)
-commands = coins.get_command() + capitals.get_command() + search.get_command() + guess.get_command() + fish.get_command() + hunt.get_command() + get_command() + beg.get_command() + gif.get_command() + gamble.get_command() + shop.get_command()
+commands = coins.get_command() + capitals.get_command() + search.get_command() + fish.get_command() + hunt.get_command() + get_command() + beg.get_command() + gif.get_command() + gamble.get_command() + shop.get_command()
 updater.bot.set_my_commands(commands)
 
 updater.start_polling()
