@@ -201,7 +201,7 @@ def sell_stuff(user,object,c):
     if not object in coins.coins[uid]['items']:
         return "You do not own this item lol"
     else:
-        coins.coins[uid]['items'].remove(object)
+        coins.remove_item(user,object)
         coins.add_coins(user,c)
         coins.save()
         return "Success! You have sold a/an/some %s! You now have %s GP.\n成功！您已经卖了一个/一些%s！您现在有%sGP。"%(object,coins.coins[uid]['coins'],object,coins.coins[uid]['coins'])

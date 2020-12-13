@@ -17,7 +17,7 @@ from telegram import BotCommand
 #       'items' : ["herring","trout","shark","boar","fox","deer","skunk","basilisk"]
 #       'bank' : 456
 #       'bankspace' : 458
-#       'total' : 579
+#       'total' : 512
 #       }
 # }
 
@@ -30,7 +30,19 @@ def save():
 def check_user(user):
     uid = str(user.id)
     if not uid in coins.keys():
-        coins[uid] = {'name':user.first_name,'coins':0,'yearlytime':datetime.now().strftime("%Y/%m/%d %H:%M:%S"),'weeklytime':datetime.now().strftime("%Y/%m/%d %H:%M:%S"),'dailytime':datetime.now().strftime("%Y/%m/%d %H:%M:%S"),'hourlytime':datetime.now().strftime("%Y/%m/%d %H:%M:%S"),'hp':100,'items':[],'bank':0,'bankspace':1000,'total':0}
+        coins[uid] = {
+            'name':user.first_name,
+            'coins':0,
+            'yearlytime':datetime.now().strftime("%Y/%m/%d %H:%M:%S"),
+            'weeklytime':datetime.now().strftime("%Y/%m/%d %H:%M:%S"),
+            'dailytime':datetime.now().strftime("%Y/%m/%d %H:%M:%S"),
+            'hourlytime':datetime.now().strftime("%Y/%m/%d %H:%M:%S"),
+            'hp':100,
+            'items':[],
+            'bank':0,
+            'bankspace':1000,
+            'total':0
+        }
         save()
 
 def check_hp(user):
@@ -60,6 +72,8 @@ You have {coins[uid]['hp']} HP
 def add_coins(user,c):
     check_user(user)
     uid = str(user.id)
+    if not 'coins' in coins[uid]:
+        coins[uid]['coins'] = 0
     coins[uid]['coins'] += c
     if c > 0:
         coins[uid]['bankspace'] += int(c/5)
@@ -69,13 +83,27 @@ def add_coins(user,c):
 def add_item(user,c,times):
     check_user(user)
     uid = str(user.id)
+    if not 'items' in coins[uid]:
+        coins[uid]['items'] = []
     for _i in range(0,times):
         coins[uid]['items'].append("%s"%c)
+    save()
+
+def remove_item(user,c):
+    check_user(user)
+    uid = str(user.id)
+    if not 'items' in coins[uid]:
+        coins[uid]['items'] = []
+    if not c in coins[uid]['items']:
+        return
+    coins[uid]['items'].remove("%s"%c)
     save()
 
 def add_hp(user,c):
     check_user(user)
     uid = str(user.id)
+    if not 'hp' in coins[uid]:
+        coins[uid]['hp'] = 100
     if c == -100:
         if not "lifesaver" in coins[uid]['items']:
             coins[uid]['hp'] = 0
@@ -91,6 +119,8 @@ def hourly(update,context):
     user = update.effective_user
     check_user(user)
     uid = str(user.id)
+    if not 'hourly' in coins[uid]:
+        coins[uid]['hourly'] = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
     hourlytime = datetime.strptime(coins[uid]['hourlytime'],"%Y/%m/%d %H:%M:%S")
     if datetime.now() > hourlytime:
         c = random.randint(50,200)
@@ -106,6 +136,8 @@ def daily(update,context):
     user = update.effective_user
     check_user(user)
     uid = str(user.id)
+    if not 'daily' in coins[uid]:
+        coins[uid]['daily'] = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
     dailytime = datetime.strptime(coins[uid]['dailytime'],"%Y/%m/%d %H:%M:%S")
     if datetime.now() > dailytime:
         c = random.randint(500,2000)
@@ -126,6 +158,8 @@ def weekly(update,context):
     user = update.effective_user
     check_user(user)
     uid = str(user.id)
+    if not 'weekly' in coins[uid]:
+        coins[uid]['weekly'] = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
     hourlytime = datetime.strptime(coins[uid]['weeklytime'],"%Y/%m/%d %H:%M:%S")
     if datetime.now() > hourlytime:
         c = random.randint(2000,5000)
@@ -145,6 +179,8 @@ def yearly(update,context):
     user = update.effective_user
     check_user(user)
     uid = str(user.id)
+    if not 'yearly' in coins[uid]:
+        coins[uid]['yearly'] = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
     hourlytime = datetime.strptime(coins[uid]['yearlytime'],"%Y/%m/%d %H:%M:%S")
     if datetime.now() > hourlytime:
         c = 1
@@ -162,7 +198,7 @@ def banknote(update, context):
     uid = str(user.id)
     if "banknote" in coins[uid]['items']:
         coins[uid]['bankspace'] += 1000
-        coins[uid]['items'].remove("banknote")
+        remove_item(user,"banknote")
         update.message.reply_text("Success! You now have %s GP of storage in your bank!\n成功！您现在在银行中拥有%s GP的存储空间！"%(coins[uid]['bankspace'],coins[uid]['bankspace']))
     else:
         update.message.reply_text("You do not own a banknote lol\nYou can buy a banknote at the /shop\n您没有钞票哈哈哈\n您可以在 /shop 中购买钞票")
@@ -254,10 +290,10 @@ def eat_stuff(user,aliment,c):
     hpmax = 100 - c
     if aliment in coins[uid]['items']:
         if coins[uid]['hp'] < hpmax:
-            coins[uid]['items'].remove("%s"%aliment)
+            remove_item(user,aliment)
             coins[uid]['hp'] += c
         elif coins[uid]['hp'] >= hpmax and coins[uid]['hp'] < 100:
-            coins[uid]['items'].remove("%s"%aliment)
+            remove_item(user,aliment)
             coins[uid]['hp'] = 100
         elif coins[uid]['hp'] >= 100:
             return "Bruh your HP is maxed out, try losing some."
