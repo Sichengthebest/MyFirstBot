@@ -1,26 +1,37 @@
 import json
+import migration
 
 def load_config():
    global CONFIG
    with open(config_file, 'r') as configfile:
       CONFIG = json.load(configfile)
+   
+   if not "coins" in CONFIG:
+      CONFIG["coins"] = {}
+   if not "hunt" in CONFIG:
+      CONFIG["hunt"] = {}
+   if not "fish" in CONFIG:
+      CONFIG["fish"] = {}
+   
    return CONFIG
 
 def save_config():
    with open(config_file, 'w') as configfile:
          json.dump(CONFIG, configfile, indent=4,ensure_ascii=False)
-config_file = 'my.json'
 
 CONFIG = {}
-load_config()
+config_file = 'my.json'
 
-if not "coins" in CONFIG:
-   CONFIG["coins"] = {}
-if not "hunt" in CONFIG:
-   CONFIG["hunt"] = {}
-if not "fish" in CONFIG:
-   CONFIG["fish"] = {}
+# load_config()
+# CONFIG = migration.migration(CONFIG)   # version.新的
+# save_config()
 
+
+def save_backup_config():
+   # config_file = f"my{datetime.now().strftime("YYMMDD")}.json"  # my20201213.json
+
+   with open(config_file, 'w') as configfile:
+      json.dump(CONFIG, configfile, indent=4,ensure_ascii=False)
 
 # a = ""
 # now = datetime.now()
