@@ -164,11 +164,13 @@ def srchCallback(update, context):
             index2 = random.randint(0,12)
         chosen = [buttons[index],buttons[index1],buttons[index2]]
     elif place == "searched: space":
-        spaceArr = ["You photographed an alien! You gained 250GP!\n你拍到了一个外星人！您获得了250GP！", "You didn't find anything in outer space... You gave the company 200GP for nothing...\n外太空里什么都没有...你给公司的200GP完全是白费...", "You photographed an alien, but everyone thought it was photoshop, and so you got nothing.\n您拍摄了一个外星人，但所有人都认为这是假的，所以您一无所获。", "You photographed an alien, but everyone thought it was photoshop, and so you got nothing.\n您拍摄了一个外星人，但所有人都认为这是假的，所以您一无所获。"]
+        spaceArr = ["You photographed an alien! You gained 150GP!\n你拍到了一个外星人！您获得了250GP！", "You didn't find anything in outer space... You gave the company 100GP for nothing...\n外太空里什么都没有...你给公司的100GP完全是白费...", "You photographed an alien, but everyone thought it was photoshop, and so you got nothing.\n您拍摄了一个外星人，但所有人都认为这是假的，所以您一无所获。", "You photographed an alien, but everyone thought it was photoshop, and so you got nothing.\n您拍摄了一个外星人，但所有人都认为这是假的，所以您一无所获。"]
         spaceR = random.choice(spaceArr)
         query.edit_message_caption("You %s\n%s\nCreator/作者: Sichengthebest"%(place,spaceR))
         if spaceR == spaceArr[0]:
-            coins.add_coins(user,250)
+            coins.add_coins(user,150)
+        elif spaceR == spaceArr[1]:
+            coins.add_coins(user,100)
         index = random.randint(0,12)
         index1 = random.randint(0,12)
         index2 = random.randint(0,12)

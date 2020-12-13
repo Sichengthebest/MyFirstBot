@@ -137,6 +137,10 @@ def hunt(update, context):
             coins.add_item(user,translater2[item],1)
         elif item == "rhino" or item == "fox" or item == "basilisk":
             coins.add_item(user,item,1)
+        elif item == "bear":
+            coins.add_hp(user,-30)
+        elif item == "basilisk":
+            coins.add_hp(user,-100)
         huntgame[uid]['gametime'] = datetime.strftime(datetime.now() + timedelta(seconds=30),"%Y/%m/%d %H:%M:%S")
         save()
     else:

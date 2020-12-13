@@ -183,7 +183,7 @@ Sell banknote 💸! 1200 GP per 💸
         update.message.reply_text("%s"%sell_stuff(user,"skunk",250))
     elif context.args[0] == "deer":
         update.message.reply_text("%s"%sell_stuff(user,"deer",500))
-    elif context.agrs[0] == "fox":
+    elif context.args[0] == "fox":
         update.message.reply_text("%s"%sell_stuff(user,"fox",800))
     elif context.args[0] == "rhino":
         update.message.reply_text("%s"%sell_stuff(user,"rhino",1250))
@@ -193,6 +193,8 @@ Sell banknote 💸! 1200 GP per 💸
         update.message.reply_text("%s"%sell_stuff(user,"lifesaver",2000))
     elif context.args[0] == "banknote":
         update.message.reply_text("%s"%sell_stuff(user,"banknote",1200))
+    else:
+        update.message.reply_text("Please choose something valid to sell!")
 
 def sell_stuff(user,object,c):
     uid = str(user.id)
@@ -236,10 +238,10 @@ def show_items(update,context):
     coins.check_user(user)
     uid = str(user.id)
     count = check_items(coins.coins[uid]["items"])
-    msg = "Here's %s's inventory"%user.first_name
+    msg = "Here's %s's inventory\n这是%s的库存\n-----------------------------"%(user.first_name,user.first_name)
     for key in count.keys():
         msg = f"{msg}\n{liewu[key]}: {count[key]}"
-    update.message.reply_text(f"{msg}")
+    update.message.reply_animation('https://media.tenor.com/images/136906d86850530f58747968eebfb35e/tenor.gif',caption=f"{msg}")
 
 def get_command():
     return [
