@@ -1,15 +1,8 @@
-import random
 import os
 import logging
-import hunt
-import fish
-import search
-import capitals
-import coins
-import beg
-import gif
-import gamble
-import shop
+import getopt
+import sys
+import config
 from telegram.ext import CommandHandler, Updater
 from telegram import BotCommand
 
@@ -69,25 +62,62 @@ def get_command():
         BotCommand('start','Random command that makes the bot say "I\'m THE GOD OF BOTS..." // 使机器人说 “我是机器人的上帝” 的随机命令。'),
         BotCommand('help','Know your commands! // 了解你的命令！')]
 
-TOKEN=read_file_as_str('TOKEN')
+def cmd_help():
+    return "这是所有参数的说明"
 
-updater = Updater(token=TOKEN, use_context=True)
-dispatcher = updater.dispatcher
+if __name__ == '__main__':
+    PATH = "/Users/sichengthebest/Work/MyFirstBot"
+    try:
+        opts, args = getopt.getopt(sys.argv[1:],"hc:",["config="])
+    except getopt.GetoptError:
+        print(cmd_help())
+        sys.exit(2)
+    for opt, arg in opts:
+        if opt == '-h':
+            print(cmd_help())
+            sys.exit()
+        elif opt in ("-c","--config"):
+            PATH = arg
+    
+    TOKEN=read_file_as_str(f"{PATH}/TOKEN")
+    config.config_file = f"{PATH}/my.json"
+    config.load_config()
 
-start_handler = CommandHandler('start', start)
-help_handler = CommandHandler('help', help)
-dispatcher.add_handler(start_handler)
-dispatcher.add_handler(help_handler)
-hunt.addHandler(dispatcher)
-fish.addHandler(dispatcher)
-search.addHandler(dispatcher)
-capitals.add_handler(dispatcher)
-coins.add_handler(dispatcher)
-beg.add_handler(dispatcher)
-gif.add_handler(dispatcher)
-gamble.add_handler(dispatcher)
-shop.add_handler(dispatcher)
-commands = coins.get_command() + capitals.get_command() + search.get_command() + fish.get_command() + hunt.get_command() + get_command() + beg.get_command() + gif.get_command() + gamble.get_command() + shop.get_command()
-updater.bot.set_my_commands(commands)
+    updater = Updater(token=TOKEN, use_context=True)
+    dispatcher = updater.dispatcher
 
-updater.start_polling()
+    me = updater.bot.get_me()
+    print(f"Starting... ID: {me.id} , Username: {me.username}")
+
+    import hunt
+    import fish
+    import search
+    import capitals
+    import coins
+    import beg
+    import gif
+    import gamble
+    import shop
+
+    start_handler = CommandHandler('start', start)
+    help_handler = CommandHandler('help', help)
+    dispatcher.add_handler(start_handler)
+    dispatcher.add_handler(help_handler)
+    hunt.addHandler(dispatcher)
+    fish.addHandler(dispatcher)
+    search.addHandler(dispatcher)
+    capitals.add_handler(dispatcher)
+    coins.add_handler(dispatcher)
+    beg.add_handler(dispatcher)
+    gif.add_handler(dispatcher)
+    gamble.add_handler(dispatcher)
+    shop.add_handler(dispatcher)
+    commands = coins.get_command() + capitals.get_command() + search.get_command() + fish.get_command() + hunt.get_command() + get_command() + beg.get_command() + gif.get_command() + gamble.get_command() + shop.get_command()
+    updater.bot.set_my_commands(commands)
+
+    updater.start_polling()
+    print('Started')
+
+    updater.idle()
+    print('Stopping...')
+    print('Stopped.')
