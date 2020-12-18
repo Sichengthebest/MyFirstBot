@@ -1,17 +1,19 @@
 import json
-import migration
 
 def load_config():
    global CONFIG
    with open(config_file, 'r') as configfile:
       CONFIG = json.load(configfile)
-   
+   if not "token" in CONFIG:
+      CONFIG["token"] = ""
    if not "coins" in CONFIG:
       CONFIG["coins"] = {}
    if not "hunt" in CONFIG:
       CONFIG["hunt"] = {}
    if not "fish" in CONFIG:
       CONFIG["fish"] = {}
+   if not "pk" in CONFIG:
+      CONFIG["pk"] = {}
    
    return CONFIG
 

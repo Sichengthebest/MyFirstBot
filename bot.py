@@ -79,9 +79,10 @@ if __name__ == '__main__':
         elif opt in ("-c","--config"):
             PATH = arg
     
-    TOKEN=read_file_as_str(f"{PATH}/TOKEN")
+    # TOKEN=read_file_as_str(f"{PATH}/TOKEN")
     config.config_file = f"{PATH}/my.json"
     config.load_config()
+    TOKEN=config.CONFIG["token"]
 
     updater = Updater(token=TOKEN, use_context=True)
     dispatcher = updater.dispatcher
