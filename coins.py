@@ -149,9 +149,9 @@ def daily(update,context):
             update.message.reply_text("Here are your daily coins, %s\n%s coins were placed in your wallet.\nOh? And Gringotts offered you a free banknote to store your cash!\n这是您的每天打卡的金币，%s\n%s GP已被放置在您的钱包中。\n哦？古灵阁为您提供了免费的钞票来存储您的现金！"%(user.first_name,c,user.first_name,c))
         else:
             update.message.reply_text("Here are your daily coins, %s\n%s coins were placed in your wallet.\n这是您的每天打卡的金币，%s\n%s GP已被放置在您的钱包中。"%(user.first_name,c,user.first_name,c))
+        coins[uid]['dailytime'] = dailytime.strftime("%Y/%m/%d %H:%M:%S")
     else:
-        update.message.reply_text("Slow it down, cmon!!! I'm not made of money dude, one day hasn't passed yet!\n放慢速度，呆瓜！我不是用钱做的，小家伙，一天还没有过去！")
-    coins[uid]['dailytime'] = dailytime.strftime("%Y/%m/%d %H:%M:%S")    
+        update.message.reply_text("Slow it down, cmon!!! I'm not made of money dude, one day hasn't passed yet!\n放慢速度，呆瓜！我不是用钱做的，小家伙，一天还没有过去！")    
     save()
 
 def weekly(update,context):

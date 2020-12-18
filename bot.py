@@ -98,7 +98,7 @@ if __name__ == '__main__':
     import gif
     import gamble
     import shop
-
+    import pokemon
     start_handler = CommandHandler('start', start)
     help_handler = CommandHandler('help', help)
     dispatcher.add_handler(start_handler)
@@ -112,7 +112,8 @@ if __name__ == '__main__':
     gif.add_handler(dispatcher)
     gamble.add_handler(dispatcher)
     shop.add_handler(dispatcher)
-    commands = coins.get_command() + capitals.get_command() + search.get_command() + fish.get_command() + hunt.get_command() + get_command() + beg.get_command() + gif.get_command() + gamble.get_command() + shop.get_command()
+    pokemon.addHandler(dispatcher)
+    commands = coins.get_command() + capitals.get_command() + search.get_command() + fish.get_command() + hunt.get_command() + get_command() + beg.get_command() + gif.get_command() + gamble.get_command() + shop.get_command() + pokemon.getCommand()
     updater.bot.set_my_commands(commands)
 
     updater.start_polling()
