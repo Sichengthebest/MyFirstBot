@@ -197,21 +197,22 @@ def pokeCallback(update,context):
         game[uid]['spawn'] = False
         return
     if rarity == 'c':
-        coinsadd = random.randint(100,140)
+        coinsadd = random.randint(160,200)
         xpadd = random.randint(90,110)
     elif rarity == 'u':
-        coinsadd = random.randint(160,200)
+        coinsadd = random.randint(210,250)
         xpadd = random.randint(240,260)
     elif rarity == 'r':
-        coinsadd = random.randint(420,460)
+        coinsadd = random.randint(450,500)
         xpadd = random.randint(390,410)
     elif rarity == 's':
-        coinsadd = random.randint(500,540)
+        coinsadd = random.randint(600,666)
         xpadd = random.randint(1490,1510)
     elif rarity == 'l':
         coinsadd = random.randint(4100,4200)
         xpadd = random.randint(9990,10010)
     if myroll > proll:
+        game[uid]['pokecoins'] += coinsadd
         query.edit_message_caption(f"""Congratulations, {user.first_name}!
 ✅ You have caught a {pokemoninfo[0]} with a {ballTrans[ball]}!
 You earned {coinsadd} pokecoins!
@@ -400,9 +401,19 @@ def surprise(update,context):
     dailytime = datetime.strptime(game[uid]['dailytime'],"%Y/%m/%d %H:%M:%S")
     if datetime.now() > dailytime:
         c = random.randint(100,500)
+        pb = random.randint(5,15)
+        gb = random.randint(3,10)
+        ub = random.randint(1,5)
+        mb = random.randint(0,1)
         game[uid]['pokecoins'] += c
+        game[uid]['pb'] += pb
+        game[uid]['gb'] += gb
+        game[uid]['ub'] += ub
+        if mb == 1:
+            game[uid]['mb'] += mb
+            update.message.reply_text(f"Here are your daily pokecoins, {user.first_name}\n{c} pokecoins were placed in your wallet.\nYou also got:\n{pb} Pokeballs\n{gb} Greatballs\n{ub} Ultraballs\n...and 1 Masterball\n这是您的每天打卡的 pokecoins，{user.first_name}\n{c} pokecoins已被放置在您的钱包中。")
+        update.message.reply_text(f"Here are your daily pokecoins, {user.first_name}\n{c} pokecoins were placed in your wallet.\nYou also got:\n{pb} Pokeballs\n{gb} Greatballs\n...and {ub} Ultraballs\n这是您的每天打卡的 pokecoins，{user.first_name}\n{c} pokecoins已被放置在您的钱包中。")
         dailytime = datetime.now() + timedelta(days=1)
-        update.message.reply_text("Here are your daily pokecoins, %s\n%s pokecoins were placed in your wallet.\n这是您的每天打卡的 pokecoins，%s\n%s pokecoins已被放置在您的钱包中。"%(user.first_name,c,user.first_name,c))
         game[uid]['dailytime'] = dailytime.strftime("%Y/%m/%d %H:%M:%S")
     else:
         update.message.reply_text("Slow it down, cmon!!! I'm not made of money dude, one day hasn't passed yet!\n放慢速度，呆瓜！我不是用钱做的，小家伙，一天还没有过去！") 
