@@ -197,16 +197,16 @@ def pokeCallback(update,context):
         game[uid]['spawn'] = False
         return
     if rarity == 'c':
-        coinsadd = random.randint(40,70)
+        coinsadd = random.randint(100,140)
         xpadd = random.randint(90,110)
     elif rarity == 'u':
-        coinsadd = random.randint(100,130)
+        coinsadd = random.randint(160,200)
         xpadd = random.randint(240,260)
     elif rarity == 'r':
-        coinsadd = random.randint(130,160)
+        coinsadd = random.randint(420,460)
         xpadd = random.randint(390,410)
     elif rarity == 's':
-        coinsadd = random.randint(390,420)
+        coinsadd = random.randint(500,540)
         xpadd = random.randint(1490,1510)
     elif rarity == 'l':
         coinsadd = random.randint(4100,4200)
@@ -273,8 +273,12 @@ def shop(update,context):
     user = update.effective_user
     uid = str(user.id)
     check_time(uid)
-    if len(context.args) == 0:
-        update.message.reply_text(f"""Buy some items for your adventure!
+    if not 'spawn' in game[uid]:
+        game[uid]['spawn'] = False
+    if game[uid]['spawn'] == True:
+        update.message.reply_text("You already spawned a pokemon! Wait until you've caught it to buy items!")
+        return
+    update.message.reply_text(f"""Buy some items for your adventure!
 {user.first_name}'s pokeCoins: {game[uid]['pokecoins']}
 -------------------------
 You currently own:
