@@ -2,6 +2,7 @@ import os
 import logging
 import getopt
 import sys
+import mysystemd
 import config
 from telegram.ext import CommandHandler, Updater
 from telegram import BotCommand
@@ -119,6 +120,7 @@ if __name__ == '__main__':
 
     updater.start_polling()
     print('Started')
+    mysystemd.ready()
 
     updater.idle()
     print('Stopping...')
