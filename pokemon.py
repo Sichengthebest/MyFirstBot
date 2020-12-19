@@ -268,7 +268,15 @@ def box(update,context):
     check_time(uid)
     if not 'pokecoins' in game[uid]:
         game[uid]['pokecoins'] = 0
-    update.message.reply_text(f"You have {game[uid]['pokecoins']} pokecoins and you inventory is: {game[uid]['box']}")
+    update.message.reply_text(f"You have {game[uid]['pokecoins']} pokecoins and your inventory is: {game[uid]['box']}")
+
+def bal(update,context):
+    user = update.effective_user
+    uid = str(user.id)
+    check_time(uid)
+    if not 'pokecoins' in game[uid]:
+        game[uid]['pokecoins'] = 0
+    update.message.reply_text(f"{user.first_name}, you have {game[uid]['pokecoins']} pokecoins!")
     
 def shop(update,context):
     user = update.effective_user
@@ -424,7 +432,8 @@ def getCommand():
         BotCommand('box','Check the pokemon in your box! // 检查盒子里的宠物小精灵！'),
         BotCommand('pokeshop','Buy useful stuff for your adventure! // 为您的冒险购买有用的东西！'),
         BotCommand('bud','[BETA] Check on your buddy! // [测试] 检查您的好友！'),
-        BotCommand('surprise','Get your daily injection of pokecoins! // 每天注射 Pokecoins！')
+        BotCommand('surprise','Get your daily injection of pokecoins! // 每天注射 Pokecoins！'),
+        BotCommand('pokebal','Check the amount of pokecoins you have. // 检查您有多少 pokecoins。')
     ]
 
 def addHandler(dispatcher):
@@ -433,6 +442,7 @@ def addHandler(dispatcher):
     dispatcher.add_handler(CommandHandler('pokeshop',shop))
     dispatcher.add_handler(CommandHandler('bud',bud))
     dispatcher.add_handler(CommandHandler('surprise',surprise))
+    dispatcher.add_handler(CommandHandler('pokebal',bal))
     dispatcher.add_handler(CallbackQueryHandler(pokeCallback,pattern="^pk:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(shopCallback,pattern="^pkbuy:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(budCallback,pattern="^pkbud:[A-Za-z0-9_]*"))
