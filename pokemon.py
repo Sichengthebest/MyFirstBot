@@ -107,7 +107,6 @@ def pokemon(update,context):
         return
     game[uid]['spawn'] = True
     if t >= datetime.strptime(game[uid]['gametime'],"%Y/%m/%d %H:%M:%S"):
-        print(pkcatchkb)
         kb = util.getkb(pkcatchkb)
         update.message.reply_photo(f'{pokemoninfo[1]}', caption=f"""You have found a wild {pokemoninfo[0]}!
 Rarity: {rarityTrans[rarity]}
@@ -320,6 +319,7 @@ def bud(update,context):
     level = int(game[uid]['budxp'] / 1000) + 1
     if game[uid]['bud'] == '':
         update.message.reply_photo('https://miro.medium.com/max/1200/1*y0-zWEUPYi6TRuz0lC-0Ig.jpeg',caption="""Hi! My name is pokemon trainer BOTGOD. Someone told me that you wanted to become a master pokemon trainer. Well, I'm the person to seek. You can choose between 3 starter pokemon and return for more advice. Now which pokemon would you like to have?""", reply_markup=budkb)
+        return
     if level >= 16 and level < 32:
         game[uid]['budnow'] = budinfo[game[uid]['bud']]['16']
     elif level >= 32:
@@ -327,49 +327,48 @@ def bud(update,context):
             game[uid]['budnow'] = budinfo[game[uid]['bud']]['32']
         else:
             game[uid]['budnow'] = budinfo[game[uid]['bud']]['36']
-    else:
-        if game[uid]['budnow'] == 'Bulbasaur':
-            update.message.reply_photo('https://img.pokemondb.net/artwork/bulbasaur.jpg',caption=f"""Your Bulbasaur:
+    if game[uid]['budnow'] == 'Bulbasaur':
+        update.message.reply_photo('https://img.pokemondb.net/artwork/bulbasaur.jpg',caption=f"""Your Bulbasaur:
 Level: {level}
 XP: {game[uid]['budxp']}
 XP to next level: {level * 1000 - game[uid]['budxp']}""")
-        elif game[uid]['budnow'] == 'Ivysaur':
-            update.message.reply_photo('https://img.pokemondb.net/artwork/ivysaur.jpg',caption=f"""Your Ivysaur:
+    elif game[uid]['budnow'] == 'Ivysaur':
+        update.message.reply_photo('https://img.pokemondb.net/artwork/ivysaur.jpg',caption=f"""Your Ivysaur:
 Level: {level}
 XP: {game[uid]['budxp']}
 XP to next level: {level * 1000 - game[uid]['budxp']}""")
-        elif game[uid]['budnow'] == 'Venusaur':
-            update.message.reply_photo('https://img.pokemondb.net/artwork/venusaur.jpg',caption=f"""Your Venusaur:
+    elif game[uid]['budnow'] == 'Venusaur':
+        update.message.reply_photo('https://img.pokemondb.net/artwork/venusaur.jpg',caption=f"""Your Venusaur:
 Level: {level}
 XP: {game[uid]['budxp']}
 XP to next level: {level * 1000 - game[uid]['budxp']}""")
-        elif game[uid]['budnow'] == 'Charmander':
-            update.message.reply_photo('https://img.pokemondb.net/artwork/charmander.jpg',caption=f"""Your Charmander:
+    elif game[uid]['budnow'] == 'Charmander':
+        update.message.reply_photo('https://img.pokemondb.net/artwork/charmander.jpg',caption=f"""Your Charmander:
 Level: {level}
 XP: {game[uid]['budxp']}
 XP to next level: {level * 1000 - game[uid]['budxp']}""")
-        elif game[uid]['budnow'] == 'Charmeleon':
-            update.message.reply_photo('https://img.pokemondb.net/artwork/charmeleon.jpg',caption=f"""Your Charmeleon:
+    elif game[uid]['budnow'] == 'Charmeleon':
+        update.message.reply_photo('https://img.pokemondb.net/artwork/charmeleon.jpg',caption=f"""Your Charmeleon:
 Level: {level}
 XP: {game[uid]['budxp']}
 XP to next level: {level * 1000 - game[uid]['budxp']}""")
-        elif game[uid]['budnow'] == 'Charizard':
-            update.message.reply_photo('https://img.pokemondb.net/artwork/charizard.jpg',caption=f"""Your Charizard:
+    elif game[uid]['budnow'] == 'Charizard':
+        update.message.reply_photo('https://img.pokemondb.net/artwork/charizard.jpg',caption=f"""Your Charizard:
 Level: {level}
 XP: {game[uid]['budxp']}
 XP to next level: {level * 1000 - game[uid]['budxp']}""")
-        elif game[uid]['budnow'] == 'Squirtle':
-            update.message.reply_photo('https://img.pokemondb.net/artwork/squirtle.jpg',caption=f"""Your Squirtle:
+    elif game[uid]['budnow'] == 'Squirtle':
+        update.message.reply_photo('https://img.pokemondb.net/artwork/squirtle.jpg',caption=f"""Your Squirtle:
 Level: {level}
 XP: {game[uid]['budxp']}
 XP to next level: {level * 1000 - game[uid]['budxp']}""")
-        elif game[uid]['budnow'] == 'Wartortle':
-            update.message.reply_photo('https://img.pokemondb.net/artwork/wartortle.jpg',caption=f"""Your Wartortle:
+    elif game[uid]['budnow'] == 'Wartortle':
+        update.message.reply_photo('https://img.pokemondb.net/artwork/wartortle.jpg',caption=f"""Your Wartortle:
 Level: {level}
 XP: {game[uid]['budxp']}
 XP to next level: {level * 1000 - game[uid]['budxp']}""")
-        elif game[uid]['budnow'] == 'Blastoise':
-            update.message.reply_photo('https://img.pokemondb.net/artwork/blastoise.jpg',caption=f"""Your Blastoise:
+    elif game[uid]['budnow'] == 'Blastoise':
+        update.message.reply_photo('https://img.pokemondb.net/artwork/blastoise.jpg',caption=f"""Your Blastoise:
 Level: {level}
 XP: {game[uid]['budxp']}
 XP to next level: {level * 1000 - game[uid]['budxp']}""")
