@@ -67,7 +67,7 @@ def check_time(uid):
             'spawn': False
         }
 
-pkcatchkb = [{'Pokeball':'pk:pb'},{'Greatball':'pk:gb'},{'Ultraball':'pk:ub'},{'Masterball':'pk:mb'},{'Abandon','pk:run'}]
+pkcatchkb = [{'Pokeball':'pk:pb'},{'Greatball':'pk:gb'},{'Ultraball':'pk:ub'},{'Masterball':'pk:mb'},{'Abandon':'pk:run'}]
 
 budskb = [{'Bulbasaur':'pkbud:bulb'},{'Charmander':'pkbud:char'},{"Squirtle":'pkbud:sqir'}]
 budkb = util.getkb(budskb)
@@ -100,14 +100,14 @@ def pokemon(update,context):
     uid = str(user.id)
     check_time(uid)
     t = datetime.now()
-    availb = []
     if not 'spawn' in game[uid]:
         game[uid]['spawn'] = False
     if game[uid]['spawn'] == True:
-        update.message.reply_text("You already spawned a pokemon! Catch that pokemon first.")
+        update.message.reply_text("You already spawned a pokemon! Catch that pokemon first. Use /reset if you think this is a bug.")
         return
     game[uid]['spawn'] = True
     if t >= datetime.strptime(game[uid]['gametime'],"%Y/%m/%d %H:%M:%S"):
+        print(pkcatchkb)
         kb = util.getkb(pkcatchkb)
         update.message.reply_photo(f'{pokemoninfo[1]}', caption=f"""You have found a wild {pokemoninfo[0]}!
 Rarity: {rarityTrans[rarity]}
@@ -417,6 +417,14 @@ def surprise(update,context):
         update.message.reply_text("Slow it down, cmon!!! I'm not made of money dude, one day hasn't passed yet!\n放慢速度，呆瓜！我不是用钱做的，小家伙，一天还没有过去！") 
     save()
 
+def reset(update,context):
+    user = update.effective_user
+    uid = str(user.id)
+    check_time(uid)
+    game[uid]['spawn'] = False
+    update.message.reply_text("You have reset your pokemon.")
+    save()
+
 def getCommand():
     return [BotCommand('pokemon','Go catch pokemon! // 去捉宠物小精灵！'),
         BotCommand('box','[BETA] Check the pokemon in your box! // [测试] 检查盒子里的宠物小精灵！'),
@@ -433,6 +441,7 @@ def addHandler(dispatcher):
     dispatcher.add_handler(CommandHandler('bud',bud))
     dispatcher.add_handler(CommandHandler('surprise',surprise))
     dispatcher.add_handler(CommandHandler('pokebal',bal))
+    dispatcher.add_handler(CommandHandler('reset',reset))
     dispatcher.add_handler(CallbackQueryHandler(pokeCallback,pattern="^pk:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(shopCallback,pattern="^pkbuy:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(budCallback,pattern="^pkbud:[A-Za-z0-9_]*"))
