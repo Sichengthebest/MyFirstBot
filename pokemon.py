@@ -1,5 +1,6 @@
 import random
 import config
+import util
 from telegram.ext import CommandHandler, dispatcher, CallbackQueryHandler
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, BotCommand
 from datetime import datetime,timedelta
@@ -66,22 +67,13 @@ def check_time(uid):
             'spawn': False
         }
 
-pbbutton = InlineKeyboardButton('Pokeball', callback_data='pk:pb')
-gbbutton = InlineKeyboardButton('Greatball', callback_data='pk:gb')
-ubbutton = InlineKeyboardButton('Ultraball', callback_data='pk:ub')
-mbbutton = InlineKeyboardButton('Masterball', callback_data='pk:mb')
-exitbutton = InlineKeyboardButton('Abandon', callback_data='pk:run')
+pkcatchkb = [{'Pokeball':'pk:pb'},{'Greatball':'pk:gb'},{'Ultraball':'pk:ub'},{'Masterball':'pk:mb'},{'Abandon','pk:run'}]
 
-bulbbutton = InlineKeyboardButton('Bulbasaur', callback_data='pkbud:bulb')
-charbutton = InlineKeyboardButton('Charmander', callback_data='pkbud:char')
-squibutton = InlineKeyboardButton('Squirtle', callback_data='pkbud:squi')
-budkb = InlineKeyboardMarkup([[bulbbutton,charbutton,squibutton]])
+budskb = [{'Bulbasaur':'pkbud:bulb'},{'Charmander':'pkbud:char'},{"Squirtle":'pkbud:sqir'}]
+budkb = util.getkb(budskb)
 
-pbbuy = InlineKeyboardButton('Pokeball', callback_data='pkbuy:pb')
-gbbuy = InlineKeyboardButton('Greatball', callback_data='pkbuy:gb')
-ubbuy = InlineKeyboardButton('Ultraball', callback_data='pkbuy:ub')
-mbbuy = InlineKeyboardButton('Masterball', callback_data='pkbuy:mb')
-buykb = InlineKeyboardMarkup([[pbbuy,gbbuy],[ubbuy,mbbuy]])
+buyskb = [{'Pokeball':'pkbuy:pb','Greatball':'pkbuy:gb'},{'Ultraball':'pkbuy:ub','Masterball':'pkbuy:mb'}]
+buykb = util.getkb(buyskb)
 
 def save():
     config.CONFIG["pk"] = game
@@ -116,15 +108,7 @@ def pokemon(update,context):
         return
     game[uid]['spawn'] = True
     if t >= datetime.strptime(game[uid]['gametime'],"%Y/%m/%d %H:%M:%S"):
-        if game[uid]['pb'] > 0:
-            availb.append(pbbutton)
-        if game[uid]['gb'] > 0:
-            availb.append(gbbutton)
-        if game[uid]['ub'] > 0:
-            availb.append(ubbutton)
-        if game[uid]['mb'] > 0:
-            availb.append(mbbutton)
-        kb = InlineKeyboardMarkup([availb,[exitbutton]])
+        kb = util.getkb(pkcatchkb)
         update.message.reply_photo(f'{pokemoninfo[1]}', caption=f"""You have found a wild {pokemoninfo[0]}!
 Rarity: {rarityTrans[rarity]}
 -------------------------
@@ -336,6 +320,13 @@ def bud(update,context):
     level = int(game[uid]['budxp'] / 1000) + 1
     if game[uid]['bud'] == '':
         update.message.reply_photo('https://miro.medium.com/max/1200/1*y0-zWEUPYi6TRuz0lC-0Ig.jpeg',caption="""Hi! My name is pokemon trainer BOTGOD. Someone told me that you wanted to become a master pokemon trainer. Well, I'm the person to seek. You can choose between 3 starter pokemon and return for more advice. Now which pokemon would you like to have?""", reply_markup=budkb)
+    if level >= 16 and level < 32:
+        game[uid]['budnow'] = budinfo[game[uid]['bud']]['16']
+    elif level >= 32:
+        if game[uid]['bud'] == 'Bulbasaur':
+            game[uid]['budnow'] = budinfo[game[uid]['bud']]['32']
+        else:
+            game[uid]['budnow'] = budinfo[game[uid]['bud']]['36']
     else:
         if game[uid]['budnow'] == 'Bulbasaur':
             update.message.reply_photo('https://img.pokemondb.net/artwork/bulbasaur.jpg',caption=f"""Your Bulbasaur:
@@ -382,7 +373,6 @@ XP to next level: {level * 1000 - game[uid]['budxp']}""")
 Level: {level}
 XP: {game[uid]['budxp']}
 XP to next level: {level * 1000 - game[uid]['budxp']}""")
-    save()
 
 def budCallback(update,context):
     user = update.effective_user
@@ -429,7 +419,7 @@ def surprise(update,context):
 
 def getCommand():
     return [BotCommand('pokemon','Go catch pokemon! // 去捉宠物小精灵！'),
-        BotCommand('box','Check the pokemon in your box! // 检查盒子里的宠物小精灵！'),
+        BotCommand('box','[BETA] Check the pokemon in your box! // [测试] 检查盒子里的宠物小精灵！'),
         BotCommand('pokeshop','Buy useful stuff for your adventure! // 为您的冒险购买有用的东西！'),
         BotCommand('bud','[BETA] Check on your buddy! // [测试] 检查您的好友！'),
         BotCommand('surprise','Get your daily injection of pokecoins! // 每天注射 Pokecoins！'),
