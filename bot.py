@@ -48,6 +48,11 @@ Fun commands // 有趣的命令:
 /capitals - How good are you at capitals? // 你了解所有首都吗？
 /gif - The bot will send you a funny gif. // 机器人会向您发送有趣的GIF。
 /gamble - Roll your dice against the bot, if you get higher than the bot you'll win! // 与机器人投骰子，如果得到的数比机器人高，您将获胜！
+/pokemon - Go catch pokemon! // 去捉宠物小精灵！
+/box - [BETA] Check the pokemon in your box! // [测试] 检查盒子里的宠物小精灵！
+/pokeshop - Buy useful stuff for your adventure! // 为您的冒险购买有用的东西！
+/bud - [BETA] Check on your buddy! // [测试] 检查您的好友！
+/pokebal - Check the amount of pokecoins you have. // 检查您有多少 pokecoins。
 -------------------------------------------------
 You can go find the new added commands at https://t.me/botgodupdates , the official bot updates channel.
 您可以在官方bot更新频道 https://t.me/botgodupdates 上找到新添加的命令。
