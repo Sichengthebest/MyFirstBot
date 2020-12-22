@@ -142,6 +142,11 @@ countries = {
             "yes": "Wellington // 惠灵顿",
             "no": ["Auckland // 奥克兰","Hamilton // 哈密尔顿(新西兰)"],
             "haha": ["Christchurch // 基督城","Dunedin // 达尼丁"]
+        },
+        "🇵🇹 Portugal // 葡萄牙 🇵🇹": {
+            "yes": "Lisbon // 里斯本",
+            "no": ["Porto // 波尔图","Almendralejo // 阿尔门德拉莱霍"],
+            "haha": ["Faro // 法鲁","Coimbra // 科英布拉"]
         }
     },
     'hard':{
@@ -179,6 +184,11 @@ countries = {
             "yes": "Santiago // 圣地亚哥",
             "no": ["Antofagasta // 安托法加斯塔","Concepción // 康塞普西翁","Valparaíso // 瓦尔帕莱索"],
             "haha": ["Punta Arenas // 蓬塔阿雷纳斯","Copiapó // 科皮亚波"]
+        },
+        "🇵🇱 Poland // 波兰 🇵🇱": {
+            "yes": "Warsaw // 华沙",
+            "no": ["Wrocław // 弗罗茨瓦夫","Szczecin // 什切青","Gdańsk // 格但斯克"],
+            "haha": ["Lódź // 罗兹","Lublin // 鲁布林"]
         }
     },
     'extreme':{
