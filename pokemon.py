@@ -409,7 +409,8 @@ def surprise(update,context):
         if mb == 1:
             game[uid]['mb'] += mb
             update.message.reply_text(f"Here are your daily pokecoins, {user.first_name}\n{c} pokecoins were placed in your wallet.\nYou also got:\n{pb} Pokeballs\n{gb} Greatballs\n{ub} Ultraballs\n...and 1 Masterball\n这是您的每天打卡的 pokecoins，{user.first_name}\n{c} pokecoins已被放置在您的钱包中。")
-        update.message.reply_text(f"Here are your daily pokecoins, {user.first_name}\n{c} pokecoins were placed in your wallet.\nYou also got:\n{pb} Pokeballs\n{gb} Greatballs\n...and {ub} Ultraballs\n这是您的每天打卡的 pokecoins，{user.first_name}\n{c} pokecoins已被放置在您的钱包中。")
+        else:
+            update.message.reply_text(f"Here are your daily pokecoins, {user.first_name}\n{c} pokecoins were placed in your wallet.\nYou also got:\n{pb} Pokeballs\n{gb} Greatballs\n...and {ub} Ultraballs\n这是您的每天打卡的 pokecoins，{user.first_name}\n{c} pokecoins已被放置在您的钱包中。")
         dailytime = datetime.now() + timedelta(days=1)
         game[uid]['dailytime'] = dailytime.strftime("%Y/%m/%d %H:%M:%S")
     else:
