@@ -67,8 +67,6 @@ def check_time(uid):
             'spawn': False
         }
 
-pkcatchkb = [{'Pokeball':'pk:pb'},{'Greatball':'pk:gb'},{'Ultraball':'pk:ub'},{'Masterball':'pk:mb'},{'Abandon':'pk:run'}]
-
 budskb = [{'Bulbasaur':'pkbud:bulb'},{'Charmander':'pkbud:char'},{"Squirtle":'pkbud:sqir'}]
 budkb = util.getkb(budskb)
 
@@ -100,6 +98,7 @@ def pokemon(update,context):
     uid = str(user.id)
     check_time(uid)
     t = datetime.now()
+    balls = []
     if not 'spawn' in game[uid]:
         game[uid]['spawn'] = False
     if game[uid]['spawn'] == True:
@@ -107,7 +106,15 @@ def pokemon(update,context):
         return
     game[uid]['spawn'] = True
     if t >= datetime.strptime(game[uid]['gametime'],"%Y/%m/%d %H:%M:%S"):
-        kb = util.getkb(pkcatchkb)
+        if game[uid]['pb'] > 0:
+            balls.append(InlineKeyboardButton('Pokeball',callback_data='pk:pb'))
+        if game[uid]['gb'] > 0:
+            balls.append(InlineKeyboardButton('Greatball',callback_data='pk:gb'))
+        if game[uid]['ub'] > 0:
+            balls.append(InlineKeyboardButton('Ultraball',callback_data='pk:ub'))
+        if game[uid]['mb'] > 0:
+            balls.append(InlineKeyboardButton('Masterball',callback_data='pk:mb'))
+        kb = InlineKeyboardMarkup([balls])
         update.message.reply_photo(f'{pokemoninfo[1]}', caption=f"""You have found a wild {pokemoninfo[0]}!
 Rarity: {rarityTrans[rarity]}
 -------------------------
@@ -178,6 +185,7 @@ def pokeCallback(update,context):
     elif ball == 'pk:run':
         query.edit_message_caption("You ran away. HAHAHAHA coward!")
         game[uid]['spawn'] = False
+        pokemoninfo = random.choice(pokemons[rarity])
         return
     if rarity == 'c':
         coinsadd = random.randint(160,200)
