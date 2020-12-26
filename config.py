@@ -1,4 +1,5 @@
 import json
+import os
 
 def load_config():
    global CONFIG
@@ -24,6 +25,7 @@ def save_config():
 CONFIG = {}
 config_file = 'my.json'
 
+run_path = os.getcwd()
 # load_config()
 # CONFIG = migration.migration(CONFIG)   # version.新的
 # save_config()
