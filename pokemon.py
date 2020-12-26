@@ -46,7 +46,6 @@ budinfo = {
 
 rate = ['c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','u','u','u','u','u','u','u','u','u','u','u','u','u','r','r','r','r','r','r','r','r','s','s','s','l']
 rarity = random.choice(rate)
-pokemoninfo = random.choice(pokemons[rarity])
 
 game = config.CONFIG["pk"]
 
@@ -64,7 +63,8 @@ def check_time(uid):
             'budnow': '',
             'budxp': 0,
             'dailytime': datetime.now().strftime("%Y/%m/%d %H:%M:%S"),
-            'spawn': False
+            'spawn': False,
+            'currentpk': random.choice(pokemons[rarity])
         }
 
 budskb = [{'Bulbasaur':'pkbud:bulb'},{'Charmander':'pkbud:char'},{"Squirtle":'pkbud:sqir'}]
@@ -101,9 +101,12 @@ def pokemon(update,context):
     balls = []
     if not 'spawn' in game[uid]:
         game[uid]['spawn'] = False
+    if not 'currentpk' in game[uid]:
+        game[uid]['currentpk'] = random.choice(pokemons[rarity])
     if game[uid]['spawn'] == True:
         update.message.reply_text("You already spawned a pokemon! Catch that pokemon first. Use /reset if you think this is a bug.")
         return
+    game[uid]['currentpk'] = random.choice(pokemons[rarity])
     game[uid]['spawn'] = True
     if t >= datetime.strptime(game[uid]['gametime'],"%Y/%m/%d %H:%M:%S"):
         if game[uid]['pb'] > 0:
@@ -114,8 +117,8 @@ def pokemon(update,context):
             balls.append(InlineKeyboardButton('Ultraball',callback_data='pk:ub'))
         if game[uid]['mb'] > 0:
             balls.append(InlineKeyboardButton('Masterball',callback_data='pk:mb'))
-        kb = InlineKeyboardMarkup([balls])
-        update.message.reply_photo(f'{pokemoninfo[1]}', caption=f"""You have found a wild {pokemoninfo[0]}!
+        kb = InlineKeyboardMarkup([balls,[InlineKeyboardButton('Abandon',callback_data='pk:run')]])
+        update.message.reply_photo(game[uid]["currentpk"][1], caption=f"""You have found a wild {game[uid]['currentpk'][0]}!
 Rarity: {rarityTrans[rarity]}
 -------------------------
 Balls left:
@@ -128,7 +131,7 @@ Masterballs: {game[uid]['mb']}""",reply_markup=kb)
         update.message.reply_text("Slow it down, cmon!!! You have caught every single Pokemon around you, wait a few more seconds for them to respawn!")
 
 def pokeCallback(update,context):
-    global rarity, pokemoninfo
+    global rarity
     user = update.effective_user
     uid = str(user.id)
     query = update.callback_query
@@ -180,12 +183,12 @@ def pokeCallback(update,context):
         myroll = random.randint(20,50)
         game[uid]['ub'] -= 1
     elif ball == 'pk:mb':
-        myroll = 95
+        myroll = 100
         game[uid]['mb'] -= 1
     elif ball == 'pk:run':
         query.edit_message_caption("You ran away. HAHAHAHA coward!")
         game[uid]['spawn'] = False
-        pokemoninfo = random.choice(pokemons[rarity])
+        game[uid]['currentpk'] = random.choice(pokemons[rarity])
         return
     if rarity == 'c':
         coinsadd = random.randint(160,200)
@@ -200,12 +203,12 @@ def pokeCallback(update,context):
         coinsadd = random.randint(600,666)
         xpadd = random.randint(1490,1510)
     elif rarity == 'l':
-        coinsadd = random.randint(4100,4200)
+        coinsadd = random.randint(19900,20100)
         xpadd = random.randint(9990,10010)
     if myroll > proll:
         game[uid]['pokecoins'] += coinsadd
         query.edit_message_caption(f"""Congratulations, {user.first_name}!
-✅ You have caught a {pokemoninfo[0]} with a {ballTrans[ball]}!
+✅ You have caught a {game[uid]['currentpk'][0]} with a {ballTrans[ball]}!
 You earned {coinsadd} pokecoins!
 Rarity: {rarityTrans[rarity]}
 -------------------------
@@ -218,11 +221,11 @@ Greatballs: {game[uid]['gb']}
 Ultraballs: {game[uid]['ub']}
 Masterballs: {game[uid]['mb']}
 -------------------------{budadd(uid,xpadd)}""")
-        game[uid]['box'].append(pokemoninfo[0])
+        game[uid]['box'].append(game[uid]['currentpk'][0])
     elif myroll == proll:
         game[uid]['pokecoins'] += coinsadd
         query.edit_message_caption(f"""Congratulations, {user.first_name}!
-✅ You have caught a {pokemoninfo[0]} with a {ballTrans[ball]}!
+✅ You have caught a {game[uid]['currentpk'][0]} with a {ballTrans[ball]}!
 You earned {coinsadd} pokecoins!
 Rarity: {rarityTrans[rarity]}
 -------------------------
@@ -235,9 +238,9 @@ Greatballs: {game[uid]['gb']}
 Ultraballs: {game[uid]['ub']}
 Masterballs: {game[uid]['mb']}
 -------------------------{budadd(uid,xpadd)}""")
-        game[uid]['box'].append(pokemoninfo[0])
+        game[uid]['box'].append(game[uid]['currentpk'][0])
     elif proll > myroll:
-        query.edit_message_caption(f"""❌ {pokemoninfo[0]} broke out of the {ballTrans[ball]}!
+        query.edit_message_caption(f"""❌ {game[uid]['currentpk'][0]} broke out of the {ballTrans[ball]}!
 Rarity: {rarityTrans[rarity]}
 -------------------------
 Pokemon roll: {proll}
@@ -249,7 +252,7 @@ Greatballs: {game[uid]['gb']}
 Ultraballs: {game[uid]['ub']}
 Masterballs: {game[uid]['mb']}""")
     rarity = random.choice(rate)
-    pokemoninfo = random.choice(pokemons[rarity])
+    game[uid]['currentpk'] = random.choice(pokemons[rarity])
     game[uid]['spawn'] = False
     save()
 
@@ -304,7 +307,7 @@ def shopCallback(update,context):
     elif object == 'pkbuy:ub':
         query.edit_message_text(buy_stuff(uid,'ub',400))
     elif object == 'pkbuy:mb':
-        query.edit_message_text(buy_stuff(uid,'mb',3750))
+        query.edit_message_text(buy_stuff(uid,'mb',17500))
     save()
 
 def buy_stuff(uid,ball,c):
