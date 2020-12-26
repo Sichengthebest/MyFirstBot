@@ -293,7 +293,7 @@ You currently own:
 Pokeball: 50 pokecoins
 Greatball: 125 pokecoins
 Ultraball: 400 pokecoins
-Masterball: 3750 pokecoins""",reply_markup=buykb)
+Masterball: 17500 pokecoins""",reply_markup=buykb)
 
 def shopCallback(update,context):
     user = update.effective_user
