@@ -336,8 +336,10 @@ def bud(update,context):
     elif level >= 32:
         if game[uid]['bud'] == 'Bulbasaur':
             game[uid]['budnow'] = budinfo[game[uid]['bud']]['32']
-        else:
+        elif level >= 36:
             game[uid]['budnow'] = budinfo[game[uid]['bud']]['36']
+        else:
+            pass
     if game[uid]['budnow'] == 'Bulbasaur':
         update.message.reply_photo('https://img.pokemondb.net/artwork/bulbasaur.jpg',caption=f"""Your Bulbasaur:
 Level: {level}
