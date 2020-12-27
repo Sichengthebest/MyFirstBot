@@ -73,6 +73,18 @@ budkb = util.getkb(budskb)
 buyskb = [{'Pokeball':'pkbuy:pb','Greatball':'pkbuy:gb'},{'Ultraball':'pkbuy:ub','Masterball':'pkbuy:mb'}]
 buykb = util.getkb(buyskb)
 
+buynumspbkb = [{'1':'pkbuynum:1:pb','2':'pkbuynum:2:pb','3':'pkbuynum:3:pb','4':'pkbuynum:4:pb'},{'5':'pkbuynum:5:pb','6':'pkbuynum:6:pb','7':'pkbuynum:7:pb','8':'pkbuynum:8:pb'},{'9':'pkbuynum:9:pb','10':'pkbuynum:10:pb','11':'pkbuynum:11:pb','12':'pkbuynum:12:pb'}]
+buynumpbkb = util.getkb(buynumspbkb)
+
+buynumsgbkb = [{'1':'pkbuynum:1:gb','2':'pkbuynum:2:gb','3':'pkbuynum:3:gb','4':'pkbuynum:4:gb'},{'5':'pkbuynum:5:gb','6':'pkbuynum:6:gb','7':'pkbuynum:7:gb','8':'pkbuynum:8:gb'},{'9':'pkbuynum:9:gb','10':'pkbuynum:10:gb'}]
+buynumgbkb = util.getkb(buynumsgbkb)
+
+buynumsubkb = [{'1':'pkbuynum:1:ub','2':'pkbuynum:2:ub','3':'pkbuynum:3:ub','4':'pkbuynum:4:ub'},{'5':'pkbuynum:5:ub','6':'pkbuynum:6:ub'}]
+buynumubkb = util.getkb(buynumsubkb)
+
+buynumsmbkb = [{'1':'pkbuynum:1:mb','2':'pkbuynum:2:mb','3':'pkbuynum:3:mb'}]
+buynummbkb = util.getkb(buynumsmbkb)
+
 def save():
     config.CONFIG["pk"] = game
     config.save_config()
@@ -296,26 +308,46 @@ Ultraball: 400 pokecoins
 Masterball: 17500 pokecoins""",reply_markup=buykb)
 
 def shopCallback(update,context):
-    user = update.effective_user
-    uid = str(user.id)
     query = update.callback_query
     object = query.data
-    if object == 'pkbuy:pb':
-        query.edit_message_text(buy_stuff(uid,'pb',50))
-    elif object == 'pkbuy:gb':
-        query.edit_message_text(buy_stuff(uid,'gb',125))
-    elif object == 'pkbuy:ub':
-        query.edit_message_text(buy_stuff(uid,'ub',400))
-    elif object == 'pkbuy:mb':
-        query.edit_message_text(buy_stuff(uid,'mb',17500))
+    ball = object.split(":")[1]
+    if ball == 'pb':
+        ballreal = 'Pokeballs'
+        query.edit_message_text(f"Aight, you want some {ballreal}. How many? Please choose one.",reply_markup=buynumpbkb)
+    elif ball == 'gb':
+        ballreal = 'Greatballs'
+        query.edit_message_text(f"Aight, you want some {ballreal}. How many? Please choose one.",reply_markup=buynumgbkb)
+    elif ball == 'ub':
+        ballreal = 'Ultraballs'
+        query.edit_message_text(f"Aight, you want some {ballreal}. How many? Please choose one.",reply_markup=buynumubkb)
+    elif ball == 'mb':
+        ballreal = 'Masterballs'
+        query.edit_message_text(f"Aight, you want some {ballreal}. How many? Please choose one.",reply_markup=buynummbkb)
     save()
 
-def buy_stuff(uid,ball,c):
-    if game[uid]['pokecoins'] < c:
-        return f"Sorry, ur just too poor you need {c} pokecoins but you only have {game[uid]['pokecoins']} pokecoins."
-    game[uid]['pokecoins'] -= c
-    game[uid][ball] += 1
-    return f"Success! You now have {game[uid]['pokecoins']} pokecoins, {game[uid]['pb']} Pokeballs, {game[uid]['gb']} Greatballs, {game[uid]['ub']} Ultraballs and {game[uid]['mb']} Masterballs"
+def shopnumCallback(update,context):
+    user = update.effective_user
+    query = update.callback_query
+    _,num,ball = query.data.split(':')
+    if ball == 'pb':
+        c = 50
+    elif ball == 'gb':
+        c = 125
+    elif ball == 'ub':
+        c = 400
+    elif ball == 'mb':
+        c = 17500
+    query.edit_message_text(buy_stuff(user,c,num,ball))
+    
+def buy_stuff(user,c,num,ball):
+    uid = str(user.id)
+    totalcost = int(c) * int(num)
+    if int(totalcost) > game[uid]['pokecoins']:
+        return f"Sorry, ur just too poor you need {totalcost} pokecoins but you only have {game[uid]['pokecoins']} pokecoins."
+    game[uid]['pokecoins'] -= totalcost
+    game[uid][ball] += int(num)
+    return f"Success! @{user.username} , you have bought {num} {ballTrans[f'pk:{ball}']}(s) with {totalcost} pokecoins and you have {game[uid]['pokecoins']} pokecoins remaining.\nYou now have {game[uid]['pb']} Pokeballs, {game[uid]['gb']} Greatballs, {game[uid]['ub']} Ultraballs and {game[uid]['mb']} Masterballs."
+    
 
 def bud(update,context):
     user = update.effective_user
@@ -458,3 +490,4 @@ def addHandler(dispatcher):
     dispatcher.add_handler(CallbackQueryHandler(pokeCallback,pattern="^pk:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(shopCallback,pattern="^pkbuy:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(budCallback,pattern="^pkbud:[A-Za-z0-9_]*"))
+    dispatcher.add_handler(CallbackQueryHandler(shopnumCallback,pattern="^pkbuynum:[A-Za-z0-9_]*"))
