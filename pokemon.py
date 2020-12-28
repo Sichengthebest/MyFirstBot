@@ -119,8 +119,8 @@ def pokemon(update,context):
         update.message.reply_text("You already spawned a pokemon! Catch that pokemon first. Use /reset if you think this is a bug.")
         return
     game[uid]['currentpk'] = random.choice(pokemons[rarity])
-    game[uid]['spawn'] = True
     if t >= datetime.strptime(game[uid]['gametime'],"%Y/%m/%d %H:%M:%S"):
+        game[uid]['spawn'] = True
         if game[uid]['pb'] > 0:
             balls.append(InlineKeyboardButton('Pokeball',callback_data='pk:pb'))
         if game[uid]['gb'] > 0:
