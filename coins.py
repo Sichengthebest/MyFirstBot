@@ -449,7 +449,7 @@ def withdraw(update, context):
 def get_coins(update, context):
     user = update.effective_user
     check_user(user)
-    update.message.reply_animation(open(f'{config.run_path}/imgs/monnney.gif','rb'),caption=f"{show_user(user)}")
+    update.message.reply_animation('https://i.pinimg.com/originals/6f/0b/b4/6f0bb4cbfbfd2bc10bd0ee85bdec6843.gif',caption=f"{show_user(user)}")
 
 def get_command():
     return [
