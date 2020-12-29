@@ -100,6 +100,11 @@ countries = {
             "yes": "Washington DC // 华盛顿 DC",
             "no": ["New York // 纽约", "New Youk // 新约","Washington DD // 华盛顿 DD","Philadelphia // 费城"],
             "haha": ["The Place Where There Is A Very Messy Election? // 选举非常混乱的地方？","Beaconsfield // 比肯斯菲尔德"]
+        },
+        "🇮🇳 India // 印度 🇮🇳": {
+            "yes": "New Delhi // 新德里",
+            "no":["Delhi // 德里","Calcutta // 加尔各答","Mumbai // 孟买"],
+            "haha":["Kashmere // 卡什米尔","Beaconsfield // 比肯斯菲尔德"]
         }
     },
     'normal':{
