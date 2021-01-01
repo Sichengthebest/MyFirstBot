@@ -1,7 +1,6 @@
-import config
 from telegram import Update, BotCommand
-from telegram.ext import Dispatcher,CommandHandler,CallbackContext
-from json import dumps,loads
+from telegram.ext import Dispatcher,CommandHandler
+from json import dumps
 
 def info(update,context):
     u = str(update)
@@ -14,4 +13,4 @@ def get_command():
     ]
 
 def add_handler(dp):
-    dp.add_handler(CommandHandler(["info"], info))
+    dp.add_handler(CommandHandler("info", info))

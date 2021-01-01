@@ -1,0 +1,1 @@
+        query.edit_message_text("So you took a plane to Antarctica and landed safely at Davis Station. You and your imaginary friend (probably Siri) took to snowmobiles to explore the surrounding landscape. Suddenly, a blizzard came out of nowhere and trapped you and Siri inside it! What do you do?")
