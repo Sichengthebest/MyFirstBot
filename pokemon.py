@@ -95,13 +95,16 @@ def budadd(uid,c):
     else:
         game[uid]['budxp'] += c
         if game[uid]['budxp'] >= 16000:
-            game[uid]['budnow'] = budinfo[game[uid]['bud']]['16']
-        elif game[uid]['budxp'] >= 32000:
             if game[uid]['bud'] == 'Bulbasaur':
-                game[uid]['budnow'] = budinfo[game[uid]['bud']]['32']
+                if game[uid]['budxp'] < 32000:
+                    game[uid]['budnow'] = 'Ivysaur'
+                else:
+                    game[uid]['budnow'] = 'Venusaur'
             else:
-               if game[uid]['budxp'] >= 36000:
-                   game[uid]['budnow'] = budinfo[game[uid]['bud']]['36']
+                if game[uid]['budxp'] < 36000:
+                    game[uid]['budnow'] = budinfo[game[uid]['bud']]['16']
+                else:
+                    game[uid]['budnow'] = budinfo[game[uid]['bud']]['36']
         return f"\nYour {game[uid]['budnow']} has gained {c} XP!"
 
 def pokemon(update,context):
@@ -417,6 +420,7 @@ XP to next level: {level * 1000 - game[uid]['budxp']}""")
 Level: {level}
 XP: {game[uid]['budxp']}
 XP to next level: {level * 1000 - game[uid]['budxp']}""")
+    save()
 
 def budCallback(update,context):
     user = update.effective_user
