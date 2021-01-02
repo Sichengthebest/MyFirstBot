@@ -125,13 +125,13 @@ def pokemon(update,context):
     if t >= datetime.strptime(game[uid]['gametime'],"%Y/%m/%d %H:%M:%S"):
         game[uid]['spawn'] = True
         if game[uid]['pb'] > 0:
-            balls.append(InlineKeyboardButton('Pokeball',callback_data='pk:pb'))
+            balls.append(InlineKeyboardButton('Pokeball',callback_data=f'pk:pb-{uid}'))
         if game[uid]['gb'] > 0:
-            balls.append(InlineKeyboardButton('Greatball',callback_data='pk:gb'))
+            balls.append(InlineKeyboardButton('Greatball',callback_data=f'pk:gb-{uid}'))
         if game[uid]['ub'] > 0:
-            balls.append(InlineKeyboardButton('Ultraball',callback_data='pk:ub'))
+            balls.append(InlineKeyboardButton('Ultraball',callback_data=f'pk:ub-{uid}'))
         if game[uid]['mb'] > 0:
-            balls.append(InlineKeyboardButton('Masterball',callback_data='pk:mb'))
+            balls.append(InlineKeyboardButton('Masterball',callback_data=f'pk:mb-{uid}'))
         kb = InlineKeyboardMarkup([balls,[InlineKeyboardButton('Abandon',callback_data='pk:run')]])
         update.message.reply_photo(game[uid]["currentpk"][1], caption=f"""You have found a wild {game[uid]['currentpk'][0]}!
 Rarity: {rarityTrans[rarity]}
@@ -150,8 +150,11 @@ def pokeCallback(update,context):
     user = update.effective_user
     uid = str(user.id)
     query = update.callback_query
-    ball = query.data
+    ball,curruid = query.data.split('-')
     proll = random.randint(35,100)
+    if not curruid == uid:
+        query.answer("This is not ur pokemon so don't press the buttons",show_alert=True)
+        return
     if ball == 'pk:pb' and rarity == 'c':
         myroll = random.randint(65,80)
         game[uid]['pb'] -= 1
