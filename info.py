@@ -37,15 +37,6 @@ def info(update,context):
             update.message.reply_text(f"""This is a photo.
 ==============================
 {u}""")
-
-
-
-
-
-
-
-
-
         elif update.message.reply_to_message.audio:
             u = str(update.message.reply_to_message.audio)
             u = dumps(eval(u),indent=5)
