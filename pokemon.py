@@ -132,7 +132,7 @@ def pokemon(update,context):
             balls.append(InlineKeyboardButton('Ultraball',callback_data=f'pk:ub-{uid}'))
         if game[uid]['mb'] > 0:
             balls.append(InlineKeyboardButton('Masterball',callback_data=f'pk:mb-{uid}'))
-        kb = InlineKeyboardMarkup([balls,[InlineKeyboardButton('Abandon',callback_data='pk:run')]])
+        kb = InlineKeyboardMarkup([balls,[InlineKeyboardButton('Abandon',callback_data='pk:run-%s'%uid)]])
         update.message.reply_photo(game[uid]["currentpk"][1], caption=f"""You have found a wild {game[uid]['currentpk'][0]}!
 Rarity: {rarityTrans[rarity]}
 -------------------------
