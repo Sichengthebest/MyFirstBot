@@ -5,17 +5,16 @@ import random
 import coins
 
 gametimes = {}
+ppl = ["BOTGOD","@TheRandomDudeHimself","Brad Pitt","A Discord mod","A Random Orange Dude","Joe","Bob","Spongebob","The Red Dude In Among Us","Ur mom","Meryl Streep","Google Translate","A Homeless Man","@dankpbot"]
+pplCH = ["BOTGOD","@TheRandomDudeHimself","布拉德·皮特","一个Discord管理员","唐纳德·特朗普","乔","鲍勃","海绵宝宝","《我们之中》红色的家伙","你老妈","梅丽尔·斯特里普","谷歌翻译","一个无家可归的人","@dankpbot"]
+badstuff = ["Sorry I used all my money to fund the Pfizer vaccine","Sorry I used all my money to fund the Moderna vaccine","Stop begging","NO","NO","Of course not","Oh dang I forgot my purse","Let me think...NO","Yes...maybe...nvr mind","NEVER","Nah","I used all my money to fund the Biden campaign","I donated too much to @ZahJmPvjo3Hjz6CDNceG","Sorry I have no more money cuz I bought 10,000 rolls of toilet paper at the start of the pandemic"]
+badstuffCH = ["对不起，我用我所有的钱来资助辉瑞疫苗了","对不起，我用我的所有钱来资助Moderna疫苗了","快停止乞求","不","不","当然不","哦不，我忘记了钱包","让我想想...不","好...也许...算了吧","从不","不","我用我所有的钱来资助拜登竞选活动了","我对@ZahJmPvjo3Hjz6CDNceG捐赠过多了","对不起，我没有更多的钱，因为在疫情开始时我买了10,000卷厕所纸"]
 
 def get_users(user):
     if not user in gametimes:
         gametimes[user] = datetime.now()
 
 def beg(update,context):
-    ppl = ["BOTGOD","@TheRandomDudeHimself","Brad Pitt","A Discord mod","A Random Orange Dude","Joe","Bob","Spongebob","The Red Dude In Among Us","Ur mom","Meryl Streep","Google Translate","A Homeless Man","@dankpbot"]
-    pplCH = ["BOTGOD","@TheRandomDudeHimself","布拉德·皮特","一个Discord管理员","唐纳德·特朗普","乔","鲍勃","海绵宝宝","《我们之中》红色的家伙","你老妈","梅丽尔·斯特里普","谷歌翻译","一个无家可归的人","@dankpbot"]
-    badstuff = ["Sorry I used all my money to fund the Pfizer vaccine","Sorry I used all my money to fund the Moderna vaccine","Stop begging","NO","NO","Of course not","Oh dang I forgot my purse","Let me think...NO","Yes...maybe...nvr mind","NEVER","Nah","I used all my money to fund the Biden campaign","I donated too much to @ZahJmPvjo3Hjz6CDNceG","Sorry I have no more money cuz I bought 10,000 rolls of toilet paper at the start of the pandemic"]
-    badstuffCH = ["对不起，我用我所有的钱来资助辉瑞疫苗了","对不起，我用我的所有钱来资助Moderna疫苗了","快停止乞求","不","不","当然不","哦不，我忘记了钱包","让我想想...不","好...也许...算了吧","从不","不","我用我所有的钱来资助拜登竞选活动了","我对@ZahJmPvjo3Hjz6CDNceG捐赠过多了","对不起，我没有更多的钱，因为在疫情开始时我买了10,000卷厕所纸"]
-
     index = random.randint(0,13)
     yesorno = random.randint(1,2)
     user = update.effective_user
