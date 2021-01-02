@@ -209,7 +209,7 @@ def pokeCallback(update,context):
         game[uid]['currentpk'] = random.choice(pokemons[rarity])
         return
     if rarity == 'c':
-        coinsadd = random.randint(110,150)
+        coinsadd = random.randint(65,100)
         xpadd = random.randint(90,110)
     elif rarity == 'u':
         coinsadd = random.randint(210,250)
