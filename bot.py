@@ -110,7 +110,7 @@ if __name__ == '__main__':
     import shop
     import pokemon
     import adventure_main
-    import info
+    from TESTING import info
     import postmeme
     from adventure_cmds import antarctica,discord,home,mars,northpole,space
 
