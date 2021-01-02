@@ -130,7 +130,7 @@ if __name__ == '__main__':
     adventure_main.add_handler(dispatcher)
     antarctica.add_handler(dispatcher)
     info.add_handler(dispatcher)
-    commands = coins.get_command() + capitals.get_command() + search.get_command() + fish.get_command() + hunt.get_command() + get_command() + beg.get_command() + gif.get_command() + gamble.get_command() + shop.get_command() + pokemon.getCommand() + info.get_command()
+    commands = coins.get_command() + capitals.get_command() + search.get_command() + fish.get_command() + hunt.get_command() + get_command() + beg.get_command() + gif.get_command() + gamble.get_command() + shop.get_command() + pokemon.getCommand()
     updater.bot.set_my_commands(commands)
 
     updater.start_polling()
