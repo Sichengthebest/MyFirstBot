@@ -19,7 +19,7 @@ def pm(update,context):
     get_users(user)
     t = datetime.now()
     if t < gametimes[user]:
-        update.message.reply_text("Slow it down, cmon!!! If you post memes too much, you look like a normie. Wait a few more seconds!\nCreator/作者: Sichengthebest")
+        update.message.reply_text("Slow it down, cmon!!! If you post memes too much, you look like a normie. Wait a few more seconds! The default cooldown time is 1 minute.\nCreator/作者: Sichengthebest")
         return
     update.message.reply_text(f"OK, {user.first_name}, what type of meme do you want to post?",reply_markup=buttons)
 
@@ -54,11 +54,11 @@ def pmCallback(update,context):
         memeint = random.randint(800,1150)
         query.edit_message_text(f"GG, {user.first_name}! Your meme is TRENDING online. You get {memeint} GP, nice meme bro!")
         coins.add_coins(user,memeint)
-    gametimes[user] = datetime.now() + timedelta(seconds=35)
+    gametimes[user] = datetime.now() + timedelta(seconds=60)
 
 def getCommand():
-    return [BotCommand('pm','Post a meme to earn GP!')]
+    return [BotCommand('pm','Post a meme to earn GP! // 发布模因来赚取GP！')]
 
 def add_handler(dp):
     dp.add_handler(CommandHandler('pm',pm))      
-    dp.add_handler(CallbackQueryHandler(pmCallback))
+    dp.add_handler(CallbackQueryHandler(pmCallback,pattern="^pm:[A-Za-z0-9_]*"))
