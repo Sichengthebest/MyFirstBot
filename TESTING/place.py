@@ -1,5 +1,7 @@
 from random import sample
 import random
+from telegram import InputMediaPhoto
+import config
 
 place = {
     "001":{
@@ -18,7 +20,7 @@ pokemon = {
         'hp': [200,294],
         'lvl': [1,16],
         'atk': [92,216],
-        'Catch rate': 5.9,
+        'Catch rate': 45,
         'pktype': 'Grass',
         'upgrade': '002'
     },
@@ -27,7 +29,16 @@ pokemon = {
         'hp': [230,324],
         'lvl': [16,32],
         'atk': [116,245],
-        'Catch rate': 5.9,
+        'Catch rate': 45,
+        'pktype': 'Grass',
+        'upgrade': '003'
+    },
+    '003':{
+        'name': 'Venusaur 妙蛙草',
+        'hp': [230,324],
+        'lvl': [16,32],
+        'atk': [116,245],
+        'Catch rate': 45,
         'pktype': 'Grass',
         'upgrade': '003'
     },
@@ -36,7 +47,7 @@ pokemon = {
         'hp': [198,292],
         'lvl': [1,16],
         'atk': [90,214],
-        'Catch rate': 5.9,
+        'Catch rate': 45,
         'pktype': 'Water',
         'upgrade': '008'
     },
@@ -45,7 +56,7 @@ pokemon = {
         'hp': [228,322],
         'lvl': [16,36],
         'atk': [117,247],
-        'Catch rate': 5.9,
+        'Catch rate': 45,
         'pktype': 'Water',
         'upgrade': '009'
     },
@@ -54,7 +65,7 @@ pokemon = {
         'hp': [268,362],
         'lvl': [36,100],
         'atk': [153,291],
-        'Catch rate': 5.9,
+        'Catch rate': 45,
         'pktype': 'Water',
         'upgrade': ''
     },
@@ -63,7 +74,7 @@ pokemon = {
         'hp': [210,304],
         'lvl': [1,33],
         'atk': [90,223],
-        'Catch rate': 24.8,
+        'Catch rate': 90,
         'pktype': 'Water',
         'upgrade': '055'
     },
@@ -72,7 +83,7 @@ pokemon = {
         'hp': [270,364],
         'lvl': [33,100],
         'atk': [152,289],
-        'Catch rate': 9.8,
+        'Catch rate': 75,
         'pktype': 'Water',
         'upgrade': ''
     },
@@ -81,7 +92,7 @@ pokemon = {
         'hp': [190,284],
         'lvl': [1,25],
         'atk': [94,218],
-        'Catch rate': 33.3,
+        'Catch rate': 95,
         'pktype': 'Water',
         'upgrade': '061'
     },
@@ -90,7 +101,7 @@ pokemon = {
         'hp': [190,284],
         'lvl': [25,100],
         'atk': [94,218],
-        'Catch rate': 33.3,
+        'Catch rate': 90,
         'pktype': 'Water',
         'upgrade': '062'
     },
@@ -99,7 +110,7 @@ pokemon = {
         'hp': [190,284],
         'lvl': [25,100],
         'atk': [94,218],
-        'Catch rate': 33.3,
+        'Catch rate': 45,
         'pktype': 'Water',
         'upgrade': ''
     }
@@ -130,6 +141,11 @@ class Pokemon():
     pktype = ''
     upgrade = ''
 
+    def getPhoto(self):
+        file_name = f"{config.run_path}/images/{self.id}.jpg"
+        # return InputMediaPhoto(media=open(file_name,'rb'))
+        return file_name
+
     def __init__(self,id:str):
         self.id = id
         self.name = pokemon[id]['name']
@@ -146,7 +162,7 @@ class Pokemon():
         self.upgrade = pokemon[id]['upgrade']
     
     @classmethod
-    def init(self,id:str,name:str,lvl:int,hp:int,atk:int,catchrate:float,pktype:str,upgrade:str):
+    def init(self,id:str,name:str,lvl:int,hp:int,atk:int,catchrate:int,pktype:str,upgrade:str):
         p = Pokemon(id)
         p.lvl = lvl
         p.hp = hp
