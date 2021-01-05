@@ -21,7 +21,7 @@ def gamble(update,context):
         update.message.reply_text("Slow it down, cmon!!! If I let you bet whenever you wanted, you'd be a lot poorer.\n放慢速度，呆瓜！！！如果我允许您随时下注，那么您就会破产。\nCreator/作者: Sichengthebest")
         return
     if len(context.args) == 0:
-        update.message.reply_text("You have to bet something, seems like common sense.\n您必须赌一些钱，对我来说是常识。")
+        update.message.reply_text("You have to bet something, seems like common sense.\n您必须赌一些钱，对我来说是常识。\nCorrect usage: /gamble {amount}\n正确用法：/gamble {amount}")
     elif not context.args[0].isdigit():
         update.message.reply_text("You have to bet a positive integer, seems like common sense.\n您必须赌一个正数，对我来说是常识。")
     else:
