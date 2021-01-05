@@ -33,6 +33,7 @@ Currency commands // 货币命令:
 /beg - Go beg, peasant! // 去讨钱吧，穷人！
 /convert - Convert one currency into another! // 将一种货币转换为另一种货币！
 /bal - Check the amount of money you have. // 检查您有多少GP。
+/postmeme - Post a meme to earn GP! // 发布模因来赚取GP！
 -------------------------------------------------
 Inventory commands // 库存命令:
 /buy - Buy nice useful stuff! // 购买有用的东西！
@@ -112,6 +113,7 @@ if __name__ == '__main__':
     import adventure_main
     from TESTING import info
     import postmeme
+    import pokemon_new
     from adventure_cmds import antarctica,discord,home,mars,northpole,space
 
     start_handler = CommandHandler('start', start)
@@ -132,7 +134,8 @@ if __name__ == '__main__':
     antarctica.add_handler(dispatcher)
     info.add_handler(dispatcher)
     postmeme.add_handler(dispatcher)
-    commands = coins.get_command() + capitals.get_command() + search.get_command() + fish.get_command() + hunt.get_command() + get_command() + beg.get_command() + gif.get_command() + gamble.get_command() + shop.get_command() + pokemon.getCommand()
+    pokemon_new.add_handler(dispatcher)
+    commands = coins.get_command() + capitals.get_command() + search.get_command() + fish.get_command() + hunt.get_command() + get_command() + beg.get_command() + gif.get_command() + gamble.get_command() + shop.get_command() + pokemon.getCommand() + postmeme.getCommand() + pokemon_new.getCommand()
     updater.bot.set_my_commands(commands)
 
     updater.start_polling()
