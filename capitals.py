@@ -152,6 +152,11 @@ countries = {
             "yes": "Lisbon // 里斯本",
             "no": ["Porto // 波尔图","Almendralejo // 阿尔门德拉莱霍"],
             "haha": ["Faro // 法鲁","Coimbra // 科英布拉"]
+        },
+        "🇮🇷 Iran // 伊朗 🇮🇷": {
+            "yes": "Tehran // 德黑兰",
+            "no": ["Baghdad // 巴格达","Tabriz // 大不里士","Isfahan // 伊斯法罕"],
+            "haha": ["Shiraz // 设拉子","Zahedan // 扎赫丹"]
         }
     },
     'hard':{
