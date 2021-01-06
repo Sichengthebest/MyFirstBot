@@ -110,11 +110,9 @@ if __name__ == '__main__':
     import gamble
     import shop
     import pokemon
-    import adventure_main
     from TESTING import info
     import postmeme
     import pokemon_new
-    from adventure_cmds import antarctica,discord,home,mars,northpole,space
 
     start_handler = CommandHandler('start', start)
     help_handler = CommandHandler('help', help)
