@@ -128,8 +128,6 @@ if __name__ == '__main__':
     gamble.add_handler(dispatcher)
     shop.add_handler(dispatcher)
     pokemon.addHandler(dispatcher)
-    adventure_main.add_handler(dispatcher)
-    antarctica.add_handler(dispatcher)
     info.add_handler(dispatcher)
     postmeme.add_handler(dispatcher)
     pokemon_new.add_handler(dispatcher)
