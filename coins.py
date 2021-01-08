@@ -188,7 +188,7 @@ def yearly(update,context):
         hourlytime = datetime.now() + timedelta(days=365)
         update.message.reply_text("Here are your yearly coins, %s\n%s GP was placed in your wallet. Didn't you expect more?\n这是您的每年打卡的金币，%s \n%s GP已被放置在您的钱包中。你没期待更多吗？"%(user.first_name,c,user.first_name,c))
     else:
-        update.message.reply_text("Slow it down, cmon!!! I'm not made of money dude, maybe you do hate 2020, but New Year did not pass yet!\n放慢速度，呆瓜！我不是用钱做的，也许您确实讨厌2020年，但新年还没有过去！")
+        update.message.reply_text("Slow it down, cmon!!! I'm not made of money dude, maybe you do hate 2021, but New Year did not pass yet!\n放慢速度，呆瓜！我不是用钱做的，也许您确实讨厌2021年，但新年还没有过去！")
     coins[uid]['yearlytime'] = hourlytime.strftime("%Y/%m/%d %H:%M:%S")
     save()
 
