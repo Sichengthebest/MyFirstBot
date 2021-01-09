@@ -82,15 +82,11 @@ def info(update,context):
         else:
             u = str(update.message.reply_to_message)
             u = dumps(eval(u),indent=5)
-            update.message.reply_text(f"""Such a normie message
-==============================
-{u}""")
+            update.message.reply_text(f"""Such a normie message...""")
     else:
         u = str(update.message)
         u = dumps(eval(u),indent=5)
-        update.message.reply_text(f"""WTH is this thingy
-==============================
-{u}""")
+        update.message.reply_text(f"""No my friend you need to reply this to something""")
 
 def add_handler(dp):
     dp.add_handler(CommandHandler("ainfo", ainfo))
