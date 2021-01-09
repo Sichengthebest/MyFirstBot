@@ -1,3 +1,4 @@
+import pafy
 from telegram.ext import CommandHandler, Updater
 from telegram import BotCommand
 
