@@ -1,7 +1,6 @@
 from telegram.ext import Dispatcher,CommandHandler
 from json import dumps
 
-
 def info(update,context):
     if update.message.reply_to_message:
         if update.message.reply_to_message.animation:
@@ -68,5 +67,4 @@ def info(update,context):
         update.message.reply_text(f"""No my friend you need to reply this to something""")
 
 def add_handler(dp):
-    # dp.add_handler(CommandHandler("ainfo", ainfo))
     dp.add_handler(CommandHandler("getinfo", info))
