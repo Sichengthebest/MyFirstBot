@@ -122,6 +122,7 @@ Ultraballs: {game[str(uid)]['ub']}
 Masterballs: {game[str(uid)]['mb']}
 -------------------------
 {msg2}''')
+    game[str(uid)]['spawn'] = False
     save()
 
 def getCommand():
