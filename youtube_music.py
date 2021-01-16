@@ -5,8 +5,7 @@ from telegram import BotCommand
 def yt(update,context):
     if len(context.args) == 1:
         url = context.args[0]
-        _,_,prefix,_ = url.split('/')
-        if not prefix == 'www.youtube.com':
+        if not 'www.youtube.com' in url:
             update.message.reply_text("Incorrect arguments! The url must come from Youtube!")
             return
         video = pafy.new(url)
