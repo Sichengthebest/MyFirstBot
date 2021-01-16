@@ -65,6 +65,8 @@ def pokemon(update,context):
     if game[str(uid)]['spawn'] == True:
         update.message.reply_text("You already spawned a pokemon! Catch that pokemon first. Use /reset if you think this is a bug.")
         return
+    if not game[str(uid)]['box'] == []:
+        update.message.reply_text('sorry but you need to clear your box. do /box')
     game[str(uid)]['spawn'] = True
     if game[str(uid)]['pb'] > 0:
         balls.append({'Pokeball':f'pkcatch:pb:{uid}:{id}:{rarity}'})
@@ -108,6 +110,7 @@ You have earned {money} pokecoins!'''
         msg2 = f'Your {game[str(uid)]["budnow"]} gained {xp} XP!'
         game[str(uid)]['pokecoins'] += money
         game[str(uid)]['budxp'] += xp
+        game[str(uid)]['box'] += p
     game[str(uid)][ball] -= 1
     query.edit_message_caption(f'''{msg1}
 Rarity: {rarityTrans[rarity]}
