@@ -3,7 +3,7 @@ from telegram.ext import CommandHandler, CallbackQueryHandler
 from datetime import datetime,timedelta
 import random
 import coins
-import util
+from utils import util
 
 gametimes = {}
 
