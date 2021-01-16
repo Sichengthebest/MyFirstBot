@@ -1,6 +1,6 @@
 import random
 import config
-import util
+from utils import util
 from telegram.ext import CommandHandler, CallbackQueryHandler
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, BotCommand
 from datetime import datetime,timedelta
