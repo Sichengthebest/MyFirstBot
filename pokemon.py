@@ -111,6 +111,7 @@ def box(update,context):
     user = update.effective_user
     uid = str(user.id)
     check_time(uid)
+    game[str(uid)]['box'] = []
     if not 'pokecoins' in game[uid]:
         game[uid]['pokecoins'] = 0
     update.message.reply_text(f"You have {game[uid]['pokecoins']} pokecoins and your inventory is: {game[uid]['box']}")

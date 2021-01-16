@@ -65,7 +65,6 @@ def pokemon(update,context):
     if game[str(uid)]['spawn'] == True:
         update.message.reply_text("You already spawned a pokemon! Catch that pokemon first. Use /reset if you think this is a bug.")
         return
-    game[str(uid)]['box'] = []
     game[str(uid)]['spawn'] = True
     if game[str(uid)]['pb'] > 0:
         balls.append({'Pokeball':f'pkcatch:pb:{uid}:{id}:{rarity}'})
