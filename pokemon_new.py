@@ -1,7 +1,7 @@
 import random
 import config
 from utils import util
-from TESTING import place
+from utils import place
 from telegram.ext import CommandHandler, CallbackQueryHandler
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, BotCommand,CallbackQuery,InputMediaPhoto
 from datetime import datetime,timedelta
