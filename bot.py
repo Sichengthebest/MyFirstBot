@@ -133,7 +133,7 @@ if __name__ == '__main__':
     postmeme.add_handler(dispatcher)
     pokemon_new.add_handler(dispatcher)
     youtube_music.addHandler(dispatcher)
-    commands = coins.get_command() + capitals.get_command() + search.get_command() + fish.get_command() + hunt.get_command() + get_command() + beg.get_command() + gif.get_command() + gamble.get_command() + shop.get_command() + pokemon.getCommand() + postmeme.getCommand() + pokemon_new.getCommand()
+    commands = coins.get_command() + capitals.get_command() + search.get_command() + fish.get_command() + hunt.get_command() + get_command() + beg.get_command() + gif.get_command() + gamble.get_command() + shop.get_command() + pokemon.getCommand() + postmeme.getCommand() + youtube_music.getCommand()
     updater.bot.set_my_commands(commands)
 
     updater.start_polling()

@@ -125,9 +125,6 @@ Masterballs: {game[str(uid)]['mb']}
     game[str(uid)]['spawn'] = False
     save()
 
-def getCommand():
-    return [BotCommand('newpokemon','thing')]
-
 def add_handler(dp):
-    dp.add_handler(CommandHandler('newpokemon',pokemon))
+    dp.add_handler(CommandHandler('pokemon',pokemon))
     dp.add_handler(CallbackQueryHandler(pokemonCatchCallback,pattern="^pkcatch:[A-Za-z0-9_]*"))

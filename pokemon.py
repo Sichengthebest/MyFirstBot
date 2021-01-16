@@ -107,173 +107,6 @@ def budadd(uid,c):
                     game[uid]['budnow'] = budinfo[game[uid]['bud']]['36']
         return f"\nYour {game[uid]['budnow']} has gained {c} XP!"
 
-def pokemon(update,context):
-    global rarity
-    user = update.effective_user
-    uid = str(user.id)
-    check_time(uid)
-    t = datetime.now()
-    balls = []
-    if not 'spawn' in game[uid]:
-        game[uid]['spawn'] = False
-    if not 'currentpk' in game[uid]:
-        game[uid]['currentpk'] = random.choice(pokemons[rarity])
-    if game[uid]['spawn'] == True:
-        update.message.reply_text("You already spawned a pokemon! Catch that pokemon first. Use /reset if you think this is a bug.")
-        return
-    game[uid]['currentpk'] = random.choice(pokemons[rarity])
-    if t >= datetime.strptime(game[uid]['gametime'],"%Y/%m/%d %H:%M:%S"):
-        game[uid]['spawn'] = True
-        if game[uid]['pb'] > 0:
-            balls.append(InlineKeyboardButton('Pokeball',callback_data=f'pk:pb-{uid}'))
-        if game[uid]['gb'] > 0:
-            balls.append(InlineKeyboardButton('Greatball',callback_data=f'pk:gb-{uid}'))
-        if game[uid]['ub'] > 0:
-            balls.append(InlineKeyboardButton('Ultraball',callback_data=f'pk:ub-{uid}'))
-        if game[uid]['mb'] > 0:
-            balls.append(InlineKeyboardButton('Masterball',callback_data=f'pk:mb-{uid}'))
-        kb = InlineKeyboardMarkup([balls,[InlineKeyboardButton('Abandon',callback_data='pk:run-%s'%uid)]])
-        update.message.reply_photo(game[uid]["currentpk"][1], caption=f"""You have found a wild {game[uid]['currentpk'][0]}!
-Rarity: {rarityTrans[rarity]}
--------------------------
-Balls left:
-Pokeballs: {game[uid]['pb']}
-Greatballs: {game[uid]['gb']}
-Ultraballs: {game[uid]['ub']}
-Masterballs: {game[uid]['mb']}""",reply_markup=kb)
-        game[uid]['gametime'] = datetime.strftime(datetime.now() + timedelta(seconds=5),"%Y/%m/%d %H:%M:%S")
-    else:
-        update.message.reply_text("Slow it down, cmon!!! You have caught every single Pokemon around you, wait a few more seconds for them to respawn!")
-
-def pokeCallback(update,context):
-    global rarity
-    user = update.effective_user
-    uid = str(user.id)
-    query = update.callback_query
-    ball,curruid = query.data.split('-')
-    proll = random.randint(35,100)
-    if not curruid == uid:
-        query.answer("This is not ur pokemon so don't press the buttons",show_alert=True)
-        return
-    if ball == 'pk:pb' and rarity == 'c':
-        myroll = random.randint(65,80)
-        game[uid]['pb'] -= 1
-    elif ball == 'pk:pb' and rarity == 'u':
-        myroll = random.randint(50,70)
-        game[uid]['pb'] -= 1
-    elif ball == 'pk:pb' and rarity == 'r':
-        myroll = random.randint(35,50)
-        game[uid]['pb'] -= 1
-    elif ball == 'pk:pb' and rarity == 's':
-        myroll = random.randint(20,40)
-        game[uid]['pb'] -= 1
-    elif ball == 'pk:pb' and rarity == 'l':
-        myroll = random.randint(1,35)
-        game[uid]['pb'] -= 1
-    elif ball == 'pk:gb' and rarity == 'c':
-        myroll = random.randint(85,100)
-        game[uid]['gb'] -= 1
-    elif ball == 'pk:gb' and rarity == 'u':
-        myroll = random.randint(70,90)
-        game[uid]['gb'] -= 1
-    elif ball == 'pk:gb' and rarity == 'r':
-        myroll = random.randint(40,65)
-        game[uid]['gb'] -= 1
-    elif ball == 'pk:gb' and rarity == 's':
-        myroll = random.randint(25,50)
-        game[uid]['gb'] -= 1
-    elif ball == 'pk:gb' and rarity == 'l':
-        myroll = random.randint(10,40)
-        game[uid]['gb'] -= 1
-    elif ball == 'pk:ub' and rarity == 'c':
-        myroll = random.randint(90,100)
-        game[uid]['ub'] -= 1
-    elif ball == 'pk:ub' and rarity == 'u':
-        myroll = random.randint(80,95)
-        game[uid]['ub'] -= 1
-    elif ball == 'pk:ub' and rarity == 'r':
-        myroll = random.randint(65,85)
-        game[uid]['ub'] -= 1
-    elif ball == 'pk:ub' and rarity == 's':
-        myroll = random.randint(50,75)
-        game[uid]['ub'] -= 1
-    elif ball == 'pk:ub' and rarity == 'l':
-        myroll = random.randint(20,50)
-        game[uid]['ub'] -= 1
-    elif ball == 'pk:mb':
-        myroll = 100
-        game[uid]['mb'] -= 1
-    elif ball == 'pk:run':
-        query.edit_message_caption("You ran away. HAHAHAHA coward!")
-        game[uid]['spawn'] = False
-        game[uid]['currentpk'] = random.choice(pokemons[rarity])
-        return
-    if rarity == 'c':
-        coinsadd = random.randint(65,100)
-        xpadd = random.randint(90,110)
-    elif rarity == 'u':
-        coinsadd = random.randint(210,250)
-        xpadd = random.randint(240,260)
-    elif rarity == 'r':
-        coinsadd = random.randint(450,500)
-        xpadd = random.randint(390,410)
-    elif rarity == 's':
-        coinsadd = random.randint(600,666)
-        xpadd = random.randint(1490,1510)
-    elif rarity == 'l':
-        coinsadd = random.randint(19900,20100)
-        xpadd = random.randint(9990,10010)
-    if myroll > proll:
-        game[uid]['pokecoins'] += coinsadd
-        query.edit_message_caption(f"""Congratulations, {user.first_name}!
-✅ You have caught a {game[uid]['currentpk'][0]} with a {ballTrans[ball]}!
-You earned {coinsadd} pokecoins!
-Rarity: {rarityTrans[rarity]}
--------------------------
-Pokemon roll: {proll}
-Your catch rate: {myroll}
--------------------------
-Balls left:
-Pokeballs: {game[uid]['pb']}
-Greatballs: {game[uid]['gb']}
-Ultraballs: {game[uid]['ub']}
-Masterballs: {game[uid]['mb']}
--------------------------{budadd(uid,xpadd)}""")
-        game[uid]['box'].append(game[uid]['currentpk'][0])
-    elif myroll == proll:
-        game[uid]['pokecoins'] += coinsadd
-        query.edit_message_caption(f"""Congratulations, {user.first_name}!
-✅ You have caught a {game[uid]['currentpk'][0]} with a {ballTrans[ball]}!
-You earned {coinsadd} pokecoins!
-Rarity: {rarityTrans[rarity]}
--------------------------
-Pokemon roll: {proll}
-Your catch rate: {myroll}
--------------------------
-Balls left:
-Pokeballs: {game[uid]['pb']}
-Greatballs: {game[uid]['gb']}
-Ultraballs: {game[uid]['ub']}
-Masterballs: {game[uid]['mb']}
--------------------------{budadd(uid,xpadd)}""")
-        game[uid]['box'].append(game[uid]['currentpk'][0])
-    elif proll > myroll:
-        query.edit_message_caption(f"""❌ {game[uid]['currentpk'][0]} broke out of the {ballTrans[ball]}!
-Rarity: {rarityTrans[rarity]}
--------------------------
-Pokemon roll: {proll}
-Your catch rate: {myroll}
--------------------------
-Balls left:
-Pokeballs: {game[uid]['pb']}
-Greatballs: {game[uid]['gb']}
-Ultraballs: {game[uid]['ub']}
-Masterballs: {game[uid]['mb']}""")
-    rarity = random.choice(rate)
-    game[uid]['currentpk'] = random.choice(pokemons[rarity])
-    game[uid]['spawn'] = False
-    save()
-
 def box(update,context):
     user = update.effective_user
     uid = str(user.id)
@@ -487,14 +320,12 @@ def getCommand():
     ]
 
 def addHandler(dispatcher):
-    dispatcher.add_handler(CommandHandler('pokemon', pokemon))
     dispatcher.add_handler(CommandHandler('box', box))
     dispatcher.add_handler(CommandHandler('pokeshop',shop))
     dispatcher.add_handler(CommandHandler('bud',bud))
     dispatcher.add_handler(CommandHandler('surprise',surprise))
     dispatcher.add_handler(CommandHandler('pokebal',bal))
     dispatcher.add_handler(CommandHandler('reset',reset))
-    dispatcher.add_handler(CallbackQueryHandler(pokeCallback,pattern="^pk:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(shopCallback,pattern="^pkbuy:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(budCallback,pattern="^pkbud:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(shopnumCallback,pattern="^pkbuynum:[A-Za-z0-9_]*"))
