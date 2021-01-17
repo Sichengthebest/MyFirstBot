@@ -200,7 +200,9 @@ def fish(update, context):
         fishgame[uid]['gametime'] = datetime.strftime(datetime.now() + timedelta(seconds=30),"%Y/%m/%d %H:%M:%S")
         save()
     else:
-        update.message.reply_text("Slow it down, cmon!!! The fish seem weary of fishermen right now, wait a few more seconds!\n放慢速度，呆瓜！！！鱼现在似乎知道哪个是鱼饵哪个是鱼，还要再等几秒钟他们才变傻！\nCreator/作者: Sichengthebest")
+        difference = datetime.strptime(fishgame[uid]['gametime'],"%Y/%m/%d %H:%M:%S") - datetime.now() 
+        seconds = int(difference.total_seconds())
+        update.message.reply_text(f"Slow it down, cmon!!! The fish seem weary of fishermen right now, wait {seconds} seconds!\n放慢速度，呆瓜！！！鱼现在似乎知道哪个是鱼饵哪个是鱼，还要再等{seconds}秒钟他们才变傻！\nCreator/作者: Sichengthebest")
 
 def shop(update, context):
     uid = str(update.effective_user.id)

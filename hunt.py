@@ -144,7 +144,9 @@ def hunt(update, context):
         huntgame[uid]['gametime'] = datetime.strftime(datetime.now() + timedelta(seconds=30),"%Y/%m/%d %H:%M:%S")
         save()
     else:
-        update.message.reply_text("Slow it down, cmon!!! The forest seems a little empty right now, try again in a few more seconds!\n慢下来，呆瓜！森林里的动物似乎已经都被杀了，请在几秒钟后再试一次！\nCreator/作者: Sichengthebest")
+        difference = datetime.strptime(huntgame[uid]['gametime'],"%Y/%m/%d %H:%M:%S") - datetime.now() 
+        seconds = int(difference.total_seconds())
+        update.message.reply_text(f"Slow it down, cmon!!! The forest seems a little empty right now, try again in {seconds} seconds!\n慢下来，呆瓜！森林里的动物似乎已经都被杀了，请在{seconds}秒钟后再试一次！\nCreator/作者: Sichengthebest")
 
 def check_rifle(uid): 
     check_user(uid) 
