@@ -1,5 +1,6 @@
 import random
 import config
+import pokemons
 from utils import util
 from utils import place
 from telegram.ext import CommandHandler, CallbackQueryHandler
@@ -22,6 +23,10 @@ rarityTrans = {
     's': 'Super Rare (4.1%)',
     'l': 'Legendary (0.9%)'
 }
+
+def add_pokemon(uid,p):
+    pdict = {'name':p.name,'hp':p.hp,'atk':p.atk,'lvl':p.lvl,'pktype':p.pktype,'upgrade':p.upgrade}
+    game[uid]['box'].append(pdict)
 
 def getcatchrate(ball,p):
     if ball == 'pb':
@@ -62,11 +67,16 @@ def pokemon(update,context):
     id,rarity = place.getPokemon()
     pk = place.Pokemon(id)
     balls = []
+    pokemons.check_time(str(uid))
     if game[str(uid)]['spawn'] == True:
         update.message.reply_text("You already spawned a pokemon! Catch that pokemon first. Use /reset if you think this is a bug.")
         return
-    if not game[str(uid)]['box'] == []:
-        update.message.reply_text('sorry but you need to clear your box. do /box')
+    t = datetime.now() 
+    if t < datetime.strptime(game[str(uid)]['dailytime'],"%Y/%m/%d %H:%M:%S"):
+        difference = datetime.strptime(game[str(uid)]['dailytime'],"%Y/%m/%d %H:%M:%S") - datetime.now() 
+        seconds = int(difference.total_seconds())
+        update.message.reply_text(f"Slow it down, cmon!!! You have caught every single pokemon around you, please wait {seconds} seconds!\n放慢速度，呆瓜！！！您已经抓到身边的每只宠物小精灵，请等待{seconds}秒！\nCreator/作者: Sichengthebest")
+        return
     game[str(uid)]['spawn'] = True
     if game[str(uid)]['pb'] > 0:
         balls.append({'Pokeball':f'pkcatch:pb:{uid}:{id}:{rarity}'})
@@ -110,7 +120,7 @@ You have earned {money} pokecoins!'''
         msg2 = f'Your {game[str(uid)]["budnow"]} gained {xp} XP!'
         game[str(uid)]['pokecoins'] += money
         game[str(uid)]['budxp'] += xp
-        game[str(uid)]['box'] += p
+        add_pokemon(str(uid),p)
     game[str(uid)][ball] -= 1
     query.edit_message_caption(f'''{msg1}
 Rarity: {rarityTrans[rarity]}
@@ -126,6 +136,7 @@ Masterballs: {game[str(uid)]['mb']}
 -------------------------
 {msg2}''')
     game[str(uid)]['spawn'] = False
+    game[str(uid)]['dailytime'] = datetime.strftime(datetime.now() + timedelta(seconds=10),"%Y/%m/%d %H:%M:%S")
     save()
 
 def add_handler(dp):
