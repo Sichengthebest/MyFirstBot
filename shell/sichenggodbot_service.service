@@ -3,7 +3,7 @@
 Description=Sicheng God Bot Service
 
 [Service]
-ExecStart=/home/pi/py3/bin/python /home/pi/sicheng/MyFirstBot/bot.py -c /home/pi/sicheng/SichengsGodBot
+ExecStart=/home/pi/py3/bin/python /home/pi/sicheng/MyFirstBot/bot.py -c /home/pi/config/SichengsGodBot
 Restart=on-failure
 Type=notify
 
