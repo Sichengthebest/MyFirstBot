@@ -6,7 +6,7 @@ from telegram import bot
 def JOB(update,context):
     t = datetime.now()
     chat_id = update.effective_chat.id
-    context.job_queue.run_daily(get_cal,time(12,0,0,0,t.tzinfo),context=chat_id)
+    context.job_queue.run_daily(get_cal,time(17,0,0,0,t.tzinfo),context=chat_id)
 
 def get_cal(context):
     t = date.today()
