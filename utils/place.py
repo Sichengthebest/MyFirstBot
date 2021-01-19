@@ -5,10 +5,10 @@ import config
 
        
 rarity = {
-    'c':['010','013','016','019','021','023','027','029','032','041','043','046','048','050','052','054','056','060','063','066','069','074','079','081','086','088','090','092','096','098','100','102','104','109','111','116','118','120','129','137'],
-    'u':['001','004','007','011','014','017','020','022','024','025','028','030','033','035','037','039','042','044','047','049','051','053','055','057','058','061','064','067','070','072','075','077','080','082','084','087','089','093','097','099','101','105','110','112','114','117','119','123','125','126','133','138','140','147'],
-    'r':['002','005','008','012','015','018','026','031','034','036','040','045','059','062','071','073','078','085','091','095','103','106','107','108','113','121','122','124','139','141','148'],
-    's':['003','006','009','038','065','068','076','083','094','115','127','128','130','131','132','134','135','136','142','143','149'],
+    'c':['010','013','016','019','021','023','027','029','032','041','043','046','048','050','052','054','056','060','063','066','069','074','079','081','086','088','090','092','096','098','100','102','104','109','111','116','118','120','129','137','161','163'],
+    'u':['001','004','007','011','014','017','020','022','024','025','028','030','033','035','037','039','042','044','047','049','051','053','055','057','058','061','064','067','070','072','075','077','080','082','084','087','089','093','097','099','101','105','110','112','114','117','119','123','125','126','133','138','140','147','152','155','158','162','164'],
+    'r':['002','005','008','012','015','018','026','031','034','036','040','045','059','062','071','073','078','085','091','095','103','106','107','108','113','121','122','124','139','141','148','153','156','159'],
+    's':['003','006','009','038','065','068','076','083','094','115','127','128','130','131','132','134','135','136','142','143','149','154','157','160'],
     'l':['144','145','146','150','151']
 }
 
@@ -39,8 +39,8 @@ pokemon = {
         'lvl': [1,15],
         'atk': [92,216],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Grass',
-        'upgrade': '002'
+        'pktype': ['Grass','Poison'],
+        'upgrade': ['002']
     },
     '002':{
         'name': 'Ivysaur',
@@ -48,8 +48,8 @@ pokemon = {
         'lvl': [16,31],
         'atk': [116,245],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Grass',
-        'upgrade': '003'
+        'pktype': ['Grass','Poison'],
+        'upgrade': ['003']
     },
     '003':{
         'name': 'Venusaur',
@@ -57,8 +57,8 @@ pokemon = {
         'lvl': [32,100],
         'atk': [152,289],
         'Catch rate': [25,40,55,100],
-        'pktype': 'Grass',
-        'upgrade': ''
+        'pktype': ['Grass','Poison'],
+        'upgrade': ['']
     },
     "004":{
         'name': 'Charmander',
@@ -66,8 +66,8 @@ pokemon = {
         'lvl': [1,15],
         'atk': [98,223],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Fire',
-        'upgrade': '005'
+        'pktype': ['Fire'],
+        'upgrade': ['005']
     },
     "005":{
         'name': 'Charmeleon',
@@ -75,8 +75,8 @@ pokemon = {
         'lvl': [16,35],
         'atk': [119,249],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Fire',
-        'upgrade': '006'
+        'pktype': ['Fire'],
+        'upgrade': ['006']
     },
     "006":{
         'name': 'Charizard',
@@ -84,8 +84,8 @@ pokemon = {
         'lvl': [36,100],
         'atk': [155,293],
         'Catch rate': [25,40,55,100],
-        'pktype': 'Fire',
-        'upgrade': ''
+        'pktype': ['Fire','Flying'],
+        'upgrade': ['']
     },
     "007":{
         'name': 'Squirtle',
@@ -93,8 +93,8 @@ pokemon = {
         'lvl': [1,15],
         'atk': [90,214],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Water',
-        'upgrade': '008'
+        'pktype': ['Water'],
+        'upgrade': ['008']
     },
     "008":{
         'name': 'Wartortle',
@@ -102,8 +102,8 @@ pokemon = {
         'lvl': [16,35],
         'atk': [117,247],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Water',
-        'upgrade': '009'
+        'pktype': ['Water'],
+        'upgrade': ['009']
     },
     "009":{
         'name': 'Blastoise',
@@ -111,8 +111,8 @@ pokemon = {
         'lvl': [36,100],
         'atk': [153,291],
         'Catch rate': [25,40,55,100],
-        'pktype': 'Water',
-        'upgrade': ''
+        'pktype': ['Water'],
+        'upgrade': ['']
     },
     "010":{
         'name': 'Caterpie',
@@ -120,8 +120,8 @@ pokemon = {
         'lvl': [1,6],
         'atk': [58,174],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Bug',
-        'upgrade': '011'
+        'pktype': ['Bug'],
+        'upgrade': ['011']
     },
     "011":{
         'name': 'Metapod',
@@ -129,8 +129,8 @@ pokemon = {
         'lvl': [7,9],
         'atk': [40,152],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Bug',
-        'upgrade': '012'
+        'pktype': ['Bug'],
+        'upgrade': ['012']
     },
     "012":{
         'name': 'Butterfree',
@@ -138,8 +138,8 @@ pokemon = {
         'lvl': [10,100],
         'atk': [85,207],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Bug',
-        'upgrade': ''
+        'pktype': ['Bug','Flying'],
+        'upgrade': ['']
     },
     "013":{
         'name': 'Weedle',
@@ -147,8 +147,8 @@ pokemon = {
         'lvl': [1,6],
         'atk': [67,185],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Bug',
-        'upgrade': '014'
+        'pktype': ['Bug','Poison'],
+        'upgrade': ['014']
     },
     "014":{
         'name': 'Kakuna',
@@ -156,8 +156,8 @@ pokemon = {
         'lvl': [7,9],
         'atk': [49,163],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Bug',
-        'upgrade': '015'
+        'pktype': ['Bug','Poison'],
+        'upgrade': ['015']
     },
     "015":{
         'name': 'Beedrill',
@@ -165,8 +165,8 @@ pokemon = {
         'lvl': [10,100],
         'atk': [166,306],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Bug',
-        'upgrade': ''
+        'pktype': ['Bug','Poison'],
+        'upgrade': ['']
     },
     "016":{
         'name': 'Pidgey',
@@ -174,8 +174,8 @@ pokemon = {
         'lvl': [1,17],
         'atk': [85,207],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Normal',
-        'upgrade': '017'
+        'pktype': ['Normal','Flying'],
+        'upgrade': ['017']
     },
     "017":{
         'name': 'Pidgeotto',
@@ -183,8 +183,8 @@ pokemon = {
         'lvl': [18,35],
         'atk': [112,240],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Normal',
-        'upgrade': '018'
+        'pktype': ['Normal','Flying'],
+        'upgrade': ['018']
     },
     "018":{
         'name': 'Pidgeot',
@@ -192,8 +192,8 @@ pokemon = {
         'lvl': [36,100],
         'atk': [148,284],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Normal',
-        'upgrade': ''
+        'pktype': ['Normal','Flying'],
+        'upgrade': ['']
     },
     "019":{
         'name': 'Rattata',
@@ -201,8 +201,8 @@ pokemon = {
         'lvl': [1,19],
         'atk': [105,232],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Bug',
-        'upgrade': '020'
+        'pktype': ['Normal'],
+        'upgrade': ['020']
     },
     "020":{
         'name': 'Raticate',
@@ -210,8 +210,8 @@ pokemon = {
         'lvl': [20,100],
         'atk': [150,287],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Normal',
-        'upgrade': ''
+        'pktype': ['Normal'],
+        'upgrade': ['']
     },
     "021":{
         'name': 'Spearow',
@@ -219,8 +219,8 @@ pokemon = {
         'lvl': [1,19],
         'atk': [112,240],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Normal',
-        'upgrade': '022'
+        'pktype': ['Normal','Flying'],
+        'upgrade': ['022']
     },
     "022":{
         'name': 'Fearow',
@@ -228,8 +228,8 @@ pokemon = {
         'lvl': [20,100],
         'atk': [166,306],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Normal',
-        'upgrade': ''
+        'pktype': ['Normal','Flying'],
+        'upgrade': ['']
     },
     "023":{
         'name': 'Ekans',
@@ -237,8 +237,8 @@ pokemon = {
         'lvl': [1,21],
         'atk': [112,240],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Poison',
-        'upgrade': '024'
+        'pktype': ['Poison'],
+        'upgrade': ['024']
     },
     "024":{
         'name': 'Arbok',
@@ -246,8 +246,8 @@ pokemon = {
         'lvl': [22,100],
         'atk': [175,314],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Poison',
-        'upgrade': ''
+        'pktype': ['Poison'],
+        'upgrade': ['']
     },
     "025":{
         'name': 'Pikachu',
@@ -255,8 +255,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [103,229],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Electric',
-        'upgrade': '026'
+        'pktype': ['Electric'],
+        'upgrade': ['026']
     },
     "026":{
         'name': 'Raichu',
@@ -264,8 +264,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [166,306],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Electric',
-        'upgrade': ''
+        'pktype': ['Electric'],
+        'upgrade': ['']
     },
     "027":{
         'name': 'Sandshrew',
@@ -273,8 +273,8 @@ pokemon = {
         'lvl': [1,21],
         'atk': [139,273],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Ground',
-        'upgrade': '028'
+        'pktype': ['Ground'],
+        'upgrade': ['028']
     },
     "028":{
         'name': 'Sandslash',
@@ -282,8 +282,8 @@ pokemon = {
         'lvl': [22,100],
         'atk': [184,328],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Normal',
-        'upgrade': ''
+        'pktype': ['Ground'],
+        'upgrade': ['']
     },
     "029":{
         'name': 'Nidoran-♀',
@@ -291,8 +291,8 @@ pokemon = {
         'lvl': [1,15],
         'atk': [89,212],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Poison',
-        'upgrade': '030'
+        'pktype': ['Poison'],
+        'upgrade': ['030']
     },
     "030":{
         'name': 'Nidorina',
@@ -300,8 +300,8 @@ pokemon = {
         'lvl': [16,35],
         'atk': [116,245],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Poison',
-        'upgrade': '031'
+        'pktype': ['Poison'],
+        'upgrade': ['031']
     },
     "031":{
         'name': 'Nidoqueen',
@@ -309,8 +309,8 @@ pokemon = {
         'lvl': [36,100],
         'atk': [170,311],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Poison',
-        'upgrade': ''
+        'pktype': ['Poison'],
+        'upgrade': ['']
     },
     "032":{
         'name': 'Nidoran-♂︎',
@@ -318,8 +318,8 @@ pokemon = {
         'lvl': [1,15],
         'atk': [107,234],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Poison',
-        'upgrade': '033'
+        'pktype': ['Poison'],
+        'upgrade': ['033']
     },
     "033":{
         'name': 'Nidorino',
@@ -327,8 +327,8 @@ pokemon = {
         'lvl': [16,35],
         'atk': [134,267],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Poison',
-        'upgrade': '034'
+        'pktype': ['Poison'],
+        'upgrade': ['034']
     },
     "034":{
         'name': 'Nidoking',
@@ -336,8 +336,8 @@ pokemon = {
         'lvl': [36,100],
         'atk': [188,333],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Poison',
-        'upgrade': ''
+        'pktype': ['Poison'],
+        'upgrade': ['']
     },
     "035":{
         'name': 'Clefairy',
@@ -345,8 +345,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [85,207],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Fairy',
-        'upgrade': '036'
+        'pktype': ['Fairy'],
+        'upgrade': ['036']
     },
     "036":{
         'name': 'Clefable',
@@ -354,8 +354,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [130,262],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Fairy',
-        'upgrade': ''
+        'pktype': ['Fairy'],
+        'upgrade': ['']
     },
     "037":{
         'name': 'Vulpix',
@@ -363,8 +363,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [78,199],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Fire',
-        'upgrade': '038'
+        'pktype': ['Fire'],
+        'upgrade': ['038']
     },
     "038":{
         'name': 'Ninetales',
@@ -372,8 +372,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [141,276],
         'Catch rate': [25,40,55,100],
-        'pktype': 'Fire',
-        'upgrade': ''
+        'pktype': ['Fire'],
+        'upgrade': ['']
     },
     "039":{
         'name': 'Jigglypuff',
@@ -381,8 +381,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [85,207],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Fairy',      
-        'upgrade': '040'
+        'pktype': ['Fairy'],      
+        'upgrade': ['040']
     },
     "040":{
         'name': 'Wigglytuff',
@@ -390,8 +390,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [130,262],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Fairy',        
-        'upgrade': ''
+        'pktype': ['Fairy'],        
+        'upgrade': ['']
     },
     "041":{
         'name': 'Zubat',
@@ -399,8 +399,8 @@ pokemon = {
         'lvl': [1,21],
         'atk': [85,207],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Poison',        
-        'upgrade': '042'
+        'pktype': ['Poison'],        
+        'upgrade': ['042']
     },
     "042":{
         'name': 'Golbat',
@@ -408,8 +408,8 @@ pokemon = {
         'lvl': [22,100],
         'atk': [148,284],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Poison',
-        'upgrade': ''
+        'pktype': ['Poison'],
+        'upgrade': ['169']
     },
     "043":{
         'name': 'Oddish',
@@ -417,8 +417,8 @@ pokemon = {
         'lvl': [1,20],
         'atk': [94,218],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Grass',  
-        'upgrade': '044'
+        'pktype': ['Grass','Poison'],  
+        'upgrade': ['044']
     },
     "044":{
         'name': 'Gloom',
@@ -426,8 +426,8 @@ pokemon = {
         'lvl': [21,100],
         'atk': [121,251],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Grass',         
-        'upgrade': '045'
+        'pktype': ['Grass','Poison'],         
+        'upgrade': ['045','182']
     },
     "045":{
         'name': 'Vileplume',
@@ -435,8 +435,8 @@ pokemon = {
         'lvl': [21,100],
         'atk': [148,284],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Grass',        
-        'upgrade': ''
+        'pktype': ['Grass','Poison'],        
+        'upgrade': ['']
     },
     "046":{
         'name': 'Paras',
@@ -444,8 +444,8 @@ pokemon = {
         'lvl': [1,23],
         'atk': [130,262],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Grass',        
-        'upgrade': '047'
+        'pktype': ['Bug','Grass'],        
+        'upgrade': ['047']
     },
     "047":{
         'name': 'Parasect',
@@ -453,8 +453,8 @@ pokemon = {
         'lvl': [24,100],
         'atk': [175,317],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Grass',         
-        'upgrade': ''
+        'pktype': ['Bug','Grass'],         
+        'upgrade': ['']
     },
     "048":{
         'name': 'Venonat',
@@ -462,8 +462,8 @@ pokemon = {
         'lvl': [1,30],
         'atk': [103,229],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Bug',         
-        'upgrade': '049'
+        'pktype': ['Bug','Poison'],         
+        'upgrade': ['049']
     },
     "049":{
         'name': 'Venomoth',
@@ -471,8 +471,8 @@ pokemon = {
         'lvl': [31,100],
         'atk': [121,251],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Bug',
-        'upgrade': ''
+        'pktype': ['Bug','Poison'],
+        'upgrade': ['']
     },
     "050":{
         'name': 'Diglett',
@@ -480,8 +480,8 @@ pokemon = {
         'lvl': [1,25],
         'atk': [103,229],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Ground',         
-        'upgrade': '051'
+        'pktype': ['Ground'],         
+        'upgrade': ['051']
     },
     "051":{
         'name': 'Dugtrio',
@@ -489,8 +489,8 @@ pokemon = {
         'lvl': [26,100],
         'atk': [184,328],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Ground',    
-        'upgrade': ''
+        'pktype': ['Ground'],    
+        'upgrade': ['']
     },
     "052":{
         'name': 'Meowth',
@@ -498,8 +498,8 @@ pokemon = {
         'lvl': [1,27],
         'atk': [85,207],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Normal',         
-        'upgrade': '053'
+        'pktype': ['Normal'],         
+        'upgrade': ['053']
     },
     "053":{
         'name': 'Persian',
@@ -507,8 +507,8 @@ pokemon = {
         'lvl': [28,100],
         'atk': [130,262],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Normal',        
-        'upgrade': ''
+        'pktype': ['Normal'],        
+        'upgrade': ['']
     },
     "054":{
         'name': 'Psyduck',
@@ -516,8 +516,8 @@ pokemon = {
         'lvl': [1,32],
         'atk': [98,223],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Water',
-        'upgrade': '055'
+        'pktype': ['Water'],
+        'upgrade': ['055']
     },
     "055":{
         'name': 'Golduck',
@@ -525,8 +525,8 @@ pokemon = {
         'lvl': [33,100],
         'atk': [152,289],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Water',        
-        'upgrade': ''
+        'pktype': ['Water'],        
+        'upgrade': ['']
     },
     "056":{
         'name': 'Mankey',
@@ -534,8 +534,8 @@ pokemon = {
         'lvl': [1,27],
         'atk': [148,284],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Fighting',         
-        'upgrade': '057'
+        'pktype': ['Fighting'],         
+        'upgrade': ['057']
     },
     "057":{
         'name': 'Primeape',
@@ -543,8 +543,8 @@ pokemon = {
         'lvl': [28,100],
         'atk': [193,339],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Fighting',        
-        'upgrade': ''
+        'pktype': ['Fighting'],        
+        'upgrade': ['']
     },
     "058":{
         'name': 'Growlithe',
@@ -552,8 +552,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [130,262],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Fire',      
-        'upgrade': '059'
+        'pktype': ['Fire'],      
+        'upgrade': ['059']
     },
     "059":{
         'name': 'Arcanine',
@@ -561,8 +561,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [202,350],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Fire',        
-        'upgrade': ''
+        'pktype': ['Fire'],        
+        'upgrade': ['']
     },
     "060":{
         'name': 'Poliwag',
@@ -570,8 +570,8 @@ pokemon = {
         'lvl': [1,24],
         'atk': [94,218],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Water',
-        'upgrade': '061'
+        'pktype': ['Water'],
+        'upgrade': ['061']
     },
     "061":{
         'name': 'Poliwhirl',
@@ -579,8 +579,8 @@ pokemon = {
         'lvl': [25,100],
         'atk': [121,251],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Water',
-        'upgrade': '062'
+        'pktype': ['Water'],
+        'upgrade': ['062','186']
     },
     "062":{
         'name': 'Poliwrath',
@@ -588,8 +588,8 @@ pokemon = {
         'lvl': [25,100],
         'atk': [175,317],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Water',
-        'upgrade': ''
+        'pktype': ['Water'],
+        'upgrade': ['']
     },
     "063":{
         'name': 'Abra',
@@ -597,8 +597,8 @@ pokemon = {
         'lvl': [1,15],
         'atk': [40,152],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Psychic',
-        'upgrade': '064'
+        'pktype': ['Psychic'],
+        'upgrade': ['064']
     },
     "064":{
         'name': 'Kadabra',
@@ -606,8 +606,8 @@ pokemon = {
         'lvl': [16,100],
         'atk': [67,185],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Psychic',
-        'upgrade': '065'
+        'pktype': ['Psychic'],
+        'upgrade': ['065']
     },
     "065":{
         'name': 'Alakazam',
@@ -615,8 +615,8 @@ pokemon = {
         'lvl': [16,100],
         'atk': [94,218],
         'Catch rate': [25,40,55,100],
-        'pktype': 'Psychic',
-        'upgrade': ''
+        'pktype': ['Psychic'],
+        'upgrade': ['']
     },
     "066":{
         'name': 'Machop',
@@ -624,8 +624,8 @@ pokemon = {
         'lvl': [1,27],
         'atk': [148,284],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Fighting',
-        'upgrade': '067'
+        'pktype': ['Fighting'],
+        'upgrade': ['067']
     },
     "067":{
         'name': 'Machoke',
@@ -633,8 +633,8 @@ pokemon = {
         'lvl': [28,100],
         'atk': [184,328],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Fighting',
-        'upgrade': '068'
+        'pktype': ['Fighting'],
+        'upgrade': ['068']
     },
     "068":{
         'name': 'Machamp',
@@ -642,8 +642,8 @@ pokemon = {
         'lvl': [28,100],
         'atk': [238,394],
         'Catch rate': [25,40,55,100],
-        'pktype': 'Fighting',
-        'upgrade': ''
+        'pktype': ['Fighting'],
+        'upgrade': ['']
     },
     "069":{
         'name': 'Bellsprout',
@@ -651,7 +651,7 @@ pokemon = {
         'lvl': [1,20],
         'atk': [139,273],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Grass',
+        'pktype': ['Grass','Poison'],
         'upgrade': '070'
     },
     "070":{
@@ -660,8 +660,8 @@ pokemon = {
         'lvl': [21,100],
         'atk': [166,306],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Grass',
-        'upgrade': '071'
+        'pktype': ['Grass','Poison'],
+        'upgrade': ['071']
     },
     "071":{
         'name': 'Victreebel',
@@ -669,8 +669,8 @@ pokemon = {
         'lvl': [21,100],
         'atk': [193,339],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Grass',
-        'upgrade': ''
+        'pktype': ['Grass','Poison'],
+        'upgrade': ['']
     },
     "072":{
         'name': 'Tentacool',
@@ -678,8 +678,8 @@ pokemon = {
         'lvl': [1,29],
         'atk': [76,196],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Water',
-        'upgrade': '073'
+        'pktype': ['Water','Poison'],
+        'upgrade': ['073']
     },
     "073":{
         'name': 'Tentacruel',
@@ -687,8 +687,8 @@ pokemon = {
         'lvl': [30,100],
         'atk': [130,262],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Water',
-        'upgrade': ''
+        'pktype': ['Water','Poison'],
+        'upgrade': ['']
     },
     "074":{
         'name': 'Geodude',
@@ -696,8 +696,8 @@ pokemon = {
         'lvl': [1,24],
         'atk': [148,284],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Rock',
-        'upgrade': '075'
+        'pktype': ['Rock','Ground'],
+        'upgrade': ['075']
     },
     "075":{
         'name': 'Graveler',
@@ -705,8 +705,8 @@ pokemon = {
         'lvl': [25,100],
         'atk': [175,317],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Rock',
-        'upgrade': '076'
+        'pktype': ['Rock','Ground'],
+        'upgrade': ['076']
     },
     "076":{
         'name': 'Golem',
@@ -714,8 +714,8 @@ pokemon = {
         'lvl': [25,100],
         'atk': [220,372],
         'Catch rate': [25,40,55,100],
-        'pktype': 'Rock',
-        'upgrade': ''
+        'pktype': ['Rock','Ground'],
+        'upgrade': ['']
     },
     "077":{
         'name': 'Ponyta',
@@ -723,8 +723,8 @@ pokemon = {
         'lvl': [1,39],
         'atk': [147,295],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Fire',
-        'upgrade': '078'
+        'pktype': ['Fire'],
+        'upgrade': ['078']
     },
     "078":{
         'name': 'Rapidash',
@@ -732,8 +732,8 @@ pokemon = {
         'lvl': [40,100],
         'atk': [184,328],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Fire',
-        'upgrade': '079'
+        'pktype': ['Fire'],
+        'upgrade': ['079']
     },
     "079":{
         'name': 'Slowpoke',
@@ -741,8 +741,8 @@ pokemon = {
         'lvl': [1,36],
         'atk': [121,251],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Water',
-        'upgrade': '080'
+        'pktype': ['Water','Psychic'],
+        'upgrade': ['080','199']
     },
     "080":{
         'name': 'Slobro',
@@ -750,8 +750,8 @@ pokemon = {
         'lvl': [37,100],
         'atk': [139,273],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Water',
-        'upgrade': ''
+        'pktype': ['Water','Psychic'],
+        'upgrade': ['']
     },
     "081":{
         'name': 'Magnemite',
@@ -759,8 +759,8 @@ pokemon = {
         'lvl': [1,29],
         'atk': [67,185],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Electric',
-        'upgrade': '082'
+        'pktype': ['Electric'],
+        'upgrade': ['082']
     },
     "082":{
         'name': 'Magneton',
@@ -768,8 +768,8 @@ pokemon = {
         'lvl': [30,100],
         'atk': [112,240],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Electric',
-        'upgrade': ''
+        'pktype': ['Electric'],
+        'upgrade': ['']
     },
     "083":{
         'name': "Farfetch'd",
@@ -777,8 +777,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [166,306],
         'Catch rate': [25,40,55,100],
-        'pktype': 'Normal',
-        'upgrade': ''
+        'pktype': ['Normal','Flying'],
+        'upgrade': ['']
     },
     "084":{
         'name': 'Doduo',
@@ -786,8 +786,8 @@ pokemon = {
         'lvl': [1,30],
         'atk': [157,295],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Normal',
-        'upgrade': '085'
+        'pktype': ['Normal','Flying'],
+        'upgrade': ['085']
     },
     "085":{
         'name': 'Dodrio',
@@ -795,8 +795,8 @@ pokemon = {
         'lvl': [31,100],
         'atk': [202,350],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Normal',
-        'upgrade': ''
+        'pktype': ['Normal','Flying'],
+        'upgrade': ['']
     },
     "086":{
         'name': 'Seel',
@@ -804,8 +804,8 @@ pokemon = {
         'lvl': [1,33],
         'atk': [85,207],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Water',
-        'upgrade': '087'
+        'pktype': ['Water'],
+        'upgrade': ['087']
     },
     "087":{
         'name': 'Dewgong',
@@ -813,8 +813,8 @@ pokemon = {
         'lvl': [34,100],
         'atk': [130,262],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Water',
-        'upgrade': ''
+        'pktype': ['Water','Ice'],
+        'upgrade': ['']
     },
     "088":{
         'name': 'Grimer',
@@ -822,8 +822,8 @@ pokemon = {
         'lvl': [1,37],
         'atk': [148,284],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Poison',
-        'upgrade': '089'
+        'pktype': ['Poison'],
+        'upgrade': ['089']
     },
     "089":{
         'name': 'Muk',
@@ -831,8 +831,8 @@ pokemon = {
         'lvl': [38,100],
         'atk': [193,339],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Poison',
-        'upgrade': ''
+        'pktype': ['Poison'],
+        'upgrade': ['']
     },
     "090":{
         'name': 'Shellder',
@@ -840,8 +840,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [121,251],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Water',
-        'upgrade': '091'
+        'pktype': ['Water'],
+        'upgrade': ['091']
     },
     "091":{
         'name': 'Cloyster',
@@ -849,8 +849,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [175,317],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Water',
-        'upgrade': ''
+        'pktype': ['Water','Ice'],
+        'upgrade': ['']
     },
     "092":{
         'name': 'Gastly',
@@ -858,8 +858,8 @@ pokemon = {
         'lvl': [1,24],
         'atk': [67,185],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Ghost',
-        'upgrade': '093'
+        'pktype': ['Ghost','Poison'],
+        'upgrade': ['093']
     },
     "093":{
         'name': 'Haunter',
@@ -867,8 +867,8 @@ pokemon = {
         'lvl': [25,100],
         'atk': [94,218],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Ghost',
-        'upgrade': '094'
+        'pktype': ['Ghost','Poison'],
+        'upgrade': ['094']
     },
     "094":{
         'name': 'Gengar',
@@ -876,8 +876,8 @@ pokemon = {
         'lvl': [25,100],
         'atk': [121,251],
         'Catch rate': [25,40,55,100],
-        'pktype': 'Ghost',
-        'upgrade': ''
+        'pktype': ['Ghost','Poison'],
+        'upgrade': ['']
     },
     "095":{
         'name': 'Onix',
@@ -885,8 +885,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [85,207],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Rock',
-        'upgrade': ''
+        'pktype': ['Rock','Ground'],
+        'upgrade': ['208']
     },
     "096":{
         'name': 'Drowzee',
@@ -894,8 +894,8 @@ pokemon = {
         'lvl': [1,25],
         'atk': [90,214],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Psychic',
-        'upgrade': '097'
+        'pktype': ['Psychic'],
+        'upgrade': ['097']
     },
     "097":{
         'name': 'Hypno',
@@ -903,8 +903,8 @@ pokemon = {
         'lvl': [26,100],
         'atk': [135,269],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Psychic',
-        'upgrade': ''
+        'pktype': ['Psychic'],
+        'upgrade': ['']
     },
     "098":{
         'name': 'Krabby',
@@ -912,8 +912,8 @@ pokemon = {
         'lvl': [1,27],
         'atk': [193,339],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Water',
-        'upgrade': '099'
+        'pktype': ['Water'],
+        'upgrade': ['099']
     },
     "099":{
         'name': 'Kingler',
@@ -921,8 +921,8 @@ pokemon = {
         'lvl': [28,100],
         'atk': [238,394],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Water',
-        'upgrade': ''
+        'pktype': ['Water'],
+        'upgrade': ['']
     },
     "100":{
         'name': 'Voltorb',
@@ -930,8 +930,8 @@ pokemon = {
         'lvl': [1,29],
         'atk': [58,174],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Electric',
-        'upgrade': '101'
+        'pktype': ['Electric'],
+        'upgrade': ['101']
     },
     "101":{
         'name': 'Electrode',
@@ -939,8 +939,8 @@ pokemon = {
         'lvl': [30,100],
         'atk': [94,218],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Electric',
-        'upgrade': ''
+        'pktype': ['Electric'],
+        'upgrade': ['']
     },
     "102":{
         'name': 'Exeggcute',
@@ -948,8 +948,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [76,196],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Grass',
-        'upgrade': '103'
+        'pktype': ['Grass','Psychic'],
+        'upgrade': ['103']
     },
     "103":{
         'name': 'Exeggcutor',
@@ -957,8 +957,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [175,314],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Grass',
-        'upgrade': ''
+        'pktype': ['Grass','Psychic'],
+        'upgrade': ['']
     },
     "104":{
         'name': 'Cubone',
@@ -966,8 +966,8 @@ pokemon = {
         'lvl': [1,27],
         'atk': [94,218],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Ground',
-        'upgrade': '105'
+        'pktype': ['Ground'],
+        'upgrade': ['105']
     },
     "105":{
         'name': 'Marowak',
@@ -975,8 +975,8 @@ pokemon = {
         'lvl': [28,100],
         'atk': [148,284],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Ground',
-        'upgrade': ''
+        'pktype': ['Ground'],
+        'upgrade': ['']
     },
     "106":{
         'name': 'Hitmonlee',
@@ -984,8 +984,8 @@ pokemon = {
         'lvl': [20,100],
         'atk': [220,372],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Fighting',
-        'upgrade': ''
+        'pktype': ['Fighting'],
+        'upgrade': ['']
     },
     "107":{
         'name': 'Hitmonchan',
@@ -993,8 +993,8 @@ pokemon = {
         'lvl': [20,100],
         'atk': [193,339],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Fighting',
-        'upgrade': ''
+        'pktype': ['Fighting'],
+        'upgrade': ['']
     },
     "108":{
         'name': 'Lickitung',
@@ -1002,8 +1002,8 @@ pokemon = {
         'lvl': [1,32],
         'atk': [103,229],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Normal',
-        'upgrade': ''
+        'pktype': ['Normal'],
+        'upgrade': ['']
     },
     "109":{
         'name': 'Koffing',
@@ -1011,8 +1011,8 @@ pokemon = {
         'lvl': [1,34],
         'atk': [121,251],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Poison',
-        'upgrade': '110'
+        'pktype': ['Poison'],
+        'upgrade': ['110']
     },
     "110":{
         'name': 'Weezing',
@@ -1020,8 +1020,8 @@ pokemon = {
         'lvl': [35,100],
         'atk': [166,306],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Poison',
-        'upgrade': ''
+        'pktype': ['Poison'],
+        'upgrade': ['']
     },
     "111":{
         'name': 'Rhyhorn',
@@ -1029,8 +1029,8 @@ pokemon = {
         'lvl': [1,41],
         'atk': [157,295],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Ground',
-        'upgrade': '112'
+        'pktype': ['Ground','Rock'],
+        'upgrade': ['112']
     },
     "112":{
         'name': 'Rhydon',
@@ -1038,17 +1038,17 @@ pokemon = {
         'lvl': [42,100],
         'atk': [238,394],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Ground',
-        'upgrade': ''
+        'pktype': ['Ground','Rock'],
+        'upgrade': ['']
     },
     "113":{
         'name': 'Chansey',
         'hp': [610,704],
         'lvl': [1,100],
         'atk': [13,119],
-        'Catch rate': [65,80,90,100],
-        'pktype': 'Normal',
-        'upgrade': ''
+        'Catch rate': [45,60,75,100],
+        'pktype': ['Normal'],
+        'upgrade': ['242']
     },
     "114":{
         'name': 'Tangela',
@@ -1056,8 +1056,8 @@ pokemon = {
         'lvl': [1,37],
         'atk': [103,229],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Grass',
-        'upgrade': ''
+        'pktype': ['Grass'],
+        'upgrade': ['']
     },
     "115":{
         'name': 'Kangaskhan',
@@ -1065,8 +1065,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [175,317],
         'Catch rate': [25,40,55,100],
-        'pktype': 'Normal',
-        'upgrade': ''
+        'pktype': ['Normal'],
+        'upgrade': ['']
     },
     "116":{
         'name': 'Horsea',
@@ -1074,8 +1074,8 @@ pokemon = {
         'lvl': [1,31],
         'atk': [79,196],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Water',
-        'upgrade': '117'
+        'pktype': ['Water','Dragon'],
+        'upgrade': ['117']
     },
     "117":{
         'name': 'Seadra',
@@ -1083,8 +1083,8 @@ pokemon = {
         'lvl': [32,100],
         'atk': [121,251],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Water',
-        'upgrade': ''
+        'pktype': ['Water','Dragon'],
+        'upgrade': ['230']
     },
     "118":{
         'name': 'Goldeen',
@@ -1092,8 +1092,8 @@ pokemon = {
         'lvl': [1,32],
         'atk': [125,256],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Water',
-        'upgrade': '119'
+        'pktype': ['Water'],
+        'upgrade': ['119']
     },
     "119":{
         'name': 'Seaking',
@@ -1101,8 +1101,8 @@ pokemon = {
         'lvl': [33,100],
         'atk': [170,311],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Water',
-        'upgrade': ''
+        'pktype': ['Water'],
+        'upgrade': ['']
     },
     "120":{
         'name': 'Staryu',
@@ -1110,8 +1110,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [85,207],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Water',
-        'upgrade': '121'
+        'pktype': ['Water'],
+        'upgrade': ['121']
     },
     "121":{
         'name': 'Starmie',
@@ -1119,8 +1119,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [139,273],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Water',
-        'upgrade': ''
+        'pktype': ['Water','Psychic'],
+        'upgrade': ['']
     },
     "122":{
         'name': 'Mr.Mime',
@@ -1128,8 +1128,8 @@ pokemon = {
         'lvl': [15,100],
         'atk': [85,207],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Psychic',
-        'upgrade': ''
+        'pktype': ['Psychic'],
+        'upgrade': ['']
     },
     "123":{
         'name': 'Scyther',
@@ -1137,8 +1137,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [202,350],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Bug',
-        'upgrade': ''
+        'pktype': ['Bug','Flying'],
+        'upgrade': ['212']
     },
     "124":{
         'name': 'Jynx',
@@ -1146,8 +1146,8 @@ pokemon = {
         'lvl': [30,100],
         'atk': [94,218],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Psychic',
-        'upgrade': ''
+        'pktype': ['Psychic'],
+        'upgrade': ['']
     },
     "125":{
         'name': 'Electabuzz',
@@ -1155,8 +1155,8 @@ pokemon = {
         'lvl': [30,100],
         'atk': [85,207],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Electric',
-        'upgrade': ''
+        'pktype': ['Electric'],
+        'upgrade': ['']
     },
     "126":{
         'name': 'Magmar',
@@ -1164,8 +1164,8 @@ pokemon = {
         'lvl': [30,100],
         'atk': [175,317],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Fire',
-        'upgrade': ''
+        'pktype': ['Fire'],
+        'upgrade': ['']
     },
     "127":{
         'name': 'Pinsir',
@@ -1173,8 +1173,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [229,383],
         'Catch rate': [25,40,55,100],
-        'pktype': 'Bug',
-        'upgrade': ''
+        'pktype': ['Bug'],
+        'upgrade': ['']
     },
     "128":{
         'name': 'Tauros',
@@ -1182,8 +1182,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [184,328],
         'Catch rate': [25,40,55,100],
-        'pktype': 'Normal',
-        'upgrade': ''
+        'pktype': ['Normal'],
+        'upgrade': ['']
     },
     "129":{
         'name': 'Magikarp',
@@ -1191,8 +1191,8 @@ pokemon = {
         'lvl': [1,19],
         'atk': [22,130],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Water',
-        'upgrade': '130'
+        'pktype': ['Water'],
+        'upgrade': ['130']
     },
     "130":{
         'name': 'Gyarados',
@@ -1200,8 +1200,8 @@ pokemon = {
         'lvl': [20,100],
         'atk': [229,383],
         'Catch rate': [25,40,55,100],
-        'pktype': 'Water',
-        'upgrade': ''
+        'pktype': ['Water','Flying'],
+        'upgrade': ['']
     },
     "131":{
         'name': 'Lapras',
@@ -1209,8 +1209,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [157,295],
         'Catch rate': [25,40,55,100],
-        'pktype': 'Water',
-        'upgrade': ''
+        'pktype': ['Water','Ice'],
+        'upgrade': ['']
     },
     "132":{
         'name': 'Ditto',
@@ -1218,8 +1218,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [90,214],
         'Catch rate': [25,40,55,100],
-        'pktype': 'Normal',
-        'upgrade': ''
+        'pktype': ['Normal'],
+        'upgrade': ['']
     },
     "133":{
         'name': 'Eevee',
@@ -1227,8 +1227,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [103,229],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Normal',
-        'upgrade': ''
+        'pktype': ['Normal'],
+        'upgrade': ['134','135','136','196','197']
     },
     "134":{
         'name': 'Vaporeon',
@@ -1236,8 +1236,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [121,251],
         'Catch rate': [25,40,55,100],
-        'pktype': 'Water',
-        'upgrade': ''
+        'pktype': ['Water'],
+        'upgrade': ['']
     },
     "135":{
         'name': 'Jolteon',
@@ -1245,8 +1245,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [121,251],
         'Catch rate': [25,40,55,100],
-        'pktype': 'Electric',
-        'upgrade': ''
+        'pktype': ['Electric'],
+        'upgrade': ['']
     },
     "136":{
         'name': 'Flareon',
@@ -1254,8 +1254,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [238,394],
         'Catch rate': [25,40,55,100],
-        'pktype': 'Fire',
-        'upgrade': ''
+        'pktype': ['Fire'],
+        'upgrade': ['']
     },
     "137":{
         'name': 'Porygon',
@@ -1263,8 +1263,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [112,240],
         'Catch rate': [75,85,95,100],
-        'pktype': 'Normal',
-        'upgrade': ''
+        'pktype': ['Normal'],
+        'upgrade': ['233']
     },
     "138":{
         'name': 'Omanyte',
@@ -1272,8 +1272,8 @@ pokemon = {
         'lvl': [1,39],
         'atk': [76,196],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Water',
-        'upgrade': '139'
+        'pktype': ['Water','Rock'],
+        'upgrade': ['139']
     },
     "139":{
         'name': 'Omastar',
@@ -1281,8 +1281,8 @@ pokemon = {
         'lvl': [40,100],
         'atk': [112,240],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Water',
-        'upgrade': ''
+        'pktype': ['Water','Rock'],
+        'upgrade': ['']
     },
     "140":{
         'name': 'Kabuto',
@@ -1290,8 +1290,8 @@ pokemon = {
         'lvl': [1,39],
         'atk': [148,284],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Rock',
-        'upgrade': '141'
+        'pktype': ['Water','Rock'],
+        'upgrade': ['141']
     },
     "141":{
         'name': 'Kabutops',
@@ -1299,8 +1299,8 @@ pokemon = {
         'lvl': [40,100],
         'atk': [211,361],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Rock',
-        'upgrade': ''
+        'pktype': ['Water','Rock'],
+        'upgrade': ['']
     },
     "142":{
         'name': 'Aerodactyl',
@@ -1308,8 +1308,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [193,339],
         'Catch rate': [25,40,55,100],
-        'pktype': 'Rock',
-        'upgrade': ''
+        'pktype': ['Rock','Flying'],
+        'upgrade': ['']
     },
     "143":{
         'name': 'Snorlax',
@@ -1317,8 +1317,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [202,350],
         'Catch rate': [25,40,55,100],
-        'pktype': 'Normal',
-        'upgrade': ''
+        'pktype': ['Normal'],
+        'upgrade': ['']
     },
     "144":{
         'name': 'Articuno',
@@ -1326,8 +1326,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [157,295],
         'Catch rate': [5,20,35,100],
-        'pktype': 'Ice',
-        'upgrade': ''
+        'pktype': ['Ice','Flying'],
+        'upgrade': ['']
     },
     "145":{
         'name': 'Zapdos',
@@ -1335,8 +1335,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [166,306],
         'Catch rate': [5,20,35,100],
-        'pktype': 'Electric',
-        'upgrade': ''
+        'pktype': ['Electric','Flying'],
+        'upgrade': ['']
     },
     "146":{
         'name': 'Moltres',
@@ -1344,8 +1344,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [184,328],
         'Catch rate': [5,20,35,100],
-        'pktype': 'Fire',
-        'upgrade': ''
+        'pktype': ['Fire','Flying'],
+        'upgrade': ['']
     },
     '147':{
         'name': 'Dratini',
@@ -1353,8 +1353,8 @@ pokemon = {
         'lvl': [1,29],
         'atk': [119,249],
         'Catch rate': [65,80,90,100],
-        'pktype': 'Dragon',
-        'upgrade': '148'
+        'pktype': ['Dragon'],
+        'upgrade': ['148']
     },
     '148':{
         'name': 'Dragonair',
@@ -1362,8 +1362,8 @@ pokemon = {
         'lvl': [30,54],
         'atk': [155,293],
         'Catch rate': [45,60,75,100],
-        'pktype': 'Dragon',
-        'upgrade': '149'
+        'pktype': ['Dragon'],
+        'upgrade': ['149']
     },
     '149':{
         'name': 'Dragonite',
@@ -1371,8 +1371,8 @@ pokemon = {
         'lvl': [55,100],
         'atk': [245,403],
         'Catch rate': [25,40,55,100],
-        'pktype': 'Dragon',
-        'upgrade': ''
+        'pktype': ['Dragon','Flying'],
+        'upgrade': ['']
     },
     "150":{
         'name': 'Mewtwo',
@@ -1380,8 +1380,8 @@ pokemon = {
         'lvl': [1,100],
         'atk': [202,350],
         'Catch rate': [5,20,35,100],
-        'pktype': 'Psychic',
-        'upgrade': ''
+        'pktype': ['Psychic'],
+        'upgrade': ['']
     },
     "151":{
         'name': 'Mew',
@@ -1389,8 +1389,125 @@ pokemon = {
         'lvl': [1,100],
         'atk': [184,328],
         'Catch rate': [5,20,35,100],
-        'pktype': 'Psychic',
-        'upgrade': ''
+        'pktype': ['Psychic'],
+        'upgrade': ['']
+    },
+    "152":{
+        'name': 'Chikorita',
+        'hp': [200,294],
+        'lvl': [1,15],
+        'atk': [92,216],
+        'Catch rate': [65,80,90,100],
+        'pktype': ['Grass'],
+        'upgrade': ['153']
+    },
+    '153':{
+        'name': 'Bayleef',
+        'hp': [230,324],
+        'lvl': [16,31],
+        'atk': [116,245],
+        'Catch rate': [45,60,75,100],
+        'pktype': ['Grass'],
+        'upgrade': ['154']
+    },
+    '154':{
+        'name': 'Meganium',
+        'hp': [270,364],
+        'lvl': [32,100],
+        'atk': [152,289],
+        'Catch rate': [25,40,55,100],
+        'pktype': ['Grass'],
+        'upgrade': ['']
+    },
+    "155":{
+        'name': 'Cyndaquil',
+        'hp': [188,282],
+        'lvl': [1,13],
+        'atk': [98,223],
+        'Catch rate': [65,80,90,100],
+        'pktype': ['Fire'],
+        'upgrade': ['156']
+    },
+    "156":{
+        'name': 'Quilava',
+        'hp': [226,320],
+        'lvl': [14,35],
+        'atk': [119,249],
+        'Catch rate': [45,60,75,100],
+        'pktype': ['Fire'],
+        'upgrade': ['157']
+    },
+    "157":{
+        'name': 'Typhlosion',
+        'hp': [266,360],
+        'lvl': [36,100],
+        'atk': [155,293],
+        'Catch rate': [25,40,55,100],
+        'pktype': ['Fire'],
+        'upgrade': ['']
+    },
+    "158":{
+        'name': 'Totodile',
+        'hp': [210,304],
+        'lvl': [1,17],
+        'atk': [121,251],
+        'Catch rate': [65,80,90,100],
+        'pktype': ['Water'],
+        'upgrade': ['159']
+    },
+    "159":{
+        'name': 'Croconaw',
+        'hp': [240,334],
+        'lvl': [18,29],
+        'atk': [148,284],
+        'Catch rate': [45,60,75,100],
+        'pktype': ['Water'],
+        'upgrade': ['160']
+    },
+    "160":{
+        'name': 'Feraligatr',
+        'hp': [280,374],
+        'lvl': [30,100],
+        'atk': [193,339],
+        'Catch rate': [25,40,55,100],
+        'pktype': ['Water'],
+        'upgrade': ['']
+    },
+    "161":{
+        'name': 'Sentret',
+        'hp': [180,274],
+        'lvl': [1,14],
+        'atk': [87,210],
+        'Catch rate': [75,85,95,100],
+        'pktype': ['Normal'],
+        'upgrade': ['162']
+    },
+    "162":{
+        'name': 'Furret',
+        'hp': [280,374],
+        'lvl': [15,100],
+        'atk': [141,276],
+        'Catch rate': [65,80,90,100],
+        'pktype': ['Normal'],
+        'upgrade': ['']
+    },
+    "163":{
+        'name': 'Hoothoot',
+        'hp': [230,324],
+        'lvl': [1,19],
+        'atk': [58,174],
+        'Catch rate': [75,85,95,100],
+        'pktype': ['Normal','Flying'],
+        'upgrade': ['164']
+    },
+    "164":{
+        'name': 'Noctowl',
+        'hp': [310,404],
+        'lvl': [20,100],
+        'atk': [94,218],
+        'Catch rate': [65,80,90,100],
+        'pktype': ['Normal','Flying'],
+        'upgrade': ['']
     }
 }
 
@@ -1401,7 +1518,7 @@ class Pokemon():
     lvl = 0
     atk = 0
     catchrate = []
-    pktype = ''
+    pktype = []
     upgrade = ''
 
     def getPhoto(self):
@@ -1421,7 +1538,7 @@ class Pokemon():
         self.atk = atkperlvl * self.lvl
         self.catchrate = pokemon[id]['Catch rate']
         self.pktype = pokemon[id]['pktype']
-        self.upgrade = pokemon[id]['upgrade']
+        self.upgrade = random.choice(pokemon[id]['upgrade'])
     
     @classmethod
     def init(self,id:str,name:str,lvl:int,hp:int,atk:int,catchrate:list,pktype:str,upgrade:str):
