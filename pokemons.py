@@ -1,5 +1,6 @@
 import random
 import config
+from utils import place
 from utils import util
 from telegram.ext import CommandHandler, CallbackQueryHandler
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, BotCommand
@@ -111,9 +112,16 @@ def box(update,context):
     user = update.effective_user
     uid = str(user.id)
     check_time(uid)
-    if not 'pokecoins' in game[uid]:
-        game[uid]['pokecoins'] = 0
-    update.message.reply_text(f"You have {game[uid]['pokecoins']} pokecoins and your inventory is: {game[uid]['box']}")
+    msg = f'{user.first_name}, you have these pokemon in your box!\n-------------------------'
+    count = 0
+    for id in place.pokemon.keys():
+        for pkdict in game[uid]['box']:
+            if pkdict['name'] == place.pokemon[id]['name']:
+                count += 1
+        if count > 0:
+            msg += f'\n{place.pokemon[id]["name"]} #{id}: x{count}'
+        count = 0
+    update.message.reply_text(msg)
 
 def bal(update,context):
     user = update.effective_user
