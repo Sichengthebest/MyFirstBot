@@ -122,9 +122,9 @@ def box(update,context):
     splitmsgs = []
     for msgs in msgsplit:
         msgcount += 1
-        if msgcount % 10 == 0:
-            splitmsgs.append(f'{user.first_name}\'s box: Page {int(msgcount/10)+1}\n~~~~~~~~~~~~~~~~~~~~')
-        splitmsgs[int(msgcount/10)] += f'\n{msgs}'
+        if msgcount % 15 == 0:
+            splitmsgs.append(f'{user.first_name}\'s box: Page {int(msgcount/15)+1}\n~~~~~~~~~~~~~~~~~~~~')
+        splitmsgs[int(msgcount/15)] += f'\n{msgs}'
     for msgss in splitmsgs:
         update.message.reply_text(msgss)
 
