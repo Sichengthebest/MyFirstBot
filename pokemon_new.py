@@ -72,8 +72,8 @@ def pokemon(update,context):
         update.message.reply_text("You already spawned a pokemon! Catch that pokemon first. Use /reset if you think this is a bug.")
         return
     t = datetime.now() 
-    if t < datetime.strptime(game[str(uid)]['dailytime'],"%Y/%m/%d %H:%M:%S"):
-        difference = datetime.strptime(game[str(uid)]['dailytime'],"%Y/%m/%d %H:%M:%S") - datetime.now() 
+    if t < datetime.strptime(game[str(uid)]['gametime'],"%Y/%m/%d %H:%M:%S"):
+        difference = datetime.strptime(game[str(uid)]['gametime'],"%Y/%m/%d %H:%M:%S") - datetime.now() 
         seconds = int(difference.total_seconds())
         update.message.reply_text(f"Slow it down, cmon!!! You have caught every single pokemon around you, please wait {seconds} seconds!\n放慢速度，呆瓜！！！您已经抓到身边的每只宠物小精灵，请等待{seconds}秒！\nCreator/作者: Sichengthebest")
         return
@@ -136,7 +136,7 @@ Masterballs: {game[str(uid)]['mb']}
 -------------------------
 {msg2}''')
     game[str(uid)]['spawn'] = False
-    game[str(uid)]['dailytime'] = datetime.strftime(datetime.now() + timedelta(seconds=10),"%Y/%m/%d %H:%M:%S")
+    game[str(uid)]['gametime'] = datetime.strftime(datetime.now() + timedelta(seconds=10),"%Y/%m/%d %H:%M:%S")
     save()
 
 def add_handler(dp):
