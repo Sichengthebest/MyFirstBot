@@ -15,19 +15,19 @@ pokemons = {
     'l': [["Articuno",'https://img.pokemondb.net/artwork/articuno.jpg'],["Zapdos",'https://img.pokemondb.net/artwork/zapdos.jpg'],["Moltres",'https://img.pokemondb.net/artwork/moltres.jpg'],["Mewtwo",'https://img.pokemondb.net/artwork/mewtwo.jpg'],["Mew",'https://img.pokemondb.net/artwork/mew.jpg'],["Raikou",'https://img.pokemondb.net/artwork/raikou.jpg'],["Entei",'https://img.pokemondb.net/artwork/entei.jpg'],["Suicune",'https://img.pokemondb.net/artwork/suicune.jpg'],["Lugia",'https://img.pokemondb.net/artwork/lugia.jpg'],["Ho-oh",'https://img.pokemondb.net/artwork/ho-oh.jpg'],["Celebi",'https://img.pokemondb.net/artwork/celebi.jpg']]
 }
 
-rarityTrans = {
-    'c': 'Common (50%)',
-    'u': 'Uncommon (26%)',
-    'r': 'Rare (19%)',
-    's': 'Super Rare (4.333%)',
-    'l': 'Legendary (0.667%)'
-}
-
 ballTrans = {
     'pk:pb': 'Pokeball',
     'pk:gb': 'Greatball',
     'pk:ub': 'Ultraball',
     'pk:mb': 'Masterball'
+}
+
+rarityTrans = {
+    'c': 'Common (50% encounter rate)',
+    'u': 'Uncommon (26% encounter rate)',
+    'r': 'Rare (19% encounter rate)',
+    's': 'Super Rare (4.1% encounter rate)',
+    'l': 'Legendary (0.9% encounter rate)'
 }
 
 budinfo = {
@@ -44,9 +44,6 @@ budinfo = {
         '36': 'Blastoise'
     }
 }
-
-rate = ['c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','u','u','u','u','u','u','u','u','u','u','u','u','u','u','u','u','u','u','u','u','u','u','u','u','u','u','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','s','s','s','s','l']
-rarity = random.choice(rate)
 
 game = config.CONFIG["pk"]
 
@@ -65,7 +62,6 @@ def check_time(uid):
             'budxp': 0,
             'dailytime': datetime.now().strftime("%Y/%m/%d %H:%M:%S"),
             'spawn': False,
-            'currentpk': random.choice(pokemons[rarity])
         }
 
 budskb = [{'Bulbasaur':'pkbud:bulb'},{'Charmander':'pkbud:char'},{"Squirtle":'pkbud:sqir'}]
@@ -112,7 +108,7 @@ def box(update,context):
     user = update.effective_user
     uid = str(user.id)
     check_time(uid)
-    msg = f'{user.first_name}, you have these pokemon in your box!\n-------------------------'
+    msg = ''
     count = 0
     for id in place.pokemon.keys():
         for pkdict in game[uid]['box']:
@@ -121,7 +117,16 @@ def box(update,context):
         if count > 0:
             msg += f'\n{place.pokemon[id]["name"]} #{id}: x{count}'
         count = 0
-    update.message.reply_text(msg)
+    msgsplit = msg.split('\n')
+    msgcount = -1
+    splitmsgs = []
+    for msgs in msgsplit:
+        msgcount += 1
+        if msgcount % 10 == 0:
+            splitmsgs.append(f'{user.first_name}\'s box: Page {int(msgcount/10)+1}\n~~~~~~~~~~~~~~~~~~~~')
+        splitmsgs[int(msgcount/10)] += f'\n{msgs}'
+    for msgss in splitmsgs:
+        update.message.reply_text(msgss)
 
 def bal(update,context):
     user = update.effective_user

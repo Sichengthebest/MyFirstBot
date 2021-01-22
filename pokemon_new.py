@@ -17,11 +17,11 @@ ballTrans = {
 }
 
 rarityTrans = {
-    'c': 'Common (50%)',
-    'u': 'Uncommon (26%)',
-    'r': 'Rare (19%)',
-    's': 'Super Rare (4.1%)',
-    'l': 'Legendary (0.9%)'
+    'c': 'Common (50% encounter rate)',
+    'u': 'Uncommon (26% encounter rate)',
+    'r': 'Rare (19% encounter rate)',
+    's': 'Super Rare (4.1% encounter rate)',
+    'l': 'Legendary (0.9% encounter rate)'
 }
 
 def add_pokemon(uid,p):
