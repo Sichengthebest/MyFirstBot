@@ -110,10 +110,12 @@ def box(update,context):
     check_time(uid)
     msg = ''
     count = 0
+    totalcount = 0
     for id in place.pokemon.keys():
         for pkdict in game[uid]['box']:
             if pkdict['name'] == place.pokemon[id]['name']:
                 count += 1
+                totalcount += 1
         if count > 0:
             msg += f'\n{place.pokemon[id]["name"]} #{id}: x{count}'
         count = 0
@@ -127,6 +129,7 @@ def box(update,context):
         splitmsgs[int(msgcount/15)] += f'\n{msgs}'
     for msgss in splitmsgs:
         update.message.reply_text(msgss)
+    update.message.reply_text(f'You have {totalcount} pokemon in your box.')
 
 def bal(update,context):
     user = update.effective_user
@@ -294,7 +297,7 @@ def surprise(update,context):
     if not 'dailytime' in game[uid]:
         game[uid]['dailytime'] = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
     dailytime = datetime.strptime(game[uid]['dailytime'],"%Y/%m/%d %H:%M:%S")
-    if datetime.now() > dailytime:
+    if datetime.now() >= dailytime:
         c = random.randint(100,500)
         pb = random.randint(5,15)
         gb = random.randint(3,10)
