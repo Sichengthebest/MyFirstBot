@@ -137,7 +137,6 @@ if __name__ == '__main__':
     mycalendar.add_handler(dispatcher)
     commands = coins.get_command() + capitals.get_command() + search.get_command() + fish.get_command() + hunt.get_command() + get_command() + beg.get_command() + gif.get_command() + gamble.get_command() + shop.get_command() + pokemons.getCommand() + postmeme.getCommand() + youtube_music.getCommand()
     updater.bot.set_my_commands(commands)
-
     updater.start_polling()
     print('Started')
     mysystemd.ready()
