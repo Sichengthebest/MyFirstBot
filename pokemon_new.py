@@ -20,8 +20,8 @@ rarityTrans = {
     'c': 'Common (50% encounter rate)',
     'u': 'Uncommon (26% encounter rate)',
     'r': 'Rare (19% encounter rate)',
-    's': 'Super Rare (4.1% encounter rate)',
-    'l': 'Legendary (0.9% encounter rate)'
+    's': 'Super Rare (4.3% encounter rate)',
+    'l': 'Legendary (0.7% encounter rate)'
 }
 
 def add_pokemon(uid,p):
@@ -117,9 +117,8 @@ def pokemonCatchCallback(update,context):
         msg1 = f'''Congratulations, {user.first_name}!
 ✅ You have caught a Level {p.lvl} {p.name} with a {ballTrans[ball]}!
 You have earned {money} pokecoins!'''
-        msg2 = f'Your {game[str(uid)]["budnow"]} gained {xp} XP!'
+        msg2 = '🚧 Bud command in development, sorry~ 🚧'
         game[str(uid)]['pokecoins'] += money
-        game[str(uid)]['budxp'] += xp
         add_pokemon(str(uid),p)
     game[str(uid)][ball] -= 1
     query.edit_message_caption(f'''{msg1}
