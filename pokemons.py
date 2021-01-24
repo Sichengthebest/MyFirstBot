@@ -23,11 +23,11 @@ ballTrans = {
 }
 
 rarityTrans = {
-    'c': 'Common (50% encounter rate)',
-    'u': 'Uncommon (26% encounter rate)',
-    'r': 'Rare (19% encounter rate)',
-    's': 'Super Rare (4.1% encounter rate)',
-    'l': 'Legendary (0.9% encounter rate)'
+    'c': '🥉',
+    'u': '🥈',
+    'r': '🥇',
+    's': '🎗',
+    'l': '🎖'
 }
 
 budinfo = {
@@ -57,9 +57,7 @@ def check_time(uid):
             'mb': 1,
             'pokecoins': 0,
             'box': [],
-            'bud': '',
-            'budnow': '',
-            'budxp': 0,
+            'bud': {},
             'dailytime': datetime.now().strftime("%Y/%m/%d %H:%M:%S"),
             'spawn': False,
         }
@@ -86,50 +84,34 @@ def save():
     config.CONFIG["pk"] = game
     config.save_config()
 
-def budadd(uid,c):
-    if game[uid]['budnow'] == '':
-        return "\nYou do not have a buddy! Use the /bud command to get a buddy!"
-    else:
-        game[uid]['budxp'] += c
-        if game[uid]['budxp'] >= 16000:
-            if game[uid]['bud'] == 'Bulbasaur':
-                if game[uid]['budxp'] < 32000:
-                    game[uid]['budnow'] = 'Ivysaur'
-                else:
-                    game[uid]['budnow'] = 'Venusaur'
-            else:
-                if game[uid]['budxp'] < 36000:
-                    game[uid]['budnow'] = budinfo[game[uid]['bud']]['16']
-                else:
-                    game[uid]['budnow'] = budinfo[game[uid]['bud']]['36']
-        return f"\nYour {game[uid]['budnow']} has gained {c} XP!"
-
 def box(update,context):
     user = update.effective_user
     uid = str(user.id)
+    chatid = update.effective_chat.id
     check_time(uid)
     msg = ''
     count = 0
     totalcount = 0
-    for id in place.pokemon.keys():
-        for pkdict in game[uid]['box']:
-            if pkdict['name'] == place.pokemon[id]['name']:
-                count += 1
-                totalcount += 1
-        if count > 0:
-            msg += f'\n{place.pokemon[id]["name"]} #{id}: x{count}'
-        count = 0
+    for rarity in place.rarity:
+        for id in place.rarity[rarity]:
+            for pkdict in game[uid]['box']:
+                if pkdict['name'] == place.pokemon[id]['name']:
+                    count += 1
+                    totalcount += 1
+            if count > 0:
+                msg += f'\n{rarityTrans[rarity]}: {place.pokemon[id]["name"]} #{id}: x{count}'
+            count = 0
     msgsplit = msg.split('\n')
     msgcount = -1
     splitmsgs = []
     for msgs in msgsplit:
         msgcount += 1
-        if msgcount % 15 == 0:
-            splitmsgs.append(f'{user.first_name}\'s box: Page {int(msgcount/15)+1}\n~~~~~~~~~~~~~~~~~~~~')
-        splitmsgs[int(msgcount/15)] += f'\n{msgs}'
+        if msgcount % 10 == 0:
+            splitmsgs.append(f'{user.first_name}\'s box: Page {int(msgcount/10)+1}\n~~~~~~~~~~~~~~~~~~~~\n🥉: Common\n🥈: Uncommon\n🥇: Rare\n🎗: Super rare\n🎖: Legendary\n~~~~~~~~~~~~~~~~~~~~')
+        splitmsgs[int(msgcount/10)] += f'\n{msgs}'
     for msgss in splitmsgs:
-        update.message.reply_text(msgss)
-    update.message.reply_text(f'You have {totalcount} pokemon in your box.')
+        context.bot.send_message(chatid, text=msgss)
+    context.bot.send_message(chatid, text=f'You have {totalcount} pokemon in your box.')
 
 def bal(update,context):
     user = update.effective_user
@@ -205,90 +187,7 @@ def buy_stuff(user,c,num,ball):
     
 
 def bud(update,context):
-    user = update.effective_user
-    uid = str(user.id)
-    check_time(uid)
-    if not 'bud' in game[uid]:
-        game[uid]['bud'] = ''
-    if not 'budnow' in game[uid]:
-        game[uid]['budnow'] = ''
-    if not 'budxp' in game[uid]:
-        game[uid]['budxp'] = 0
-    level = int(game[uid]['budxp'] / 1000) + 1
-    if game[uid]['bud'] == '':
-        update.message.reply_photo('https://miro.medium.com/max/1200/1*y0-zWEUPYi6TRuz0lC-0Ig.jpeg',caption="""Hi! My name is pokemon trainer BOTGOD. Someone told me that you wanted to become a master pokemon trainer. Well, I'm the person to seek. You can choose between 3 starter pokemon and return for more advice. Now which pokemon would you like to have?""", reply_markup=budkb)
-        return
-    if level >= 16 and level < 32:
-        game[uid]['budnow'] = budinfo[game[uid]['bud']]['16']
-    elif level >= 32:
-        if game[uid]['bud'] == 'Bulbasaur':
-            game[uid]['budnow'] = budinfo[game[uid]['bud']]['32']
-        elif level >= 36:
-            game[uid]['budnow'] = budinfo[game[uid]['bud']]['36']
-        else:
-            pass
-    if game[uid]['budnow'] == 'Bulbasaur':
-        update.message.reply_photo('https://img.pokemondb.net/artwork/bulbasaur.jpg',caption=f"""Your Bulbasaur:
-Level: {level}
-XP: {game[uid]['budxp']}
-XP to next level: {level * 1000 - game[uid]['budxp']}""")
-    elif game[uid]['budnow'] == 'Ivysaur':
-        update.message.reply_photo('https://img.pokemondb.net/artwork/ivysaur.jpg',caption=f"""Your Ivysaur:
-Level: {level}
-XP: {game[uid]['budxp']}
-XP to next level: {level * 1000 - game[uid]['budxp']}""")
-    elif game[uid]['budnow'] == 'Venusaur':
-        update.message.reply_photo('https://img.pokemondb.net/artwork/venusaur.jpg',caption=f"""Your Venusaur:
-Level: {level}
-XP: {game[uid]['budxp']}
-XP to next level: {level * 1000 - game[uid]['budxp']}""")
-    elif game[uid]['budnow'] == 'Charmander':
-        update.message.reply_photo('https://img.pokemondb.net/artwork/charmander.jpg',caption=f"""Your Charmander:
-Level: {level}
-XP: {game[uid]['budxp']}
-XP to next level: {level * 1000 - game[uid]['budxp']}""")
-    elif game[uid]['budnow'] == 'Charmeleon':
-        update.message.reply_photo('https://img.pokemondb.net/artwork/charmeleon.jpg',caption=f"""Your Charmeleon:
-Level: {level}
-XP: {game[uid]['budxp']}
-XP to next level: {level * 1000 - game[uid]['budxp']}""")
-    elif game[uid]['budnow'] == 'Charizard':
-        update.message.reply_photo('https://img.pokemondb.net/artwork/charizard.jpg',caption=f"""Your Charizard:
-Level: {level}
-XP: {game[uid]['budxp']}
-XP to next level: {level * 1000 - game[uid]['budxp']}""")
-    elif game[uid]['budnow'] == 'Squirtle':
-        update.message.reply_photo('https://img.pokemondb.net/artwork/squirtle.jpg',caption=f"""Your Squirtle:
-Level: {level}
-XP: {game[uid]['budxp']}
-XP to next level: {level * 1000 - game[uid]['budxp']}""")
-    elif game[uid]['budnow'] == 'Wartortle':
-        update.message.reply_photo('https://img.pokemondb.net/artwork/wartortle.jpg',caption=f"""Your Wartortle:
-Level: {level}
-XP: {game[uid]['budxp']}
-XP to next level: {level * 1000 - game[uid]['budxp']}""")
-    elif game[uid]['budnow'] == 'Blastoise':
-        update.message.reply_photo('https://img.pokemondb.net/artwork/blastoise.jpg',caption=f"""Your Blastoise:
-Level: {level}
-XP: {game[uid]['budxp']}
-XP to next level: {level * 1000 - game[uid]['budxp']}""")
-    save()
-
-def budCallback(update,context):
-    user = update.effective_user
-    uid = str(user.id)
-    query = update.callback_query
-    pk = query.data
-    if pk == 'pkbud:bulb':
-        game[uid]['bud'] = 'Bulbasaur'
-        game[uid]['budnow'] = 'Bulbasaur'
-    elif pk == 'pkbud:char':
-        game[uid]['bud'] = 'Charmander'
-        game[uid]['budnow'] = 'Charmander'
-    else:
-        game[uid]['bud'] = 'Squirtle'
-        game[uid]['budnow'] = 'Squirtle'
-    query.edit_message_caption(f"{game[uid]['budnow']}? Nice choice! He will be with you for the rest of your adventure. Have fun!")
+    update.message.reply_text('🚧 Sorry, bud command in development, please try again later.🚧')
 
 def surprise(update,context):
     user = update.effective_user
@@ -343,5 +242,4 @@ def addHandler(dispatcher):
     dispatcher.add_handler(CommandHandler('pokebal',bal))
     dispatcher.add_handler(CommandHandler('reset',reset))
     dispatcher.add_handler(CallbackQueryHandler(shopCallback,pattern="^pkbuy:[A-Za-z0-9_]*"))
-    dispatcher.add_handler(CallbackQueryHandler(budCallback,pattern="^pkbud:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(shopnumCallback,pattern="^pkbuynum:[A-Za-z0-9_]*"))
