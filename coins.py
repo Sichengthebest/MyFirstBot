@@ -169,6 +169,8 @@ def weekly(update,context):
         fc = random.randint(20,50)
         bc = random.randint(15,60)
         add_coins(user,c)
+        hunt.check_user(uid)
+        fish.check_fishes(uid)
         hunt.huntgame[uid]['bcoins'] += bc
         fish.fishgame[uid]['fcoins'] += fc
         hourlytime = datetime.now() + timedelta(days=7)
