@@ -307,88 +307,6 @@ def eat_stuff(user,aliment,c):
     else:
         return "You do not own this item lol" 
 
-def convert(update,context):
-    user = update.effective_user
-    uid = user.id
-    if len(context.args) == 0:
-        update.message.reply_animation('https://thumbs.gfycat.com/AliveWelloffAtlanticspadefish-max-1mb.gif',caption="""What are you about to convert?
-/convert gptofc {amount of GP} : Convert 5 GP into 1 fishcoin!
-/convert gptobc {amount of GP} : Convert 5 GP into 1 beastcoin!
-/convert fctobc {amount of fishcoins} : Convert 1 fishcoin into 1 beastcoin!
-/convert bctofc {amount of beastcoins} : Convert 1 beastcoin into 1 fishcoin!
-/convert fctogp {amount of fishcoins} : Convert 1 fishcoin into 5 GP!
-/convert bctogp {amount of beastcoins} : Convert 1 beastcoin into 5 GP!
-------------------------------------------
-/convert gptofc {GP的数量}：将5 GP转换为1鱼币！
-/convert gptobc {GP的数量}：将5 GP转换为1兽币！
-/convert fctobc {鱼币的数量}：将1鱼币转换为1兽币！
-/convert bctofc {兽币的数量}：将1兽币转换为1鱼币！
-/convert fctogp {鱼币的数量}：将1鱼币转换为5GP！
-/convert bctogp {兽币的数量}：将1兽币转换为5GP！""")
-    if len(context.args) == 1:
-        update.message.reply_text("You need to enter a valid amount!\n您需要输入有效的数量！")
-        return
-    if context.args[1].isdigit():
-        if context.args[0] == "gptofc":
-            if int(context.args[1]) > coins[str(uid)]['coins']:
-                update.message.reply_text("Ur too poor u can't convert that many GP\n您太穷了，您无法兑换那么多GP")
-            elif int(context.args[1]) <= 0 or int(context.args[1]) % 5 != 0:
-                update.message.reply_text("You need to enter a valid amount that can be divisible by 5!\n您需要输入一个可以被5整除的有效数量！")
-            else:
-                add_coins(user,-(int(context.args[1])))
-                fish.fishgame[str(uid)]['fcoins'] += int(int(context.args[1]) / 5)
-                update.message.reply_text("Success! You now have %s GP and %s fishcoins!"%(coins[str(uid)]['coins'],fish.fishgame[str(uid)]['fcoins']))
-        elif context.args[0] == "gptobc":
-            if int(context.args[1]) > coins[str(uid)]['coins']:
-                update.message.reply_text("Ur too poor u can't convert that many GP\n您太穷了，您无法兑换那么多GP")
-            elif int(context.args[1]) <= 0 or int(context.args[1]) % 5 != 0:
-                update.message.reply_text("You need to enter a valid amount that can be divisible by 5!\n您需要输入一个可以被5整除的有效数量！")
-            else:
-                add_coins(user,-(int(context.args[1])))
-                hunt.huntgame[str(uid)]['bcoins'] += int(int(context.args[1]) / 5)
-                update.message.reply_text("Success! You now have %s GP and %s beastcoins!"%(coins[str(uid)]['coins'],hunt.huntgame[str(uid)]['bcoins']))
-        elif context.args[0] == "fctobc":
-            if int(context.args[1]) > fish.fishgame[str(uid)]['fcoins']:
-                update.message.reply_text("Ur too poor u can't convert that many fishcoins\n您太穷了，您无法兑换那么多鱼币")
-            elif int(context.args[1]) <= 0:
-                update.message.reply_text("You need to enter a valid amount\n您需要输入有效的数量")
-            else:
-                fish.fishgame[str(uid)]['fcoins'] -= int(context.args[1])
-                hunt.huntgame[str(uid)]['bcoins'] += int(context.args[1])
-                update.message.reply_text("Success! You now have %s fishcoins and %s beastcoins!"%(fish.fishgame[str(uid)]['fcoins'],hunt.huntgame[str(uid)]['bcoins']))
-        elif context.args[0] == "bctofc":
-            if int(context.args[1]) > hunt.huntgame[str(uid)]['bcoins']:
-                update.message.reply_text("Ur too poor u can't convert that many beastcoins\n您太穷了，您无法兑换那么多兽币")
-            elif int(context.args[1]) <= 0:
-                update.message.reply_text("You need to enter a valid amount\n您需要输入有效的数量")
-            else:
-                fish.fishgame[str(uid)]['fcoins'] += int(context.args[1])
-                hunt.huntgame[str(uid)]['bcoins'] -= int(context.args[1])
-                update.message.reply_text("Success! You now have %s fishcoins and %s beastcoins!"%(fish.fishgame[str(uid)]['fcoins'],hunt.huntgame[str(uid)]['bcoins']))
-        elif context.args[0] == "fctogp":
-            if int(context.args[1]) > fish.fishgame[str(uid)]['fcoins']:
-                update.message.reply_text("Ur too poor u can't convert that many fishcoins\n您太穷了，您无法兑换那么多鱼币")
-            elif int(context.args[1]) <= 0:
-                update.message.reply_text("You need to enter a valid amount\n您需要输入有效的数量")
-            else:
-                add_coins(user,int(int(context.args[1]) * 5))
-                fish.fishgame[str(uid)]['fcoins'] -= int(context.args[1])
-                update.message.reply_text("Success! You now have %s GP and %s fishcoins!"%(coins[str(uid)]['coins'],fish.fishgame[str(uid)]['fcoins']))
-        elif context.args[0] == "bctogp":
-            if int(context.args[1]) > hunt.huntgame[str(uid)]['bcoins']:
-                update.message.reply_text("Ur too poor u can't convert that many beastcoins\n您太穷了，您无法兑换那么多兽币")
-            elif int(context.args[1]) <= 0:
-                update.message.reply_text("You need to enter a valid amount\n您需要输入有效的数量")
-            else:
-                add_coins(user,int(int(context.args[1]) * 5))
-                hunt.huntgame[str(uid)]['bcoins'] -= int(context.args[1])
-                update.message.reply_text("Success! You now have %s GP and %s beastcoins!"%(coins[str(uid)]['coins'],hunt.huntgame[str(uid)]['bcoins']))
-        else:
-            update.message.reply_text("You need to enter a valid conversion!\n您需要输入有效的换算！")
-    else:
-        update.message.reply_text("You need to enter a valid amount!\n您需要输入有效的数量！")
-    save()
-
 def dep(update,context):
     user = update.effective_user
     uid = str(user.id)
@@ -464,7 +382,6 @@ def get_command():
         BotCommand('weekly','Get weekly GP! // 每星期打卡！'),
         BotCommand('yearly','Get yearly GP! // 每年打卡！'),
         BotCommand('eat','Eat to gain HP // 吃东西来增加HP'),
-        BotCommand('convert','Convert one currency into another! // 将一种货币转换为另一种货币！'),
         BotCommand('dep','Deposit money from your wallet to your bank! // 从钱包里存钱到银行！'),
         BotCommand('banknote','Increase the amount of GP you can stuff into your bank! // 增加您可以存入银行的GP数量！'),
         BotCommand('withdraw','Withdraw money from your bank to your wallet! // 从银行提款！')
@@ -477,7 +394,6 @@ def add_handler(dp:Dispatcher):
     dp.add_handler(CommandHandler('weekly', weekly))
     dp.add_handler(CommandHandler('yearly', yearly))
     dp.add_handler(CommandHandler('eat', eat))
-    dp.add_handler(CommandHandler('convert', convert))
     dp.add_handler(CommandHandler('dep', dep))
     dp.add_handler(CommandHandler('banknote', banknote))
     dp.add_handler(CommandHandler('withdraw', withdraw))
