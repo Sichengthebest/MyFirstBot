@@ -2,7 +2,6 @@ from telegram.ext import Dispatcher,CommandHandler,CallbackQueryHandler
 from telegram import BotCommand,InlineKeyboardMarkup,InlineKeyboardButton
 import random
 
-# msgid: {uid:👍,uid:👍,uid:👍}
 uservote = {}
 
 def vote(update,context):
@@ -86,19 +85,6 @@ def vote_callback(update,context):
     kb = add_user_vote(msgid,uid,cmd[1],buttons)
     query.answer("投票成功")
     query.edit_message_reply_markup(InlineKeyboardMarkup(kb))
-    # count = int(cmd[2])
-    # query.answer("投票成功")
-    # if cmd[1] == '👍':
-    #     buttons[0][0] = InlineKeyboardButton(f"👍({count})",callback_data=f"vote:👍:{count}")
-    #     query.edit_message_reply_markup(InlineKeyboardMarkup(buttons))
-    # elif cmd[1] == "👎":
-    #     buttons[0][1] = InlineKeyboardButton(f"👎({count})",callback_data=f"vote:👎:{count}")
-    #     query.edit_message_reply_markup(InlineKeyboardMarkup(buttons))
-    # elif cmd[1] == "😍":
-    #     buttons[0][2] = InlineKeyboardButton(f"😍({count})",callback_data=f"vote:😍:{count}")
-    #     query.edit_message_reply_markup(InlineKeyboardMarkup(buttons))
-    # query.answer("大傻子你已经投了，表再投了，烦不烦",show_alert=True)
-
 
 def add_handler(dp:Dispatcher):
     dp.add_handler(CommandHandler('gif', vote))
