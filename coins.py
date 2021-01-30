@@ -128,7 +128,7 @@ def hourly(update,context):
         hourlytime = datetime.now() + timedelta(hours=1)
         update.message.reply_text("Here are your hourly coins, %s\n%s coins were placed in your wallet.\n这是您的每小时打卡的金币，%s \n%s GP已被放置在您的钱包中。"%(user.first_name,c,user.first_name,c))
     else:
-        difference =  hourlytime - datetime.now() 
+        difference = hourlytime - datetime.now() 
         seconds = int(difference.total_seconds())
         minutes = int(seconds/60)
         update.message.reply_text("Slow it down, cmon!!! I'm not made of money dude, one hour hasn't passed yet! Please wait %s minutes.\n放慢速度，呆瓜！我不是用钱做的，小家伙，一个小时还没有过去！还得要%s分钟！"%(minutes,minutes))
