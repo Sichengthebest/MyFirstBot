@@ -31,7 +31,6 @@ Currency commands // 货币命令:
 /weekly - Get weekly GP! // 每星期打卡！
 /yearly - Get yearly GP! // 每年打卡！
 /beg - Go beg, peasant! // 去讨钱吧，穷人！
-/convert - Convert one currency into another! // 将一种货币转换为另一种货币！
 /bal - Check the amount of money you have. // 检查您有多少GP。
 /postmeme - Post a meme to earn GP! // 发布模因来赚取GP！
 -------------------------------------------------
