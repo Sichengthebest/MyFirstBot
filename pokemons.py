@@ -84,14 +84,12 @@ def save():
     config.CONFIG["pk"] = game
     config.save_config()
 
-def box(update,context):
-    user = update.effective_user
+def get_box(user):
     uid = str(user.id)
-    chatid = update.effective_chat.id
-    check_time(uid)
     msg = ''
     count = 0
     totalcount = 0
+    numcount = 0
     for rarity in place.rarity:
         for id in place.rarity[rarity]:
             for pkdict in game[uid]['box']:
@@ -99,7 +97,8 @@ def box(update,context):
                     count += 1
                     totalcount += 1
             if count > 0:
-                msg += f'\n{rarityTrans[rarity]}: {place.pokemon[id]["name"]} #{id}: x{count}'
+                msg += f'{rarityTrans[rarity]}: {place.pokemon[id]["name"]} #{id}: x{count}\n'
+                numcount += 1
             count = 0
     msgsplit = msg.split('\n')
     msgcount = -1
@@ -109,9 +108,60 @@ def box(update,context):
         if msgcount % 10 == 0:
             splitmsgs.append(f'{user.first_name}\'s box: Page {int(msgcount/10)+1}\n~~~~~~~~~~~~~~~~~~~~\n🥉: Common\n🥈: Uncommon\n🥇: Rare\n🎗: Super rare\n🎖: Legendary\n~~~~~~~~~~~~~~~~~~~~')
         splitmsgs[int(msgcount/10)] += f'\n{msgs}'
-    for msgss in splitmsgs:
-        context.bot.send_message(chatid, text=msgss)
+    return splitmsgs,numcount,totalcount
+
+def box(update,context):
+    user = update.effective_user
+    uid = str(user.id)
+    chatid = update.effective_chat.id
+    check_time(uid)
+    splitmsgs,numcount,totalcount = get_box(user)
+    pagenow = 1
+    size = 10
+    if pagenow * size > numcount:
+        update.message.reply_text(splitmsgs[0])
+    else:
+        kb = util.getkb([{'➡️':f'pkbox:next:{pagenow+1}:{user.id}'}])
+        update.message.reply_text(splitmsgs[0],reply_markup=kb)
     context.bot.send_message(chatid, text=f'You have {totalcount} pokemon in your box.')
+
+def boxCallback(update,context):
+    user = update.effective_user
+    query = update.callback_query
+    _,direction,pagenow,curruid = query.data.split(':')
+    if str(user.id) != curruid:
+        query.answer("Yo dude this is someone else's box stop clicking these buttons!",show_alert=True)
+        return
+    size = 10
+    splitmsgs,numcount,_ = get_box(user)
+    if direction == 'next':
+        if (int(pagenow)) * size > numcount:
+            if int(pagenow) * size <= 0:
+                query.edit_message_text(splitmsgs[int(pagenow-1)])
+            else:
+                kb = util.getkb([{'⬅️':f'pkbox:prev:{int(pagenow)-1}:{user.id}'}])
+                query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
+        else:
+            if int(pagenow) * size <= 0:
+                kb = util.getkb([{'➡️':f'pkbox:next:{int(pagenow)+1}:{user.id}'}])
+                query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
+            else:
+                kb = util.getkb([{'⬅️':f'pkbox:prev:{int(pagenow)-1}:{user.id}'},{'➡️':f'pkbox:next:{int(pagenow)+1}:{user.id}'}])
+                query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
+    else:
+        if (int(pagenow)) * size > numcount:
+            if int(pagenow) * size <= 0:
+                query.edit_message_text(splitmsgs[int(pagenow)-1])
+            else:
+                kb = util.getkb([{'⬅️':f'pkbox:prev:{int(pagenow)-1}:{user.id}'}])
+                query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
+        else:
+            if int(pagenow) * size <= 0:
+                kb = util.getkb([{'➡️':f'pkbox:next:{int(pagenow)+1}:{user.id}'}])
+                query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
+            else:
+                kb = util.getkb([{'⬅️':f'pkbox:prev:{int(pagenow)-1}:{user.id}'},{'➡️':f'pkbox:next:{int(pagenow)+1}:{user.id}'}])
+                query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
 
 def bal(update,context):
     user = update.effective_user
@@ -227,7 +277,7 @@ def reset(update,context):
 
 def getCommand():
     return [BotCommand('pokemon','Go catch pokemon! // 去捉宠物小精灵！'),
-        BotCommand('box','[BETA] Check the pokemon in your box! // [测试] 检查盒子里的宠物小精灵！'),
+        BotCommand('box','Check the pokemon in your box! // 检查盒子里的宠物小精灵！'),
         BotCommand('pokeshop','Buy useful stuff for your adventure! // 为您的冒险购买有用的东西！'),
         BotCommand('bud','[BETA] Check on your buddy! // [测试] 检查您的好友！'),
         BotCommand('surprise','Get your daily injection of pokecoins! // 每天注射 Pokecoins！'),
@@ -243,3 +293,4 @@ def addHandler(dispatcher):
     dispatcher.add_handler(CommandHandler('reset',reset))
     dispatcher.add_handler(CallbackQueryHandler(shopCallback,pattern="^pkbuy:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(shopnumCallback,pattern="^pkbuynum:[A-Za-z0-9_]*"))
+    dispatcher.add_handler(CallbackQueryHandler(boxCallback,pattern="^pkbox:[A-Za-z0-9_]*"))
