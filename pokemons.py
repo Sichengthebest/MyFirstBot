@@ -142,7 +142,7 @@ def boxCallback(update,context):
                 kb = util.getkb([{'⬅️':f'pkbox:prev:{int(pagenow)-1}:{user.id}'}])
                 query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
         else:
-            if int(pagenow) * size <= 0:
+            if (int(pagenow)-1) * size <= 0:
                 kb = util.getkb([{'➡️':f'pkbox:next:{int(pagenow)+1}:{user.id}'}])
                 query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
             else:
@@ -156,7 +156,7 @@ def boxCallback(update,context):
                 kb = util.getkb([{'⬅️':f'pkbox:prev:{int(pagenow)-1}:{user.id}'}])
                 query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
         else:
-            if int(pagenow) * size <= 0:
+            if (int(pagenow)-1) * size <= 0:
                 kb = util.getkb([{'➡️':f'pkbox:next:{int(pagenow)+1}:{user.id}'}])
                 query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
             else:
