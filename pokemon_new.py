@@ -20,8 +20,8 @@ rarityTrans = {
     'c': 'Common (50% encounter rate)',
     'u': 'Uncommon (26% encounter rate)',
     'r': 'Rare (19% encounter rate)',
-    's': 'Super Rare (4.3% encounter rate)',
-    'l': 'Legendary (0.7% encounter rate)'
+    's': 'Super Rare (4.7% encounter rate)',
+    'l': 'Legendary (0.3% encounter rate)'
 }
 
 def add_pokemon(uid,p):

@@ -23,10 +23,10 @@ def getPokemon():
     elif rarityroll > 760 and rarityroll <= 950:
         pokemons = rarity['r']
         rarityy = 'r'
-    elif rarityroll > 950 and rarityroll <= 993:
+    elif rarityroll > 950 and rarityroll <= 997:
         pokemons = rarity['s']
         rarityy = 's'
-    elif rarityroll > 993 and rarityroll <= 1000:
+    elif rarityroll > 997 and rarityroll <= 1000:
         pokemons = rarity['l']
         rarityy = 'l'
     pk = random.choice(pokemons)
