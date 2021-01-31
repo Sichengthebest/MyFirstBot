@@ -36,11 +36,3 @@ def save_backup_config():
 
    with open(config_file, 'w') as configfile:
       json.dump(CONFIG, configfile, indent=4,ensure_ascii=False)
-
-# a = ""
-# now = datetime.now()
-# print(now)
-# snow = now.strftime("%Y/%m/%d %H:%M:%S")
-# print(snow)
-# now2 = datetime.strptime(snow,"%Y/%m/%d %H:%M:%S")
-# print(now2)
