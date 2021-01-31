@@ -25,7 +25,7 @@ rarityTrans = {
 }
 
 def add_pokemon(uid,p):
-    pdict = {'name':p.name,'hp':p.hp,'atk':p.atk,'lvl':p.lvl,'pktype':p.pktype,'upgrade':p.upgrade}
+    pdict = {'name':p.name,'hp':p.hp,'atk':p.atk,'lvl':p.lvl,'pktype':p.pktype,'upgrade':p.upgrade,'speed':p.speed}
     game[uid]['box'].append(pdict)
 
 def getcatchrate(ball,p):
