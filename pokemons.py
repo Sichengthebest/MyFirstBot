@@ -1,6 +1,6 @@
 import random
 import config
-from utils import place
+from utils import pokelist
 from utils import util
 from telegram.ext import CommandHandler, CallbackQueryHandler
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, BotCommand
@@ -90,14 +90,14 @@ def get_box(user):
     count = 0
     totalcount = 0
     numcount = 0
-    for rarity in place.rarity:
-        for id in place.rarity[rarity]:
+    for rarity in pokelist.rarity:
+        for id in pokelist.rarity[rarity]:
             for pkdict in game[uid]['box']:
-                if pkdict['name'] == place.pokemon[id]['name']:
+                if pkdict['name'] == pokelist.pokemon[id]['name']:
                     count += 1
                     totalcount += 1
             if count > 0:
-                msg += f'{rarityTrans[rarity]}: {place.pokemon[id]["name"]} #{id}: x{count}\n'
+                msg += f'{rarityTrans[rarity]}: {pokelist.pokemon[id]["name"]} #{id}: x{count}\n'
                 numcount += 1
             count = 0
     msgsplit = msg.split('\n')
@@ -109,6 +109,30 @@ def get_box(user):
             splitmsgs.append(f'{user.first_name}\'s box: Page {int(msgcount/10)+1}\n~~~~~~~~~~~~~~~~~~~~\n🥉: Common\n🥈: Uncommon\n🥇: Rare\n🎗: Super rare\n🎖: Legendary\n~~~~~~~~~~~~~~~~~~~~')
         splitmsgs[int(msgcount/10)] += f'\n{msgs}'
     return splitmsgs,numcount,totalcount
+
+def get_dex(user):
+    uid = str(user.id)
+    msg = ''
+    count = 0
+    totalsize = len(pokelist.pokemon)
+    for id in pokelist.pokemon:
+        for pkdict in game[uid]['box']:
+            if pkdict['name'] == pokelist.pokemon[id]['name']:
+                count += 1
+        if count > 0:
+            msg += f'✅ {pokelist.pokemon[id]["name"]} #{id}: x{count}\n'
+        else:
+            msg += f'❌ {pokelist.pokemon[id]["name"]} #{id}\n'
+        count = 0
+    msgsplit = msg.split('\n')
+    msgcount = -1
+    splitmsgs = []
+    for msgs in msgsplit:
+        msgcount += 1
+        if msgcount % 15 == 0:
+            splitmsgs.append(f'This pokedex lists every single one of the {totalsize} pokemon discovered so far.\n{user.first_name}, gotta catch\'em all©!\nPage {int(msgcount/15)+1}\n~~~~~~~~~~~~~~~~~~~~')
+        splitmsgs[int(msgcount/15)] += f'\n{msgs}'
+    return splitmsgs
 
 def box(update,context):
     user = update.effective_user
@@ -161,6 +185,54 @@ def boxCallback(update,context):
                 query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
             else:
                 kb = util.getkb([{'⬅️':f'pkbox:prev:{int(pagenow)-1}:{user.id}'},{'➡️':f'pkbox:next:{int(pagenow)+1}:{user.id}'}])
+                query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
+
+def pokedex(update,context):
+    user = update.effective_user
+    uid = str(user.id)
+    check_time(uid)
+    msgs = get_dex(user)
+    pagenow = 1
+    kb = util.getkb([{'➡️':f'pkdex:next:{pagenow+1}:{user.id}'}])
+    update.message.reply_text(msgs[0],reply_markup=kb)
+
+def dexCallback(update,context):
+    user = update.effective_user
+    query = update.callback_query
+    _,direction,pagenow,curruid = query.data.split(':')
+    if str(user.id) != curruid:
+        query.answer("Yo dude this is someone else's pokedex stop clicking these buttons!",show_alert=True)
+        return
+    size = 15
+    totalcount = len(pokelist.pokemon)
+    splitmsgs = get_dex(user)
+    if direction == 'next':
+        if (int(pagenow)) * size > totalcount:
+            if int(pagenow) * size <= 0:
+                query.edit_message_text(splitmsgs[int(pagenow-1)])
+            else:
+                kb = util.getkb([{'⬅️':f'pkdex:prev:{int(pagenow)-1}:{user.id}'}])
+                query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
+        else:
+            if (int(pagenow)-1) * size <= 0:
+                kb = util.getkb([{'➡️':f'pkdex:next:{int(pagenow)+1}:{user.id}'}])
+                query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
+            else:
+                kb = util.getkb([{'⬅️':f'pkdex:prev:{int(pagenow)-1}:{user.id}'},{'➡️':f'pkdex:next:{int(pagenow)+1}:{user.id}'}])
+                query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
+    else:
+        if (int(pagenow)) * size > totalcount:
+            if int(pagenow) * size <= 0:
+                query.edit_message_text(splitmsgs[int(pagenow)-1])
+            else:
+                kb = util.getkb([{'⬅️':f'pkdex:prev:{int(pagenow)-1}:{user.id}'}])
+                query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
+        else:
+            if (int(pagenow)-1) * size <= 0:
+                kb = util.getkb([{'➡️':f'pkdex:next:{int(pagenow)+1}:{user.id}'}])
+                query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
+            else:
+                kb = util.getkb([{'⬅️':f'pkdex:prev:{int(pagenow)-1}:{user.id}'},{'➡️':f'pkdex:next:{int(pagenow)+1}:{user.id}'}])
                 query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
 
 def bal(update,context):
@@ -258,9 +330,9 @@ def surprise(update,context):
         game[uid]['ub'] += ub
         if mb == 1:
             game[uid]['mb'] += mb
-            update.message.reply_text(f"Here are your daily pokecoins, {user.first_name}\n{c} pokecoins were placed in your wallet.\nYou also got:\n{pb} Pokeballs\n{gb} Greatballs\n{ub} Ultraballs\n...and 1 Masterball\n这是您的每天打卡的 pokecoins，{user.first_name}\n{c} pokecoins已被放置在您的钱包中。")
+            update.message.reply_text(f"Here are your daily pokecoins, {user.first_name}\n{c} pokecoins were pokelistd in your wallet.\nYou also got:\n{pb} Pokeballs\n{gb} Greatballs\n{ub} Ultraballs\n...and 1 Masterball\n这是您的每天打卡的 pokecoins，{user.first_name}\n{c} pokecoins已被放置在您的钱包中。")
         else:
-            update.message.reply_text(f"Here are your daily pokecoins, {user.first_name}\n{c} pokecoins were placed in your wallet.\nYou also got:\n{pb} Pokeballs\n{gb} Greatballs\n...and {ub} Ultraballs\n这是您的每天打卡的 pokecoins，{user.first_name}\n{c} pokecoins已被放置在您的钱包中。")
+            update.message.reply_text(f"Here are your daily pokecoins, {user.first_name}\n{c} pokecoins were pokelistd in your wallet.\nYou also got:\n{pb} Pokeballs\n{gb} Greatballs\n...and {ub} Ultraballs\n这是您的每天打卡的 pokecoins，{user.first_name}\n{c} pokecoins已被放置在您的钱包中。")
         dailytime = datetime.now() + timedelta(days=1)
         game[uid]['dailytime'] = dailytime.strftime("%Y/%m/%d %H:%M:%S")
     else:
@@ -281,7 +353,8 @@ def getCommand():
         BotCommand('pokeshop','Buy useful stuff for your adventure! // 为您的冒险购买有用的东西！'),
         BotCommand('bud','[BETA] Check on your buddy! // [测试] 检查您的好友！'),
         BotCommand('surprise','Get your daily injection of pokecoins! // 每天注射 Pokecoins！'),
-        BotCommand('pokebal','Check the amount of pokecoins you have. // 检查您有多少 pokecoins。')
+        BotCommand('pokebal','Check the amount of pokecoins you have. // 检查您有多少 pokecoins。'),
+        BotCommand('pokedex','Check the pokemon you have. // 检查您有的 pokemon。')
     ]
 
 def addHandler(dispatcher):
@@ -291,6 +364,8 @@ def addHandler(dispatcher):
     dispatcher.add_handler(CommandHandler('surprise',surprise))
     dispatcher.add_handler(CommandHandler('pokebal',bal))
     dispatcher.add_handler(CommandHandler('reset',reset))
+    dispatcher.add_handler(CommandHandler('pokedex',pokedex))
     dispatcher.add_handler(CallbackQueryHandler(shopCallback,pattern="^pkbuy:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(shopnumCallback,pattern="^pkbuynum:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(boxCallback,pattern="^pkbox:[A-Za-z0-9_]*"))
+    dispatcher.add_handler(CallbackQueryHandler(dexCallback,pattern="^pkdex:[A-Za-z0-9_]*"))

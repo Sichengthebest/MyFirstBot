@@ -2,7 +2,7 @@ import random
 import config
 import pokemons
 from utils import util
-from utils import place
+from utils import pokelist
 from telegram.ext import CommandHandler, CallbackQueryHandler
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, BotCommand,CallbackQuery,InputMediaPhoto
 from datetime import datetime,timedelta
@@ -64,8 +64,8 @@ def save():
 def pokemon(update,context):
     user = update.effective_user
     uid = user.id
-    id,rarity = place.getPokemon()
-    pk = place.Pokemon(id)
+    id,rarity = pokelist.getPokemon()
+    pk = pokelist.Pokemon(id)
     balls = []
     pokemons.check_time(str(uid))
     if game[str(uid)]['spawn'] == True:
@@ -106,7 +106,7 @@ def pokemonCatchCallback(update,context):
     if str(uid) != curruid:
         query.answer("你是谁？你在哪儿？你想做啥？这是别人的，大笨蛋！",show_alert=True)
         return
-    p = place.Pokemon(pkmonid)
+    p = pokelist.Pokemon(pkmonid)
     catchrate = getcatchrate(ball,p)
     money,xp = getadd(rarity)
     pokemonroll = random.randint(1,100)

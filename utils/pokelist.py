@@ -3982,6 +3982,106 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Water','Steel'],
         'upgrade': ['']
+    },
+    "396":{
+        'name': 'Starly',
+        'hp': [190,284],
+        'lvl': [1,13],
+        'atk': [103,229],
+        'speed': [112,240],
+        'Catch rate': [75,85,95,100],
+        'pktype': ['Normal','Flying'],
+        'upgrade': ['397']
+    },
+    "397":{
+        'name': 'Staravia',
+        'hp': [220,314],
+        'lvl': [14,33],
+        'atk': [139,273],
+        'speed': [148,284],
+        'Catch rate': [65,80,90,100],
+        'pktype': ['Normal','Flying'],
+        'upgrade': ['398']
+    },
+    "398":{
+        'name': 'Staraptor',
+        'hp': [280,374],
+        'lvl': [34,100],
+        'atk': [220,372],
+        'speed': [184,328],
+        'Catch rate': [45,60,75,100],
+        'pktype': ['Normal','Flying'],
+        'upgrade': ['']
+    },
+    "399":{
+        'name': 'Bidoof',
+        'hp': [228,322],
+        'lvl': [1,14],
+        'atk': [85,207],
+        'speed': [60,177],
+        'Catch rate': [75,85,95,100],
+        'pktype': ['Normal'],
+        'upgrade': ['400']
+    },
+    "400":{
+        'name': 'Furret',
+        'hp': [268,362],
+        'lvl': [15,100],
+        'atk': [157,295],
+        'speed': [132,265],
+        'Catch rate': [65,80,90,100],
+        'pktype': ['Normal','Water'],
+        'upgrade': ['']
+    },
+    "401":{
+        'name': 'Kricketot',
+        'hp': [184,278],
+        'lvl': [1,6],
+        'atk': [49,163],
+        'speed': [49,163],
+        'Catch rate': [75,85,95,100],
+        'pktype': ['Bug'],
+        'upgrade': ['402']
+    },
+    "402":{
+        'name': 'Kricketune',
+        'hp': [264,358],
+        'lvl': [7,9],
+        'atk': [157,295],
+        'speed': [121,251],
+        'Catch rate': [65,80,90,100],
+        'pktype': ['Bug'],
+        'upgrade': ['']
+    },
+    "403":{
+        'name': 'Shinx',
+        'hp': [200,294],
+        'lvl': [1,14],
+        'atk': [121,251],
+        'speed': [85,207],
+        'Catch rate': [65,80,90,100],
+        'pktype': ['Electric'],
+        'upgrade': ['404']
+    },
+    "404":{
+        'name': 'Flaaffy',
+        'hp': [250,344],
+        'lvl': [15,29],
+        'atk': [103,229],
+        'speed': [85,207],
+        'Catch rate': [45,60,75,100],
+        'pktype': ['Electric'],
+        'upgrade': ['181']
+    },
+    "405":{
+        'name': 'Ampharos',
+        'hp': [290,384],
+        'lvl': [30,100],
+        'atk': [139,273],
+        'speed': [103,229],
+        'Catch rate': [25,40,55,100],
+        'pktype': ['Electric'],
+        'upgrade': ['']
     }
 }
 
