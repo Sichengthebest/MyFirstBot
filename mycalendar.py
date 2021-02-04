@@ -10,12 +10,7 @@ cals = config.CONFIG['cal']
 
 def save():
     config.CONFIG['cal'] = cals
-    config.save_config()
-
-def JOB(update,context):
-    chat_id = update.effective_chat.id
-    calstuff = cals[str(chat_id)]
-    context.job_queue.run_daily(get_cal,time(calstuff['time'][0],calstuff['time'][1],0,0,pytz.timezone(calstuff['time'][2])),context=chat_id)
+    config.save_config()    
 
 def get_cal(context):
     job = context.job
@@ -35,6 +30,23 @@ def get_cal(context):
     Starts: {datetime.strftime(thing.start,"%Y/%m/%d %H:%M:%S")}
     Ends: {datetime.strftime(thing.end,"%Y/%m/%d %H:%M:%S")}'''
     context.bot.send_message(job.context,msg)
+
+def show_cal(update,context):
+    msg = 'Here are your calendars:'
+    for chatid in cals:
+        msg += f'''
+~~~~~~~~~~~~~~~~~~~~~~~~
+📆 {chatid}:
+    Calendar URL: {cals[chatid]['url']}
+    Time: {cals[chatid]['time'][0]}:{cals[chatid]['time'][1]}
+    Timezone: {cals[chatid]['time'][2]}'''
+    update.message.reply_text(msg)
+
+def show_job(update,context):
+    msg = 'Here is a list of jobs:'
+    for job in context.job_queue.jobs():
+        msg += f'\n{job.name}: {datetime.strftime(job.next_t,"%H:%M")}'
+    update.message.reply_text(msg)
 
 def set_cal(update,context):
     uid = update.effective_user.id
@@ -56,10 +68,28 @@ def set_cal(update,context):
         return
     cals[str(chatid)] = {}
     cals[str(chatid)]['url'] = url
-    cals[str(chatid)]['time'] = [int(time.split(':')[0]),int(time.split(':')[1]),timezone]
-    save()
+    strhours,strminutes = time.split(':')
+    hours = int(strhours)
+    minutes = int(strminutes)
+    if hours > 23 or hours < 0:
+        update.message.reply_text('BIG DUMMY A DAY HAS 24 HOURS WTH and BTW 12AM is 0:00')
+        return
+    if minutes >= 60 or minutes < 0:
+        update.message.reply_text('BIG DUMMY AN HOUR HAS 60 MINUTES WTH')
+        return
+    cals[str(chatid)]['time'] = [hours,minutes,timezone]
     update.message.reply_text(f'Success! You will receive notifications every day at {time}.')
+    run_daily(context.job_queue)
+
+def run_daily(job_queue):
+    for chatid in cals:
+        calstuff = cals[chatid]
+        for job in job_queue.jobs():
+            if job.name == chatid:
+                job.schedule_removal()
+        job_queue.run_daily(get_cal,time(calstuff['time'][0],calstuff['time'][1],0,0,pytz.timezone(calstuff['time'][2])),context=chatid,name=chatid)
 
 def add_handler(dp):
-    dp.add_handler(CommandHandler('get_cal',JOB,pass_job_queue=True))
     dp.add_handler(CommandHandler('set_cal',set_cal))
+    dp.add_handler(CommandHandler('show_cal',show_cal))
+    dp.add_handler(CommandHandler('show_jobs',show_job))
