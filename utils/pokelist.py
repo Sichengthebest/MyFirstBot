@@ -2520,7 +2520,7 @@ pokemon = {
         'atk': [166,306],
         'speed': [202,350],
         'Catch rate': [5,20,35,100],
-        'pktype': ['Psychic','Water'],
+        'pktype': ['Psychic','Flying'],
         'upgrade': ['']
     },
     "250":{
