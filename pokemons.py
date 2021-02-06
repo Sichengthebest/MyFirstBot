@@ -353,11 +353,14 @@ def bud(update,context):
     types = ''
     for type in game[uid]['bud']['pktype']:
         types += f'{typeTrans[type]}'
+    if game[uid]['bud']['lvl'] == 100:
+        nextlvlmsg = ' {MAX}'
+    else:
+        nextlvlmsg = f"\nXP to next level: {game[uid]['bud']['lvl']*1000-game[uid]['bud']['xp']}"
     update.message.reply_photo(open(pk.getPhoto(),'rb'),caption=f"""Your {game[uid]['bud']['name']} {types}:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 XP: {game[uid]['bud']['xp']}
-Level: {game[uid]['bud']['lvl']}
-XP to next level: {game[uid]['bud']['lvl']*1000-game[uid]['bud']['xp']}
+Level: {game[uid]['bud']['lvl']}{nextlvlmsg}
 🆙 Evolution: {evo}
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 💖 HP: {game[uid]['bud']['hp']}
