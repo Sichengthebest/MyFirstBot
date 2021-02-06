@@ -4155,15 +4155,16 @@ class Pokemon():
     pktype = []
     upgrade = ''
     speed = 0
+    xp = 0
 
     def getPhoto(self):
         file_name = f"{config.run_path}/images/{self.id}.jpg"
         return file_name
 
-    def __init__(self,id:str):
+    def __init__(self,id:str,lvl:int):
         self.id = id
         self.name = pokemon[id]['name']
-        self.lvl = random.randint(pokemon[id]['lvl'][0],pokemon[id]['lvl'][1])
+        self.lvl = lvl
         maxhp = random.randint(pokemon[id]['hp'][0],pokemon[id]['hp'][1])
         lvlnum = pokemon[id]['lvl'][1] - pokemon[id]['lvl'][0]
         hpperlvl = int(maxhp / lvlnum)
@@ -4177,11 +4178,11 @@ class Pokemon():
         self.catchrate = pokemon[id]['Catch rate']
         self.pktype = pokemon[id]['pktype']
         self.upgrade = random.choice(pokemon[id]['upgrade'])
+        self.xp = (self.lvl-1) * 1000
     
     @classmethod
-    def init(self,id:str,name:str,lvl:int,hp:int,atk:int,catchrate:list,pktype:str,upgrade:str,speed:int):
-        p = Pokemon(id)
-        p.lvl = lvl
+    def init(self,id:str,name:str,lvl:int,hp:int,atk:int,catchrate:list,pktype:str,upgrade:str,speed:int,xp:int):
+        p = Pokemon(id,lvl)
         p.hp = hp
         p.atk = atk
         p.catchrate = catchrate
@@ -4192,14 +4193,14 @@ class Pokemon():
     
     @classmethod
     def init_from_dict(self,pdict):
-        p = Pokemon(pdict['id'])
-        p.lvl = pdict['lvl']
+        p = Pokemon(pdict['id'],pdict['lvl'])
         p.hp = pdict['hp']
         p.atk = pdict['atk']
         p.catchrate = pdict['catchrate']
         p.pktype = pdict['pktype']
         p.upgrade = pdict['upgrade']
         p.speed = pdict['speed']
+        p.xp = pdict['xp']
         return p
 
     def __str__(self):

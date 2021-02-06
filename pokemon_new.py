@@ -25,7 +25,7 @@ rarityTrans = {
 }
 
 def add_pokemon(uid,p):
-    pdict = {'name':p.name,'hp':p.hp,'atk':p.atk,'lvl':p.lvl,'pktype':p.pktype,'upgrade':p.upgrade,'speed':p.speed}
+    pdict = {'id':p.id,'name':p.name,'hp':p.hp,'atk':p.atk,'lvl':p.lvl,'xp':p.xp,'pktype':p.pktype,'upgrade':p.upgrade,'speed':p.speed}
     game[uid]['box'].append(pdict)
 
 def getcatchrate(ball,p):
@@ -42,20 +42,15 @@ def getcatchrate(ball,p):
 def getadd(rarity):
     if rarity == 'c':
         money = random.randint(35,75)
-        xp = random.randint(5,25)
     elif rarity == 'u':
         money = random.randint(75,115)
-        xp = random.randint(15,35)
     elif rarity == 'r':
         money = random.randint(200,240)
-        xp = random.randint(40,60)
     elif rarity == 's':
         money = random.randint(560,600)
-        xp = random.randint(95,115)
     elif rarity == 'l':
         money = 20000
-        xp = 333
-    return money,xp
+    return money
 
 def save():
     config.CONFIG["pk"] = game
@@ -65,7 +60,8 @@ def pokemon(update,context):
     user = update.effective_user
     uid = user.id
     id,rarity = pokelist.getPokemon()
-    pk = pokelist.Pokemon(id)
+    lvl = random.randint(pokelist.pokemon[id]['lvl'][0],pokelist.pokemon[id]['lvl'][1])
+    pk = pokelist.Pokemon(id,lvl)
     balls = []
     pokemons.check_time(str(uid))
     if game[str(uid)]['spawn'] == True:
@@ -106,18 +102,17 @@ def pokemonCatchCallback(update,context):
     if str(uid) != curruid:
         query.answer("你是谁？你在哪儿？你想做啥？这是别人的，大笨蛋！",show_alert=True)
         return
-    p = pokelist.Pokemon(pkmonid)
+    lvl = random.randint(pokelist.pokemon[pkmonid]['lvl'][0],pokelist.pokemon[pkmonid]['lvl'][1])
+    p = pokelist.Pokemon(pkmonid,lvl)
     catchrate = getcatchrate(ball,p)
-    money,xp = getadd(rarity)
+    money = getadd(rarity)
     pokemonroll = random.randint(1,100)
     if pokemonroll > catchrate:
         msg1 = f'❌ {p.name} broke out of the {ballTrans[ball]}!'
-        msg2 = ''
     elif pokemonroll <= catchrate:
         msg1 = f'''Congratulations, {user.first_name}!
 ✅ You have caught a Level {p.lvl} {p.name} with a {ballTrans[ball]}!
 You have earned {money} pokecoins!'''
-        msg2 = '🚧 Bud command in development, sorry~ 🚧'
         game[str(uid)]['pokecoins'] += money
         add_pokemon(str(uid),p)
     game[str(uid)][ball] -= 1
@@ -131,9 +126,7 @@ Balls left:
 Pokeballs: {game[str(uid)]['pb']}
 Greatballs: {game[str(uid)]['gb']}
 Ultraballs: {game[str(uid)]['ub']}
-Masterballs: {game[str(uid)]['mb']}
--------------------------
-{msg2}''')
+Masterballs: {game[str(uid)]['mb']}''')
     game[str(uid)]['spawn'] = False
     game[str(uid)]['gametime'] = datetime.strftime(datetime.now() + timedelta(seconds=10),"%Y/%m/%d %H:%M:%S")
     save()

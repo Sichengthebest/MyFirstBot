@@ -1,9 +1,10 @@
 import random
 import config
+import pokemon_new
 from utils import pokelist
 from utils import util
 from telegram.ext import CommandHandler, CallbackQueryHandler
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, BotCommand
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, BotCommand,InputMediaPhoto
 from datetime import datetime,timedelta
 
 
@@ -22,27 +23,33 @@ ballTrans = {
     'pk:mb': 'Masterball'
 }
 
+typeTrans = {
+    'Grass': '🌱',
+    'Fire': '🔥',
+    'Water': '💧',
+    'Electric': '⚡',
+    'Normal': '🌐',
+    'Ice': '❄️',
+    'Fighting': '🥊',
+    'Poison': '☠️',
+    'Ground': '⛰',
+    'Flying': '🕊',
+    'Psychic': '🌀',
+    'Bug': '🐛',
+    'Rock': '🪨',
+    'Ghost': '👻',
+    'Dragon': '🐉',
+    'Dark': '🌑',
+    'Steel': '⚙️',
+    'Fairy': '🦄'
+}
+
 rarityTrans = {
     'c': '🥉',
     'u': '🥈',
     'r': '🥇',
     's': '🎗',
     'l': '🎖'
-}
-
-budinfo = {
-    'Bulbasaur': {
-        '16': 'Ivysaur',
-        '32': 'Venusaur'
-    },
-    'Charmander': {
-        '16': 'Charmeleon',
-        '36': 'Charizard'
-    },
-    'Squirtle': {
-        '16': 'Wartortle',
-        '36': 'Blastoise'
-    }
 }
 
 game = config.CONFIG["pk"]
@@ -61,9 +68,6 @@ def check_time(uid):
             'dailytime': datetime.now().strftime("%Y/%m/%d %H:%M:%S"),
             'spawn': False,
         }
-
-budskb = [{'Bulbasaur':'pkbud:bulb'},{'Charmander':'pkbud:char'},{"Squirtle":'pkbud:sqir'}]
-budkb = util.getkb(budskb)
 
 buyskb = [{'Pokeball':'pkbuy:pb','Greatball':'pkbuy:gb'},{'Ultraball':'pkbuy:ub','Masterball':'pkbuy:mb'}]
 buykb = util.getkb(buyskb)
@@ -306,10 +310,84 @@ def buy_stuff(user,c,num,ball):
     game[uid]['pokecoins'] -= totalcost
     game[uid][ball] += int(num)
     return f"Success! @{user.username} , you have bought {num} {ballTrans[f'pk:{ball}']}(s) with {totalcost} pokecoins and you have {game[uid]['pokecoins']} pokecoins remaining.\nYou now have {game[uid]['pb']} Pokeballs, {game[uid]['gb']} Greatballs, {game[uid]['ub']} Ultraballs and {game[uid]['mb']} Masterballs."
-    
+
+def add_bud(uid,p):  
+    pdict = {'id':p.id,'name':p.name,'hp':p.hp,'atk':p.atk,'lvl':p.lvl,'xp':p.xp,'pktype':p.pktype,'upgrade':p.upgrade,'speed':p.speed}
+    game[uid]['bud'] = pdict
+
+def set_bud(update,context):
+    user = update.effective_user
+    uid = str(user.id)
+    check_time(uid)
+    if game[uid]['bud'] == {}:
+        kb = util.getkb([{'Bulbasaur':'pkbudstart:bulb'},{'Charmander':'pkbudstart:char'},{'Squirtle':'pkbudstart:squi'}])
+        update.message.reply_photo('https://img.pokemondb.net/images/red-blue/kanto-starters.jpg',caption="Hi! My name is pokemon trainer BOTGOD. Someone told me that you wanted to become a master pokemon trainer. Well, I'm the person to seek. You can choose between 3 Kanto starter pokemon and return for more advice. Now, which pokemon would you like to have?",reply_markup=kb)
+        return
+    kblist = []
+    for pkdict in game[uid]['box']:
+        kblist.append({f"{pkdict['name']}, XP: {pkdict['xp']}":f"pkbudset:{game[uid]['box'].index(pkdict)}"})
+    kb = util.getkb(kblist)
+    update.message.reply_text("Which pokemon would you like to have as your buddy?",reply_markup=kb)
+
+def budNewCallback(update,context):
+    user = update.effective_user
+    uid = str(user.id)
+    query = update.callback_query
+    _,index = query.data.split(':')
+    game[uid]['bud'] = game[uid]['box'][int(index)]
+    query.edit_message_text(f"{game[uid]['box'][int(index)]['name']}? He/she will be your best buddy! Use /view_bud@SichengsGodBot to have the details!")
+    save()
 
 def bud(update,context):
-    update.message.reply_text('🚧 Sorry, bud command in development, please try again later.🚧')
+    user = update.effective_user
+    uid = str(user.id)
+    check_time(uid)
+    if game[uid]['bud'] == {}:
+        update.message.reply_text('You do not have a buddy! Use /set_bud@SichengsGodBot to get one!')
+    id = game[uid]['bud']['id']
+    pk = pokelist.Pokemon(id,random.randint(pokelist.pokemon[id]['lvl'][0],pokelist.pokemon[id]['lvl'][1]))
+    if game[uid]['bud']['upgrade'] == '':
+        evo = 'This pokemon does not evolve.'
+    else:
+        evo = f"Evolves at level {pokelist.pokemon[game[uid]['bud']['id']]['lvl'][1]+1} into {pokelist.Pokemon(game[uid]['bud']['upgrade'],random.randint(pokelist.pokemon[game[uid]['bud']['upgrade']]['lvl'][0],pokelist.pokemon[game[uid]['bud']['upgrade']]['lvl'][1])).name}"
+    types = ''
+    for type in game[uid]['bud']['pktype']:
+        types += f'{typeTrans[type]}'
+    update.message.reply_photo(open(pk.getPhoto(),'rb'),caption=f"""Your {game[uid]['bud']['name']} {types}:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+XP: {game[uid]['bud']['xp']}
+Level: {game[uid]['bud']['lvl']}
+XP to next level: {game[uid]['bud']['lvl']*1000-game[uid]['bud']['xp']}
+🆙 Evolution: {evo}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+💖 HP: {game[uid]['bud']['hp']}
+💥 Atk: {game[uid]['bud']['atk']}
+⚡️ Speed: {game[uid]['bud']['speed']}""")
+
+def budStartCallback(update,context):
+    user = update.effective_user
+    uid = str(user.id)
+    query = update.callback_query
+    _,pk = query.data.split(':')
+    if pk == 'bulb':
+        budpk = pokelist.Pokemon(id='001',lvl=1)
+        pokemon_new.add_pokemon(uid,budpk)
+        add_bud(uid,budpk)
+        query.edit_message_media(InputMediaPhoto('https://img.pokemondb.net/artwork/bulbasaur.jpg'))
+        query.edit_message_caption('Bulbasaur? Nice choice! He will be with you for the rest of your journey in Kanto. Good luck!')
+    elif pk == 'char':
+        budpk = pokelist.Pokemon(id='004',lvl=1)
+        pokemon_new.add_pokemon(uid,budpk)
+        add_bud(uid,budpk)
+        query.edit_message_media(InputMediaPhoto('https://img.pokemondb.net/artwork/charmander.jpg'))
+        query.edit_message_caption('Charmander? Nice choice! He will be with you for the rest of your journey in Kanto. Good luck!')
+    elif pk == 'squi':
+        budpk = pokelist.Pokemon(id='007',lvl=1)
+        pokemon_new.add_pokemon(uid,budpk)
+        add_bud(uid,budpk)
+        query.edit_message_media(InputMediaPhoto('https://img.pokemondb.net/artwork/squirtle.jpg'))
+        query.edit_message_caption('Squirtle? Nice choice! He will be with you for the rest of your journey in Kanto. Good luck!')
+    save()
 
 def surprise(update,context):
     user = update.effective_user
@@ -351,7 +429,8 @@ def getCommand():
     return [BotCommand('pokemon','Go catch pokemon! // 去捉宠物小精灵！'),
         BotCommand('box','Check the pokemon in your box! // 检查盒子里的宠物小精灵！'),
         BotCommand('pokeshop','Buy useful stuff for your adventure! // 为您的冒险购买有用的东西！'),
-        BotCommand('bud','[BETA] Check on your buddy! // [测试] 检查您的好友！'),
+        BotCommand('view_bud','[BETA] Check on your buddy! // [测试] 检查您的好友！'),
+        BotCommand('set_bud','[BETA] Get a new buddy! // [测试] 结识新好友！'),
         BotCommand('surprise','Get your daily injection of pokecoins! // 每天注射 Pokecoins！'),
         BotCommand('pokebal','Check the amount of pokecoins you have. // 检查您有多少 pokecoins。'),
         BotCommand('pokedex','Check the pokemon you have. // 检查您有的 pokemon。')
@@ -360,7 +439,8 @@ def getCommand():
 def addHandler(dispatcher):
     dispatcher.add_handler(CommandHandler('box', box))
     dispatcher.add_handler(CommandHandler('pokeshop',shop))
-    dispatcher.add_handler(CommandHandler('bud',bud))
+    dispatcher.add_handler(CommandHandler('view_bud',bud))
+    dispatcher.add_handler(CommandHandler('set_bud',set_bud))
     dispatcher.add_handler(CommandHandler('surprise',surprise))
     dispatcher.add_handler(CommandHandler('pokebal',bal))
     dispatcher.add_handler(CommandHandler('reset',reset))
@@ -369,3 +449,5 @@ def addHandler(dispatcher):
     dispatcher.add_handler(CallbackQueryHandler(shopnumCallback,pattern="^pkbuynum:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(boxCallback,pattern="^pkbox:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(dexCallback,pattern="^pkdex:[A-Za-z0-9_]*"))
+    dispatcher.add_handler(CallbackQueryHandler(budStartCallback,pattern="^pkbudstart:[A-Za-z0-9_]*"))
+    dispatcher.add_handler(CallbackQueryHandler(budNewCallback,pattern="^pkbudset:[A-Za-z0-9_]*"))
