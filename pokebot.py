@@ -3,7 +3,7 @@ import logging
 import getopt
 import sys
 import mysystemd
-import config
+import pokeconfig
 from telegram.ext import CommandHandler, Updater
 from telegram import BotCommand
 
@@ -61,9 +61,9 @@ if __name__ == '__main__':
             PATH = arg
     
     # TOKEN=read_file_as_str(f"{PATH}/TOKEN")
-    config.config_file = f"{PATH}/my.json"
-    config.load_config()
-    TOKEN=config.CONFIG["token2"]
+    pokeconfig.config_file = f"{PATH}/poke.json"
+    pokeconfig.load_config()
+    TOKEN=pokeconfig.CONFIG["token2"]
 
     updater = Updater(token=TOKEN, use_context=True)
     dispatcher = updater.dispatcher
