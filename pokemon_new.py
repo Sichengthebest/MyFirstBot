@@ -24,9 +24,46 @@ rarityTrans = {
     'l': 'Legendary (0.3% encounter rate)'
 }
 
+stoneTrans = {
+    'daw': 'Dawn Stone',
+    'dra': 'Dragon Scale',
+    'dub': 'Dubious Disc',
+    'dus': 'Dusk Stone',
+    'ele': 'Electirizer',
+    'fir': 'Fire Stone',
+    'ice': 'Ice Stone',
+    'lea': 'Leaf Stone',
+    'mag': 'Magmarizer',
+    'moo': 'Moon Stone',
+    'ova': 'Oval Stone',
+    'pri': 'Prism Scale',
+    'pro': 'Protector',
+    'rea': 'Reaper Cloth',
+    'sac': 'Sachet',
+    'shi': 'Shiny Stone',
+    'sun': 'Sun Stone',
+    'thu': 'Thunder Stone',
+    'upg': 'Upgrade',
+    'wat': 'Water Stone',
+    'whi': 'Whipped cream'
+}
+
 def add_pokemon(uid,p):
-    pdict = {'id':p.id,'name':p.name,'hp':p.hp,'atk':p.atk,'lvl':p.lvl,'xp':p.xp,'pktype':p.pktype,'upgrade':p.upgrade,'speed':p.speed}
+    pdict = {'id':p.id,'name':p.name,'hp':p.hp,'atk':p.atk,'lvl':p.lvl,'xp':p.xp,'pktype':p.pktype,'upgrade':p.upgrade,'speed':p.speed,'evolvewith':p.evolvewith}
     game[uid]['box'].append(pdict)
+
+def add_xp(uid,xp):
+    game[uid]['box'].remove(game[uid]['bud'])
+    game[uid]['bud']['xp'] += xp
+    if game[uid]['bud']['xp'] >= game[uid]['bud']['lvl'] * 1000:
+        game[uid]['bud']['lvl'] = game[uid]['bud']['xp']
+        p = pokelist.Pokemon(game[uid]['bud']['id'],game[uid]['bud']['xp'])
+        pokemons.add_bud(uid,p)
+        msg = f"\n-------------------------\nYour bud gained {xp} XP! Congratutions! Your {game[uid]['bud']['name']} is now level {game[uid]['bud']['lvl']}!"
+    msg = f'\n-------------------------\nYour bud gained {xp} XP!'
+    game[uid]['box'].append(game[uid]['bud'])
+    return msg
+        
 
 def getcatchrate(ball,p):
     if ball == 'pb':
@@ -42,15 +79,20 @@ def getcatchrate(ball,p):
 def getadd(rarity):
     if rarity == 'c':
         money = random.randint(35,75)
+        xp = random.randint(5,10)
     elif rarity == 'u':
         money = random.randint(75,115)
+        xp = random.randint(15,25)
     elif rarity == 'r':
         money = random.randint(200,240)
+        xp = random.randint(30,40)
     elif rarity == 's':
         money = random.randint(560,600)
+        xp = random.randint(135,150)
     elif rarity == 'l':
         money = 20000
-    return money
+        xp = 500
+    return money,xp
 
 def save():
     config.CONFIG["pk"] = game
@@ -60,8 +102,8 @@ def pokemon(update,context):
     user = update.effective_user
     uid = user.id
     id,rarity = pokelist.getPokemon()
-    lvl = random.randint(pokelist.pokemon[id]['lvl'][0],pokelist.pokemon[id]['lvl'][1])
-    pk = pokelist.Pokemon(id,lvl)
+    lvlxp = random.randint(pokelist.pokemon[id]['lvl'][0],pokelist.pokemon[id]['lvl'][1])*1000
+    pk = pokelist.Pokemon(id,lvlxp)
     balls = []
     pokemons.check_time(str(uid))
     if game[str(uid)]['spawn'] == True:
@@ -72,6 +114,12 @@ def pokemon(update,context):
         difference = datetime.strptime(game[str(uid)]['gametime'],"%Y/%m/%d %H:%M:%S") - datetime.now() 
         seconds = int(difference.total_seconds())
         update.message.reply_text(f"Slow it down, cmon!!! You have caught every single pokemon around you, please wait {seconds} seconds!\n放慢速度，呆瓜！！！您已经抓到身边的每只宠物小精灵，请等待{seconds}秒！\nCreator/作者: Sichengthebest")
+        return
+    spawnbool = random.randint(0,1)
+    if spawnbool == 0:
+        update.message.reply_text('You did not find a pokemon.')
+        game[str(uid)]['gametime'] = datetime.strftime(datetime.now() + timedelta(seconds=10),"%Y/%m/%d %H:%M:%S")
+        save()
         return
     game[str(uid)]['spawn'] = True
     if game[str(uid)]['pb'] > 0:
@@ -102,17 +150,30 @@ def pokemonCatchCallback(update,context):
     if str(uid) != curruid:
         query.answer("你是谁？你在哪儿？你想做啥？这是别人的，大笨蛋！",show_alert=True)
         return
-    lvl = random.randint(pokelist.pokemon[pkmonid]['lvl'][0],pokelist.pokemon[pkmonid]['lvl'][1])
-    p = pokelist.Pokemon(pkmonid,lvl)
+    lvlxp = random.randint(pokelist.pokemon[pkmonid]['lvl'][0],pokelist.pokemon[pkmonid]['lvl'][1])*1000
+    p = pokelist.Pokemon(pkmonid,lvlxp)
     catchrate = getcatchrate(ball,p)
-    money = getadd(rarity)
+    money,xp = getadd(rarity)
     pokemonroll = random.randint(1,100)
+    if pokemonroll < 5:
+        stones = ['daw','dus','fir','ice','lea','moo','ova','dub','dra','pro','rea','sac','shi','sun','thu','upg','wat','whi','ele','mag']
+        stonesave = random.choice(stones)
+        stoneget = stoneTrans[stonesave]
     if pokemonroll > catchrate:
         msg1 = f'❌ {p.name} broke out of the {ballTrans[ball]}!'
+        msg2 = ''
     elif pokemonroll <= catchrate:
         msg1 = f'''Congratulations, {user.first_name}!
 ✅ You have caught a Level {p.lvl} {p.name} with a {ballTrans[ball]}!
 You have earned {money} pokecoins!'''
+        if game[str(uid)]['bud'] == {}:
+            msg2 = '\n-------------------------\nYou do not have a buddy! Use /set_bud@SichengsGodBot to get one!' 
+        else:
+            if pokemonroll < 5:
+                msg2 = f'{add_xp(str(uid),xp)}\nOh? and you found a/an {stoneget}! Use it to evolve certain pokemon.'
+                game[str(uid)]['inv'] += stonesave
+            else:
+                msg2 = f'{add_xp(str(uid),xp)}'
         game[str(uid)]['pokecoins'] += money
         add_pokemon(str(uid),p)
     game[str(uid)][ball] -= 1
@@ -126,7 +187,7 @@ Balls left:
 Pokeballs: {game[str(uid)]['pb']}
 Greatballs: {game[str(uid)]['gb']}
 Ultraballs: {game[str(uid)]['ub']}
-Masterballs: {game[str(uid)]['mb']}''')
+Masterballs: {game[str(uid)]['mb']}{msg2}''')
     game[str(uid)]['spawn'] = False
     game[str(uid)]['gametime'] = datetime.strftime(datetime.now() + timedelta(seconds=10),"%Y/%m/%d %H:%M:%S")
     save()

@@ -67,6 +67,7 @@ def check_time(uid):
             'bud': {},
             'dailytime': datetime.now().strftime("%Y/%m/%d %H:%M:%S"),
             'spawn': False,
+            'inv': []
         }
 
 buyskb = [{'Pokeball':'pkbuy:pb','Greatball':'pkbuy:gb'},{'Ultraball':'pkbuy:ub','Masterball':'pkbuy:mb'}]
@@ -312,7 +313,7 @@ def buy_stuff(user,c,num,ball):
     return f"Success! @{user.username} , you have bought {num} {ballTrans[f'pk:{ball}']}(s) with {totalcost} pokecoins and you have {game[uid]['pokecoins']} pokecoins remaining.\nYou now have {game[uid]['pb']} Pokeballs, {game[uid]['gb']} Greatballs, {game[uid]['ub']} Ultraballs and {game[uid]['mb']} Masterballs."
 
 def add_bud(uid,p):  
-    pdict = {'id':p.id,'name':p.name,'hp':p.hp,'atk':p.atk,'lvl':p.lvl,'xp':p.xp,'pktype':p.pktype,'upgrade':p.upgrade,'speed':p.speed}
+    pdict = {'id':p.id,'name':p.name,'hp':p.hp,'atk':p.atk,'lvl':p.lvl,'xp':p.xp,'pktype':p.pktype,'upgrade':p.upgrade,'speed':p.speed,'evolvewith':p.evolvewith}
     game[uid]['bud'] = pdict
 
 def set_bud(update,context):
@@ -345,11 +346,17 @@ def bud(update,context):
     if game[uid]['bud'] == {}:
         update.message.reply_text('You do not have a buddy! Use /set_bud@SichengsGodBot to get one!')
     id = game[uid]['bud']['id']
-    pk = pokelist.Pokemon(id,random.randint(pokelist.pokemon[id]['lvl'][0],pokelist.pokemon[id]['lvl'][1]))
+    pk = pokelist.Pokemon(id,random.randint(pokelist.pokemon[id]['lvl'][0],pokelist.pokemon[id]['lvl'][1])*1000)
     if game[uid]['bud']['upgrade'] == '':
         evo = 'This pokemon does not evolve.'
     else:
-        evo = f"Evolves at level {pokelist.pokemon[game[uid]['bud']['id']]['lvl'][1]+1} into {pokelist.Pokemon(game[uid]['bud']['upgrade'],random.randint(pokelist.pokemon[game[uid]['bud']['upgrade']]['lvl'][0],pokelist.pokemon[game[uid]['bud']['upgrade']]['lvl'][1])).name}"
+        if pokelist.pokemon[game[uid]['bud']['upgrade']]['evolvewith'] == '1':
+            evo = f"Evolves at level {pokelist.pokemon[game[uid]['bud']['id']]['lvl'][1]+1} into {pokelist.pokemon[game[uid]['bud']['upgrade']]['name']}. To evolve, use /evolve ."
+        elif pokelist.pokemon[game[uid]['bud']['upgrade']]['evolvewith'] == '3':
+            evo = 'Evolves with high friendship'
+        else:
+            _,stone = game[uid]['bud']['evolvewith'].split(':')
+            evo = f"Evolves by using a/an {pokemon_new.stoneTrans[stone]}. To evolve, use /evolve."
     types = ''
     for type in game[uid]['bud']['pktype']:
         types += f'{typeTrans[type]}'
@@ -373,23 +380,57 @@ def budStartCallback(update,context):
     query = update.callback_query
     _,pk = query.data.split(':')
     if pk == 'bulb':
-        budpk = pokelist.Pokemon(id='001',lvl=1)
+        budpk = pokelist.Pokemon(id='001',xp=0)
         pokemon_new.add_pokemon(uid,budpk)
         add_bud(uid,budpk)
         query.edit_message_media(InputMediaPhoto('https://img.pokemondb.net/artwork/bulbasaur.jpg'))
         query.edit_message_caption('Bulbasaur? Nice choice! He will be with you for the rest of your journey in Kanto. Good luck!')
     elif pk == 'char':
-        budpk = pokelist.Pokemon(id='004',lvl=1)
+        budpk = pokelist.Pokemon(id='004',xp=0)
         pokemon_new.add_pokemon(uid,budpk)
         add_bud(uid,budpk)
         query.edit_message_media(InputMediaPhoto('https://img.pokemondb.net/artwork/charmander.jpg'))
         query.edit_message_caption('Charmander? Nice choice! He will be with you for the rest of your journey in Kanto. Good luck!')
     elif pk == 'squi':
-        budpk = pokelist.Pokemon(id='007',lvl=1)
+        budpk = pokelist.Pokemon(id='007',xp=0)
         pokemon_new.add_pokemon(uid,budpk)
         add_bud(uid,budpk)
         query.edit_message_media(InputMediaPhoto('https://img.pokemondb.net/artwork/squirtle.jpg'))
         query.edit_message_caption('Squirtle? Nice choice! He will be with you for the rest of your journey in Kanto. Good luck!')
+    save()
+
+def evolve(update,context):
+    user = update.effective_user
+    uid = str(user.id)
+    check_time(uid)
+    if game[uid]['bud'] == {}:
+        update.message.reply_text('You do not have a buddy! Use /set_bud@SichengsGodBot to get one!')
+        return
+    if pokelist.pokemon[game[uid]['bud']['id']]['upgrade'] == '':
+        update.message.reply_text(f"Your buddy does not evolve!")
+        return
+    if pokelist.pokemon[game[uid]['bud']['upgrade']]['evolvewith'] == '1':
+        if game[uid]['bud']['lvl'] < pokelist.pokemon[game[uid]['bud']['upgrade']]['lvl'][0]:
+            update.message.reply_text(f"Your buddy is not ready to evolve yet! Your buddy evolves into {pokelist.pokemon[game[uid]['bud']['upgrade']]['name']} at level {pokelist.pokemon[game[uid]['bud']['upgrade']]['lvl'][0]}.")
+            return
+        update.message.reply_text(f"🎉 Success! Your {game[uid]['bud']['name']} evolved into a {pokelist.pokemon[game[uid]['bud']['upgrade']]['name']}! 🎉")
+        game[uid]['box'].remove(game[uid]['bud'])
+        p = pokelist.Pokemon(game[uid]['bud']['upgrade'],game[uid]['bud']['xp'])
+        game[uid]['box'].append(p)
+        add_bud(uid,p)
+    elif pokelist.pokemon[game[uid]['bud']['upgrade']]['evolvewith'] == '3':
+        update.message.reply_text('🚧 Friendship is still in development. Please try evolving this pokemon later, and follow https://t.me/botgodupdates for the latest updates! 🚧')
+    else:
+        _,stone = pokelist.pokemon[game[uid]['bud']['upgrade']]['evolvewith'].split(':')
+        if not stone in game[uid]['inv']:
+            update.message.reply_text(f"You do not have the stone needed! Your buddy needs a {pokemon_new.stoneTrans[stone]} to evolve!")
+            return
+        update.message.reply_text(f"🎉 Success! Your {game[uid]['bud']['name']} evolved into a {pokelist.pokemon[game[uid]['bud']['upgrade']]['name']}! 🎉")
+        game[uid]['box'].remove(game[uid]['bud'])
+        p = pokelist.Pokemon(game[uid]['bud']['upgrade'],game[uid]['bud']['xp'])
+        add_bud(uid,p)
+        game[uid]['box'].append(p)
+        game[uid]['inv'].remove(stone)
     save()
 
 def surprise(update,context):
@@ -428,6 +469,17 @@ def reset(update,context):
     update.message.reply_text("You have reset your pokemon.")
     save()
 
+def inv(update,context):
+    user = update.effective_user
+    uid = str(user.id)
+    check_time(uid)
+    msg = 'Your bag:\n---------------'
+    if game[uid]['inv'] == []:
+        msg += '\nYou have nothing in your bag!'
+    for thing in game[uid]['inv']:
+        msg += f'\n{pokemon_new.stoneTrans[thing]}'
+    update.message.reply_text(msg)
+
 def getCommand():
     return [BotCommand('pokemon','Go catch pokemon! // 去捉宠物小精灵！'),
         BotCommand('box','Check the pokemon in your box! // 检查盒子里的宠物小精灵！'),
@@ -436,11 +488,14 @@ def getCommand():
         BotCommand('set_bud','[BETA] Get a new buddy! // [测试] 结识新好友！'),
         BotCommand('surprise','Get your daily injection of pokecoins! // 每天注射 Pokecoins！'),
         BotCommand('pokebal','Check the amount of pokecoins you have. // 检查您有多少 pokecoins。'),
-        BotCommand('pokedex','Check the pokemon you have. // 检查您有的 pokemon。')
+        BotCommand('pokedex','Check the pokemon you have. // 检查您有的 pokemon。'),
+        BotCommand('bag','Check the items you have. // 检查您有的物件。'),
+        BotCommand('evolve','[BETA] Evolve your buddy! // 升级你的伙伴！')
     ]
 
 def addHandler(dispatcher):
     dispatcher.add_handler(CommandHandler('box', box))
+    dispatcher.add_handler(CommandHandler('bag', inv))
     dispatcher.add_handler(CommandHandler('pokeshop',shop))
     dispatcher.add_handler(CommandHandler('view_bud',bud))
     dispatcher.add_handler(CommandHandler('set_bud',set_bud))
@@ -448,6 +503,7 @@ def addHandler(dispatcher):
     dispatcher.add_handler(CommandHandler('pokebal',bal))
     dispatcher.add_handler(CommandHandler('reset',reset))
     dispatcher.add_handler(CommandHandler('pokedex',pokedex))
+    dispatcher.add_handler(CommandHandler('evolve',evolve))
     dispatcher.add_handler(CallbackQueryHandler(shopCallback,pattern="^pkbuy:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(shopnumCallback,pattern="^pkbuynum:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(boxCallback,pattern="^pkbox:[A-Za-z0-9_]*"))
