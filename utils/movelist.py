@@ -1,7 +1,19 @@
 import random
 
 moves = {
-
+    "Absorb":{
+        'power': 20,
+        'pktype': 'Grass',
+        'acc': 100,
+        'selfdmg': -10,
+        'pp': 25,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'atkraise': 0,
+        'defraise': 0,
+        'spdraise': 0
+    }
 }
 
 class Move():
@@ -22,7 +34,7 @@ class Move():
         self.name = name
         self.power = moves[name]['power']
         self.pktype = moves[name]['pktype']
-        self.accuracy = moves[name]['accuracy']
+        self.accuracy = moves[name]['acc']
         self.selfdmg = moves[name]['recoil']
         self.pp = moves[name]['pp']
         self.recharge = moves[name]['recharge']
