@@ -1,13 +1,13 @@
 import random
-import config
+import pokeconfig
 import pokemons
 from utils import util
-from utils import pokelist
+import pokelist
 from telegram.ext import CommandHandler, CallbackQueryHandler
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, BotCommand,CallbackQuery,InputMediaPhoto
 from datetime import datetime,timedelta
 
-game = config.CONFIG["pk"]
+game = pokeconfig.CONFIG["pk"]
 
 ballTrans = {
     'pb': 'Pokeball',
@@ -95,8 +95,8 @@ def getadd(rarity):
     return money,xp
 
 def save():
-    config.CONFIG["pk"] = game
-    config.save_config()
+    pokeconfig.CONFIG["pk"] = game
+    pokeconfig.save_config()
 
 def pokemon(update,context):
     user = update.effective_user

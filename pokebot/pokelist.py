@@ -1,7 +1,7 @@
 from random import sample
 import random
 from telegram import InputMediaPhoto
-import config
+import pokeconfig
 
        
 rarity = {

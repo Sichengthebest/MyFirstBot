@@ -1,7 +1,7 @@
 import random
-import config
+import pokeconfig
 import pokemon_new
-from utils import pokelist
+import pokelist
 from utils import util
 from telegram.ext import CommandHandler, CallbackQueryHandler
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, BotCommand,InputMediaPhoto
@@ -52,7 +52,7 @@ rarityTrans = {
     'l': '🎖'
 }
 
-game = config.CONFIG["pk"]
+game = pokeconfig.CONFIG["pk"]
 
 def check_time(uid):
     if not uid in game:
@@ -86,8 +86,8 @@ buynumsmbkb = [{'1':'pkbuynum:1:mb','2':'pkbuynum:2:mb','3':'pkbuynum:3:mb'}]
 buynummbkb = util.getkb(buynumsmbkb)
 
 def save():
-    config.CONFIG["pk"] = game
-    config.save_config()
+    pokeconfig.CONFIG["pk"] = game
+    pokeconfig.save_config()
 
 def get_box(user):
     uid = str(user.id)
