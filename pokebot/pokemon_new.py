@@ -1,7 +1,7 @@
 import random
 import pokeconfig
 import pokemons
-from utils import util
+import pokeutils
 import pokelist
 from telegram.ext import CommandHandler, CallbackQueryHandler
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, BotCommand,CallbackQuery,InputMediaPhoto
@@ -130,7 +130,7 @@ def pokemon(update,context):
         balls.append({'Ultraball':f'pkcatch:ub:{uid}:{id}:{rarity}'})
     if game[str(uid)]['mb'] > 0:
         balls.append({'Masterball':f'pkcatch:mb:{uid}:{id}:{rarity}'})
-    kb = util.getkb(balls)
+    kb = pokeutils.getkb(balls)
     update.message.reply_photo(open(pk.getPhoto(),'rb'), caption=f"""You have found a wild {pk.name}!
 Rarity: {rarityTrans[rarity]}
 -------------------------

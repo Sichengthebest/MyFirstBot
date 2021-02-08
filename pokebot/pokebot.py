@@ -61,7 +61,7 @@ if __name__ == '__main__':
             PATH = arg
     
     # TOKEN=read_file_as_str(f"{PATH}/TOKEN")
-    pokeconfig.config_file = f"{PATH}/poke.json"
+    pokeconfig.config_file = f"{PATH}/pokebot/poke.json"
     pokeconfig.load_config()
     TOKEN=pokeconfig.CONFIG["token2"]
 

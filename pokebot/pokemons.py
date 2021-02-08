@@ -2,7 +2,7 @@ import random
 import pokeconfig
 import pokemon_new
 import pokelist
-from utils import util
+import pokeutils
 from telegram.ext import CommandHandler, CallbackQueryHandler
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, BotCommand,InputMediaPhoto
 from datetime import datetime,timedelta
@@ -71,19 +71,19 @@ def check_time(uid):
         }
 
 buyskb = [{'Pokeball':'pkbuy:pb','Greatball':'pkbuy:gb'},{'Ultraball':'pkbuy:ub','Masterball':'pkbuy:mb'}]
-buykb = util.getkb(buyskb)
+buykb = pokeutils.getkb(buyskb)
 
 buynumspbkb = [{'1':'pkbuynum:1:pb','2':'pkbuynum:2:pb','3':'pkbuynum:3:pb','4':'pkbuynum:4:pb'},{'5':'pkbuynum:5:pb','6':'pkbuynum:6:pb','7':'pkbuynum:7:pb','8':'pkbuynum:8:pb'},{'9':'pkbuynum:9:pb','10':'pkbuynum:10:pb','11':'pkbuynum:11:pb','12':'pkbuynum:12:pb'},{'13':'pkbuynum:13:pb','14':'pkbuynum:14:pb','15':'pkbuynum:15:pb','16':'pkbuynum:16:pb'},{'17':'pkbuynum:17:pb','18':'pkbuynum:18:pb','19':'pkbuynum:19:pb','20':'pkbuynum:20:pb'}]
-buynumpbkb = util.getkb(buynumspbkb)
+buynumpbkb = pokeutils.getkb(buynumspbkb)
 
 buynumsgbkb = [{'1':'pkbuynum:1:gb','2':'pkbuynum:2:gb','3':'pkbuynum:3:gb','4':'pkbuynum:4:gb'},{'5':'pkbuynum:5:gb','6':'pkbuynum:6:gb','7':'pkbuynum:7:gb','8':'pkbuynum:8:gb'},{'9':'pkbuynum:9:gb','10':'pkbuynum:10:gb','11':'pkbuynum:11:gb','12':'pkbuynum:12:gb'}]
-buynumgbkb = util.getkb(buynumsgbkb)
+buynumgbkb = pokeutils.getkb(buynumsgbkb)
 
 buynumsubkb = [{'1':'pkbuynum:1:ub','2':'pkbuynum:2:ub','3':'pkbuynum:3:ub','4':'pkbuynum:4:ub'},{'5':'pkbuynum:5:ub','6':'pkbuynum:6:ub'}]
-buynumubkb = util.getkb(buynumsubkb)
+buynumubkb = pokeutils.getkb(buynumsubkb)
 
 buynumsmbkb = [{'1':'pkbuynum:1:mb','2':'pkbuynum:2:mb','3':'pkbuynum:3:mb'}]
-buynummbkb = util.getkb(buynumsmbkb)
+buynummbkb = pokeutils.getkb(buynumsmbkb)
 
 def save():
     pokeconfig.CONFIG["pk"] = game
@@ -150,7 +150,7 @@ def box(update,context):
     if pagenow * size > numcount:
         update.message.reply_text(splitmsgs[0])
     else:
-        kb = util.getkb([{'➡️':f'pkbox:next:{pagenow+1}:{user.id}'}])
+        kb = pokeutils.getkb([{'➡️':f'pkbox:next:{pagenow+1}:{user.id}'}])
         update.message.reply_text(splitmsgs[0],reply_markup=kb)
     context.bot.send_message(chatid, text=f'You have {totalcount} pokemon in your box.')
 
@@ -168,28 +168,28 @@ def boxCallback(update,context):
             if int(pagenow) * size <= 0:
                 query.edit_message_text(splitmsgs[int(pagenow-1)])
             else:
-                kb = util.getkb([{'⬅️':f'pkbox:prev:{int(pagenow)-1}:{user.id}'}])
+                kb = pokeutils.getkb([{'⬅️':f'pkbox:prev:{int(pagenow)-1}:{user.id}'}])
                 query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
         else:
             if (int(pagenow)-1) * size <= 0:
-                kb = util.getkb([{'➡️':f'pkbox:next:{int(pagenow)+1}:{user.id}'}])
+                kb = pokeutils.getkb([{'➡️':f'pkbox:next:{int(pagenow)+1}:{user.id}'}])
                 query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
             else:
-                kb = util.getkb([{'⬅️':f'pkbox:prev:{int(pagenow)-1}:{user.id}'},{'➡️':f'pkbox:next:{int(pagenow)+1}:{user.id}'}])
+                kb = pokeutils.getkb([{'⬅️':f'pkbox:prev:{int(pagenow)-1}:{user.id}'},{'➡️':f'pkbox:next:{int(pagenow)+1}:{user.id}'}])
                 query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
     else:
         if (int(pagenow)) * size > numcount:
             if int(pagenow) * size <= 0:
                 query.edit_message_text(splitmsgs[int(pagenow)-1])
             else:
-                kb = util.getkb([{'⬅️':f'pkbox:prev:{int(pagenow)-1}:{user.id}'}])
+                kb = pokeutils.getkb([{'⬅️':f'pkbox:prev:{int(pagenow)-1}:{user.id}'}])
                 query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
         else:
             if (int(pagenow)-1) * size <= 0:
-                kb = util.getkb([{'➡️':f'pkbox:next:{int(pagenow)+1}:{user.id}'}])
+                kb = pokeutils.getkb([{'➡️':f'pkbox:next:{int(pagenow)+1}:{user.id}'}])
                 query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
             else:
-                kb = util.getkb([{'⬅️':f'pkbox:prev:{int(pagenow)-1}:{user.id}'},{'➡️':f'pkbox:next:{int(pagenow)+1}:{user.id}'}])
+                kb = pokeutils.getkb([{'⬅️':f'pkbox:prev:{int(pagenow)-1}:{user.id}'},{'➡️':f'pkbox:next:{int(pagenow)+1}:{user.id}'}])
                 query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
 
 def pokedex(update,context):
@@ -198,7 +198,7 @@ def pokedex(update,context):
     check_time(uid)
     msgs = get_dex(user)
     pagenow = 1
-    kb = util.getkb([{'➡️':f'pkdex:next:{pagenow+1}:{user.id}'}])
+    kb = pokeutils.getkb([{'➡️':f'pkdex:next:{pagenow+1}:{user.id}'}])
     update.message.reply_text(msgs[0],reply_markup=kb)
 
 def dexCallback(update,context):
@@ -216,28 +216,28 @@ def dexCallback(update,context):
             if int(pagenow) * size <= 0:
                 query.edit_message_text(splitmsgs[int(pagenow-1)])
             else:
-                kb = util.getkb([{'⬅️':f'pkdex:prev:{int(pagenow)-1}:{user.id}'}])
+                kb = pokeutils.getkb([{'⬅️':f'pkdex:prev:{int(pagenow)-1}:{user.id}'}])
                 query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
         else:
             if (int(pagenow)-1) * size <= 0:
-                kb = util.getkb([{'➡️':f'pkdex:next:{int(pagenow)+1}:{user.id}'}])
+                kb = pokeutils.getkb([{'➡️':f'pkdex:next:{int(pagenow)+1}:{user.id}'}])
                 query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
             else:
-                kb = util.getkb([{'⬅️':f'pkdex:prev:{int(pagenow)-1}:{user.id}'},{'➡️':f'pkdex:next:{int(pagenow)+1}:{user.id}'}])
+                kb = pokeutils.getkb([{'⬅️':f'pkdex:prev:{int(pagenow)-1}:{user.id}'},{'➡️':f'pkdex:next:{int(pagenow)+1}:{user.id}'}])
                 query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
     else:
         if (int(pagenow)) * size > totalcount:
             if int(pagenow) * size <= 0:
                 query.edit_message_text(splitmsgs[int(pagenow)-1])
             else:
-                kb = util.getkb([{'⬅️':f'pkdex:prev:{int(pagenow)-1}:{user.id}'}])
+                kb = pokeutils.getkb([{'⬅️':f'pkdex:prev:{int(pagenow)-1}:{user.id}'}])
                 query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
         else:
             if (int(pagenow)-1) * size <= 0:
-                kb = util.getkb([{'➡️':f'pkdex:next:{int(pagenow)+1}:{user.id}'}])
+                kb = pokeutils.getkb([{'➡️':f'pkdex:next:{int(pagenow)+1}:{user.id}'}])
                 query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
             else:
-                kb = util.getkb([{'⬅️':f'pkdex:prev:{int(pagenow)-1}:{user.id}'},{'➡️':f'pkdex:next:{int(pagenow)+1}:{user.id}'}])
+                kb = pokeutils.getkb([{'⬅️':f'pkdex:prev:{int(pagenow)-1}:{user.id}'},{'➡️':f'pkdex:next:{int(pagenow)+1}:{user.id}'}])
                 query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
 
 def bal(update,context):
@@ -321,13 +321,13 @@ def set_bud(update,context):
     uid = str(user.id)
     check_time(uid)
     if game[uid]['bud'] == {}:
-        kb = util.getkb([{'Bulbasaur':'pkbudstart:bulb'},{'Charmander':'pkbudstart:char'},{'Squirtle':'pkbudstart:squi'}])
+        kb = pokeutils.getkb([{'Bulbasaur':'pkbudstart:bulb'},{'Charmander':'pkbudstart:char'},{'Squirtle':'pkbudstart:squi'}])
         update.message.reply_photo('https://img.pokemondb.net/images/red-blue/kanto-starters.jpg',caption="Hi! My name is pokemon trainer BOTGOD. Someone told me that you wanted to become a master pokemon trainer. Well, I'm the person to seek. You can choose between 3 Kanto starter pokemon and return for more advice. Now, which pokemon would you like to have?",reply_markup=kb)
         return
     kblist = []
     for pkdict in game[uid]['box']:
         kblist.append({f"{pkdict['name']}, XP: {pkdict['xp']}":f"pkbudset:{game[uid]['box'].index(pkdict)}"})
-    kb = util.getkb(kblist)
+    kb = pokeutils.getkb(kblist)
     update.message.reply_text("Which pokemon would you like to have as your buddy?",reply_markup=kb)
 
 def budNewCallback(update,context):
