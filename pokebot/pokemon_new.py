@@ -57,7 +57,7 @@ def add_xp(uid,xp):
     game[uid]['bud']['xp'] += xp
     if game[uid]['bud']['xp'] >= game[uid]['bud']['lvl'] * 1000:
         game[uid]['bud']['lvl'] = game[uid]['bud']['xp']
-        p = pokelist.Pokemon(game[uid]['bud']['id'],game[uid]['bud']['xp'])
+        p = pokelist.Pokemon(game[uid]['bud']['id'],game[uid]['bud']['xp'],game[uid]['bud']['friendship'])
         pokemons.add_bud(uid,p)
         msg = f"\n-------------------------\nYour bud gained {xp} XP! Congratutions! Your {game[uid]['bud']['name']} is now level {game[uid]['bud']['lvl']}!"
     msg = f'\n-------------------------\nYour bud gained {xp} XP!'
@@ -103,7 +103,7 @@ def pokemon(update,context):
     uid = user.id
     id,rarity = pokelist.getPokemon()
     lvlxp = random.randint(pokelist.pokemon[id]['lvl'][0],pokelist.pokemon[id]['lvl'][1])*1000
-    pk = pokelist.Pokemon(id,lvlxp)
+    pk = pokelist.Pokemon(id,lvlxp,-1)
     balls = []
     pokemons.check_time(str(uid))
     if game[str(uid)]['spawn'] == True:
@@ -151,7 +151,7 @@ def pokemonCatchCallback(update,context):
         query.answer("你是谁？你在哪儿？你想做啥？这是别人的，大笨蛋！",show_alert=True)
         return
     lvlxp = random.randint(pokelist.pokemon[pkmonid]['lvl'][0],pokelist.pokemon[pkmonid]['lvl'][1])*1000
-    p = pokelist.Pokemon(pkmonid,lvlxp)
+    p = pokelist.Pokemon(pkmonid,lvlxp,-1)
     catchrate = getcatchrate(ball,p)
     money,xp = getadd(rarity)
     pokemonroll = random.randint(1,100)

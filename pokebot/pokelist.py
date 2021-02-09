@@ -3053,7 +3053,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Grass'],
         'upgrade': ['253'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     '253':{
         'name': 'Grovyle',
@@ -3064,7 +3065,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Grass'],
         'upgrade': ['254'],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     '254':{
         'name': 'Sceptile',
@@ -3075,7 +3077,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Grass'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "255":{
         'name': 'Torchic',
@@ -3086,7 +3089,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Fire'],
         'upgrade': ['256'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "256":{
         'name': 'Combusken',
@@ -3097,7 +3101,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Fire','Fighting'],
         'upgrade': ['257'],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "257":{
         'name': 'Blaziken',
@@ -3108,7 +3113,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Fire','Fighting'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "258":{
         'name': 'Mudkip',
@@ -3119,7 +3125,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Water'],
         'upgrade': ['259'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "259":{
         'name': 'Marshtomp',
@@ -3130,7 +3137,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Water','Ground'],
         'upgrade': ['260'],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "260":{
         'name': 'Swampert',
@@ -3141,7 +3149,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Water','Ground'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "261":{
         'name': 'Poochyena',
@@ -3152,7 +3161,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Dark'],
         'upgrade': ['262'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "262":{
         'name': 'Mightyena',
@@ -3163,7 +3173,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Dark'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "263":{
         'name': 'Zigzagoon',
@@ -3174,7 +3185,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Normal'],
         'upgrade': ['264'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "264":{
         'name': 'Linoone',
@@ -3185,7 +3197,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Normal'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "265":{
         'name': 'Wurmple',
@@ -3196,7 +3209,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Bug'],
         'upgrade': ['266','268'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "266":{
         'name': 'Silcoon',
@@ -3207,7 +3221,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Bug'],
         'upgrade': ['267'],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "267":{
         'name': 'Beautifly',
@@ -3218,7 +3233,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Bug','Flying'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "268":{
         'name': 'Cascoon',
@@ -3229,7 +3245,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Bug'],
         'upgrade': ['269'],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "269":{
         'name': 'Dustox',
@@ -3240,7 +3257,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Bug','Poison'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "270":{
         'name': 'Lotad',
@@ -3251,7 +3269,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Water','Grass'],
         'upgrade': ['271'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "271":{
         'name': 'Lombre',
@@ -3262,7 +3281,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Water','Grass'],
         'upgrade': ['272'],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "272":{
         'name': 'Ludicolo',
@@ -3273,7 +3293,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Water','Grass'],
         'upgrade': [''],
-        'evolvewith': '2:wat'
+        'evolvewith': '2:wat',
+        'friendship': 50
     },
     "273":{
         'name': 'Seedot',
@@ -3284,7 +3305,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Grass'],
         'upgrade': ['274'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "274":{
         'name': 'Nuzleaf',
@@ -3295,7 +3317,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Dark','Grass'],
         'upgrade': ['275'],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "275":{
         'name': 'Shiftry',
@@ -3306,7 +3329,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Dark','Grass'],
         'upgrade': [''],
-        'evolvewith': '2:lea'
+        'evolvewith': '2:lea',
+        'friendship': 50
     },
     "276":{
         'name': 'Taillow',
@@ -3317,7 +3341,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Normal','Flying'],
         'upgrade': ['277'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "277":{
         'name': 'Swellow',
@@ -3328,7 +3353,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Normal','Flying'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "278":{
         'name': 'Wingull',
@@ -3339,7 +3365,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Water','Flying'],
         'upgrade': ['279'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "279":{
         'name': 'Pelipper',
@@ -3350,7 +3377,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Water','Flying'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "280":{
         'name': 'Ralts',
@@ -3361,7 +3389,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Psychic'],
         'upgrade': ['281'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 35
     },
     "281":{
         'name': 'Kirlia',
@@ -3372,7 +3401,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Psychic'],
         'upgrade': ['282'],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 35
     },
     "282":{
         'name': 'Gardevoir',
@@ -3383,7 +3413,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Psychic'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 35
     },
     "283":{
         'name': 'Surskit',
@@ -3394,7 +3425,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Water','Bug'],
         'upgrade': ['284'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "284":{
         'name': 'Masquerain',
@@ -3405,7 +3437,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Bug','Flying'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "285":{
         'name': 'Shroomish',
@@ -3416,7 +3449,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Grass','Poison'],
         'upgrade': ['286'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "286":{
         'name': 'Breloom',
@@ -3427,7 +3461,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Grass','Fighting'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "287":{
         'name': 'Slakoth',
@@ -3438,7 +3473,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Normal'],
         'upgrade': ['288'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "288":{
         'name': 'Vigoroth',
@@ -3449,7 +3485,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Normal'],
         'upgrade': ['289'],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "289":{
         'name': 'Slaking',
@@ -3460,7 +3497,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Normal'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "290":{
         'name': 'Nincada',
@@ -3471,7 +3509,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Bug','Ground'],
         'upgrade': ['291','292'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "291":{
         'name': 'Ninjask',
@@ -3482,7 +3521,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Bug','Flying'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "292":{
         'name': 'Shedinja',
@@ -3493,7 +3533,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Bug','Ghost'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "293":{
         'name': 'Whismur',
@@ -3504,7 +3545,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Normal'],
         'upgrade': ['294'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "294":{
         'name': 'Loudred',
@@ -3515,7 +3557,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Normal'],
         'upgrade': ['295'],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "295":{
         'name': 'Exploud',
@@ -3526,7 +3569,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Normal'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "296":{
         'name': 'Makuhita',
@@ -3537,7 +3581,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Fighting'],
         'upgrade': ['297'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "297":{
         'name': 'Hariyama',
@@ -3548,7 +3593,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Fighting'],
         'upgrade': [''],
-        'evolvewith': '1' 
+        'evolvewith': '1',
+        'friendship': 50
     },
     "298":{
         'name': 'Azurill',
@@ -3559,7 +3605,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Water'],
         'upgrade': ['183'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "299":{
         'name': 'Nosepass',
@@ -3570,7 +3617,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Rock'],
         'upgrade': [''],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "300":{
         'name': 'Skitty',
@@ -3581,7 +3629,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Normal'],
         'upgrade': ['301'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "301":{
         'name': 'Delcatty',
@@ -3592,7 +3641,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Normal'],
         'upgrade': [''],
-        'evolvewith': '2:moo'
+        'evolvewith': '2:moo',
+        'friendship': 50
     },
     "302":{
         'name': 'Sableye',
@@ -3603,7 +3653,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Dark','Ghost'],
         'upgrade': [''],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 35
     },
     "303":{
         'name': 'Mawile',
@@ -3614,7 +3665,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Steel','Fairy'],
         'upgrade': [''],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "304":{
         'name': 'Aron',
@@ -3625,7 +3677,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Steel','Ground'],
         'upgrade': ['305'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 35
     },
     "305":{
         'name': 'Lairon',
@@ -3636,7 +3689,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Steel','Ground'],
         'upgrade': ['306'],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 35
     },
     "306":{
         'name': 'Aggron',
@@ -3647,7 +3701,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Steel','Ground'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 35
     },
     "307":{
         'name': 'Meditite',
@@ -3658,7 +3713,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Fighting','Psychic'],
         'upgrade': ['308'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "308":{
         'name': 'Medicham',
@@ -3669,7 +3725,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Fighting','Psychic'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "309":{
         'name': 'Electrike',
@@ -3680,7 +3737,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Electric'],
         'upgrade': ['310'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "310":{
         'name': 'Manectric',
@@ -3691,7 +3749,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Electric'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "311":{
         'name': 'Plusle',
@@ -3702,7 +3761,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Electric'],
         'upgrade': [''],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "312":{
         'name': 'Minun',
@@ -3713,7 +3773,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Electric'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "313":{
         'name': 'Volbeat',
@@ -3724,7 +3785,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Bug'],
         'upgrade': [''],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "314":{
         'name': 'Illumise',
@@ -3735,7 +3797,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Bug'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "315":{
         'name': 'Roselia',
@@ -3746,7 +3809,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Grass','Poison'],
         'upgrade': ['407'],
-        'evolvewith': '3'
+        'evolvewith': '3',
+        'friendship': 50
     },
     "316":{
         'name': 'Gulpin',
@@ -3757,7 +3821,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Poison'],
         'upgrade': ['317'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "317":{
         'name': 'Swalot',
@@ -3768,7 +3833,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Poison'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "318":{
         'name': 'Carvanha',
@@ -3779,7 +3845,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Water','Dark'],
         'upgrade': ['319'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 35
     },
     "319":{
         'name': 'Sharpedo',
@@ -3790,7 +3857,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Water','Dark'],
         'upgrade': [''],
-        'evolvewith': '1' 
+        'evolvewith': '1',
+        'friendship': 35
     },
     "320":{
         'name': 'Wailmer',
@@ -3801,7 +3869,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Water'],
         'upgrade': ['321'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "321":{
         'name': 'Wailord',
@@ -3812,7 +3881,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Water'],
         'upgrade': [''],
-        'evolvewith': '1' 
+        'evolvewith': '1',
+        'friendship': 50
     },
     "322":{
         'name': 'Numel',
@@ -3823,7 +3893,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Fire','Ground'],
         'upgrade': ['323'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "323":{
         'name': 'Camerupt',
@@ -3834,7 +3905,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Fire','Ground'],
         'upgrade': [''],
-        'evolvewith': '1' 
+        'evolvewith': '1',
+        'friendship': 50
     },
     "324":{
         'name': 'Torkoal',
@@ -3845,7 +3917,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Fire'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "325":{
         'name': 'Spoink',
@@ -3856,7 +3929,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Psychic'],
         'upgrade': ['326'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "326":{
         'name': 'Grumpig',
@@ -3867,7 +3941,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Psychic'],
         'upgrade': [''],
-        'evolvewith': '1' 
+        'evolvewith': '1',
+        'friendship': 50 
     },
     "327":{
         'name': 'Spinda',
@@ -3878,7 +3953,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Psychic'],
         'upgrade': [''],
-        'evolvewith': '' 
+        'evolvewith': '',
+        'friendship': 50
     },
     "328":{
         'name': 'Trapinch',
@@ -3889,7 +3965,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Ground'],
         'upgrade': ['329'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "329":{
         'name': 'Vibrava',
@@ -3900,7 +3977,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Dragon','Ground'],
         'upgrade': ['330'],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "330":{
         'name': 'Flygon',
@@ -3911,7 +3989,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Dragon','Ground'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "331":{
         'name': 'Cacnea',
@@ -3922,7 +4001,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Grass'],
         'upgrade': ['332'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 35
     },
     "332":{
         'name': 'Cacturne',
@@ -3933,7 +4013,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Grass','Dark'],
         'upgrade': [''] ,
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 35
     },
     "333":{
         'name': 'Swablu',
@@ -3944,7 +4025,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Normal','Flying'],
         'upgrade': ['334'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "334":{
         'name': 'Altaria',
@@ -3955,7 +4037,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Dragon','Flying'],
         'upgrade': [''] ,
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "335":{
         'name': 'Zangoose',
@@ -3966,7 +4049,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Normal'],
         'upgrade': [''],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "336":{
         'name': 'Seviper',
@@ -3977,7 +4061,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Poison'],
         'upgrade': [''],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "337":{
         'name': 'Lunatone',
@@ -3988,7 +4073,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Rock','Psychic'],
         'upgrade': [''],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "338":{
         'name': 'Solrock',
@@ -3999,7 +4085,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Rock','Psychic'],
         'upgrade': [''],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "339":{
         'name': 'Barboach',
@@ -4010,7 +4097,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Water','Ground'],
         'upgrade': ['340'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "340":{
         'name': 'Whiscash',
@@ -4021,7 +4109,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Water','Ground'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "341":{
         'name': 'Corphish',
@@ -4032,7 +4121,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Water'],
         'upgrade': ['342'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "342":{
         'name': 'Crawdaunt',
@@ -4043,7 +4133,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Water','Dark'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "343":{
         'name': 'Baltoy',
@@ -4054,7 +4145,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Ground','Psychic'],
         'upgrade': ['344'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "344":{
         'name': 'Claydol',
@@ -4065,7 +4157,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Ground','Psychic'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "345":{
         'name': 'Lileep',
@@ -4076,7 +4169,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Rock','Grass'],
         'upgrade': ['346'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "346":{
         'name': 'Cradily',
@@ -4087,7 +4181,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Rock','Grass'],
         'upgrade': [''],
-        'evolvewith': '1' 
+        'evolvewith': '1',
+        'friendship': 50
     },
     "347":{
         'name': 'Anorith',
@@ -4098,7 +4193,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Rock','Bug'],
         'upgrade': ['348'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "348":{
         'name': 'Armaldo',
@@ -4109,7 +4205,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Rock','Bug'],
         'upgrade': [''],
-        'evolvewith': '1' 
+        'evolvewith': '1' ,
+        'friendship': 50
     },
     "349":{
         'name': 'Feebas',
@@ -4120,7 +4217,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Water'],
         'upgrade': ['350'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "350":{
         'name': 'Milotic',
@@ -4131,7 +4229,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Water'],
         'upgrade': [''],
-        'evolvewith': '2:pri'
+        'evolvewith': '2:pri',
+        'friendship': 50
     },
     "351":{
         'name': 'Castform',
@@ -4142,7 +4241,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Normal'],
         'upgrade': [''],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "352":{
         'name': 'Kecleon',
@@ -4153,7 +4253,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Normal'],
         'upgrade': [''],
-        'evolvewith': '' 
+        'evolvewith': '',
+        'friendship': 50 
     },
     "353":{
         'name': 'Shuppet',
@@ -4164,7 +4265,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Ghost'],
         'upgrade': ['354'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 35
     },
     "354":{
         'name': 'Banette',
@@ -4175,7 +4277,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Ghost'],
         'upgrade': [''],
-        'evolvewith': '1' 
+        'evolvewith': '1',
+        'friendship': 35
     },
     "355":{
         'name': 'Duskull',
@@ -4186,7 +4289,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Ghost'],
         'upgrade': ['356'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 35
     },
     "356":{
         'name': 'Dusclops',
@@ -4197,7 +4301,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Ghost'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 35
     },
     "357":{
         'name': 'Tropius',
@@ -4208,7 +4313,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Grass','Flying'],
         'upgrade': [''],
-        'evolvewith': '' 
+        'evolvewith': '',
+        'friendship': 50
     },
     "358":{
         'name': 'Chimecho',
@@ -4219,7 +4325,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Psychic'],
         'upgrade': [''],
-        'evolvewith': '3' 
+        'evolvewith': '3',
+        'friendship': 50
     },
     "359":{
         'name': 'Absol',
@@ -4230,7 +4337,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Dark'],
         'upgrade': [''],
-        'evolvewith': '' 
+        'evolvewith': '',
+        'friendship': 35 
     },
     "360":{
         'name': 'Wynaut',
@@ -4241,7 +4349,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Psychic'],
         'upgrade': ['202'],
-        'evolvewith': '' 
+        'evolvewith': '',
+        'friendship': 50 
     },
     "361":{
         'name': 'Snorunt',
@@ -4252,7 +4361,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Ice'],
         'upgrade': ['362'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "362":{
         'name': 'Glalie',
@@ -4263,7 +4373,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Ice'],
         'upgrade': [''],
-        'evolvewith': '1' 
+        'evolvewith': '1',
+        'friendship': 50 
     },
     "363":{
         'name': 'Spheal',
@@ -4274,7 +4385,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Ice','Water'],
         'upgrade': ['364'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "364":{
         'name': 'Sealeo',
@@ -4285,7 +4397,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Ice','Water'],
         'upgrade': ['365'],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "365":{
         'name': 'Walrein',
@@ -4296,7 +4409,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Ice','Water'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "366":{
         'name': 'Clamperl',
@@ -4307,7 +4421,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Water'],
         'upgrade': ['367','368'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "367":{
         'name': 'Huntail',
@@ -4318,7 +4433,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Water'],
         'upgrade': [''],
-        'evolvewith': '2:dst'
+        'evolvewith': '2:dst',
+        'friendship': 50
     },
     "368":{
         'name': 'Gorebyss',
@@ -4329,7 +4445,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Water'],
         'upgrade': [''],
-        'evolvewith': '2:dss' 
+        'evolvewith': '2:dss',
+        'friendship': 50
     },
     "369":{
         'name': 'Relicanth',
@@ -4340,7 +4457,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Water','Rock'],
         'upgrade': [''],
-        'evolvewith': '' 
+        'evolvewith': '',
+        'friendship': 50 
     },
     "370":{
         'name': 'Luvdisc',
@@ -4351,7 +4469,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Water'],
         'upgrade': [''],
-        'evolvewith': '' 
+        'evolvewith': '',
+        'friendship': 50 
     },
     "371":{
         'name': 'Bagon',
@@ -4362,7 +4481,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Dragon'],
         'upgrade': ['372'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 35
     },
     "372":{
         'name': 'Shelgon',
@@ -4373,7 +4493,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Dragon'],
         'upgrade': ['373'],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 35
     },
     "373":{
         'name': 'Salamence',
@@ -4384,7 +4505,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Dragon','Flying'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 35
     },
     "374":{
         'name': 'Beldum',
@@ -4395,7 +4517,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Steel','Psychic'],
         'upgrade': ['375'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 35
     },
     "375":{
         'name': 'Metang',
@@ -4406,7 +4529,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Steel','Psychic'],
         'upgrade': ['376'],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 35
     },
     "376":{
         'name': 'Metagross',
@@ -4417,7 +4541,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Steel','Psychic'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 35
     },
     "377":{
         'name': 'Regirock',
@@ -4428,7 +4553,8 @@ pokemon = {
         'Catch rate': [5,20,35,100],
         'pktype': ['Rock'],
         'upgrade': [''],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 35
     },
     "378":{
         'name': 'Regice',
@@ -4439,7 +4565,8 @@ pokemon = {
         'Catch rate': [5,20,35,100],
         'pktype': ['Rock'],
         'upgrade': [''],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 35
     },
     "379":{
         'name': 'Registeel',
@@ -4450,7 +4577,8 @@ pokemon = {
         'Catch rate': [5,20,35,100],
         'pktype': ['Rock'],
         'upgrade': [''],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 35
     },
     "380":{
         'name': 'Latias',
@@ -4461,7 +4589,8 @@ pokemon = {
         'Catch rate': [5,20,35,100],
         'pktype': ['Dragon','Psychic'],
         'upgrade': [''],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 90
     },
     "381":{
         'name': 'Latios',
@@ -4472,7 +4601,8 @@ pokemon = {
         'Catch rate': [5,20,35,100],
         'pktype': ['Dragon','Psychic'],
         'upgrade': [''],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 90
     },
     "382":{
         'name': 'Kyogre',
@@ -4483,7 +4613,8 @@ pokemon = {
         'Catch rate': [5,20,35,100],
         'pktype': ['Water'],
         'upgrade': [''],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 0
     },
     "383":{
         'name': 'Groudon',
@@ -4494,7 +4625,8 @@ pokemon = {
         'Catch rate': [5,20,35,100],
         'pktype': ['Ground'],
         'upgrade': [''],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 0
     },
     "384":{
         'name': 'Rayquaza',
@@ -4505,7 +4637,8 @@ pokemon = {
         'Catch rate': [5,20,35,100],
         'pktype': ['Dragon','Flying'],
         'upgrade': [''],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 0
     },
     "385":{
         'name': 'Jirachi',
@@ -4516,7 +4649,8 @@ pokemon = {
         'Catch rate': [5,20,35,100],
         'pktype': ['Psychic','Steel'],
         'upgrade': [''],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 100
     },
     "386":{
         'name': 'Deoxys',
@@ -4527,7 +4661,8 @@ pokemon = {
         'Catch rate': [5,20,35,100],
         'pktype': ['Psychic'],
         'upgrade': [''],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 0
     },
     '387':{
         'name': 'Turtwig',
@@ -4538,7 +4673,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Grass'],
         'upgrade': ['388'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     '388':{
         'name': 'Grotle',
@@ -4549,7 +4685,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Grass'],
         'upgrade': ['389'],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     '389':{
         'name': 'Torterra',
@@ -4560,7 +4697,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Grass','Ground'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     '390':{
         'name': 'Chimchar',
@@ -4571,7 +4709,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Fire'],
         'upgrade': ['391'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "391":{
         'name': 'Monferno',
@@ -4582,7 +4721,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Fire','Fighting'],
         'upgrade': ['392'],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "392":{
         'name': 'Infernape',
@@ -4593,7 +4733,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Fire','Fighting'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "393":{
         'name': 'Piplup',
@@ -4604,7 +4745,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Water','Ice'],
         'upgrade': ['394'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "394":{
         'name': 'Prinplup',
@@ -4615,7 +4757,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Water','Ice'],
         'upgrade': ['395'],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     '395':{
         'name': 'Empoleon',
@@ -4626,7 +4769,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Water','Steel'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "396":{
         'name': 'Starly',
@@ -4637,7 +4781,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Normal','Flying'],
         'upgrade': ['397'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "397":{
         'name': 'Staravia',
@@ -4648,7 +4793,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Normal','Flying'],
         'upgrade': ['398'],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "398":{
         'name': 'Staraptor',
@@ -4659,7 +4805,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Normal','Flying'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "399":{
         'name': 'Bidoof',
@@ -4670,7 +4817,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Normal'],
         'upgrade': ['400'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "400":{
         'name': 'Bibarel',
@@ -4681,7 +4829,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Normal','Water'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "401":{
         'name': 'Kricketot',
@@ -4692,7 +4841,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Bug'],
         'upgrade': ['402'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "402":{
         'name': 'Kricketune',
@@ -4703,7 +4853,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Bug'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "403":{
         'name': 'Shinx',
@@ -4714,7 +4865,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Electric'],
         'upgrade': ['404'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "404":{
         'name': 'Luxio',
@@ -4725,7 +4877,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Electric'],
         'upgrade': ['405'],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 100
     },
     "405":{
         'name': 'Luxray',
@@ -4736,7 +4889,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Electric'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "406":{
         'name': 'Budew',
@@ -4747,7 +4901,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Grass','Poison'],
         'upgrade': ['315'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     '407':{
         'name': 'Roserade',
@@ -4758,7 +4913,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Grass','Poison'],
         'upgrade': [''],
-        'evolvewith': '2:shi'
+        'evolvewith': '2:shi',
+        'friendship': 50
     },
     "408":{
         'name': 'Cranidos',
@@ -4769,7 +4925,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Rock'],
         'upgrade': ['409'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "409":{
         'name': 'Rampardos',
@@ -4780,7 +4937,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Rock'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "410":{
         'name': 'Shieldon',
@@ -4791,7 +4949,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Rock'],
         'upgrade': ['411'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "411":{
         'name': 'Bastiodon',
@@ -4802,7 +4961,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Rock'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "412":{
         'name': 'Burmy',
@@ -4813,7 +4973,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Bug'],
         'upgrade': ['413a','413b','413c','414'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "413a":{
         'name': 'Wormadam - Plant Cloak',
@@ -4824,7 +4985,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Bug','Grass'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "413b":{
         'name': 'Wormadam - Sandy Cloak',
@@ -4835,7 +4997,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Bug','Ground'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "413c":{
         'name': 'Wormadam - Trash Cloak',
@@ -4846,7 +5009,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Bug','Steel'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "414":{
         'name': 'Mothim',
@@ -4857,7 +5021,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Bug','Flying'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "415":{
         'name': 'Combee',
@@ -4868,7 +5033,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Normal','Flying'],
         'upgrade': ['416',''],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "416":{
         'name': 'Vespiquen',
@@ -4879,7 +5045,8 @@ pokemon = {
         'Catch rate': [45,60,75,100],
         'pktype': ['Normal','Flying'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     '417':{
         'name': 'Pachirisu',
@@ -4890,7 +5057,8 @@ pokemon = {
         'Catch rate': [25,40,55,100],
         'pktype': ['Electric'],
         'upgrade': [''],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 100
     },
     "418":{
         'name': 'Buizel',
@@ -4901,7 +5069,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Water'],
         'upgrade': ['419'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "419":{
         'name': 'Floatzel',
@@ -4912,7 +5081,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Water'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     },
     "420":{
         'name': 'Cherubi',
@@ -4923,7 +5093,8 @@ pokemon = {
         'Catch rate': [75,85,95,100],
         'pktype': ['Grass'],
         'upgrade': ['421'],
-        'evolvewith': ''
+        'evolvewith': '',
+        'friendship': 50
     },
     "421":{
         'name': 'Cherrim',
@@ -4934,7 +5105,8 @@ pokemon = {
         'Catch rate': [65,80,90,100],
         'pktype': ['Grass'],
         'upgrade': [''],
-        'evolvewith': '1'
+        'evolvewith': '1',
+        'friendship': 50
     }
 }
 
@@ -4949,12 +5121,14 @@ class Pokemon():
     upgrade = ''
     speed = 0
     xp = 0
+    evolvewith = ''
+    friendship = 0
 
     def getPhoto(self):
         file_name = f"{pokeconfig.run_path}/images/{self.id}.jpg"
         return file_name
 
-    def __init__(self,id:str,xp:int):
+    def __init__(self,id:str,xp:int,currfr):
         self.id = id
         self.name = pokemon[id]['name']
         self.lvl = int(xp/1000)+1
@@ -4973,10 +5147,15 @@ class Pokemon():
         self.upgrade = random.choice(pokemon[id]['upgrade'])
         self.xp = xp
         self.evolvewith = pokemon[id]['evolvewith']
+        self.friendship = pokemon[id]['friendship']
+        if currfr == -1:
+            self.currfriendship = pokemon[id]['friendship']
+        else:
+            self.currfriendship = currfr
     
     @classmethod
-    def init(self,id:str,name:str,lvl:int,hp:int,atk:int,pktype:str,upgrade:str,speed:int,xp:int,evolvewith:str):
-        p = Pokemon(id,lvl)
+    def init(self,id:str,name:str,lvl:int,hp:int,atk:int,pktype:str,upgrade:str,speed:int,xp:int,evolvewith:str,friendship:int):
+        p = Pokemon(id,lvl,friendship)
         p.hp = hp
         p.atk = atk
         p.pktype = pktype
@@ -4987,7 +5166,7 @@ class Pokemon():
     
     @classmethod
     def init_from_dict(self,pdict):
-        p = Pokemon(pdict['id'],pdict['lvl'])
+        p = Pokemon(pdict['id'],pdict['lvl'],pdict['friendship'])
         p.hp = pdict['hp']
         p.atk = pdict['atk']
         p.pktype = pdict['pktype']

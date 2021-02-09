@@ -346,7 +346,7 @@ def bud(update,context):
     if game[uid]['bud'] == {}:
         update.message.reply_text('You do not have a buddy! Use /set_bud@SichengsGodBot to get one!')
     id = game[uid]['bud']['id']
-    pk = pokelist.Pokemon(id,random.randint(pokelist.pokemon[id]['lvl'][0],pokelist.pokemon[id]['lvl'][1])*1000)
+    pk = pokelist.Pokemon(id,random.randint(pokelist.pokemon[id]['lvl'][0],pokelist.pokemon[id]['lvl'][1])*1000,game[uid]['friendship'])
     if game[uid]['bud']['upgrade'] == '':
         evo = 'This pokemon does not evolve.'
     else:
@@ -366,6 +366,8 @@ def bud(update,context):
         nextlvlmsg = f"\nXP to next level: {game[uid]['bud']['lvl']*1000-game[uid]['bud']['xp']}"
     update.message.reply_photo(open(pk.getPhoto(),'rb'),caption=f"""Your {game[uid]['bud']['name']} {types}:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Friendship: {game[uid]['bud']['friendship']}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 XP: {game[uid]['bud']['xp']}
 Level: {game[uid]['bud']['lvl']}{nextlvlmsg}
 🆙 Evolution: {evo}
@@ -380,19 +382,19 @@ def budStartCallback(update,context):
     query = update.callback_query
     _,pk = query.data.split(':')
     if pk == 'bulb':
-        budpk = pokelist.Pokemon(id='001',xp=0)
+        budpk = pokelist.Pokemon('001',0,-1)
         pokemon_new.add_pokemon(uid,budpk)
         add_bud(uid,budpk)
         query.edit_message_media(InputMediaPhoto('https://img.pokemondb.net/artwork/bulbasaur.jpg'))
         query.edit_message_caption('Bulbasaur? Nice choice! He will be with you for the rest of your journey in Kanto. Good luck!')
     elif pk == 'char':
-        budpk = pokelist.Pokemon(id='004',xp=0)
+        budpk = pokelist.Pokemon('004',0,-1)
         pokemon_new.add_pokemon(uid,budpk)
         add_bud(uid,budpk)
         query.edit_message_media(InputMediaPhoto('https://img.pokemondb.net/artwork/charmander.jpg'))
         query.edit_message_caption('Charmander? Nice choice! He will be with you for the rest of your journey in Kanto. Good luck!')
     elif pk == 'squi':
-        budpk = pokelist.Pokemon(id='007',xp=0)
+        budpk = pokelist.Pokemon('007',0,-1)
         pokemon_new.add_pokemon(uid,budpk)
         add_bud(uid,budpk)
         query.edit_message_media(InputMediaPhoto('https://img.pokemondb.net/artwork/squirtle.jpg'))
@@ -415,7 +417,7 @@ def evolve(update,context):
             return
         update.message.reply_text(f"🎉 Success! Your {game[uid]['bud']['name']} evolved into a {pokelist.pokemon[game[uid]['bud']['upgrade']]['name']}! 🎉")
         game[uid]['box'].remove(game[uid]['bud'])
-        p = pokelist.Pokemon(game[uid]['bud']['upgrade'],game[uid]['bud']['xp'])
+        p = pokelist.Pokemon(game[uid]['bud']['upgrade'],game[uid]['bud']['xp'],game[uid]['bud']['friendship'])
         game[uid]['box'].append(p)
         add_bud(uid,p)
     elif pokelist.pokemon[game[uid]['bud']['upgrade']]['evolvewith'] == '3':
@@ -427,7 +429,7 @@ def evolve(update,context):
             return
         update.message.reply_text(f"🎉 Success! Your {game[uid]['bud']['name']} evolved into a {pokelist.pokemon[game[uid]['bud']['upgrade']]['name']}! 🎉")
         game[uid]['box'].remove(game[uid]['bud'])
-        p = pokelist.Pokemon(game[uid]['bud']['upgrade'],game[uid]['bud']['xp'])
+        p = pokelist.Pokemon(game[uid]['bud']['upgrade'],game[uid]['bud']['xp'],game[uid]['bud']['friendship'])
         add_bud(uid,p)
         game[uid]['box'].append(p)
         game[uid]['inv'].remove(stone)
