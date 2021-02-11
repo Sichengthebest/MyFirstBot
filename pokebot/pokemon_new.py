@@ -177,7 +177,7 @@ You have earned {money} pokecoins!'''
         else:
             if pokemonroll < 5:
                 msg2 = f'{add_xp(str(uid),xp)}\nOh? and you found a/an {stoneget}! Use it to evolve certain pokemon.'
-                game[str(uid)]['inv'] += stonesave
+                game[str(uid)]['inv'].append(stonesave)
             else:
                 msg2 = f'{add_xp(str(uid),xp)}'
         game[str(uid)]['pokecoins'] += money
