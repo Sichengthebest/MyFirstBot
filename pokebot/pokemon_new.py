@@ -27,17 +27,23 @@ rarityTrans = {
 stoneTrans = {
     'daw': 'Dawn Stone',
     'dra': 'Dragon Scale',
+    'dss': 'Deep Sea Scale',
+    'dst': 'Deep Sea Tooth',
     'dub': 'Dubious Disc',
     'dus': 'Dusk Stone',
     'ele': 'Electirizer',
     'fir': 'Fire Stone',
     'ice': 'Ice Stone',
+    'kin': 'King\'s Rock',
     'lea': 'Leaf Stone',
     'mag': 'Magmarizer',
+    'met': 'Metal Coat',
     'moo': 'Moon Stone',
     'ova': 'Oval Stone',
     'pri': 'Prism Scale',
     'pro': 'Protector',
+    'rac': 'Razor Claw',
+    'raf': 'Razor Fang',
     'rea': 'Reaper Cloth',
     'sac': 'Sachet',
     'shi': 'Shiny Stone',
@@ -49,7 +55,7 @@ stoneTrans = {
 }
 
 def add_pokemon(uid,p):
-    pdict = {'id':p.id,'name':p.name,'hp':p.hp,'atk':p.atk,'lvl':p.lvl,'xp':p.xp,'pktype':p.pktype,'upgrade':p.upgrade,'speed':p.speed,'evolvewith':p.evolvewith}
+    pdict = {'id':p.id,'name':p.name,'hp':p.hp,'atk':p.atk,'lvl':p.lvl,'xp':p.xp,'pktype':p.pktype,'upgrade':p.upgrade,'speed':p.speed,'evolvewith':p.evolvewith,'friendship':p.friendship}
     game[uid]['box'].append(pdict)
 
 def add_xp(uid,xp):
@@ -156,7 +162,7 @@ def pokemonCatchCallback(update,context):
     money,xp = getadd(rarity)
     pokemonroll = random.randint(1,100)
     if pokemonroll < 5:
-        stones = ['daw','dus','fir','ice','lea','moo','ova','dub','dra','pro','rea','sac','shi','sun','thu','upg','wat','whi','ele','mag']
+        stones = ['dss','dst','daw','dus','fir','ice','lea','moo','ova','dub','dra','pro','rea','sac','shi','sun','thu','upg','wat','whi','ele','mag','met']
         stonesave = random.choice(stones)
         stoneget = stoneTrans[stonesave]
     if pokemonroll > catchrate:

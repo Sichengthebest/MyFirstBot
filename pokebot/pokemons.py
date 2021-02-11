@@ -313,7 +313,7 @@ def buy_stuff(user,c,num,ball):
     return f"Success! @{user.username} , you have bought {num} {ballTrans[f'pk:{ball}']}(s) with {totalcost} pokecoins and you have {game[uid]['pokecoins']} pokecoins remaining.\nYou now have {game[uid]['pb']} Pokeballs, {game[uid]['gb']} Greatballs, {game[uid]['ub']} Ultraballs and {game[uid]['mb']} Masterballs."
 
 def add_bud(uid,p):  
-    pdict = {'id':p.id,'name':p.name,'hp':p.hp,'atk':p.atk,'lvl':p.lvl,'xp':p.xp,'pktype':p.pktype,'upgrade':p.upgrade,'speed':p.speed,'evolvewith':p.evolvewith}
+    pdict = {'id':p.id,'name':p.name,'hp':p.hp,'atk':p.atk,'lvl':p.lvl,'xp':p.xp,'pktype':p.pktype,'upgrade':p.upgrade,'speed':p.speed,'evolvewith':p.evolvewith,'friendship':p.friendship}
     game[uid]['bud'] = pdict
 
 def set_bud(update,context):
@@ -336,7 +336,7 @@ def budNewCallback(update,context):
     query = update.callback_query
     _,index = query.data.split(':')
     game[uid]['bud'] = game[uid]['box'][int(index)]
-    query.edit_message_text(f"{game[uid]['box'][int(index)]['name']}? He/she will be your best buddy! Use /view_bud@SichengsGodBot to have the details!")
+    query.edit_message_text(f"{game[uid]['box'][int(index)]['name']}? He/she will be your best buddy! Use /view_bud@sichengpokemonbot to have the details!")
     save()
 
 def bud(update,context):
@@ -344,9 +344,9 @@ def bud(update,context):
     uid = str(user.id)
     check_time(uid)
     if game[uid]['bud'] == {}:
-        update.message.reply_text('You do not have a buddy! Use /set_bud@SichengsGodBot to get one!')
+        update.message.reply_text('You do not have a buddy! Use /set_bud@sichengpokemonbot to get one!')
     id = game[uid]['bud']['id']
-    pk = pokelist.Pokemon(id,random.randint(pokelist.pokemon[id]['lvl'][0],pokelist.pokemon[id]['lvl'][1])*1000,game[uid]['friendship'])
+    pk = pokelist.Pokemon(id,random.randint(pokelist.pokemon[id]['lvl'][0],pokelist.pokemon[id]['lvl'][1])*1000,game[uid]['bud']['friendship'])
     if game[uid]['bud']['upgrade'] == '':
         evo = 'This pokemon does not evolve.'
     else:
@@ -366,7 +366,7 @@ def bud(update,context):
         nextlvlmsg = f"\nXP to next level: {game[uid]['bud']['lvl']*1000-game[uid]['bud']['xp']}"
     update.message.reply_photo(open(pk.getPhoto(),'rb'),caption=f"""Your {game[uid]['bud']['name']} {types}:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Friendship: {game[uid]['bud']['friendship']}
+💞 Friendship: {game[uid]['bud']['friendship']}/255
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 XP: {game[uid]['bud']['xp']}
 Level: {game[uid]['bud']['lvl']}{nextlvlmsg}
@@ -406,7 +406,7 @@ def evolve(update,context):
     uid = str(user.id)
     check_time(uid)
     if game[uid]['bud'] == {}:
-        update.message.reply_text('You do not have a buddy! Use /set_bud@SichengsGodBot to get one!')
+        update.message.reply_text('You do not have a buddy! Use /set_bud@sichengpokemonbot to get one!')
         return
     if pokelist.pokemon[game[uid]['bud']['id']]['upgrade'] == '':
         update.message.reply_text(f"Your buddy does not evolve!")
@@ -454,9 +454,9 @@ def surprise(update,context):
         game[uid]['ub'] += ub
         if mb == 1:
             game[uid]['mb'] += mb
-            update.message.reply_text(f"Here are your daily pokecoins, {user.first_name}\n{c} pokecoins were pokelistd in your wallet.\nYou also got:\n{pb} Pokeballs\n{gb} Greatballs\n{ub} Ultraballs\n...and 1 Masterball\n这是您的每天打卡的 pokecoins，{user.first_name}\n{c} pokecoins已被放置在您的钱包中。")
+            update.message.reply_text(f"Here are your daily pokecoins, {user.first_name}\n{c} pokecoins were placed in your wallet.\nYou also got:\n{pb} Pokeballs\n{gb} Greatballs\n{ub} Ultraballs\n...and 1 Masterball\n这是您的每天打卡的 pokecoins，{user.first_name}\n{c} pokecoins已被放置在您的钱包中。")
         else:
-            update.message.reply_text(f"Here are your daily pokecoins, {user.first_name}\n{c} pokecoins were pokelistd in your wallet.\nYou also got:\n{pb} Pokeballs\n{gb} Greatballs\n...and {ub} Ultraballs\n这是您的每天打卡的 pokecoins，{user.first_name}\n{c} pokecoins已被放置在您的钱包中。")
+            update.message.reply_text(f"Here are your daily pokecoins, {user.first_name}\n{c} pokecoins were placed in your wallet.\nYou also got:\n{pb} Pokeballs\n{gb} Greatballs\n...and {ub} Ultraballs\n这是您的每天打卡的 pokecoins，{user.first_name}\n{c} pokecoins已被放置在您的钱包中。")
         dailytime = datetime.now() + timedelta(days=1)
         game[uid]['dailytime'] = dailytime.strftime("%Y/%m/%d %H:%M:%S")
     else:
