@@ -73,6 +73,7 @@ if __name__ == '__main__':
 
     import pokemons
     import pokemon_new
+    import bud
 
     start_handler = CommandHandler('start', start)
     help_handler = CommandHandler('help', help)
@@ -80,6 +81,7 @@ if __name__ == '__main__':
     dispatcher.add_handler(help_handler)
     pokemons.addHandler(dispatcher)
     pokemon_new.add_handler(dispatcher)
+    bud.addHandler(dispatcher)
     commands = get_command() + pokemons.getCommand() 
     updater.bot.set_my_commands(commands)
     updater.start_polling()

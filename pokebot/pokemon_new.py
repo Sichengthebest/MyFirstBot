@@ -3,6 +3,7 @@ import pokeconfig
 import pokemons
 import pokeutils
 import pokelist
+import bud
 from telegram.ext import CommandHandler, CallbackQueryHandler
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, BotCommand,CallbackQuery,InputMediaPhoto
 from datetime import datetime,timedelta
@@ -64,7 +65,7 @@ def add_xp(uid,xp):
     if game[uid]['bud']['xp'] >= game[uid]['bud']['lvl'] * 1000:
         game[uid]['bud']['lvl'] = game[uid]['bud']['xp']
         p = pokelist.Pokemon(game[uid]['bud']['id'],game[uid]['bud']['xp'],game[uid]['bud']['friendship'])
-        pokemons.add_bud(uid,p)
+        bud.add_bud(uid,p)
         msg = f"\n-------------------------\nYour bud gained {xp} XP! Congratutions! Your {game[uid]['bud']['name']} is now level {game[uid]['bud']['lvl']}!"
     msg = f'\n-------------------------\nYour bud gained {xp} XP!'
     game[uid]['box'].append(game[uid]['bud'])
