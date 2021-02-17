@@ -3,6 +3,7 @@ import pokeconfig
 import pokemon_new
 import pokelist
 import pokeutils
+import pokemons
 from telegram.ext import CommandHandler, CallbackQueryHandler
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, BotCommand,InputMediaPhoto
 from datetime import datetime,timedelta
@@ -54,6 +55,31 @@ def add_bud(uid,p):
     pdict = {'id':p.id,'name':p.name,'hp':p.hp,'atk':p.atk,'lvl':p.lvl,'xp':p.xp,'pktype':p.pktype,'upgrade':p.upgrade,'speed':p.speed,'evolvewith':p.evolvewith,'friendship':p.friendship}
     game[uid]['bud'] = pdict
 
+def get_buds(uid,pagenow):
+    kblist = []
+    kbstart = (pagenow-1)*5
+    kbend = kbstart + 5
+    for index in range(kbstart,kbend):
+        kblist.append({f"{game[uid]['box'][index]['name']}, XP: {game[uid]['box'][index]['xp']}":f"pkbudset:{index}"})
+    return kblist
+
+def get_bud_text(user):
+    uid = str(user.id)
+    msg = ''
+    numcount = 0
+    for pkdict in game[uid]['box']:
+        msg += f'{pkdict["name"]} #{pkdict["id"]}, XP:{pkdict["xp"]}\n'
+        numcount += 1
+    msgsplit = msg.split('\n')
+    msgcount = -1
+    splitmsgs = []
+    for msgs in msgsplit:
+        msgcount += 1
+        if msgcount % 5 == 0:
+            splitmsgs.append(f'{user.first_name}, which pokemon would you like to have as your buddy? Page {int(msgcount/5)+1}\n~~~~~~~~~~~~~~~~~~~~')
+        splitmsgs[int(msgcount/5)] += f'\n{msgs}'
+    return splitmsgs,numcount
+
 def set_bud(update,context):
     user = update.effective_user
     uid = str(user.id)
@@ -63,10 +89,16 @@ def set_bud(update,context):
         update.message.reply_photo('https://img.pokemondb.net/images/red-blue/kanto-starters.jpg',caption="Hi! My name is pokemon trainer BOTGOD. Someone told me that you wanted to become a master pokemon trainer. Well, I'm the person to seek. You can choose between 3 Kanto starter pokemon and return for more advice. Now, which pokemon would you like to have?",reply_markup=kb)
         return
     kblist = []
-    for pkdict in game[uid]['box']:
-        kblist.append({f"{pkdict['name']}, XP: {pkdict['xp']}":f"pkbudset:{game[uid]['box'].index(pkdict)}"})
-    kb = pokeutils.getkb(kblist)
-    update.message.reply_text("Which pokemon would you like to have as your buddy?",reply_markup=kb)
+    pagenow = 1
+    size = 5
+    kblist = get_buds(uid,pagenow)
+    splitmsgs,numcount = get_bud_text(user)
+    if pagenow * size > numcount:
+        update.message.reply_text(splitmsgs[0])
+    else:
+        kblist.append({'➡️':f'pkbudpages:next:{pagenow+1}:{user.id}'})
+        kb = pokeutils.getkb(kblist)
+        update.message.reply_text(splitmsgs[0],reply_markup=kb)
 
 def budNewCallback(update,context):
     user = update.effective_user
@@ -76,6 +108,53 @@ def budNewCallback(update,context):
     game[uid]['bud'] = game[uid]['box'][int(index)]
     query.edit_message_text(f"{game[uid]['box'][int(index)]['name']}? He/she will be your best buddy! Use /view_bud@sichengpokemonbot to have the details!")
     save()
+
+def budPagesCallback(update,context):
+    user = update.effective_user
+    query = update.callback_query
+    _,direction,pagenow,curruid = query.data.split(':')
+    if str(user.id) != curruid:
+        query.answer("Yo dude this is someone else's bud setting stop clicking these buttons!",show_alert=True)
+        return
+    size = 5
+    splitmsgs,numcount = get_bud_text(user)
+    kblist = get_buds(str(user.id),int(pagenow))
+    if direction == 'next':
+        if (int(pagenow)) * size >= numcount:
+            if int(pagenow) * size <= 0:
+                query.edit_message_text(splitmsgs[int(pagenow-1)])
+            else:
+                kblist.append({'⬅️':f'pkbudpages:prev:{int(pagenow)-1}:{user.id}'})
+                kb = pokeutils.getkb(kblist)
+                query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
+        else:
+            if (int(pagenow)-1) * size <= 0:
+                kblist.append({'➡️':f'pkbudpages:next:{int(pagenow)+1}:{user.id}'})
+                kb = pokeutils.getkb(kblist)
+                query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
+            else:
+                kblist.append({'⬅️':f'pkbudpages:prev:{int(pagenow)-1}:{user.id}'})
+                kblist.append({'➡️':f'pkbudpages:next:{int(pagenow)+1}:{user.id}'})
+                kb = pokeutils.getkb(kblist)
+                query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
+    else:
+        if (int(pagenow)) * size > numcount:
+            if int(pagenow) * size <= 0:
+                query.edit_message_text(splitmsgs[int(pagenow)-1])
+            else:
+                kblist.append({'⬅️':f'pkbudpages:prev:{int(pagenow)-1}:{user.id}'})
+                kb = pokeutils.getkb(kblist)
+                query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
+        else:
+            if (int(pagenow)-1) * size <= 0:
+                kblist.append({'➡️':f'pkbudpages:next:{int(pagenow)+1}:{user.id}'})
+                kb = pokeutils.getkb(kblist)
+                query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
+            else:
+                kblist.append({'⬅️':f'pkbudpages:prev:{int(pagenow)-1}:{user.id}'})
+                kblist.append({'➡️':f'pkbudpages:next:{int(pagenow)+1}:{user.id}'})
+                kb = pokeutils.getkb(kblist)
+                query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
 
 def bud(update,context):
     user = update.effective_user
@@ -179,3 +258,4 @@ def addHandler(dispatcher):
     dispatcher.add_handler(CommandHandler('evolve',evolve))
     dispatcher.add_handler(CallbackQueryHandler(budStartCallback,pattern="^pkbudstart:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(budNewCallback,pattern="^pkbudset:[A-Za-z0-9_]*"))
+    dispatcher.add_handler(CallbackQueryHandler(budPagesCallback,pattern="^pkbudpages:[A-Za-z0-9_]*"))
