@@ -52,7 +52,7 @@ def check_time(uid):
         }
 
 def add_bud(uid,p):  
-    pdict = {'id':p.id,'name':p.name,'hp':p.hp,'atk':p.atk,'lvl':p.lvl,'xp':p.xp,'pktype':p.pktype,'upgrade':p.upgrade,'speed':p.speed,'evolvewith':p.evolvewith,'friendship':p.friendship}
+    pdict = {'id':p.id,'name':p.name,'hp':p.hp,'atk':p.atk,'def':p.defence,'lvl':p.lvl,'xp':p.xp,'pktype':p.pktype,'upgrade':p.upgrade,'speed':p.speed,'evolvewith':p.evolvewith,'friendship':p.friendship}
     game[uid]['bud'] = pdict
 
 def get_buds(uid,pagenow):
@@ -60,6 +60,8 @@ def get_buds(uid,pagenow):
     kbstart = (pagenow-1)*5
     kbend = kbstart + 5
     for index in range(kbstart,kbend):
+        if index > len(game[uid]['box'])-1:
+            return kblist
         kblist.append({f"{game[uid]['box'][index]['name']}, XP: {game[uid]['box'][index]['xp']}":f"pkbudset:{index}"})
     return kblist
 
@@ -88,13 +90,13 @@ def set_bud(update,context):
         kb = pokeutils.getkb([{'Bulbasaur':'pkbudstart:bulb'},{'Charmander':'pkbudstart:char'},{'Squirtle':'pkbudstart:squi'}])
         update.message.reply_photo('https://img.pokemondb.net/images/red-blue/kanto-starters.jpg',caption="Hi! My name is pokemon trainer BOTGOD. Someone told me that you wanted to become a master pokemon trainer. Well, I'm the person to seek. You can choose between 3 Kanto starter pokemon and return for more advice. Now, which pokemon would you like to have?",reply_markup=kb)
         return
-    kblist = []
     pagenow = 1
     size = 5
     kblist = get_buds(uid,pagenow)
     splitmsgs,numcount = get_bud_text(user)
     if pagenow * size > numcount:
-        update.message.reply_text(splitmsgs[0])
+        kb = pokeutils.getkb(kblist)
+        update.message.reply_text(splitmsgs[0],reply_markup=kb)
     else:
         kblist.append({'➡️':f'pkbudpages:next:{pagenow+1}:{user.id}'})
         kb = pokeutils.getkb(kblist)
@@ -162,6 +164,7 @@ def bud(update,context):
     check_time(uid)
     if game[uid]['bud'] == {}:
         update.message.reply_text('You do not have a buddy! Use /set_bud@sichengpokemonbot to get one!')
+        return
     id = game[uid]['bud']['id']
     pk = pokelist.Pokemon(id,random.randint(pokelist.pokemon[id]['lvl'][0],pokelist.pokemon[id]['lvl'][1])*1000,game[uid]['bud']['friendship'])
     if game[uid]['bud']['upgrade'] == '':
@@ -182,15 +185,16 @@ def bud(update,context):
     else:
         nextlvlmsg = f"\nXP to next level: {game[uid]['bud']['lvl']*1000-game[uid]['bud']['xp']}"
     update.message.reply_photo(open(pk.getPhoto(),'rb'),caption=f"""Your {game[uid]['bud']['name']} {types}:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
 💞 Friendship: {game[uid]['bud']['friendship']}/255
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
 XP: {game[uid]['bud']['xp']}
 Level: {game[uid]['bud']['lvl']}{nextlvlmsg}
 🆙 Evolution: {evo}
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
 💖 HP: {game[uid]['bud']['hp']}
-💥 Atk: {game[uid]['bud']['atk']}
+⚔️ Attack: {game[uid]['bud']['atk']}
+🛡 Defence: {game[uid]['bud']['def']}
 ⚡️ Speed: {game[uid]['bud']['speed']}""")
 
 def budStartCallback(update,context):

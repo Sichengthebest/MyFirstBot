@@ -56,7 +56,7 @@ stoneTrans = {
 }
 
 def add_pokemon(uid,p):
-    pdict = {'id':p.id,'name':p.name,'hp':p.hp,'atk':p.atk,'lvl':p.lvl,'xp':p.xp,'pktype':p.pktype,'upgrade':p.upgrade,'speed':p.speed,'evolvewith':p.evolvewith,'friendship':p.friendship}
+    pdict = {'id':p.id,'name':p.name,'hp':p.hp,'atk':p.atk,'def':p.defence,'lvl':p.lvl,'xp':p.xp,'pktype':p.pktype,'upgrade':p.upgrade,'speed':p.speed,'evolvewith':p.evolvewith,'friendship':p.friendship}
     game[uid]['box'].append(pdict)
 
 def add_xp(uid,xp):
