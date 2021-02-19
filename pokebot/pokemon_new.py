@@ -22,7 +22,8 @@ rarityTrans = {
     'u': 'Uncommon (26% encounter rate)',
     'r': 'Rare (19% encounter rate)',
     's': 'Super Rare (4.7% encounter rate)',
-    'l': 'Legendary (0.3% encounter rate)'
+    'l': 'Legendary (0.29% encounter rate)',
+    'ss': 'Special Spawn (1/10000 encounter rate)'
 }
 
 stoneTrans = {
@@ -35,11 +36,14 @@ stoneTrans = {
     'ele': 'Electirizer',
     'fir': 'Fire Stone',
     'ice': 'Ice Stone',
+    'icr': 'Icy Rock',
     'kin': 'King\'s Rock',
     'lea': 'Leaf Stone',
     'mag': 'Magmarizer',
+    'mst': 'Magnet Stone',
     'met': 'Metal Coat',
     'moo': 'Moon Stone',
+    'mor': 'Mossy Rock',
     'ova': 'Oval Stone',
     'pri': 'Prism Scale',
     'pro': 'Protector',
