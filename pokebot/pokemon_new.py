@@ -60,7 +60,7 @@ stoneTrans = {
 }
 
 def add_pokemon(uid,p):
-    pdict = {'id':p.id,'name':p.name,'hp':p.hp,'atk':p.atk,'def':p.defence,'lvl':p.lvl,'xp':p.xp,'pktype':p.pktype,'upgrade':p.upgrade,'speed':p.speed,'evolvewith':p.evolvewith,'friendship':p.friendship}
+    pdict = {'id':p.id,'name':p.name,'hp':p.hp,'currhp':p.currhp,'atk':p.atk,'def':p.defence,'lvl':p.lvl,'xp':p.xp,'pktype':p.pktype,'upgrade':p.upgrade,'speed':p.speed,'evolvewith':p.evolvewith,'friendship':p.friendship}
     game[uid]['box'].append(pdict)
 
 def add_xp(uid,xp):
@@ -70,8 +70,8 @@ def add_xp(uid,xp):
         game[uid]['bud']['lvl'] = game[uid]['bud']['xp']
         p = pokelist.Pokemon(game[uid]['bud']['id'],game[uid]['bud']['xp'],game[uid]['bud']['friendship'])
         bud.add_bud(uid,p)
-        msg = f"\n-------------------------\nYour bud gained {xp} XP! Congratutions! Your {game[uid]['bud']['name']} is now level {game[uid]['bud']['lvl']}!"
-    msg = f'\n-------------------------\nYour bud gained {xp} XP!'
+        msg = f"\n-------------------------\nYour {game[uid]['bud']['name']} gained {xp} XP! Congratutions! Your {game[uid]['bud']['name']} is now level {game[uid]['bud']['lvl']}!"
+    msg = f"\n-------------------------\nYour {game[uid]['bud']['name']} gained {xp} XP!"
     game[uid]['box'].append(game[uid]['bud'])
     return msg
         
@@ -145,7 +145,7 @@ def pokemon(update,context):
     if game[str(uid)]['mb'] > 0:
         balls.append({'Masterball':f'pkcatch:mb:{uid}:{id}:{rarity}'})
     kb = pokeutils.getkb(balls)
-    update.message.reply_photo(open(pk.getPhoto(),'rb'), caption=f"""You have found a wild {pk.name}!
+    update.message.reply_photo(open(pk.getPhoto(),'rb'), caption=f"""A wild {pk.name} appeared!
 Rarity: {rarityTrans[rarity]}
 -------------------------
 Balls left:

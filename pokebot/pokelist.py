@@ -6489,6 +6489,7 @@ class Pokemon():
     id = ''
     name = ''
     hp = 0
+    currhp = 0
     lvl = 0
     atk = 0
     defence = 0
@@ -6511,6 +6512,7 @@ class Pokemon():
         maxhp = random.randint(pokemon[id]['hp'][0],pokemon[id]['hp'][1])
         hpperlvl = maxhp / 100
         self.hp = int(hpperlvl * self.lvl)
+        self.currhp = self.hp
         maxatk = random.randint(pokemon[id]['atk'][0],pokemon[id]['atk'][1])
         atkperlvl = maxatk / 100
         self.atk = int(atkperlvl * self.lvl)
@@ -6525,11 +6527,10 @@ class Pokemon():
         self.upgrade = random.choice(pokemon[id]['upgrade'])
         self.xp = xp
         self.evolvewith = pokemon[id]['evolvewith']
-        self.friendship = pokemon[id]['friendship']
         if currfr == -1:
-            self.currfriendship = pokemon[id]['friendship']
+            self.friendship = pokemon[id]['friendship']
         else:
-            self.currfriendship = currfr
+            self.friendship = currfr
     
     @classmethod
     def init(self,id:str,name:str,lvl:int,hp:int,atk:int,pktype:str,upgrade:str,defence:int,speed:int,xp:int,evolvewith:str,friendship:int):

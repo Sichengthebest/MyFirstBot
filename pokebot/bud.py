@@ -192,7 +192,7 @@ XP: {game[uid]['bud']['xp']}
 Level: {game[uid]['bud']['lvl']}{nextlvlmsg}
 🆙 Evolution: {evo}
 ~~~~~~~~~~~~~~~~~~~~~~~~
-💖 HP: {game[uid]['bud']['hp']}
+💖 HP: {game[uid]['bud']['currhp']}/{game[uid]['bud']['hp']}
 ⚔️ Attack: {game[uid]['bud']['atk']}
 🛡 Defence: {game[uid]['bud']['def']}
 ⚡️ Speed: {game[uid]['bud']['speed']}""")

@@ -47,7 +47,8 @@ def check_time(uid):
             'bud': {},
             'dailytime': datetime.now().strftime("%Y/%m/%d %H:%M:%S"),
             'spawn': False,
-            'inv': []
+            'inv': [],
+            'party': []
         }
 
 buyskb = [{'Pokeball':'pkbuy:pb','Greatball':'pkbuy:gb'},{'Ultraball':'pkbuy:ub','Masterball':'pkbuy:mb'}]
@@ -249,7 +250,7 @@ You currently own:
 Pokeball: 200 pokecoins
 Greatball: 600 pokecoins
 Ultraball: 1200 pokecoins
-Masterball: 20000 pokecoins""",reply_markup=buykb)
+Masterball: 17500 pokecoins""",reply_markup=buykb)
 
 def shopCallback(update,context):
     query = update.callback_query
