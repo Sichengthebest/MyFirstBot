@@ -28,7 +28,8 @@ rarityTrans = {
     'u': '🥈',
     'r': '🥇',
     's': '🎗',
-    'l': '🎖'
+    'l': '🎖',
+    'ss': '💫'
 }
 
 game = pokeconfig.CONFIG["pk"]
@@ -90,7 +91,7 @@ def get_box(user):
     for msgs in msgsplit:
         msgcount += 1
         if msgcount % 10 == 0:
-            splitmsgs.append(f'{user.first_name}\'s box: Page {int(msgcount/10)+1}\n~~~~~~~~~~~~~~~~~~~~\n🥉: Common\n🥈: Uncommon\n🥇: Rare\n🎗: Super rare\n🎖: Legendary\n~~~~~~~~~~~~~~~~~~~~')
+            splitmsgs.append(f'{user.first_name}\'s box: Page {int(msgcount/10)+1}\n~~~~~~~~~~~~~~~~~~~~\n🥉: Common\n🥈: Uncommon\n🥇: Rare\n🎗: Super rare\n🎖: Legendary\n💫: Special Spawn\n~~~~~~~~~~~~~~~~~~~~')
         splitmsgs[int(msgcount/10)] += f'\n{msgs}'
     return splitmsgs,numcount,totalcount
 
@@ -236,7 +237,7 @@ def shop(update,context):
     if game[uid]['spawn'] == True:
         update.message.reply_text("You already spawned a pokemon! Wait until you've caught it to buy items!")
         return
-    update.message.reply_text(f"""Buy some items for your adventure!
+    update.message.reply_text(f"""Welcome to the PokeMart! Buy some items for your adventure!
 {user.first_name}'s pokeCoins: {game[uid]['pokecoins']}
 -------------------------
 You currently own:
@@ -245,10 +246,10 @@ You currently own:
 {game[uid]['ub']} Ultraballs
 {game[uid]['mb']} Masterballs
 -------------------------
-Pokeball: 50 pokecoins
-Greatball: 125 pokecoins
-Ultraball: 400 pokecoins
-Masterball: 17500 pokecoins""",reply_markup=buykb)
+Pokeball: 200 pokecoins
+Greatball: 600 pokecoins
+Ultraball: 1200 pokecoins
+Masterball: 20000 pokecoins""",reply_markup=buykb)
 
 def shopCallback(update,context):
     query = update.callback_query
@@ -273,11 +274,11 @@ def shopnumCallback(update,context):
     query = update.callback_query
     _,num,ball = query.data.split(':')
     if ball == 'pb':
-        c = 50
+        c = 200
     elif ball == 'gb':
-        c = 125
+        c = 600
     elif ball == 'ub':
-        c = 400
+        c = 1200
     elif ball == 'mb':
         c = 17500
     query.edit_message_text(buy_stuff(user,c,num,ball))
@@ -341,7 +342,7 @@ def inv(update,context):
 def getCommand():
     return [BotCommand('pokemon','Go catch pokemon! // 去捉宠物小精灵！'),
         BotCommand('box','Check the pokemon in your box! // 检查盒子里的宠物小精灵！'),
-        BotCommand('pokeshop','Buy useful stuff for your adventure! // 为您的冒险购买有用的东西！'),
+        BotCommand('pokemart','Buy useful stuff for your adventure! // 为您的冒险购买有用的东西！'),
         BotCommand('view_bud','[BETA] Check on your buddy! // [测试] 检查您的好友！'),
         BotCommand('set_bud','[BETA] Get a new buddy! // [测试] 结识新好友！'),
         BotCommand('surprise','Get your daily injection of pokecoins! // 每天注射 Pokecoins！'),
@@ -354,7 +355,7 @@ def getCommand():
 def addHandler(dispatcher):
     dispatcher.add_handler(CommandHandler('box', box))
     dispatcher.add_handler(CommandHandler('bag', inv))
-    dispatcher.add_handler(CommandHandler('pokeshop',shop))
+    dispatcher.add_handler(CommandHandler('pokemart',shop))
     dispatcher.add_handler(CommandHandler('surprise',surprise))
     dispatcher.add_handler(CommandHandler('pokebal',bal))
     dispatcher.add_handler(CommandHandler('reset',reset))

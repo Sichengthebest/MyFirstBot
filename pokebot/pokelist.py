@@ -14,7 +14,7 @@ rarity = {
 }
 
 def getPokemon():
-    rarityroll = random.randint(1,1000)
+    rarityroll = random.randint(1,10000)
     if rarityroll <= 5000:
         pokemons = rarity['c']
         rarityy = 'c'
@@ -27,9 +27,12 @@ def getPokemon():
     elif rarityroll > 9500 and rarityroll <= 9970:
         pokemons = rarity['s']
         rarityy = 's'
-    elif rarityroll > 9970 and rarityroll <= 10000:
+    elif rarityroll > 9970 and rarityroll <= 9999:
         pokemons = rarity['l']
         rarityy = 'l'
+    elif rarityroll == 10000:
+        pokemons = rarity['ss']
+        rarityy = 'ss'
     pk = random.choice(pokemons)
     return pk,rarityy
 
