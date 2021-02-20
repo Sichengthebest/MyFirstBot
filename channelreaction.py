@@ -50,5 +50,5 @@ def react_callback(update,context):
     query.edit_message_reply_markup(InlineKeyboardMarkup(kb))
 
 def add_handler(dp):
-    dp.add_handler(MessageHandler(filters=filters.Filters.all,callback=reaction))
+    dp.add_handler(MessageHandler(filters.Filters.chat_type.channel,callback=reaction))
     dp.add_handler(CallbackQueryHandler(react_callback,pattern="^react:[A-Za-z0-9_:]*"))
