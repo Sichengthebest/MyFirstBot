@@ -52,7 +52,7 @@ def check_time(uid):
         }
 
 def add_bud(uid,p):  
-    pdict = {'id':p.id,'name':p.name,'hp':p.hp,'atk':p.atk,'def':p.defence,'lvl':p.lvl,'xp':p.xp,'pktype':p.pktype,'upgrade':p.upgrade,'speed':p.speed,'evolvewith':p.evolvewith,'friendship':p.friendship}
+    pdict = {'id':p.id,'name':p.name,'hp':p.hp,'currhp':p.currhp,'atk':p.atk,'def':p.defence,'lvl':p.lvl,'xp':p.xp,'pktype':p.pktype,'upgrade':p.upgrade,'speed':p.speed,'evolvewith':p.evolvewith,'friendship':p.friendship}
     game[uid]['bud'] = pdict
 
 def get_buds(uid,pagenow):

@@ -25,6 +25,10 @@ def help(update, context):
 /pokedex - [BETA] Check the pokemon you have. // [测试] 检查您有的 pokemon。
 /bag - Check the items you have. // 检查您有的物件。
 /evolve - [BETA] Evolve your buddy! // 升级你的伙伴！
+/view_bud - Check on your buddy! // [测试] 检查您的好友！
+/set_bud - Get a new buddy! // 结识新好友！
+/add_party_member - Add pokemon into your party! // 将宠物小精灵加入您的团队！
+/view_party - Check your party. // 检查您的团队。
 -------------------------------------------------
 You can go find the new added commands at https://t.me/pokebotupdates , the official bot updates channel.
 您可以在官方bot更新频道 https://t.me/pokebotupdates 上找到新添加的命令。

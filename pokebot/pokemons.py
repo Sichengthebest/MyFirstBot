@@ -344,13 +344,13 @@ def getCommand():
     return [BotCommand('pokemon','Go catch pokemon! // 去捉宠物小精灵！'),
         BotCommand('box','Check the pokemon in your box! // 检查盒子里的宠物小精灵！'),
         BotCommand('pokemart','Buy useful stuff for your adventure! // 为您的冒险购买有用的东西！'),
-        BotCommand('view_bud','[BETA] Check on your buddy! // [测试] 检查您的好友！'),
-        BotCommand('set_bud','[BETA] Get a new buddy! // [测试] 结识新好友！'),
+        BotCommand('view_bud','Check on your buddy! // 检查您的好友！'),
+        BotCommand('set_bud','Get a new buddy! // 结识新好友！'),
         BotCommand('surprise','Get your daily injection of pokecoins! // 每天注射 Pokecoins！'),
         BotCommand('pokebal','Check the amount of pokecoins you have. // 检查您有多少 pokecoins。'),
         BotCommand('pokedex','Check the pokemon you have. // 检查您有的 pokemon。'),
         BotCommand('bag','Check the items you have. // 检查您有的物件。'),
-        BotCommand('evolve','[BETA] Evolve your buddy! // 升级你的伙伴！'),
+        BotCommand('evolve','Evolve your buddy! // 升级你的伙伴！'),
         BotCommand('add_party_member','Add pokemon into your party! // 将宠物小精灵加入您的团队！'),
         BotCommand('view_party','Check your party. // 检查您的团队。')
     ]
