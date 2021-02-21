@@ -5834,7 +5834,7 @@ pokemon = {
         'friendship': 50
     },
     "445":{
-        'name': 'Garchtomp',
+        'name': 'Garchomp',
         'hp': [326,420],
         'lvl': [48,100],
         'atk': [247,405],
