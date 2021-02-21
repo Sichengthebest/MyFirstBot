@@ -8,7 +8,7 @@ from telegram.ext import CommandHandler, Updater
 from telegram import BotCommand
 
 def start(update, context):
-    msg = "Do you have a buddy? Use the /set_bud@sichengpokemonbot command to get started!\nCreator: Sichengthebest"
+    msg = "Do you have a buddy? Use the /set_bud command to get started!\nCreator: Sichengthebest"
     context.bot.send_message(chat_id=update.effective_chat.id, text=msg)
 
 def help(update, context):

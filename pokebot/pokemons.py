@@ -350,7 +350,9 @@ def getCommand():
         BotCommand('pokebal','Check the amount of pokecoins you have. // 检查您有多少 pokecoins。'),
         BotCommand('pokedex','Check the pokemon you have. // 检查您有的 pokemon。'),
         BotCommand('bag','Check the items you have. // 检查您有的物件。'),
-        BotCommand('evolve','[BETA] Evolve your buddy! // 升级你的伙伴！')
+        BotCommand('evolve','[BETA] Evolve your buddy! // 升级你的伙伴！'),
+        BotCommand('add_party_member','Add pokemon into your party! // 将宠物小精灵加入您的团队！'),
+        BotCommand('view_party','Check your party. // 检查您的团队。')
     ]
 
 def addHandler(dispatcher):

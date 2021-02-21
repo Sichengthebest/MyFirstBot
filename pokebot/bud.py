@@ -108,7 +108,7 @@ def budNewCallback(update,context):
     query = update.callback_query
     _,index = query.data.split(':')
     game[uid]['bud'] = game[uid]['box'][int(index)]
-    query.edit_message_text(f"{game[uid]['box'][int(index)]['name']}? He/she will be your best buddy! Use /view_bud@sichengpokemonbot to have the details!")
+    query.edit_message_text(f"{game[uid]['box'][int(index)]['name']}? He/she will be your best buddy! Use /view_bud to have the details!")
     save()
 
 def budPagesCallback(update,context):
@@ -163,7 +163,7 @@ def bud(update,context):
     uid = str(user.id)
     check_time(uid)
     if game[uid]['bud'] == {}:
-        update.message.reply_text('You do not have a buddy! Use /set_bud@sichengpokemonbot to get one!')
+        update.message.reply_text('You do not have a buddy! Use /set_bud to get one!')
         return
     id = game[uid]['bud']['id']
     pk = pokelist.Pokemon(id,random.randint(pokelist.pokemon[id]['lvl'][0],pokelist.pokemon[id]['lvl'][1])*1000,game[uid]['bud']['friendship'])
@@ -227,7 +227,7 @@ def evolve(update,context):
     uid = str(user.id)
     check_time(uid)
     if game[uid]['bud'] == {}:
-        update.message.reply_text('You do not have a buddy! Use /set_bud@sichengpokemonbot to get one!')
+        update.message.reply_text('You do not have a buddy! Use /set_bud to get one!')
         return
     if pokelist.pokemon[game[uid]['bud']['id']]['upgrade'] == '':
         update.message.reply_text(f"Your buddy does not evolve!")

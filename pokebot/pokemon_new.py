@@ -181,7 +181,7 @@ def pokemonCatchCallback(update,context):
 ✅ You have caught a Level {p.lvl} {p.name} with a {ballTrans[ball]}!
 You have earned {money} pokecoins!'''
         if game[str(uid)]['bud'] == {}:
-            msg2 = '\n-------------------------\nYou do not have a buddy! Use /set_bud@SichengsGodBot to get one!' 
+            msg2 = '\n-------------------------\nYou do not have a buddy! Use /set_bud to get one!' 
         else:
             if pokemonroll < 5:
                 msg2 = f'{add_xp(str(uid),xp)}\nOh? and you found a/an {stoneget}! Use it to evolve certain pokemon.'

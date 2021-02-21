@@ -14,26 +14,10 @@ def save():
     pokeconfig.CONFIG["pk"] = game
     pokeconfig.save_config()
 
-def check_time(uid):
-    if not uid in game:
-        game[uid] = {
-            'gametime': datetime.now().strftime("%Y/%m/%d %H:%M:%S"),
-            'pb': 10,
-            'gb': 5,
-            'ub': 3,
-            'mb': 1,
-            'pokecoins': 0,
-            'box': [],
-            'bud': {},
-            'dailytime': datetime.now().strftime("%Y/%m/%d %H:%M:%S"),
-            'spawn': False,
-            'inv': []
-        }
-
 def add_party(update,context):
     user = update.effective_user
     uid = str(user.id)
-    check_time(uid)
+    pokemons.check_time(uid)
     pagenow = 1
     size = 5
     kblist = get_party_members(uid,pagenow)
@@ -107,7 +91,6 @@ def partyPositionCallback(update,context):
     query = update.callback_query
     _,index,positionbig = query.data.split(':')
     position = int(positionbig)-1
-    print(position)
     if game[uid]['box'][int(index)] in game[uid]['party']:
         index2 = game[uid]['party'].index(game[uid]['box'][int(index)])
         game[uid]['party'][index2] = {}
@@ -119,7 +102,7 @@ def partyPositionCallback(update,context):
 def partyRestartCallback(update,context):
     user = update.effective_user
     uid = str(user.id)
-    check_time(uid)
+    pokemons.check_time(uid)
     query = update.callback_query
     pagenow = 1
     size = 5
@@ -146,9 +129,9 @@ def show_party(update,context):
         for pkdict in game[uid]['party']:
             count += 1
             if pkdict == {}:
-                msg += f"{count}. Empty\n~~~~~~~~~~~~~~~~\n"
+                msg += f"{count}. Empty\n~~~~~~~~~~~~~~~~~~~~\n"
             else:
-                msg += f"{count}. {pkdict['name']}\nLevel: {pkdict['lvl']}      💖 HP: {pkdict['currhp']}/{pkdict['hp']}\n~~~~~~~~~~~~~~~~\n"
+                msg += f"{count}. {pkdict['name']}\nLevel: {pkdict['lvl']}      💖 HP: {pkdict['currhp']}/{pkdict['hp']}\n~~~~~~~~~~~~~~~~~~~~~\n"
     update.message.reply_text(msg)
 
 def get_party_text(user):
