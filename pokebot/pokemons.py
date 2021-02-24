@@ -100,6 +100,7 @@ def get_dex(user):
     uid = str(user.id)
     msg = ''
     count = 0
+    eachcount = 0
     totalsize = len(pokelist.pokemon)
     for id in pokelist.pokemon:
         for pkdict in game[uid]['box']:
@@ -107,6 +108,7 @@ def get_dex(user):
                 count += 1
         if count > 0:
             msg += f'✅ {pokelist.pokemon[id]["name"]} #{id}: x{count}\n'
+            eachcount += 1
         else:
             msg += f'❌ {pokelist.pokemon[id]["name"]} #{id}\n'
         count = 0
@@ -116,7 +118,7 @@ def get_dex(user):
     for msgs in msgsplit:
         msgcount += 1
         if msgcount % 15 == 0:
-            splitmsgs.append(f'This pokedex lists every single one of the {totalsize} pokemon discovered so far.\n{user.first_name}, gotta catch\'em all©!\nPage {int(msgcount/15)+1}\n~~~~~~~~~~~~~~~~~~~~')
+            splitmsgs.append(f'This pokedex lists every single one of the {totalsize} pokemon discovered so far (including formes).\nYou have caught {eachcount} of {totalsize} pokemon.\n{user.first_name}, gotta catch\'em all©!\nPage {int(msgcount/15)+1}\n~~~~~~~~~~~~~~~~~~~~')
         splitmsgs[int(msgcount/15)] += f'\n{msgs}'
     return splitmsgs
 
@@ -340,6 +342,21 @@ def inv(update,context):
         msg += f'\n{pokemon_new.stoneTrans[thing]}'
     update.message.reply_text(msg)
 
+def profile(update,context):
+    user = update.effective_user
+    uid = str(user.id)
+    eachcount = 0
+    count = 0
+    for id in pokelist.pokemon:
+        for pkdict in game[uid]['box']:
+            if pkdict['name'] == pokelist.pokemon[id]['name']:
+                count += 1
+        if count > 0:
+            eachcount += 1
+        count = 0
+    totalsize = len(pokelist.pokemon)
+    update.message.reply_text(f"{user.first_name}'s profile:\n~~~~~~~~~~~~~~~\nTier: {game[uid]['tier']}\nYou have caught {eachcount} pokemon on {totalsize} pokemon.")
+
 def getCommand():
     return [BotCommand('pokemon','Go catch pokemon! // 去捉宠物小精灵！'),
         BotCommand('box','Check the pokemon in your box! // 检查盒子里的宠物小精灵！'),
@@ -363,6 +380,7 @@ def addHandler(dispatcher):
     dispatcher.add_handler(CommandHandler('pokebal',bal))
     dispatcher.add_handler(CommandHandler('reset',reset))
     dispatcher.add_handler(CommandHandler('pokedex',pokedex))
+    dispatcher.add_handler(CommandHandler('profile',profile))
     dispatcher.add_handler(CallbackQueryHandler(shopCallback,pattern="^pkbuy:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(shopnumCallback,pattern="^pkbuynum:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(boxCallback,pattern="^pkbox:[A-Za-z0-9_]*"))

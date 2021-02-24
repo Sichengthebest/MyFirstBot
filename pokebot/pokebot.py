@@ -29,6 +29,7 @@ def help(update, context):
 /set_bud - Get a new buddy! // 结识新好友！
 /add_party_member - Add pokemon into your party! // 将宠物小精灵加入您的团队！
 /view_party - Check your party. // 检查您的团队。
+/profile - View your profile. // 查看你的个人资料。
 -------------------------------------------------
 You can go find the new added commands at https://t.me/pokebotupdates , the official bot updates channel.
 您可以在官方bot更新频道 https://t.me/pokebotupdates 上找到新添加的命令。
