@@ -89,10 +89,10 @@ def getcatchrate(ball,p):
 
 def getadd(rarity):
     if rarity == 'c':
-        money = random.randint(110,150)
+        money = random.randint(60,100)
         xp = random.randint(5,10)
     elif rarity == 'u':
-        money = random.randint(300,350)
+        money = random.randint(250,300)
         xp = random.randint(15,25)
     elif rarity == 'r':
         money = random.randint(550,610)
