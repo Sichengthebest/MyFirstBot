@@ -6505,7 +6505,7 @@ class Pokemon():
         file_name = f"{pokeconfig.run_path}/images/{self.id}.jpg"
         return file_name
 
-    def __init__(self,id:str,xp:int,currfr):
+    def __init__(self,id:str,xp:int,currfr,moves):
         self.id = id
         self.name = pokemon[id]['name']
         self.lvl = int(xp/1000)+1
@@ -6531,10 +6531,14 @@ class Pokemon():
             self.friendship = pokemon[id]['friendship']
         else:
             self.friendship = currfr
+        if moves == []:
+            self.moves = []
+        else:
+            self.moves = moves
     
     @classmethod
     def init(self,id:str,name:str,lvl:int,hp:int,atk:int,pktype:str,upgrade:str,defence:int,speed:int,xp:int,evolvewith:str,friendship:int):
-        p = Pokemon(id,lvl,friendship)
+        p = Pokemon(id,lvl,friendship,[])
         p.hp = hp
         p.atk = atk
         p.pktype = pktype
@@ -6546,7 +6550,7 @@ class Pokemon():
     
     @classmethod
     def init_from_dict(self,pdict):
-        p = Pokemon(pdict['id'],pdict['lvl'],pdict['friendship'])
+        p = Pokemon(pdict['id'],pdict['lvl'],pdict['friendship'],pdict['moves'])
         p.hp = pdict['hp']
         p.atk = pdict['atk']
         p.pktype = pdict['pktype']

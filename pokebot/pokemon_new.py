@@ -60,15 +60,15 @@ stoneTrans = {
 }
 
 def add_pokemon(uid,p):
-    pdict = {'id':p.id,'name':p.name,'hp':p.hp,'currhp':p.currhp,'atk':p.atk,'def':p.defence,'lvl':p.lvl,'xp':p.xp,'pktype':p.pktype,'upgrade':p.upgrade,'speed':p.speed,'evolvewith':p.evolvewith,'friendship':p.friendship}
+    pdict = {'id':p.id,'name':p.name,'hp':p.hp,'currhp':p.currhp,'atk':p.atk,'def':p.defence,'lvl':p.lvl,'xp':p.xp,'pktype':p.pktype,'upgrade':p.upgrade,'speed':p.speed,'evolvewith':p.evolvewith,'friendship':p.friendship,'moves':p.moves}
     game[uid]['box'].append(pdict)
 
 def add_xp(uid,xp):
     game[uid]['box'].remove(game[uid]['bud'])
     game[uid]['bud']['xp'] += xp
     if game[uid]['bud']['xp'] >= game[uid]['bud']['lvl'] * 1000:
-        game[uid]['bud']['lvl'] = game[uid]['bud']['xp']
-        p = pokelist.Pokemon(game[uid]['bud']['id'],game[uid]['bud']['xp'],game[uid]['bud']['friendship'])
+        game[uid]['bud']['lvl'] = int(game[uid]['bud']['xp'] / 1000)
+        p = pokelist.Pokemon(game[uid]['bud']['id'],game[uid]['bud']['xp'],game[uid]['bud']['friendship'],game[uid]['bud']['moves'])
         bud.add_bud(uid,p)
         msg = f"\n-------------------------\nYour {game[uid]['bud']['name']} gained {xp} XP! Congratutions! Your {game[uid]['bud']['name']} is now level {game[uid]['bud']['lvl']}!"
     msg = f"\n-------------------------\nYour {game[uid]['bud']['name']} gained {xp} XP!"
@@ -117,7 +117,7 @@ def pokemon(update,context):
     uid = user.id
     id,rarity = pokelist.getPokemon()
     lvlxp = random.randint(pokelist.pokemon[id]['lvl'][0],pokelist.pokemon[id]['lvl'][1])*1000
-    pk = pokelist.Pokemon(id,lvlxp,-1)
+    pk = pokelist.Pokemon(id,lvlxp,-1,[])
     balls = []
     pokemons.check_time(str(uid))
     if game[str(uid)]['spawn'] == True:
@@ -165,7 +165,7 @@ def pokemonCatchCallback(update,context):
         query.answer("你是谁？你在哪儿？你想做啥？这是别人的，大笨蛋！",show_alert=True)
         return
     lvlxp = random.randint(pokelist.pokemon[pkmonid]['lvl'][0],pokelist.pokemon[pkmonid]['lvl'][1])*1000
-    p = pokelist.Pokemon(pkmonid,lvlxp,-1)
+    p = pokelist.Pokemon(pkmonid,lvlxp,-1,[])
     catchrate = getcatchrate(ball,p)
     money,xp = getadd(rarity)
     pokemonroll = random.randint(1,100)
