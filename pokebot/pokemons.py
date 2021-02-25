@@ -370,7 +370,8 @@ def getCommand():
         BotCommand('evolve','Evolve your buddy! // 升级你的伙伴！'),
         BotCommand('add_party_member','Add pokemon into your party! // 将宠物小精灵加入您的团队！'),
         BotCommand('view_party','Check your party. // 检查您的团队。'),
-        BotCommand('profile','View your profile. // 查看你的个人资料')
+        BotCommand('profile','View your profile. // 查看你的个人资料'),
+        BotCommand('battle','Start battling other trainers\'s pokemon! // 开始与其他教练的pokemon作战！')
     ]
 
 def addHandler(dispatcher):
