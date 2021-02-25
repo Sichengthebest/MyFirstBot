@@ -95,7 +95,7 @@ def getadd(rarity):
         money = random.randint(250,300)
         xp = random.randint(15,25)
     elif rarity == 'r':
-        money = random.randint(550,610)
+        money = random.randint(530,590)
         xp = random.randint(30,40)
     elif rarity == 's':
         money = random.randint(1140,1210)
