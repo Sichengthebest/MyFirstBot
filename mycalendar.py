@@ -54,10 +54,10 @@ def set_cal(update,context):
         update.message.reply_text('Sorry, you\'re not an admin.')
         return
     if len(context.args) == 0:
-        update.message.reply_text('Here\'s the format you need to respect to subscribe to your calendar notifications:\n\n/get_cal@SichengGodBot {Your Apple Calendar URL} {The time you want the notification sent, for example, 17:00} {Your time zone, for example, US/Eastern}\n\nFor a list of time zones please check https://gist.github.com/heyalexej/8bf688fd67d7199be4a1682b3eec7568#file-pytz-time-zones-py')
+        update.message.reply_text('Here\'s the format you need to respect to subscribe to your calendar notifications:\n\n/set_cal@SichengsGodBot {Your Apple Calendar URL} {The time you want the notification sent, for example, 17:00} {Your time zone, for example, US/Eastern}\n\nFor a list of time zones please check https://gist.github.com/heyalexej/8bf688fd67d7199be4a1682b3eec7568#file-pytz-time-zones-py')
         return
     if len(context.args) > 3:
-        update.message.reply_text('Too many arguments! Please follow this format: /get_cal@SichengsGodBot {Your Apple Calendar URL} {The time you want the notification sent, for example, 17:00} {Your time zone, for example, US/Eastern}')
+        update.message.reply_text('Too many arguments! Please follow this format: /set_cal@SichengsGodBot {Your Apple Calendar URL} {The time you want the notification sent, for example, 17:00} {Your time zone, for example, US/Eastern}')
         return
     url = context.args[0]
     time = context.args[1]
