@@ -6538,7 +6538,7 @@ class Pokemon():
     
     @classmethod
     def init(self,id:str,name:str,lvl:int,hp:int,atk:int,pktype:str,upgrade:str,defence:int,speed:int,xp:int,evolvewith:str,friendship:int):
-        p = Pokemon(id,lvl,friendship,[])
+        p = Pokemon(id,xp,friendship,[])
         p.hp = hp
         p.atk = atk
         p.pktype = pktype
