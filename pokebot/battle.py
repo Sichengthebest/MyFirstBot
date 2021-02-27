@@ -81,7 +81,7 @@ def get_choice_gen(choice,user,gen):
                 if int(key) < int(gen)*10 and int(key) > (int(gen)-1)*10 :
                     if (int(key) - (int(gen)-1)*10)-1 <= game[uid]['leaderprogress']:
                         choicetext += f"\n{key}. {trainerlist.trainers[key]['name']}"
-                        choicekbs['lead'].append({f'{key}':f'pkbattlestart:lead:{gen}:{key}'})
+                        choicekbs['lead'].append({f'{key}':f'pkbattlestart:lead:{key}'})
     elif choice == 'e4':
         choicetext = 'Which Elite Four do you wish to battle?'
         for key in trainerlist.trainers:
@@ -89,9 +89,9 @@ def get_choice_gen(choice,user,gen):
                 if int(key) < 100+int(gen)*5 and int(key) > 100+(int(gen)-1)*5:
                     if (int(key) - (int(gen)-1)*10)-101 <= game[uid]['e4progress']:
                         choicetext += f"\n{key}. {trainerlist.trainers[key]['name']}"
-                        choicekbs['e4'].append({f'{key}':f'pkbattlestart:e4:{gen}:{key}'})
+                        choicekbs['e4'].append({f'{key}':f'pkbattlestart:e4:{key}'})
     elif choice == 'champ':
-        choicetext = f"Which generation of Champions would you like to battle with, {user.first_name}?"
+        choicetext = f"Ready to go, {user.first_name}?"
     kb = pokeutils.getkb(choicekbs[choice])
     return kb,choicetext
 
@@ -119,6 +119,13 @@ def battle_choose_gen(update,context):
     kb,msg = get_choice_gen(choice,user,gen)
     query.edit_message_text(msg,reply_markup=kb)
 
+def battle(update,context):
+    user = update.effective_user
+    query = update.callback_query
+    _, type, choice = query.data.split(':')
+    if type == 'train':
+        pass
+
 def restart(update,context):
     user = update.effective_user
     uid = str(user.id)
@@ -135,3 +142,4 @@ def addHandler(dispatcher):
     dispatcher.add_handler(CallbackQueryHandler(battle_choose,pattern="^pkbattlechoose:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(battle_choose_gen,pattern="^pkbattlegen:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(restart,pattern="^pkbattlerestart:[A-Za-z0-9_]*"))
+    dispatcher.add_handler(CallbackQueryHandler(battle,pattern="^pkbattlestart:[A-Za-z0-9_]*"))
