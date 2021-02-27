@@ -38,6 +38,7 @@ def check_time(uid):
     if not uid in game:
         game[uid] = {
             'gametime': datetime.now().strftime("%Y/%m/%d %H:%M:%S"),
+            "tier": "0",
             'pb': 10,
             'gb': 5,
             'ub': 3,
@@ -47,8 +48,19 @@ def check_time(uid):
             'bud': {},
             'dailytime': datetime.now().strftime("%Y/%m/%d %H:%M:%S"),
             'spawn': False,
-            'inv': [],
-            'party': []
+            "inv": [],
+            "party": [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            ],
+            "trainerprogress": 0,
+            "leaderprogress": 0,
+            "e4progress": 0,
+            "champprogress": 0
         }
 
 buyskb = [{'Pokeball':'pkbuy:pb','Greatball':'pkbuy:gb'},{'Ultraball':'pkbuy:ub','Masterball':'pkbuy:mb'}]
