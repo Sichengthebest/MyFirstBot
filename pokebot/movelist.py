@@ -13,7 +13,8 @@ moves = {
         'raise': [0,0,0],
         'eraise': [0,0,0],
         'raiser': [0,0,0],
-        'eraiser': [0,0,0]
+        'eraiser': [0,0,0],
+        'flinch': 0
     },
     "Acid":{
         'power': 40,
@@ -27,7 +28,8 @@ moves = {
         'raise': [0,0,0],
         'eraise': [0,-1,0],
         'raiser': [0,0,0],
-        'eraiser': [0,20,0]
+        'eraiser': [0,20,0],
+        'flinch': 0
     },
     "Acid Armor":{
         'power': 0,
@@ -41,7 +43,8 @@ moves = {
         'raise': [0,1,0],
         'eraise': [0,0,0],
         'raiser': [0,100,0],
-        'eraiser': [0,0,0]
+        'eraiser': [0,0,0],
+        'flinch': 0
     },
     "Agility":{
         'power': 0,
@@ -55,7 +58,8 @@ moves = {
         'raise': [0,0,2],
         'eraise': [0,0,0],
         'raiser': [0,0,100],
-        'eraiser': [0,0,0]
+        'eraiser': [0,0,0],
+        'flinch': 0
     },
     "Amnesia":{
         'power': 0,
@@ -69,7 +73,8 @@ moves = {
         'raise': [0,2,0],
         'eraise': [0,0,0],
         'raiser': [0,100,0],
-        'eraiser': [0,0,0]
+        'eraiser': [0,0,0],
+        'flinch': 0
     }
 }
 
@@ -95,6 +100,7 @@ class Move():
     enemyatkraiserate = 0
     enemydefraiserate = 0
     enemyspdraiserate = 0
+    flinchrate = 0
 
     def __init__(self,name:str):
         self.name = name
@@ -110,6 +116,7 @@ class Move():
         self.enemyatkraise,self.enemydefraise,self.ememyspdraise = moves[name]['eraise']
         self.atkraiserate,self.defraiserate,self.spdraiserate = moves[name]['raiser']
         self.enemyatkraiserate,self.enemydefraiserate,self.ememyspdraiserate = moves[name]['eraiser']
+        self.flinchrate = moves[name]['flinch']
 
     def __str__(self):
         return str(self.__dict__)
