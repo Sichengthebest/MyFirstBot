@@ -4,6 +4,7 @@ import pokemon_new
 import pokelist
 import pokeutils
 import pokemons
+import pokemoves
 from telegram.ext import CommandHandler, CallbackQueryHandler
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, BotCommand,InputMediaPhoto
 from datetime import datetime,timedelta
@@ -261,10 +262,17 @@ def evolve(update,context):
         game[uid]['inv'].remove(stone)
     save()
 
+def add_moves(update,context):
+    user = update.effective_user
+    uid = str(user.id)
+    check_time(uid)
+    update.message.reply_text('Which move would you like add to add to your buddy?')
+
 def addHandler(dispatcher):
     dispatcher.add_handler(CommandHandler('view_bud',bud))
     dispatcher.add_handler(CommandHandler('set_bud',set_bud))
     dispatcher.add_handler(CommandHandler('evolve',evolve))
+    dispatcher.add_handler(CommandHandler('add_moves',add_moves))
     dispatcher.add_handler(CallbackQueryHandler(budStartCallback,pattern="^pkbudstart:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(budNewCallback,pattern="^pkbudset:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(budPagesCallback,pattern="^pkbudpages:[A-Za-z0-9_]*"))

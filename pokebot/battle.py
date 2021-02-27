@@ -102,6 +102,7 @@ def save():
 def battle_menu(update,context):
     user = update.effective_user
     uid = str(user.id)
+    pokemons.check_time(uid)
     kb = pokeutils.getkb(unlockkbs[game[uid]['tier']])
     update.message.reply_text(f"Current user tier: {game[uid]['tier']}\n~~~~~~~~~~~~~~~~~~~~~~\nCurrent unlocks:\n{unlockTrans[game[uid]['tier']]}\n~~~~~~~~~~~~~~~~~~~~~~\nDon't forget, if you are progressing in Alola or Galar, you can still battle here, but to advance in those territories, use the commands /battle_alola or /battle_galar !",reply_markup=kb)
 
