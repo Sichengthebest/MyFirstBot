@@ -65,14 +65,28 @@ def add_pokemon(uid,p):
 
 def add_xp(uid,xp):
     game[uid]['box'].remove(game[uid]['bud'])
-    game[uid]['bud']['xp'] += xp
-    if game[uid]['bud']['xp'] >= game[uid]['bud']['lvl'] * 1000:
-        game[uid]['bud']['lvl'] = int(game[uid]['bud']['xp'] / 1000)
-        p = pokelist.Pokemon(game[uid]['bud']['id'],game[uid]['bud']['xp'],game[uid]['bud']['friendship'],game[uid]['bud']['moves'])
-        bud.add_bud(uid,p)
-        msg = f"\n-------------------------\nYour {game[uid]['bud']['name']} gained {xp} XP! Congratutions! Your {game[uid]['bud']['name']} is now level {game[uid]['bud']['lvl']}!"
-    msg = f"\n-------------------------\nYour {game[uid]['bud']['name']} gained {xp} XP!"
-    game[uid]['box'].append(game[uid]['bud'])
+    if game[uid]['bud'] in game[uid]['party']:
+        position = game[uid]['party'].index(game[uid]['bud'])
+        game[uid]['bud']['xp'] += xp
+        if game[uid]['bud']['xp'] >= game[uid]['bud']['lvl'] * 1000:
+            game[uid]['bud']['lvl'] = int(game[uid]['bud']['xp'] / 1000)
+            p = pokelist.Pokemon(game[uid]['bud']['id'],game[uid]['bud']['xp'],game[uid]['bud']['friendship'],game[uid]['bud']['moves'])
+            bud.add_bud(uid,p)
+            msg = f"\n-------------------------\nYour {game[uid]['bud']['name']} gained {xp} XP! Congratutions! Your {game[uid]['bud']['name']} is now level {game[uid]['bud']['lvl']}!"
+        else:
+            msg = f"\n-------------------------\nYour {game[uid]['bud']['name']} gained {xp} XP!"
+        game[uid]['box'].append(game[uid]['bud'])
+        game[uid]['party'][position] = game[uid]['bud']
+    else:
+        game[uid]['bud']['xp'] += xp
+        if game[uid]['bud']['xp'] >= game[uid]['bud']['lvl'] * 1000:
+            game[uid]['bud']['lvl'] = int(game[uid]['bud']['xp'] / 1000)
+            p = pokelist.Pokemon(game[uid]['bud']['id'],game[uid]['bud']['xp'],game[uid]['bud']['friendship'],game[uid]['bud']['moves'])
+            bud.add_bud(uid,p)
+            msg = f"\n-------------------------\nYour {game[uid]['bud']['name']} gained {xp} XP! Congratutions! Your {game[uid]['bud']['name']} is now level {game[uid]['bud']['lvl']}!"
+        else:
+            msg = f"\n-------------------------\nYour {game[uid]['bud']['name']} gained {xp} XP!"
+        game[uid]['box'].append(game[uid]['bud'])
     return msg
         
 
