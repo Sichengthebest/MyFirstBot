@@ -369,6 +369,137 @@ def profile(update,context):
     totalsize = len(pokelist.pokemon)
     update.message.reply_text(f"{user.first_name}'s profile:\n~~~~~~~~~~~~~~~\nTier: {game[uid]['tier']}\nYou have caught {eachcount} pokemon on {totalsize} pokemon.")
 
+def get_release_text(user):
+    uid = str(user.id)
+    msg = ''
+    numcount = 0
+    for pkdict in game[uid]['box']:
+        msg += f'{pkdict["name"]} #{pkdict["id"]}, XP:{pkdict["xp"]}\n'
+        numcount += 1
+    msgsplit = msg.split('\n')
+    msgcount = -1
+    splitmsgs = []
+    for msgs in msgsplit:
+        msgcount += 1
+        if msgcount % 5 == 0:
+            splitmsgs.append(f'{user.first_name}, which pokemon would you like to release? Page {int(msgcount/5)+1}\n~~~~~~~~~~~~~~~~~~~~')
+        splitmsgs[int(msgcount/5)] += f'\n{msgs}'
+    return splitmsgs,numcount
+
+def get_release_members(uid,pagenow):
+    kblist = []
+    kbstart = (pagenow-1)*5
+    kbend = kbstart + 5
+    for index in range(kbstart,kbend):
+        if index > len(game[uid]['box'])-1:
+            return kblist
+        kblist.append({f"{game[uid]['box'][index]['name']}, XP: {game[uid]['box'][index]['xp']}":f"pkrelease:{index}"})
+    return kblist
+
+def release(update,context):
+    user = update.effective_user
+    uid = str(user.id)
+    check_time(uid)
+    pagenow = 1
+    size = 5
+    kblist = get_release_members(uid,pagenow)
+    kb = []
+    splitmsgs,numcount = get_release_text(user)
+    if pagenow * size > numcount:
+        kb = pokeutils.getkb(kblist)
+        update.message.reply_text(splitmsgs[0],reply_markup=kb)
+    else:
+        kblist.append({'➡️':f'pkreleasepages:next:{pagenow+1}:{user.id}'})
+        kb = pokeutils.getkb(kblist)
+        update.message.reply_text(splitmsgs[0],reply_markup=kb)
+
+def releasePagesCallback(update,context):
+    user = update.effective_user
+    query = update.callback_query
+    _,direction,pagenow,curruid = query.data.split(':')
+    if str(user.id) != curruid:
+        query.answer("Yo dude this is someone else's releasing stop clicking these buttons!",show_alert=True)
+        return
+    size = 5
+    splitmsgs,numcount = get_release_text(user)
+    kblist = get_release_members(str(user.id),int(pagenow))
+    if direction == 'next':
+        if (int(pagenow)) * size >= numcount:
+            if int(pagenow) * size <= 0:
+                query.edit_message_text(splitmsgs[int(pagenow-1)])
+            else:
+                kblist.append({'⬅️':f'pkreleasepages:prev:{int(pagenow)-1}:{user.id}'})
+                kb = pokeutils.getkb(kblist)
+                query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
+        else:
+            if (int(pagenow)-1) * size <= 0:
+                kblist.append({'➡️':f'pkreleasepages:next:{int(pagenow)+1}:{user.id}'})
+                kb = pokeutils.getkb(kblist)
+                query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
+            else:
+                kblist.append({'⬅️':f'pkreleasepages:prev:{int(pagenow)-1}:{user.id}'})
+                kblist.append({'➡️':f'pkreleasepages:next:{int(pagenow)+1}:{user.id}'})
+                kb = pokeutils.getkb(kblist)
+                query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
+    else:
+        if (int(pagenow)) * size > numcount:
+            if int(pagenow) * size <= 0:
+                query.edit_message_text(splitmsgs[int(pagenow)-1])
+            else:
+                kblist.append({'⬅️':f'pkreleasepages:prev:{int(pagenow)-1}:{user.id}'})
+                kb = pokeutils.getkb(kblist)
+                query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
+        else:
+            if (int(pagenow)-1) * size <= 0:
+                kblist.append({'➡️':f'pkreleasepages:next:{int(pagenow)+1}:{user.id}'})
+                kb = pokeutils.getkb(kblist)
+                query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
+            else:
+                kblist.append({'⬅️':f'pkreleasepages:prev:{int(pagenow)-1}:{user.id}'})
+                kblist.append({'➡️':f'pkreleasepages:next:{int(pagenow)+1}:{user.id}'})
+                kb = pokeutils.getkb(kblist)
+                query.edit_message_text(splitmsgs[int(pagenow)-1],reply_markup=kb)
+
+def releaseCallback(update,context):
+    user = update.effective_user
+    uid = str(user.id)
+    query = update.callback_query
+    _,index = query.data.split(':')
+    released = {'c':0,'u':0,'r':0,'s':0,'l':0,'ss':0}
+    releasedTrans = {'c':20,'u':35,'r':60,'s':120,'l':1500,'ss':2500}
+    amount = 0
+    for rarity in pokelist.rarity:
+        for id in pokelist.rarity[rarity]:
+            print(id,'vs',game[uid]['box'][int(index)]['id'])
+            if id == game[uid]['box'][int(index)]['id']:
+                released[rarity] += 1
+    for rare in released:
+        amount += releasedTrans[rare]*released[rare]
+    game[uid]['pokecoins'] += amount
+    query.edit_message_text(f"{game[uid]['box'][int(index)]['name']} has been released. You earned {amount} pokecoins.")
+    game[uid]['box'].remove(game[uid]['box'][int(index)])
+    save()
+
+#def releaseDuplicates(update,context):
+#    user = update.effective_user
+#    uid = str(user.id)
+#    query = update.callback_query
+#    _,curruid = query.data.split(':')
+#    if str(uid) != curruid:
+#        query.answer("Yo dude this is someone else's releasing stop clicking these buttons!",show_alert=True)
+#        return
+#    duplicates = []
+#    released = {'c':0,'u':0,'r':0,'s':0}
+#    for pkdict in game[uid]['box']:
+#        if pkdict['id'] in duplicates:
+#            game[uid]['box'].remove(pkdict)
+#        else:
+#            duplicates.append(pkdict['id'])
+#    amount = 0
+#    game[uid]['pokecoins'] += amount
+#    query.edit_message_text(f"You have released:\nx{released['c']} common pokemon;\nx{released['u']} uncommon pokemon;\nx{released['r']} rare pokemon...\n...and x{released['s']} super rare pokemon.\nYou earned {amount} pokecoins.")
+#    save()
+
 def getCommand():
     return [BotCommand('pokemon','Go catch pokemon! // 去捉宠物小精灵！'),
         BotCommand('box','Check the pokemon in your box! // 检查盒子里的宠物小精灵！'),
@@ -383,6 +514,7 @@ def getCommand():
         BotCommand('add_party_member','Add pokemon into your party! // 将宠物小精灵加入您的团队！'),
         BotCommand('view_party','Check your party. // 检查您的团队。'),
         BotCommand('profile','View your profile. // 查看你的个人资料'),
+        BotCommand('release','Release useless pokemon. // 释放无用的宠物小精灵。'),
         BotCommand('battle','Start battling other trainers\'s pokemon! // 开始与其他教练的pokemon作战！')
     ]
 
@@ -395,7 +527,11 @@ def addHandler(dispatcher):
     dispatcher.add_handler(CommandHandler('reset',reset))
     dispatcher.add_handler(CommandHandler('pokedex',pokedex))
     dispatcher.add_handler(CommandHandler('profile',profile))
+    dispatcher.add_handler(CommandHandler('release',release))
     dispatcher.add_handler(CallbackQueryHandler(shopCallback,pattern="^pkbuy:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(shopnumCallback,pattern="^pkbuynum:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(boxCallback,pattern="^pkbox:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(dexCallback,pattern="^pkdex:[A-Za-z0-9_]*"))
+    dispatcher.add_handler(CallbackQueryHandler(releaseCallback,pattern="^pkrelease:[A-Za-z0-9_]*"))
+    dispatcher.add_handler(CallbackQueryHandler(releasePagesCallback,pattern="^pkreleasepages:[A-Za-z0-9_]*"))
+#    dispatcher.add_handler(CallbackQueryHandler(releaseDuplicates,pattern="^pkreleasedup:[A-Za-z0-9_]*"))
