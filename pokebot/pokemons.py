@@ -469,8 +469,7 @@ def releaseCallback(update,context):
     releasedTrans = {'c':20,'u':35,'r':60,'s':120,'l':1500,'ss':2500}
     amount = 0
     for rarity in pokelist.rarity:
-        for id in pokelist.rarity[rarity]:
-            print(id,'vs',game[uid]['box'][int(index)]['id'])
+        for id in pokelist.rarity[rarity]:]
             if id == game[uid]['box'][int(index)]['id']:
                 released[rarity] += 1
     for rare in released:
