@@ -317,8 +317,8 @@ def surprise(update,context):
     if datetime.now() >= dailytime:
         c = random.randint(100,500)
         pb = random.randint(5,15)
-        gb = random.randint(3,10)
-        ub = random.randint(1,5)
+        gb = random.randint(2,5)
+        ub = random.randint(0,3)
         mb = random.randint(0,1)
         game[uid]['pokecoins'] += c
         game[uid]['pb'] += pb
