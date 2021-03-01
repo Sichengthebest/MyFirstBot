@@ -144,7 +144,7 @@ def pokemon(update,context):
         update.message.reply_text(f"Slow it down, cmon!!! You have caught every single pokemon around you, please wait {seconds} seconds!\n放慢速度，呆瓜！！！您已经抓到身边的每只宠物小精灵，请等待{seconds}秒！\nCreator/作者: Sichengthebest")
         return
     spawnbool = random.randint(0,3)
-    if spawnbool == 0:
+    if spawnbool > 1:
         update.message.reply_text('You did not find a pokemon.')
         game[str(uid)]['gametime'] = datetime.strftime(datetime.now() + timedelta(seconds=10),"%Y/%m/%d %H:%M:%S")
         save()
