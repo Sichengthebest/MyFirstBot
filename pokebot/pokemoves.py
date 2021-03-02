@@ -7,5 +7,6 @@ compatible = {
     '006': {'Air Slash':1,'Dragon Claw':1,'Heat Wave':1,'Growl':1,'Scratch':1,'Ember':1,'Smokescreen':1,'Dragon Breath':1,'Fire Fang':1,'Slash':1,'Flamethrower':1,'Scary Face':39,'Fire Spin':46,'Inferno':54,'Flare Blitz':62},
     '007': {'Tackle':1,'Tail Whip':1,'Water Gun':3,'Withdraw':6,'Rapid Spin':9,'Bite':12,'Water Pulse':15,'Protect':18,'Rain Dance':21,'Aqua Tail':24,'Shell Smash':27,'Iron Defence':30,'Hydro Pump':33,'Skull Bash':36},
     '008': {'Tackle':1,'Tail Whip':1,'Water Gun':1,'Withdraw':1,'Rapid Spin':1,'Bite':1,'Water Pulse':1,'Protect':20,'Rain Dance':25,'Aqua Tail':30,'Shell Smash':35,'Iron Defence':40,'Hydro Pump':45,'Skull Bash':50},
-    '009': {'Flash Cannon':1,'Tackle':1,'Tail Whip':1,'Water Gun':1,'Withdraw':1,'Rapid Spin':1,'Bite':1,'Water Pulse':1,'Protect':1,'Rain Dance':1,'Aqua Tail':1,'Shell Smash':1,'Iron Defence':42,'Hydro Pump':49,'Skull Bash':56}
+    '009': {'Flash Cannon':1,'Tackle':1,'Tail Whip':1,'Water Gun':1,'Withdraw':1,'Rapid Spin':1,'Bite':1,'Water Pulse':1,'Protect':1,'Rain Dance':1,'Aqua Tail':1,'Shell Smash':1,'Iron Defence':42,'Hydro Pump':49,'Skull Bash':56},
+    '493': {'Cosmic Power':1,'Natural Gift':1,'Punishment':1,'Seismic Toss':1,'Gravity':10,'Earth Power':20,'Hyper Voice':30,'Extreme Speed':40,'Refresh':50,'Future Sight':60,'Recover':70,'Hyper Beam':80,'Perish Song':90,'Judgement':100}
 }

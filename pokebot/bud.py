@@ -97,11 +97,10 @@ def set_bud(update,context):
     splitmsgs,numcount = get_bud_text(user)
     if pagenow * size > numcount:
         kb = pokeutils.getkb(kblist)
-        update.message.reply_text(splitmsgs[0],reply_markup=kb)
     else:
         kblist.append({'➡️':f'pkbudpages:next:{pagenow+1}:{user.id}'})
         kb = pokeutils.getkb(kblist)
-        update.message.reply_text(splitmsgs[0],reply_markup=kb)
+    update.message.reply_text(splitmsgs[0],reply_markup=kb)
 
 def budNewCallback(update,context):
     user = update.effective_user
@@ -185,11 +184,6 @@ def bud(update,context):
         nextlvlmsg = ' {MAX}'
     else:
         nextlvlmsg = f"\nXP to next level: {game[uid]['bud']['lvl']*1000-game[uid]['bud']['xp']}"
-    movetxt = '\n~~~~~~~~~~~~~~~~~~~~~~~~\nMoves:'
-    for move in game[uid]['bud']['moves']:
-        movetxt += f'\n{move}'
-    if game[uid]['bud']['moves'] == []:
-        movetxt += '\nYour buddy has no moves.'
     update.message.reply_photo(open(pk.getPhoto(),'rb'),caption=f"""Your {game[uid]['bud']['name']} {types}:
 ~~~~~~~~~~~~~~~~~~~~~~~~
 💞 Friendship: {game[uid]['bud']['friendship']}/255
@@ -201,7 +195,9 @@ Level: {game[uid]['bud']['lvl']}{nextlvlmsg}
 💖 HP: {game[uid]['bud']['currhp']}/{game[uid]['bud']['hp']}
 ⚔️ Attack: {game[uid]['bud']['atk']}
 🛡 Defence: {game[uid]['bud']['def']}
-⚡️ Speed: {game[uid]['bud']['speed']}{movetxt}""")
+⚡️ Speed: {game[uid]['bud']['speed']}
+~~~~~~~~~~~~~~~~~~~~~~~~
+Use /view_moves to see your buddy's moves, and /add_moves to get some!""")
 
 def budStartCallback(update,context):
     user = update.effective_user
@@ -262,17 +258,89 @@ def evolve(update,context):
         game[uid]['inv'].remove(stone)
     save()
 
+def get_moves(uid,id,level):
+    kblist = []
+    for move in pokemoves.compatible[id]:
+        if pokemoves.compatible[id][move] <= level:
+            if not move in game[uid]['bud']['moves']:
+                kblist.append({move:f'pkbudmovesadd:{uid}:{move}'})
+    return kblist
+
 def add_moves(update,context):
     user = update.effective_user
     uid = str(user.id)
     check_time(uid)
-    update.message.reply_text('Which move would you like add to add to your buddy?')
+    if not game[uid]['bud']['id'] in pokemoves.compatible:
+        update.message.reply_text('Sorry, but I do not know your buddy\'s moves yet! Please follow the channel https://t.me/pokebotupdates to get the newest updates!')
+        return
+    kblist = get_moves(uid,game[uid]['bud']['id'],game[uid]['bud']['lvl'])
+    kb = pokeutils.getkb(kblist)
+    update.message.reply_text('Which move would you like to add to your buddy?',reply_markup=kb)
+
+def update_moves(moves,uid):
+    game[uid]['box'][game[uid]['box'].index(game[uid]['bud'])]['moves'] = moves
+    if game[uid]['bud'] in game[uid]['party']:
+        game[uid]['party'][game[uid]['party'].index(game[uid]['bud'])]['moves'] = moves
+    game[uid]['bud']['moves'] = moves
+
+def movesAddCallback(update,context):
+    user = update.effective_user
+    uid = str(user.id)
+    query = update.callback_query
+    _,curruid,move = query.data.split(':')
+    if uid != curruid:
+        query.answer("Yo dude this is someone else's moves setting stop clicking these buttons!",show_alert=True)
+        return
+    if game[uid]['bud']['moves'][3] != '':
+        kblist = []
+        for movelearned in game[uid]['bud']['moves']:
+            kblist.append({f'{movelearned}':f'pkbudmovesreplace:{movelearned}:{move}:{uid}'})
+        kb = pokeutils.getkb(kblist)
+        query.edit_message_text('Which move would you like your buddy to forget to learn this new move?',reply_markup=kb)
+        return
+    index = 0
+    movelist = ['','','','']
+    for movename in game[uid]['bud']['moves']:
+        if movename == '':
+            movelist[index] = move
+            update_moves(movelist,uid)
+            break
+        else:
+            movelist[index] = game[uid]['bud']['moves'][index]
+            index += 1
+    query.edit_message_text(f"🎉 Success! Your {game[uid]['bud']['name']} has learned {move}! /view_moves for more details.")
+    save()
+
+def movesReplaceCallback(update,context):
+    user = update.effective_user
+    uid = str(user.id)
+    query = update.callback_query
+    _,oldmove,move,curruid = query.data.split(':')
+    if uid != curruid:
+        query.answer("Yo dude this is someone else's moves setting stop clicking these buttons!",show_alert=True)
+        return
+    movelist = []
+    for movelearned in game[uid]['bud']['moves']:
+        movelist.append(movelearned)
+    movelist[movelist.index(oldmove)] = move
+    update_moves(movelist,uid)
+    query.edit_message_text(f"🎉 Success! Your {game[uid]['bud']['name']} has replaced {oldmove} by {move}! /view_moves for more details.")
+
+def view_moves(update,context):
+    uid = str(update.effective_user.id)
+    if game[uid]['bud']['moves'] == ['','','','']:
+        update.message.reply_text("Your buddy has no moves! Use the /add_moves command to get some!")
+        return
+    update.message.reply_text(f"Your buddy's moves: {game[uid]['bud']['moves']}")
 
 def addHandler(dispatcher):
     dispatcher.add_handler(CommandHandler('view_bud',bud))
     dispatcher.add_handler(CommandHandler('set_bud',set_bud))
     dispatcher.add_handler(CommandHandler('evolve',evolve))
     dispatcher.add_handler(CommandHandler('add_moves',add_moves))
+    dispatcher.add_handler(CommandHandler('view_moves',view_moves))
     dispatcher.add_handler(CallbackQueryHandler(budStartCallback,pattern="^pkbudstart:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(budNewCallback,pattern="^pkbudset:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(budPagesCallback,pattern="^pkbudpages:[A-Za-z0-9_]*"))
+    dispatcher.add_handler(CallbackQueryHandler(movesAddCallback,pattern="^pkbudmovesadd:[A-Za-z0-9_]*"))
+    dispatcher.add_handler(CallbackQueryHandler(movesReplaceCallback,pattern="^pkbudmovesreplace:[A-Za-z0-9_]*"))

@@ -514,7 +514,9 @@ def getCommand():
         BotCommand('view_party','Check your party. // 检查您的团队。'),
         BotCommand('profile','View your profile. // 查看你的个人资料'),
         BotCommand('release','Release useless pokemon. // 释放无用的宠物小精灵。'),
-        BotCommand('battle','Start battling other trainers\'s pokemon! // 开始与其他教练的pokemon作战！')
+        BotCommand('battle','[BETA] Start battling other trainers\'s pokemon! // [测试] 开始与其他教练的pokemon作战！'),
+        BotCommand('add_moves','Add moves to your pokemon! // 给你的pokemon加攻击动作！'),
+        BotCommand('view_moves','Check your buddy\'s moves! // 检查你的好友的攻击动作！')
     ]
 
 def addHandler(dispatcher):
