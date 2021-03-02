@@ -30,10 +30,14 @@ def help(update, context):
 /add_party_member - Add pokemon into your party! // 将宠物小精灵加入您的团队！
 /view_party - Check your party. // 检查您的团队。
 /profile - View your profile. // 查看你的个人资料。
+/add_moves - Add moves to your pokemon! // 给你的pokemon加攻击动作！
+/view_moves - Check your buddy\'s moves! // 检查你的好友的攻击动作！
+/battle - [BETA] Start battling other trainers\'s pokemon! // [测试] 开始与其他教练的pokemon作战！
 -------------------------------------------------
 You can go find the new added commands at https://t.me/pokebotupdates , the official bot updates channel.
 您可以在官方bot更新频道 https://t.me/pokebotupdates 上找到新添加的命令。
 Creator/作者: Sichengthebest""")
+
 def read_file_as_str(file_path):
     # 判断路径文件存在
     if not os.path.isfile(file_path):
