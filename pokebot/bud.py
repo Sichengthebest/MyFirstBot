@@ -205,19 +205,19 @@ def budStartCallback(update,context):
     query = update.callback_query
     _,pk = query.data.split(':')
     if pk == 'bulb':
-        budpk = pokelist.Pokemon('001',0,-1,[])
+        budpk = pokelist.Pokemon('001',4000,-1,[])
         pokemon_new.add_pokemon(uid,budpk)
         add_bud(uid,budpk)
         query.edit_message_media(InputMediaPhoto('https://img.pokemondb.net/artwork/bulbasaur.jpg'))
         query.edit_message_caption('Bulbasaur? Nice choice! He will be with you for the rest of your journey in Kanto. Good luck!')
     elif pk == 'char':
-        budpk = pokelist.Pokemon('004',0,-1,[])
+        budpk = pokelist.Pokemon('004',4000,-1,[])
         pokemon_new.add_pokemon(uid,budpk)
         add_bud(uid,budpk)
         query.edit_message_media(InputMediaPhoto('https://img.pokemondb.net/artwork/charmander.jpg'))
         query.edit_message_caption('Charmander? Nice choice! He will be with you for the rest of your journey in Kanto. Good luck!')
     elif pk == 'squi':
-        budpk = pokelist.Pokemon('007',0,-1,[])
+        budpk = pokelist.Pokemon('007',4000,-1,[])
         pokemon_new.add_pokemon(uid,budpk)
         add_bud(uid,budpk)
         query.edit_message_media(InputMediaPhoto('https://img.pokemondb.net/artwork/squirtle.jpg'))
