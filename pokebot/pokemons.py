@@ -316,19 +316,14 @@ def surprise(update,context):
     dailytime = datetime.strptime(game[uid]['dailytime'],"%Y/%m/%d %H:%M:%S")
     if datetime.now() >= dailytime:
         c = random.randint(100,500)
-        pb = random.randint(5,15)
-        gb = random.randint(2,5)
-        ub = random.randint(0,3)
-        mb = random.randint(0,1)
+        pb = random.randint(3,12)
+        gb = random.randint(0,4)
+        ub = random.randint(0,2)
         game[uid]['pokecoins'] += c
         game[uid]['pb'] += pb
         game[uid]['gb'] += gb
         game[uid]['ub'] += ub
-        if mb == 1:
-            game[uid]['mb'] += mb
-            update.message.reply_text(f"Here are your daily pokecoins, {user.first_name}\n{c} pokecoins were placed in your wallet.\nYou also got:\n{pb} Pokeballs\n{gb} Greatballs\n{ub} Ultraballs\n...and 1 Masterball\n这是您的每天打卡的 pokecoins，{user.first_name}\n{c} pokecoins已被放置在您的钱包中。")
-        else:
-            update.message.reply_text(f"Here are your daily pokecoins, {user.first_name}\n{c} pokecoins were placed in your wallet.\nYou also got:\n{pb} Pokeballs\n{gb} Greatballs\n...and {ub} Ultraballs\n这是您的每天打卡的 pokecoins，{user.first_name}\n{c} pokecoins已被放置在您的钱包中。")
+        update.message.reply_text(f"Here are your daily pokecoins, {user.first_name}\n{c} pokecoins were placed in your wallet.\nYou also got:\n{pb} Pokeballs\n{gb} Greatballs\n...and {ub} Ultraballs\n这是您的每天打卡的 pokecoins，{user.first_name}\n{c} pokecoins已被放置在您的钱包中。")
         dailytime = datetime.now() + timedelta(days=1)
         game[uid]['dailytime'] = dailytime.strftime("%Y/%m/%d %H:%M:%S")
     else:
@@ -506,7 +501,7 @@ def getCommand():
         BotCommand('view_bud','Check on your buddy! // 检查您的好友！'),
         BotCommand('set_bud','Get a new buddy! // 结识新好友！'),
         BotCommand('surprise','Get your daily injection of pokecoins! // 每天注射 Pokecoins！'),
-        BotCommand('pokebal','Check the amount of pokecoins you have. // 检查您有多少 pokecoins。'),
+        BotCommand('bal','Check the amount of pokecoins you have. // 检查您有多少 pokecoins。'),
         BotCommand('pokedex','Check the pokemon you have. // 检查您有的 pokemon。'),
         BotCommand('bag','Check the items you have. // 检查您有的物件。'),
         BotCommand('evolve','Evolve your buddy! // 升级你的伙伴！'),
@@ -524,7 +519,7 @@ def addHandler(dispatcher):
     dispatcher.add_handler(CommandHandler('bag', inv))
     dispatcher.add_handler(CommandHandler('pokemart',shop))
     dispatcher.add_handler(CommandHandler('surprise',surprise))
-    dispatcher.add_handler(CommandHandler('pokebal',bal))
+    dispatcher.add_handler(CommandHandler('bal',bal))
     dispatcher.add_handler(CommandHandler('reset',reset))
     dispatcher.add_handler(CommandHandler('pokedex',pokedex))
     dispatcher.add_handler(CommandHandler('profile',profile))
