@@ -14,7 +14,8 @@ moves = {
         'eraise': [0,0,0],
         'raiser': [0,0,0],
         'eraiser': [0,0,0],
-        'flinch': 0
+        'flinch': 0,
+        'crithit': 0
     },
     "Acid":{
         'power': 40,
@@ -29,7 +30,8 @@ moves = {
         'eraise': [0,-1,0],
         'raiser': [0,0,0],
         'eraiser': [0,20,0],
-        'flinch': 0
+        'flinch': 0,
+        'crithit': 0
     },
     "Acid Armor":{
         'power': 0,
@@ -44,7 +46,40 @@ moves = {
         'eraise': [0,0,0],
         'raiser': [0,100,0],
         'eraiser': [0,0,0],
-        'flinch': 0
+        'flinch': 0,
+        'crithit': 0
+    },
+    "Acid Spray":{
+        'power': 0,
+        'pktype': 'Poison',
+        'acc': 100,
+        'selfdmg': 0,
+        'pp': 20,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [0,2,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,100,0],
+        'flinch': 0,
+        'crithit': 0
+    },
+    "Aerial Ace":{
+        'power': 60,
+        'pktype': 'Flying',
+        'acc': 100,
+        'selfdmg': 0,
+        'pp': 20,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [0,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 0
     },
     "Agility":{
         'power': 0,
@@ -59,7 +94,24 @@ moves = {
         'eraise': [0,0,0],
         'raiser': [0,0,100],
         'eraiser': [0,0,0],
-        'flinch': 0
+        'flinch': 0,
+        'crithit': 0
+    },
+    "Air Cutter":{
+        'power': 60,
+        'pktype': 'Flying',
+        'acc': 100,
+        'selfdmg': 0,
+        'pp': 20,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [0,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 1
     },
     "Amnesia":{
         'power': 0,
@@ -74,7 +126,8 @@ moves = {
         'eraise': [0,0,0],
         'raiser': [0,100,0],
         'eraiser': [0,0,0],
-        'flinch': 0
+        'flinch': 0,
+        'crithit': 0
     }
 }
 
@@ -101,6 +154,7 @@ class Move():
     enemydefraiserate = 0
     enemyspdraiserate = 0
     flinchrate = 0
+    addcritrate = 0
 
     def __init__(self,name:str):
         self.name = name
@@ -117,6 +171,7 @@ class Move():
         self.atkraiserate,self.defraiserate,self.spdraiserate = moves[name]['raiser']
         self.enemyatkraiserate,self.enemydefraiserate,self.ememyspdraiserate = moves[name]['eraiser']
         self.flinchrate = moves[name]['flinch']
+        self.addcritrate = moves[name]['crithit']
 
     def __str__(self):
         return str(self.__dict__)
