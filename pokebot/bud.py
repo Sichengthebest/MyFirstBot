@@ -175,7 +175,7 @@ def bud(update,context):
         elif pokelist.pokemon[game[uid]['bud']['upgrade']]['evolvewith'] == '3':
             evo = 'Evolves with high friendship'
         else:
-            _,stone = game[uid]['bud']['evolvewith'].split(':')
+            _,stone = pokelist.pokemon[game[uid]['bud']['upgrade']]['evolvewith'].split(':')
             evo = f"Evolves by using a/an {pokemon_new.stoneTrans[stone]}. To evolve, use /evolve."
     types = ''
     for type in game[uid]['bud']['pktype']:
@@ -244,7 +244,14 @@ def evolve(update,context):
         game[uid]['box'].append(p)
         add_bud(uid,p)
     elif pokelist.pokemon[game[uid]['bud']['upgrade']]['evolvewith'] == '3':
-        update.message.reply_text('🚧 Friendship is still in development. Please try evolving this pokemon later, and follow https://t.me/botgodupdates for the latest updates! 🚧')
+        if game[uid]['bud']['friendship'] > 220:
+            game[uid]['box'].remove(game[uid]['bud'])
+            p = pokelist.Pokemon(game[uid]['bud']['upgrade'],game[uid]['bud']['xp'],game[uid]['bud']['friendship'],game[uid]['bud']['moves'])
+            game[uid]['box'].append(p)
+            add_bud(uid,p)
+            update.message.reply_text(f"🎉 Success! Your {game[uid]['bud']['name']} evolved into a {pokelist.pokemon[game[uid]['bud']['upgrade']]['name']}! 🎉")
+            return
+        update.message.reply_text(f"Your buddy is not ready to evolve yet! Your buddy evolves into {pokelist.pokemon[game[uid]['bud']['upgrade']]['name']} at 220 friendship, while your buddy has {game[uid]['bud']['friendship']} friendship.")
     else:
         _,stone = pokelist.pokemon[game[uid]['bud']['upgrade']]['evolvewith'].split(':')
         if not stone in game[uid]['inv']:

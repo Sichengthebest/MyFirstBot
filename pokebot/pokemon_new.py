@@ -54,6 +54,7 @@ stoneTrans = {
     'shi': 'Shiny Stone',
     'sun': 'Sun Stone',
     'thu': 'Thunder Stone',
+    'tra': 'Trade',
     'upg': 'Upgrade',
     'wat': 'Water Stone',
     'whi': 'Whipped cream'
@@ -65,10 +66,14 @@ def add_pokemon(uid,p):
 
 def add_xp(uid,xp):
     game[uid]['box'].remove(game[uid]['bud'])
+    game[uid]['bud']['xp'] += xp
     if game[uid]['bud'] in game[uid]['party']:
         position = game[uid]['party'].index(game[uid]['bud'])
-        game[uid]['bud']['xp'] += xp
         if game[uid]['bud']['xp'] >= game[uid]['bud']['lvl'] * 1000:
+            if game[uid]['bud']['xp'] >= 100000:
+                game[uid]['bud']['lvl'] = 100
+                msg = f"\n-------------------------\nYour {game[uid]['bud']['name']} gained {xp} XP!"
+                return msg
             game[uid]['bud']['lvl'] = int(game[uid]['bud']['xp'] / 1000)
             p = pokelist.Pokemon(game[uid]['bud']['id'],game[uid]['bud']['xp'],game[uid]['bud']['friendship'],game[uid]['bud']['moves'])
             bud.add_bud(uid,p)
@@ -78,8 +83,11 @@ def add_xp(uid,xp):
         game[uid]['box'].append(game[uid]['bud'])
         game[uid]['party'][position] = game[uid]['bud']
     else:
-        game[uid]['bud']['xp'] += xp
         if game[uid]['bud']['xp'] >= game[uid]['bud']['lvl'] * 1000:
+            if game[uid]['bud']['xp'] >= 100000:
+                game[uid]['bud']['lvl'] = 100
+                msg = f"\n-------------------------\nYour {game[uid]['bud']['name']} gained {xp} XP!"
+                return msg
             game[uid]['bud']['lvl'] = int(game[uid]['bud']['xp'] / 1000)
             p = pokelist.Pokemon(game[uid]['bud']['id'],game[uid]['bud']['xp'],game[uid]['bud']['friendship'],game[uid]['bud']['moves'])
             bud.add_bud(uid,p)
@@ -184,7 +192,7 @@ def pokemonCatchCallback(update,context):
     money,xp = getadd(rarity)
     pokemonroll = random.randint(1,100)
     if pokemonroll < 5:
-        stones = ['dss','dst','daw','dus','fir','ice','lea','moo','ova','dub','dra','pro','rea','sac','shi','sun','thu','upg','wat','whi','ele','mag','met']
+        stones = ['dss','dst','daw','dus','fir','ice','lea','moo','ova','dub','dra','pro','rea','sac','shi','sun','thu','upg','wat','whi','ele','mag','met','tra']
         stonesave = random.choice(stones)
         stoneget = stoneTrans[stonesave]
     if pokemonroll > catchrate:
