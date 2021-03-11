@@ -73,6 +73,8 @@ def add_xp(uid,xp):
             if game[uid]['bud']['xp'] >= 100000:
                 game[uid]['bud']['lvl'] = 100
                 msg = f"\n-------------------------\nYour {game[uid]['bud']['name']} gained {xp} XP!"
+                game[uid]['box'].append(game[uid]['bud'])
+                game[uid]['party'][position] = game[uid]['bud']
                 return msg
             game[uid]['bud']['lvl'] = int(game[uid]['bud']['xp'] / 1000)
             p = pokelist.Pokemon(game[uid]['bud']['id'],game[uid]['bud']['xp'],game[uid]['bud']['friendship'],game[uid]['bud']['moves'])
@@ -87,6 +89,7 @@ def add_xp(uid,xp):
             if game[uid]['bud']['xp'] >= 100000:
                 game[uid]['bud']['lvl'] = 100
                 msg = f"\n-------------------------\nYour {game[uid]['bud']['name']} gained {xp} XP!"
+                game[uid]['box'].append(game[uid]['bud'])
                 return msg
             game[uid]['bud']['lvl'] = int(game[uid]['bud']['xp'] / 1000)
             p = pokelist.Pokemon(game[uid]['bud']['id'],game[uid]['bud']['xp'],game[uid]['bud']['friendship'],game[uid]['bud']['moves'])
