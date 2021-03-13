@@ -110,7 +110,7 @@ def partyRestartCallback(update,context):
     splitmsgs,numcount = get_party_text(user)
     if pagenow * size > numcount:
         kb = pokeutils.getkb(kblist)
-        update.message.reply_text(splitmsgs[0],reply_markup=kb)
+        query.edit_message_text(splitmsgs[0],reply_markup=kb)
     else:
         kblist.append({'➡️':f'pkpartypages:next:{pagenow+1}:{user.id}'})
         kb = pokeutils.getkb(kblist)
