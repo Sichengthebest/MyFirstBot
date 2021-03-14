@@ -231,7 +231,7 @@ def evolve(update,context):
     if game[uid]['bud'] == {}:
         update.message.reply_text('You do not have a buddy! Use /set_bud to get one!')
         return
-    if pokelist.pokemon[game[uid]['bud']['id']]['upgrade'] == '':
+    if game[uid]['bud']['upgrade'] == '':
         update.message.reply_text(f"Your buddy does not evolve!")
         return
     if pokelist.pokemon[game[uid]['bud']['upgrade']]['evolvewith'] == '1':
@@ -261,7 +261,7 @@ def evolve(update,context):
         game[uid]['box'].remove(game[uid]['bud'])
         p = pokelist.Pokemon(game[uid]['bud']['upgrade'],game[uid]['bud']['xp'],game[uid]['bud']['friendship'],game[uid]['bud']['moves'])
         add_bud(uid,p)
-        game[uid]['box'].append(p)
+        pokemon_new.add_pokemon(uid,p)
         game[uid]['inv'].remove(stone)
     save()
 
