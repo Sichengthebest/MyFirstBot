@@ -20,13 +20,7 @@ CONFIG = {}
 config_file = '/pokebot/poke.json'
 
 run_path = os.getcwd()
-# load_config()
-# CONFIG = migration.migration(CONFIG)   # version.新的
-# save_config()
-
 
 def save_backup_config():
-   # config_file = f"my{datetime.now().strftime("YYMMDD")}.json"  # my20201213.json
-
    with open(config_file, 'w') as configfile:
       json.dump(CONFIG, configfile, indent=4,ensure_ascii=False)
