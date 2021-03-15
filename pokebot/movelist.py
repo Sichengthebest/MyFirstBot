@@ -5,7 +5,7 @@ moves = {
         'power': 20,
         'pktype': 'Grass',
         'acc': 100,
-        'selfdmg': -10,
+        'selfdmg': {'2':50},
         'pp': 25,
         'recharge': False,
         'charge': 0,
@@ -15,13 +15,14 @@ moves = {
         'raiser': [0,0,0],
         'eraiser': [0,0,0],
         'flinch': 0,
-        'crithit': 0
+        'crithit': 0,
+        'priority': 0
     },
     "Acid":{
         'power': 40,
         'pktype': 'Poison',
         'acc': 100,
-        'selfdmg': 0,
+        'selfdmg': {},
         'pp': 30,
         'recharge': False,
         'charge': 0,
@@ -31,13 +32,14 @@ moves = {
         'raiser': [0,0,0],
         'eraiser': [0,20,0],
         'flinch': 0,
-        'crithit': 0
+        'crithit': 0,
+        'priority': 0
     },
     "Acid Armor":{
         'power': 0,
         'pktype': 'Poison',
         'acc': 100,
-        'selfdmg': 0,
+        'selfdmg': {},
         'pp': 20,
         'recharge': False,
         'charge': 0,
@@ -47,13 +49,14 @@ moves = {
         'raiser': [0,100,0],
         'eraiser': [0,0,0],
         'flinch': 0,
-        'crithit': 0
+        'crithit': 0,
+        'priority': 0
     },
     "Acid Spray":{
         'power': 0,
         'pktype': 'Poison',
         'acc': 100,
-        'selfdmg': 0,
+        'selfdmg': {},
         'pp': 20,
         'recharge': False,
         'charge': 0,
@@ -63,13 +66,14 @@ moves = {
         'raiser': [0,0,0],
         'eraiser': [0,100,0],
         'flinch': 0,
-        'crithit': 0
+        'crithit': 0,
+        'priority': 0
     },
     "Aerial Ace":{
         'power': 60,
         'pktype': 'Flying',
         'acc': 100,
-        'selfdmg': 0,
+        'selfdmg': {},
         'pp': 20,
         'recharge': False,
         'charge': 0,
@@ -79,13 +83,31 @@ moves = {
         'raiser': [0,0,0],
         'eraiser': [0,0,0],
         'flinch': 0,
-        'crithit': 0
+        'crithit': 0,
+        'priority': 0
+    },
+    "Aeroblast":{
+        'power': 100,
+        'pktype': 'Flying',
+        'acc': 95,
+        'selfdmg': {},
+        'pp': 5,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [0,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 1,
+        'priority': 0
     },
     "Agility":{
         'power': 0,
         'pktype': 'Psychic',
         'acc': 100,
-        'selfdmg': 0,
+        'selfdmg': {},
         'pp': 30,
         'recharge': False,
         'charge': 0,
@@ -95,13 +117,14 @@ moves = {
         'raiser': [0,0,100],
         'eraiser': [0,0,0],
         'flinch': 0,
-        'crithit': 0
+        'crithit': 0,
+        'priority': 0
     },
     "Air Cutter":{
         'power': 60,
         'pktype': 'Flying',
         'acc': 100,
-        'selfdmg': 0,
+        'selfdmg': {},
         'pp': 20,
         'recharge': False,
         'charge': 0,
@@ -111,13 +134,14 @@ moves = {
         'raiser': [0,0,0],
         'eraiser': [0,0,0],
         'flinch': 0,
-        'crithit': 1
+        'crithit': 1,
+        'priority': 0
     },
     "Amnesia":{
         'power': 0,
         'pktype': 'Psychic',
         'acc': 100,
-        'selfdmg': 0,
+        'selfdmg': {},
         'pp': 20,
         'recharge': False,
         'charge': 0,
@@ -127,7 +151,110 @@ moves = {
         'raiser': [0,100,0],
         'eraiser': [0,0,0],
         'flinch': 0,
-        'crithit': 0
+        'crithit': 0,
+        'priority': 0
+    },
+    "Anchor Shot":{
+        'power': 80,
+        'pktype': 'Steel',
+        'acc': 100,
+        'selfdmg': {},
+        'pp': 20,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [0,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0
+    },
+    "Ancient Power":{
+        'power': 60,
+        'pktype': 'Ground',
+        'acc': 100,
+        'selfdmg': {},
+        'pp': 5,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [1,1,1],
+        'eraise': [0,0,0],
+        'raiser': [100,100,100],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0
+    },
+    "Aqua Jet":{
+        'power': 40,
+        'pktype': 'Water',
+        'acc': 100,
+        'selfdmg': {},
+        'pp': 20,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [0,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 1
+    },
+    "Aqua Ring":{
+        'power': 40,
+        'pktype': 'Water',
+        'acc': 100,
+        'selfdmg': {'3':6.25},
+        'pp': 20,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [0,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0
+    },
+    "Aqua Tail":{
+        'power': 90,
+        'pktype': 'Water',
+        'acc': 90,
+        'selfdmg': {},
+        'pp': 10,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [0,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0
+    },
+    "Arm Thrust":{
+        'power': 15,
+        'pktype': 'Fighting',
+        'acc': 100,
+        'selfdmg': {},
+        'pp': 20,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [2,5],
+        'raise': [0,0,0],
+        'eraise': [0,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0
     }
 }
 
@@ -155,6 +282,7 @@ class Move():
     enemyspdraiserate = 0
     flinchrate = 0
     addcritrate = 0
+    addpriority = 0
 
     def __init__(self,name:str):
         self.name = name
@@ -172,6 +300,7 @@ class Move():
         self.enemyatkraiserate,self.enemydefraiserate,self.ememyspdraiserate = moves[name]['eraiser']
         self.flinchrate = moves[name]['flinch']
         self.addcritrate = moves[name]['crithit']
+        self.addpriority = moves[name]['priority']
 
     def __str__(self):
         return str(self.__dict__)
