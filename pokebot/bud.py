@@ -241,13 +241,13 @@ def evolve(update,context):
         update.message.reply_text(f"🎉 Success! Your {game[uid]['bud']['name']} evolved into a {pokelist.pokemon[game[uid]['bud']['upgrade']]['name']}! 🎉")
         game[uid]['box'].remove(game[uid]['bud'])
         p = pokelist.Pokemon(game[uid]['bud']['upgrade'],game[uid]['bud']['xp'],game[uid]['bud']['friendship'],game[uid]['bud']['moves'])
-        game[uid]['box'].append(p)
+        pokemon_new.add_pokemon(uid,p)
         add_bud(uid,p)
     elif pokelist.pokemon[game[uid]['bud']['upgrade']]['evolvewith'] == '3':
         if game[uid]['bud']['friendship'] > 220:
             game[uid]['box'].remove(game[uid]['bud'])
             p = pokelist.Pokemon(game[uid]['bud']['upgrade'],game[uid]['bud']['xp'],game[uid]['bud']['friendship'],game[uid]['bud']['moves'])
-            game[uid]['box'].append(p)
+            pokemon_new.add_pokemon(uid,p)
             add_bud(uid,p)
             update.message.reply_text(f"🎉 Success! Your {game[uid]['bud']['name']} evolved into a {pokelist.pokemon[game[uid]['bud']['upgrade']]['name']}! 🎉")
             return
