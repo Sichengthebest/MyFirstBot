@@ -16,7 +16,8 @@ moves = {
         'eraiser': [0,0,0],
         'flinch': 0,
         'crithit': 0,
-        'priority': 0
+        'priority': 0,
+        'status': ['',0]
     },
     "Acid":{
         'power': 40,
@@ -33,7 +34,8 @@ moves = {
         'eraiser': [0,20,0],
         'flinch': 0,
         'crithit': 0,
-        'priority': 0
+        'priority': 0,
+        'status': ['',0]
     },
     "Acid Armor":{
         'power': 0,
@@ -50,7 +52,8 @@ moves = {
         'eraiser': [0,0,0],
         'flinch': 0,
         'crithit': 0,
-        'priority': 0
+        'priority': 0,
+        'status': ['',0]
     },
     "Acid Spray":{
         'power': 0,
@@ -67,7 +70,8 @@ moves = {
         'eraiser': [0,100,0],
         'flinch': 0,
         'crithit': 0,
-        'priority': 0
+        'priority': 0,
+        'status': ['',0]
     },
     "Aerial Ace":{
         'power': 60,
@@ -84,7 +88,8 @@ moves = {
         'eraiser': [0,0,0],
         'flinch': 0,
         'crithit': 0,
-        'priority': 0
+        'priority': 0,
+        'status': ['',0]
     },
     "Aeroblast":{
         'power': 100,
@@ -101,7 +106,8 @@ moves = {
         'eraiser': [0,0,0],
         'flinch': 0,
         'crithit': 1,
-        'priority': 0
+        'priority': 0,
+        'status': ['',0]
     },
     "Agility":{
         'power': 0,
@@ -118,7 +124,8 @@ moves = {
         'eraiser': [0,0,0],
         'flinch': 0,
         'crithit': 0,
-        'priority': 0
+        'priority': 0,
+        'status': ['',0]
     },
     "Air Cutter":{
         'power': 60,
@@ -135,7 +142,8 @@ moves = {
         'eraiser': [0,0,0],
         'flinch': 0,
         'crithit': 1,
-        'priority': 0
+        'priority': 0,
+        'status': ['',0]
     },
     "Amnesia":{
         'power': 0,
@@ -152,7 +160,8 @@ moves = {
         'eraiser': [0,0,0],
         'flinch': 0,
         'crithit': 0,
-        'priority': 0
+        'priority': 0,
+        'status': ['',0]
     },
     "Anchor Shot":{
         'power': 80,
@@ -169,7 +178,8 @@ moves = {
         'eraiser': [0,0,0],
         'flinch': 0,
         'crithit': 0,
-        'priority': 0
+        'priority': 0,
+        'status': ['',0]
     },
     "Ancient Power":{
         'power': 60,
@@ -186,7 +196,8 @@ moves = {
         'eraiser': [0,0,0],
         'flinch': 0,
         'crithit': 0,
-        'priority': 0
+        'priority': 0,
+        'status': ['',0]
     },
     "Aqua Jet":{
         'power': 40,
@@ -203,7 +214,8 @@ moves = {
         'eraiser': [0,0,0],
         'flinch': 0,
         'crithit': 0,
-        'priority': 1
+        'priority': 1,
+        'status': ['',0]
     },
     "Aqua Ring":{
         'power': 40,
@@ -220,7 +232,8 @@ moves = {
         'eraiser': [0,0,0],
         'flinch': 0,
         'crithit': 0,
-        'priority': 0
+        'priority': 0,
+        'status': ['',0]
     },
     "Aqua Tail":{
         'power': 90,
@@ -237,7 +250,8 @@ moves = {
         'eraiser': [0,0,0],
         'flinch': 0,
         'crithit': 0,
-        'priority': 0
+        'priority': 0,
+        'status': ['',0]
     },
     "Arm Thrust":{
         'power': 15,
@@ -254,7 +268,512 @@ moves = {
         'eraiser': [0,0,0],
         'flinch': 0,
         'crithit': 0,
-        'priority': 0
+        'priority': 0,
+        'status': ['',0]
+    },
+    "Assurance":{
+        'power': 60,
+        'pktype': 'Dark',
+        'acc': 100,
+        'selfdmg': {},
+        'pp': 20,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [0,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 1,
+        'status': ['',0]
+    },
+    "Astonish":{
+        'power': 30,
+        'pktype': 'Ghost',
+        'acc': 100,
+        'selfdmg': {},
+        'pp': 15,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [0,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 30,
+        'crithit': 0,
+        'priority': 0,
+        'status': ['',0]
+    },
+    "Attack Order":{
+        'power': 90,
+        'pktype': 'Bug',
+        'acc': 100,
+        'selfdmg': {},
+        'pp': 15,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [0,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 1,
+        'priority': 0,
+        'status': ['',0]
+    },
+    "Aura Sphere":{
+        'power': 80,
+        'pktype': 'Fighting',
+        'acc': 100,
+        'selfdmg': {},
+        'pp': 20,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [0,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0,
+        'status': ['',0]
+    },
+    "Aurora Beam":{
+        'power': 65,
+        'pktype': 'Ice',
+        'acc': 100,
+        'selfdmg': {},
+        'pp': 20,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [-1,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [10,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0,
+        'status': ['',0]
+    },
+    "Autotomize":{
+        'power': 0,
+        'pktype': 'Steel',
+        'acc': 0,
+        'selfdmg': {},
+        'pp': 15,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,2],
+        'eraise': [0,0,0],
+        'raiser': [0,0,100],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0,
+        'status': ['',0]
+    },
+    "Baby-Doll Eyes":{
+        'power': 0,
+        'pktype': 'Fairy',
+        'acc': 100,
+        'selfdmg': {},
+        'pp': 30,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [-1,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [100,0,0],
+        'flinch': 0,
+        'crithit': 1,
+        'priority': 0,
+        'status': ['',0]
+    },
+    "Barrage":{
+        'power': 15,
+        'pktype': 'Normal',
+        'acc': 85,
+        'selfdmg': {},
+        'pp': 20,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [2,5],
+        'raise': [0,0,0],
+        'eraise': [0,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0,
+        'status': ['',0]
+    },
+    "Belch":{
+        'power': 120,
+        'pktype': 'Poison',
+        'acc': 90,
+        'selfdmg': {},
+        'pp': 10,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [0,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0,
+        'status': ['',0]
+    },
+    "Belly Drum":{
+        'power': 0,
+        'pktype': 'Normal',
+        'acc': 100,
+        'selfdmg': {'4':50},
+        'pp': 10,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [6,0,0],
+        'eraise': [0,0,0],
+        'raiser': [100,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0,
+        'status': ['',0]
+    },
+    "Bite":{
+        'power': 60,
+        'pktype': 'Dark',
+        'acc': 100,
+        'selfdmg': {},
+        'pp': 25,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [0,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 30,
+        'crithit': 0,
+        'priority': 0,
+        'status': ['',0]
+    },
+    "Blast Burn":{
+        'power': 150,
+        'pktype': 'Fire',
+        'acc': 100,
+        'selfdmg': {},
+        'pp': 5,
+        'recharge': True,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [0,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0,
+        'status': ['',0]
+    },
+    "Blaze Kick":{
+        'power': 85,
+        'pktype': 'Fire',
+        'acc': 90,
+        'selfdmg': {},
+        'pp': 10,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [0,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 1,
+        'priority': 0,
+        'status': ['bur',10]
+    },
+    "Blue Flare":{
+        'power': 130,
+        'pktype': 'Fire',
+        'acc': 85,
+        'selfdmg': {},
+        'pp': 5,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [0,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0,
+        'status': ['bur',20]
+    },
+    "Body Slam":{
+        'power': 85,
+        'pktype': 'Normal',
+        'acc': 100,
+        'selfdmg': {},
+        'pp': 15,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [0,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0,
+        'status': ['par',30]
+    },
+    "Bolt Strike":{
+        'power': 130,
+        'pktype': 'Electric',
+        'acc': 85,
+        'selfdmg': {},
+        'pp': 5,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [0,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0,
+        'status': ['par',20]
+    },
+    "Bone Club":{
+        'power': 65,
+        'pktype': 'Ground',
+        'acc': 85,
+        'selfdmg': {},
+        'pp': 20,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [0,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 10,
+        'crithit': 0,
+        'priority': 0,
+        'status': ['',0]
+    },
+    "Bone Rush":{
+        'power': 25,
+        'pktype': 'Normal',
+        'acc': 90,
+        'selfdmg': {},
+        'pp': 10,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [2,5],
+        'raise': [0,0,0],
+        'eraise': [0,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0,
+        'status': ['',0]
+    },
+    "Bonemerang":{
+        'power': 50,
+        'pktype': 'Normal',
+        'acc': 90,
+        'selfdmg': {},
+        'pp': 10,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [2,2],
+        'raise': [0,0,0],
+        'eraise': [0,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0,
+        'status': ['',0]
+    },
+    "Boomburst":{
+        'power': 140,
+        'pktype': 'Normal',
+        'acc': 100,
+        'selfdmg': {'1':140},
+        'pp': 10,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [0,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0,
+        'status': ['',0]
+    },
+    "Brave Bird":{
+        'power': 120,
+        'pktype': 'Flying',
+        'acc': 100,
+        'selfdmg': {'4':33.3333333333333333333333333},
+        'pp': 15,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [0,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0,
+        'status': ['',0]
+    },
+    "Bubble":{
+        'power': 40,
+        'pktype': 'Water',
+        'acc': 100,
+        'selfdmg': {},
+        'pp': 30,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [0,0,-1],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,10],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0,
+        'status': ['',0]
+    },
+    "Bubble Beam":{
+        'power': 65,
+        'pktype': 'Water',
+        'acc': 100,
+        'selfdmg': {},
+        'pp': 20,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [0,0,-1],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,10],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0,
+        'status': ['',0]
+    },
+    "Bug Bite":{
+        'power': 70,
+        'pktype': 'Bug',
+        'acc': 100,
+        'selfdmg': {},
+        'pp': 20,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [0,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0,
+        'status': ['',0]
+    },
+    "Bug Buzz":{
+        'power': 90,
+        'pktype': 'Bug',
+        'acc': 100,
+        'selfdmg': {},
+        'pp': 10,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [0,0,-1],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,10],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0,
+        'status': ['',0]
+    },
+    "Bulk Up":{
+        'power': 0,
+        'pktype': 'Fighting',
+        'acc': 100,
+        'selfdmg': {},
+        'pp': 20,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [1,1,0],
+        'eraise': [0,0,0],
+        'raiser': [100,100,0],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0,
+        'status': ['',0]
+    },
+    "Bullet Punch":{
+        'power': 40,
+        'pktype': 'Steel',
+        'acc': 100,
+        'selfdmg': {},
+        'pp': 20,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0],
+        'eraise': [0,0,0],
+        'raiser': [0,0,0],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 1,
+        'status': ['',0]
+    },
+    "Charge":{
+        'power': 0,
+        'pktype': 'Electric',
+        'acc': 100,
+        'selfdmg': {},
+        'pp': 20,
+        'recharge': False,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [1,1,0],
+        'eraise': [0,0,0],
+        'raiser': [100,100,0],
+        'eraiser': [0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0,
+        'status': ['',0]
     }
 }
 
@@ -283,6 +802,7 @@ class Move():
     flinchrate = 0
     addcritrate = 0
     addpriority = 0
+    statuschange = ''
 
     def __init__(self,name:str):
         self.name = name
@@ -301,6 +821,7 @@ class Move():
         self.flinchrate = moves[name]['flinch']
         self.addcritrate = moves[name]['crithit']
         self.addpriority = moves[name]['priority']
+        self.statuschange = moves[name]['status']
 
     def __str__(self):
         return str(self.__dict__)
