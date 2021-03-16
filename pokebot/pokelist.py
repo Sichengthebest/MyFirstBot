@@ -1,7 +1,7 @@
 from random import sample
 import random
 from telegram import InputMediaPhoto
-import pokeconfig
+import pokeconfig, pokemoves
 
        
 rarity = {
@@ -523,6 +523,7 @@ pokemon = {
         'hp': [256,350],
         'lvl': [1,100],
         'atk': [141,276],
+        'def': [139,273],
         'speed': [139,273],
         'Catch rate': [25,40,55,100],
         'pktype': ['Fire'],
@@ -1363,7 +1364,7 @@ pokemon = {
         'friendship': 50
     },
     "103":{
-        'name': 'Exeggcutor',
+        'name': 'Exeggutor',
         'hp': [300,394],
         'lvl': [1,100],
         'atk': [175,314],
@@ -5238,7 +5239,7 @@ pokemon = {
     "401":{
         'name': 'Kricketot',
         'hp': [184,278],
-        'lvl': [1,6],
+        'lvl': [1,9],
         'atk': [49,163],
         'def': [78,199],
         'speed': [49,163],
@@ -5251,7 +5252,7 @@ pokemon = {
     "402":{
         'name': 'Kricketune',
         'hp': [264,358],
-        'lvl': [7,9],
+        'lvl': [10,100],
         'atk': [157,295],
         'def': [96,221],
         'speed': [121,251],
@@ -7654,7 +7655,7 @@ pokemon = {
         'friendship': 50
     },
     "584":{
-        'name': 'Vanillite',
+        'name': 'Vanilluxe',
         'hp': [252,346],
         'lvl': [47,100],
         'atk': [175,317],
@@ -7951,6 +7952,318 @@ pokemon = {
         'upgrade': [''],
         'evolvewith': '1',
         'friendship': 50
+    },
+    "607":{
+        'name': 'Litwick',
+        'hp': [210,304],
+        'lvl': [1,40],
+        'atk': [58,174],
+        'def': [103,229],
+        'speed': [40,152],
+        'Catch rate': [75,85,95,100],
+        'pktype': ['Ghost','Fire'],
+        'upgrade': ['608'],
+        'evolvewith': '',
+        'friendship': 50
+    },
+    "608":{
+        'name': 'Lampent',
+        'hp': [230,324],
+        'lvl': [41,100],
+        'atk': [76,196],
+        'def': [112,240],
+        'speed': [103,229],
+        'Catch rate': [65,80,90,100],
+        'pktype': ['Ghost','Fire'],
+        'upgrade': ['609'],
+        'evolvewith': '1',
+        'friendship': 50
+    },
+    "609":{
+        'name': 'Chandelure',
+        'hp': [230,324],
+        'lvl': [25,100],
+        'atk': [103,229],
+        'def': [166,306],
+        'speed': [148,284],
+        'Catch rate': [25,40,55,100],
+        'pktype': ['Ghost','Fire'],
+        'upgrade': [''],
+        'evolvewith': '2:dus',
+        'friendship': 50
+    },
+    "610":{
+        'name': 'Axew',
+        'hp': [202,296],
+        'lvl': [1,37],
+        'atk': [161,300],
+        'def': [107,234],
+        'speed': [94,218],
+        'Catch rate': [65,80,90,100],
+        'pktype': ['Dragon'],
+        'upgrade': ['611'],
+        'evolvewith': '',
+        'friendship': 35
+    },
+    "611":{
+        'name': 'Fraxure',
+        'hp': [242,336],
+        'lvl': [38,47],
+        'atk': [215,366],
+        'def': [130,262],
+        'speed': [125,256],
+        'Catch rate': [45,60,75,100],
+        'pktype': ['Dragon'],
+        'upgrade': ['612'],
+        'evolvewith': '1',
+        'friendship': 35
+    },
+    "612":{
+        'name': 'Haxorus',
+        'hp': [262,356],
+        'lvl': [48,100],
+        'atk': [269,432],
+        'def': [166,306],
+        'speed': [179,322],
+        'Catch rate': [25,40,55,100],
+        'pktype': ['Dragon'],
+        'upgrade': [''],
+        'evolvewith': '1',
+        'friendship': 35
+    },
+    "613":{
+        'name': 'Cubchoo',
+        'hp': [220,314],
+        'lvl': [1,36],
+        'atk': [130,262],
+        'def': [76,196],
+        'speed': [76,196],
+        'Catch rate': [80,90,95,100],
+        'pktype': ['Ice'],
+        'upgrade': ['614'],
+        'evolvewith': '',
+        'friendship': 50
+    },
+    "614":{
+        'name': 'Beartic',
+        'hp': [300,394],
+        'lvl': [37,100],
+        'atk': [238,394],
+        'def': [148,284],
+        'speed': [94,218],
+        'Catch rate': [65,80,90,100],
+        'pktype': ['Ice'],
+        'upgrade': [''],
+        'evolvewith': '1',
+        'friendship': 50 
+    },
+    "615":{
+        'name': 'Cryogonal',
+        'hp': [270,364],
+        'lvl': [1,100],
+        'atk': [94,218],
+        'def': [94,218],
+        'speed': [193,339],
+        'Catch rate': [25,40,55,100],
+        'pktype': ['Ice'],
+        'upgrade': [''],
+        'evolvewith': '',
+        'friendship': 50
+    },
+    "616":{
+        'name': 'Shelmet',
+        'hp': [210,304],
+        'lvl': [1,100],
+        'atk': [76,196],
+        'def': [157,295],
+        'speed': [49,163],
+        'Catch rate': [75,85,95,100],
+        'pktype': ['Bug'],
+        'upgrade': ['617'],
+        'evolvewith': '',
+        'friendship': 50
+    },
+    "617":{
+        'name': 'Accelgor',
+        'hp': [270,364],
+        'lvl': [1,100],
+        'atk': [130,262],
+        'def': [76,196],
+        'speed': [265,427],
+        'Catch rate': [65,80,90,100],
+        'pktype': ['Bug'],
+        'upgrade': [''],
+        'evolvewith': '2:tra',
+        'friendship': 50
+    },
+    "618":{
+        'name': 'Stunfisk',
+        'hp': [328,422],
+        'lvl': [1,100],
+        'atk': [123,254],
+        'def': [155,293],
+        'speed': [62,179],
+        'Catch rate': [25,40,55,100],
+        'pktype': ['Electric'],
+        'upgrade': [''],
+        'evolvewith': '',
+        'friendship': 50
+    },
+    "619":{
+        'name': 'Mienfoo',
+        'hp': [200,294],
+        'lvl': [1,49],
+        'atk': [157,295],
+        'def': [94,218],
+        'speed': [121,251],
+        'Catch rate': [75,85,95,100],
+        'pktype': ['Fighting'],         
+        'upgrade': ['620'],
+        'evolvewith': '',
+        'friendship': 50
+    },
+    "620":{
+        'name': 'Mienshao',
+        'hp': [240,334],
+        'lvl': [50,100],
+        'atk': [229,383],
+        'def': [112,240],
+        'speed': [193,339],
+        'Catch rate': [65,80,90,100],
+        'pktype': ['Fighting'],        
+        'upgrade': [''],
+        'evolvewith': '1',
+        'friendship': 50
+    },
+    "621":{
+        'name': 'Druddigon',
+        'hp': [264,358],
+        'lvl': [1,100],
+        'atk': [220,372],
+        'def': [166,306],
+        'speed': [94,218],
+        'Catch rate': [25,40,55,100],
+        'pktype': ['Dragon'],
+        'upgrade': [''],
+        'evolvewith': '',
+        'friendship': 50
+    },
+    "622":{
+        'name': 'Golett',
+        'hp': [228,322],
+        'lvl': [1,42],
+        'atk': [137,271],
+        'def': [94,218],
+        'speed': [67,185],
+        'Catch rate': [65,80,90,100],
+        'pktype': ['Ground','Ghost'],
+        'upgrade': ['623'],
+        'evolvewith': '',
+        'friendship': 50
+    },
+    "623":{
+        'name': 'Golurk',
+        'hp': [288,382],
+        'lvl': [43,100],
+        'atk': [227,381],
+        'def': [148,284],
+        'speed': [103,229],
+        'Catch rate': [45,60,75,100],
+        'pktype': ['Ground','Ghost'],
+        'upgrade': [''],
+        'evolvewith': '1',
+        'friendship': 50
+    },
+    "624":{
+        'name': 'Pawniard',
+        'hp': [200,294],
+        'lvl': [1,51],
+        'atk': [157,295],
+        'def': [130,262],
+        'speed': [112,240],
+        'Catch rate': [75,85,95,100],
+        'pktype': ['Dark','Steel'],
+        'upgrade': ['625'],
+        'evolvewith': '',
+        'friendship': 50
+    },
+    "625":{
+        'name': 'Excadrill',
+        'hp': [240,334],
+        'lvl': [52,100],
+        'atk': [229,383],
+        'def': [184,328],
+        'speed': [130,262],
+        'Catch rate': [65,80,90,100],
+        'pktype': ['Dark','Steel'],
+        'upgrade': [''],
+        'evolvewith': '1',
+        'friendship': 50
+    },
+    "626":{
+        'name': 'Bouffalant',
+        'hp': [300,394],
+        'lvl': [1,100],
+        'atk': [202,350],
+        'def': [175,317],
+        'speed': [103,229],
+        'Catch rate': [25,40,55,100],
+        'pktype': ['Normal'],
+        'upgrade': [''],
+        'evolvewith': '',
+        'friendship': 50
+    },
+    "627":{
+        'name': 'Rufflet',
+        'hp': [250,344],
+        'lvl': [1,53],
+        'atk': [153,291],
+        'def': [94,218],
+        'speed': [112,240],
+        'Catch rate': [65,80,90,100],
+        'pktype': ['Normal','Flying'],
+        'upgrade': ['628'],
+        'evolvewith': '',
+        'friendship': 50
+    },
+    "628":{
+        'name': 'Braviary',
+        'hp': [310,404],
+        'lvl': [1,54],
+        'atk': [225,379],
+        'def': [139,273],
+        'speed': [148,284],
+        'Catch rate': [45,60,75,100],
+        'pktype': ['Normal','Flying'],
+        'upgrade': [''],
+        'evolvewith': '1',
+        'friendship': 50
+    },
+    "629":{
+        'name': 'Vullaby',
+        'hp': [250,344],
+        'lvl': [1,53],
+        'atk': [103,229],
+        'def': [139,273],
+        'speed': [112,240],
+        'Catch rate': [65,80,90,100],
+        'pktype': ['Dark','Flying'],
+        'upgrade': ['630'],
+        'evolvewith': '',
+        'friendship': 35
+    },
+    "630":{
+        'name': 'Mandibuzz',
+        'hp': [330,424],
+        'lvl': [1,54],
+        'atk': [121,251],
+        'def': [193,339],
+        'speed': [148,284],
+        'Catch rate': [45,60,75,100],
+        'pktype': ['Normal','Flying'],
+        'upgrade': [''],
+        'evolvewith': '1',
+        'friendship': 35
     }
 }
 
@@ -8003,7 +8316,7 @@ class Pokemon():
         else:
             self.friendship = currfr
         if moves == []:
-            self.moves = []
+            self.moves = self.get_moves(self.id,self.lvl)
         else:
             self.moves = moves
     
@@ -8032,5 +8345,19 @@ class Pokemon():
         p.defence = pdict['def']
         return p
 
+    @classmethod
+    def get_moves(self,id:str,lvl:int):
+        availmoves = []
+        for pkid in pokemoves.compatible:
+            if pkid == id:
+                for move in pokemoves.compatible[id]:
+                    if pokemoves.compatible[id][move] <= lvl:
+                        availmoves.append(move)
+        try:
+            moves = random.sample(availmoves,k=2)
+        except ValueError:
+            return []
+        return moves
+    
     def __str__(self):
         return str(self.__dict__)
