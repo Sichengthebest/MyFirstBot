@@ -282,7 +282,6 @@ def shopCallback(update,context):
     elif ball == 'mb':
         ballreal = 'Masterballs'
         query.edit_message_text(f"Aight, you want some {ballreal}. How many? Please choose one.",reply_markup=buynummbkb)
-    save()
 
 def shopnumCallback(update,context):
     user = update.effective_user
@@ -305,6 +304,7 @@ def buy_stuff(user,c,num,ball):
         return f"Sorry, ur just too poor you need {totalcost} pokecoins but you only have {game[uid]['pokecoins']} pokecoins."
     game[uid]['pokecoins'] -= totalcost
     game[uid][ball] += int(num)
+    save()
     return f"Success! @{user.username} , you have bought {num} {ballTrans[f'pk:{ball}']}(s) with {totalcost} pokecoins and you have {game[uid]['pokecoins']} pokecoins remaining.\nYou now have {game[uid]['pb']} Pokeballs, {game[uid]['gb']} Greatballs, {game[uid]['ub']} Ultraballs and {game[uid]['mb']} Masterballs."
 
 def surprise(update,context):
