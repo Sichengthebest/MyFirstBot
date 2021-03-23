@@ -57,7 +57,7 @@ stoneTrans = {
     'tra': 'Trade',
     'upg': 'Upgrade',
     'wat': 'Water Stone',
-    'whi': 'Whipped cream'
+    'whi': 'Whipped Dream'
 }
 
 def add_pokemon(uid,p):
