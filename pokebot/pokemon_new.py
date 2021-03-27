@@ -35,6 +35,7 @@ stoneTrans = {
     'dus': 'Dusk Stone',
     'ele': 'Electirizer',
     'fir': 'Fire Stone',
+    'huk': 'Hoop Unlock Key',
     'ice': 'Ice Stone',
     'icr': 'Icy Rock',
     'kin': 'King\'s Rock',
@@ -141,7 +142,7 @@ def pokemon(update,context):
     user = update.effective_user
     uid = user.id
     id,rarity = pokelist.getPokemon()
-    lvlxp = random.randint(pokelist.pokemon[id]['lvl'][0],pokelist.pokemon[id]['lvl'][1])*1000
+    lvlxp = (random.randint(pokelist.pokemon[id]['lvl'][0],pokelist.pokemon[id]['lvl'][1])-1)*1000
     pk = pokelist.Pokemon(id,lvlxp,-1,[])
     balls = []
     pokemons.check_time(str(uid))
@@ -194,6 +195,7 @@ def pokemonCatchCallback(update,context):
     catchrate = getcatchrate(ball,p)
     money,xp = getadd(rarity)
     pokemonroll = random.randint(1,100)
+    ssroll = random.randint(1,10000)
     if pokemonroll < 5:
         stones = ['dss','dst','daw','dus','fir','ice','lea','moo','ova','dub','dra','pro','rea','sac','shi','sun','thu','upg','wat','whi','ele','mag','met','tra']
         stonesave = random.choice(stones)
@@ -211,6 +213,10 @@ You have earned {money} pokecoins!'''
             if pokemonroll < 5:
                 msg2 = f'{add_xp(str(uid),xp)}\nOh? and you found a/an {stoneget}! Use it to evolve certain pokemon.'
                 game[str(uid)]['inv'].append(stonesave)
+            if ssroll == 10000:
+                ssstone = 'huk'
+                msg2 = f'{add_xp(str(uid),xp)}\nWOW! You have found a {stoneTrans[ssstone]}! Use that stone to evolve certain Special Spawn pokemon!'
+                game[str(uid)]['inv'].append(ssstone)
             else:
                 msg2 = f'{add_xp(str(uid),xp)}'
         game[str(uid)]['pokecoins'] += money
