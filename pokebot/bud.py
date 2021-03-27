@@ -173,10 +173,10 @@ def bud(update,context):
         if pokelist.pokemon[game[uid]['bud']['upgrade']]['evolvewith'] == '1':
             evo = f"Evolves at level {pokelist.pokemon[game[uid]['bud']['id']]['lvl'][1]+1} into {pokelist.pokemon[game[uid]['bud']['upgrade']]['name']}. To evolve, use /evolve ."
         elif pokelist.pokemon[game[uid]['bud']['upgrade']]['evolvewith'] == '3':
-            evo = 'Evolves with high friendship'
+            evo = f"Evolves with high friendship into {pokelist.pokemon[game[uid]['bud']['upgrade']]['name']}. To evolve, use /evolve."
         else:
             _,stone = pokelist.pokemon[game[uid]['bud']['upgrade']]['evolvewith'].split(':')
-            evo = f"Evolves by using a/an {pokemon_new.stoneTrans[stone]}. To evolve, use /evolve."
+            evo = f"Evolves by using a/an {pokemon_new.stoneTrans[stone]} into {pokelist.pokemon[game[uid]['bud']['upgrade']]['name']}. To evolve, use /evolve."
     types = ''
     for type in game[uid]['bud']['pktype']:
         types += f'{typeTrans[type]}'
