@@ -29,7 +29,8 @@ rarityTrans = {
     'r': '🥇',
     's': '🎗',
     'l': '🎖',
-    'ss': '💫'
+    'ss': '💫',
+    'ee': '🏆'
 }
 
 game = pokeconfig.CONFIG["pk"]
@@ -104,7 +105,7 @@ def get_box(user):
     for msgs in msgsplit:
         msgcount += 1
         if msgcount % 10 == 0:
-            splitmsgs.append(f'{user.first_name}\'s box: Page {int(msgcount/10)+1}\n~~~~~~~~~~~~~~~~~~~~\n🥉: Common\n🥈: Uncommon\n🥇: Rare\n🎗: Super rare\n🎖: Legendary\n💫: Special Spawn\n~~~~~~~~~~~~~~~~~~~~')
+            splitmsgs.append(f'{user.first_name}\'s box: Page {int(msgcount/10)+1}\n~~~~~~~~~~~~~~~~~~~~\n🥉: Common\n🥈: Uncommon\n🥇: Rare\n🎗: Super rare\n🎖: Legendary\n💫: Special Spawn\n🏆: Exclusive Evolution\n~~~~~~~~~~~~~~~~~~~~')
         splitmsgs[int(msgcount/10)] += f'\n{msgs}'
     return splitmsgs,numcount,totalcount
 
