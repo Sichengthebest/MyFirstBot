@@ -9674,6 +9674,7 @@ class Pokemon():
     xp = 0
     evolvewith = ''
     friendship = 0
+    status = ''
 
     def getPhoto(self):
         file_name = f"{pokeconfig.run_path}/images/{self.id}.jpg"
@@ -9713,6 +9714,7 @@ class Pokemon():
             self.moves = self.get_moves(self.id,self.lvl)
         else:
             self.moves = moves
+        self.status = ''
     
     @classmethod
     def init(self,id:str,name:str,lvl:int,hp:int,atk:int,pktype:str,upgrade:str,defence:int,speed:int,xp:int,evolvewith:str,friendship:int):

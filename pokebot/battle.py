@@ -46,6 +46,13 @@ unlockkbs = {
     '14': [{'Challenge a Gym Trainer!':'pkbattlechoose:train'},{'Challenge a Gym Leader!':'pkbattlechoose:lead'},{'Challenge an Elite Four!':'pkbattlechoose:e4'},{'Challenge a Champion!':'pkbattlechoose:champ'}]
 }
 
+statusTrans = {
+    'con': '🌀 Confused',
+    'bur': '🔥 Burned',
+    '': 'NO SPECIAL STATUS',
+    'par': '⚡️ Paralysed',
+}
+
 def get_choice(choice,user):
     uid = str(user.id)
     trainers = ['Sunny','Maggie','Wally','Elenia','Parker','Elsa','Gordon','Velenu','Grady','Celine','Rick','Gherma','Steven','Draco']
@@ -95,6 +102,12 @@ def get_choice_gen(choice,user,gen):
     kb = pokeutils.getkb(choicekbs[choice])
     return kb,choicetext
 
+def get_move_buttons(moves):
+    buttons = []
+    for move in moves:
+        buttons.append(InlineKeyboardButton(move,callback_data=f'pkbattlemove:{move}'))
+    return buttons
+
 def save():
     pokeconfig.CONFIG["pk"] = game
     pokeconfig.save_config()
@@ -122,10 +135,30 @@ def battle_choose_gen(update,context):
 
 def battle(update,context):
     user = update.effective_user
+    uid = str(user.id)
     query = update.callback_query
     _, type, choice = query.data.split(':')
     if type == 'train':
         pass
+    elif type == 'lead':
+        opponent_party = trainerlist.trainers[choice]['party']
+        party = game[uid]['party']
+        query.edit_message_text("Battle started!")
+        currentpk_index = 0
+        current_opponent_pk_index = 0
+        current_opponent_pk = pokelist.Pokemon(opponent_party[current_opponent_pk_index]['id'],opponent_party[current_opponent_pk_index]['xp'],-1,opponent_party[current_opponent_pk_index]['moves'])
+        context.bot.send_media_group(chat_id=update.effective_chat.id,media=[InputMediaPhoto(open(pokelist.Pokemon(party[currentpk_index]['id'],0,-1,[]).getPhoto(),'rb'),caption=f"{user.first_name} VS {trainerlist.trainers[choice]['name']}"),InputMediaPhoto(open(current_opponent_pk.getPhoto(),'rb'))])
+        context.bot.send_message(chat_id=update.effective_chat.id,text=f"""{user.first_name}'s {party[currentpk_index]['name']}:
+LEVEL: {party[currentpk_index]['lvl']}
+HP: {party[currentpk_index]['currhp']}/{party[currentpk_index]['hp']}
+Status: {statusTrans[party[currentpk_index]['status']]}
+====================
+{trainerlist.trainers[choice]['name']}'s {current_opponent_pk.name}:
+LEVEL: {current_opponent_pk.lvl}
+HP: {current_opponent_pk.currhp}/{current_opponent_pk.hp}
+Status: {statusTrans[current_opponent_pk.status]}
+====================
+Which move do you want to use?""",reply_markup=InlineKeyboardMarkup([get_move_buttons(party[currentpk_index]['moves'])]))
 
 def restart(update,context):
     user = update.effective_user
