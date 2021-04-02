@@ -35,7 +35,7 @@ stoneTrans = {
     'dus': 'Dusk Stone',
     'ele': 'Electirizer',
     'fir': 'Fire Stone',
-    'huk': 'Hoop Unlock Key',
+    'huk': 'Prison Bottle',
     'ice': 'Ice Stone',
     'icr': 'Icy Rock',
     'kin': 'King\'s Rock',
