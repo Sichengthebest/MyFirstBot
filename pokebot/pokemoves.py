@@ -213,7 +213,7 @@ compatible = {
         'Drill Peck':32
     },
     '022':{
-        'Drill Run':1
+        'Drill Run':1,
         'Growl':1,
         'Leer':1,
         'Peck':1,
