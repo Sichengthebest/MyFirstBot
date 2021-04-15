@@ -194,7 +194,6 @@ moves = {
         'pktype': 'Flying',
         'acc': 95,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -894,7 +893,6 @@ moves = {
         'pktype': 'Water',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -951,7 +949,6 @@ moves = {
         'pktype': 'Bug',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -2124,10 +2121,9 @@ moves = {
     },
     "Drill Run":{
         'power': 80,
-        'pktype': 'Dragon',
+        'pktype': 'Ground',
         'acc': 95,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -2298,7 +2294,6 @@ moves = {
         'pktype': 'Fire',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -2773,10 +2768,9 @@ moves = {
     },
     "Flash Cannon":{
         'power': 80,
-        'pktype': 'Normal',
+        'pktype': 'Steel',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -3022,7 +3016,6 @@ moves = {
         'pktype': 'Normal',
         'acc': 85,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -3249,7 +3242,6 @@ moves = {
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -3466,7 +3458,7 @@ moves = {
     },
     "Heat Wave":{
         'power': 95,
-        'pktype': 'Grass',
+        'pktype': 'Fire',
         'acc': 90,
         'selfdmg': {},
         'recharge': False, 
