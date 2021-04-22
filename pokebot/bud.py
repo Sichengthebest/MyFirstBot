@@ -53,7 +53,7 @@ def check_time(uid):
         }
 
 def add_bud(uid,p):  
-    pdict = {'id':p.id,'name':p.name,'hp':p.hp,'currhp':p.currhp,'atk':p.atk,'def':p.defence,'lvl':p.lvl,'xp':p.xp,'pktype':p.pktype,'upgrade':p.upgrade,'speed':p.speed,'evolvewith':p.evolvewith,'friendship':p.friendship,'moves':p.moves}
+    pdict = {'id':p.id,'name':p.name,'hp':p.hp,'currhp':p.currhp,'atk':p.atk,'def':p.defence,'lvl':p.lvl,'xp':p.xp,'pktype':p.pktype,'upgrade':p.upgrade,'speed':p.speed,'evolvewith':p.evolvewith,'friendship':p.friendship,'moves':p.moves,'status':p.status}
     game[uid]['bud'] = pdict
 
 def get_buds(uid,pagenow):
@@ -240,13 +240,13 @@ def evolve(update,context):
             return
         update.message.reply_text(f"🎉 Success! Your {game[uid]['bud']['name']} evolved into a {pokelist.pokemon[game[uid]['bud']['upgrade']]['name']}! 🎉")
         game[uid]['box'].remove(game[uid]['bud'])
-        p = pokelist.Pokemon(game[uid]['bud']['upgrade'],game[uid]['bud']['xp'],game[uid]['bud']['friendship'],game[uid]['bud']['moves'])
+        p = pokelist.Pokemon(game[uid]['bud']['upgrade'],game[uid]['bud']['xp'],game[uid]['bud']['friendship'],[])
         pokemon_new.add_pokemon(uid,p)
         add_bud(uid,p)
     elif pokelist.pokemon[game[uid]['bud']['upgrade']]['evolvewith'] == '3':
         if game[uid]['bud']['friendship'] > 220:
             game[uid]['box'].remove(game[uid]['bud'])
-            p = pokelist.Pokemon(game[uid]['bud']['upgrade'],game[uid]['bud']['xp'],game[uid]['bud']['friendship'],game[uid]['bud']['moves'])
+            p = pokelist.Pokemon(game[uid]['bud']['upgrade'],game[uid]['bud']['xp'],game[uid]['bud']['friendship'],[])
             pokemon_new.add_pokemon(uid,p)
             add_bud(uid,p)
             update.message.reply_text(f"🎉 Success! Your {game[uid]['bud']['name']} evolved into a {pokelist.pokemon[game[uid]['bud']['upgrade']]['name']}! 🎉")
@@ -259,7 +259,7 @@ def evolve(update,context):
             return
         update.message.reply_text(f"🎉 Success! Your {game[uid]['bud']['name']} evolved into a {pokelist.pokemon[game[uid]['bud']['upgrade']]['name']}! 🎉")
         game[uid]['box'].remove(game[uid]['bud'])
-        p = pokelist.Pokemon(game[uid]['bud']['upgrade'],game[uid]['bud']['xp'],game[uid]['bud']['friendship'],game[uid]['bud']['moves'])
+        p = pokelist.Pokemon(game[uid]['bud']['upgrade'],game[uid]['bud']['xp'],game[uid]['bud']['friendship'],[])
         add_bud(uid,p)
         pokemon_new.add_pokemon(uid,p)
         game[uid]['inv'].remove(stone)

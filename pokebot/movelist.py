@@ -967,7 +967,6 @@ moves = {
         'pktype': 'Fighting',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -1043,7 +1042,6 @@ moves = {
         'pktype': 'Fire',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -1347,7 +1345,6 @@ moves = {
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -1385,7 +1382,6 @@ moves = {
         'pktype': 'Psychic',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -1423,7 +1419,6 @@ moves = {
         'pktype': 'Grass',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -1432,6 +1427,24 @@ moves = {
         'eraise': [0,0,0,-2],
         'raiser': [0,0,0,0],
         'eraiser': [0,0,0,100],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0,
+        'status': []
+    },
+    "Covet":{
+        'power': 60,
+        'pktype': 'Normal',
+        'acc': 100,
+        'selfdmg': {},
+        'recharge': False, 
+        'invulnerable': 0,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0,0],
+        'eraise': [0,0,0,0],
+        'raiser': [0,0,0,0],
+        'eraiser': [0,0,0,0],
         'flinch': 0,
         'crithit': 0,
         'priority': 0,
@@ -1461,7 +1474,6 @@ moves = {
         'pktype': 'Fighting',
         'acc': 80,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -1480,7 +1492,6 @@ moves = {
         'pktype': 'Poison',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False,
         'invulnerable': 0,
         'charge': 0,
@@ -2218,7 +2229,6 @@ moves = {
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -3185,7 +3195,6 @@ moves = {
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -3959,6 +3968,24 @@ moves = {
         'crithit': 0,
         'priority': 0,
         'status': []
+    },
+    "Inferno":{
+        'power': 100,
+        'pktype': 'Fire',
+        'acc': 50,
+        'selfdmg': {},
+        'recharge': False, 
+        'invulnerable': 0,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0,0],
+        'eraise': [0,0,0,0],
+        'raiser': [0,0,0,0],
+        'eraiser': [0,0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0,
+        'status': ['bur',100]
     },
     "Iron Defense":{
         'power': 0,
