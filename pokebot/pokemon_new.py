@@ -115,16 +115,16 @@ def getcatchrate(ball,p):
 
 def getadd(rarity):
     if rarity == 'c':
-        money = random.randint(60,100)
+        money = random.randint(100,140)
         xp = random.randint(5,10)
     elif rarity == 'u':
-        money = random.randint(250,300)
+        money = random.randint(300,350)
         xp = random.randint(15,25)
     elif rarity == 'r':
-        money = random.randint(530,590)
+        money = random.randint(550,610)
         xp = random.randint(30,40)
     elif rarity == 's':
-        money = random.randint(1140,1210)
+        money = random.randint(1200,1270)
         xp = random.randint(135,150)
     elif rarity == 'l':
         money = 20000
@@ -170,6 +170,7 @@ def pokemon(update,context):
         balls.append({'Ultraball':f'pkcatch:ub:{uid}:{id}:{rarity}'})
     if game[str(uid)]['mb'] > 0:
         balls.append({'Masterball':f'pkcatch:mb:{uid}:{id}:{rarity}'})
+    balls.append({'Abandon':f'pkcatch:go:{uid}:{id}:{rarity}'})
     kb = pokeutils.getkb(balls)
     update.message.reply_photo(open(pk.getPhoto(),'rb'), caption=f"""A wild {pk.name} appeared!
 Rarity: {rarityTrans[rarity]}
@@ -189,6 +190,12 @@ def pokemonCatchCallback(update,context):
     query = update.callback_query
     if str(uid) != curruid:
         query.answer("你是谁？你在哪儿？你想做啥？这是别人的，大笨蛋！",show_alert=True)
+        return
+    if ball == 'go':
+        query.edit_message_caption(f'You fled the {pokelist.pokemon[pkmonid]["name"]}.')
+        game[str(uid)]['spawn'] = False
+        game[str(uid)]['gametime'] = datetime.strftime(datetime.now() + timedelta(seconds=10),"%Y/%m/%d %H:%M:%S")
+        save()
         return
     lvlxp = random.randint(pokelist.pokemon[pkmonid]['lvl'][0],pokelist.pokemon[pkmonid]['lvl'][1])*1000
     p = pokelist.Pokemon(pkmonid,lvlxp,-1,[])
