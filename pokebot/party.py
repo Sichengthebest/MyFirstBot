@@ -82,6 +82,9 @@ def partyAddCallback(update,context):
     uid = str(user.id)
     query = update.callback_query
     _,index = query.data.split(':')
+    if game[uid]['box'][int(index)]['moves'] == []:
+        query.answer('This pokemon has no moves!', show_alert=True)
+        return
     kb = pokeutils.getkb([{'1':f'pkpartyposition:{index}:1','2':f'pkpartyposition:{index}:2','3':f'pkpartyposition:{index}:3','4':f'pkpartyposition:{index}:4','5':f'pkpartyposition:{index}:5','6':f'pkpartyposition:{index}:6'}])
     query.edit_message_text(f"{game[uid]['box'][int(index)]['name']}? OK! In which position in your party would you like to put him/her?",reply_markup=kb)
 
@@ -131,7 +134,10 @@ def show_party(update,context):
             if pkdict == {}:
                 msg += f"{count}. Empty\n~~~~~~~~~~~~~~~~~~~~\n"
             else:
-                msg += f"{count}. {pkdict['name']}\nLevel: {pkdict['lvl']}      💖 HP: {pkdict['currhp']}/{pkdict['hp']}\n~~~~~~~~~~~~~~~~~~~~~\n"
+                la = ''
+                for move in pkdict['moves']:
+                    la += f'\n{move}'
+                msg += f"{count}. {pkdict['name']}\nLevel: {pkdict['lvl']}      💖 HP: {pkdict['currhp']}/{pkdict['hp']}\nMoves: {la}\n~~~~~~~~~~~~~~~~~~~~~\n"
     update.message.reply_text(msg)
 
 def get_party_text(user):

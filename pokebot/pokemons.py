@@ -496,23 +496,24 @@ def releaseCallback(update,context):
 #    save()
 
 def getCommand():
-    return [BotCommand('pokemon','Go catch pokemon! // 去捉宠物小精灵！'),
-        BotCommand('box','Check the pokemon in your box! // 检查盒子里的宠物小精灵！'),
-        BotCommand('pokemart','Buy useful stuff for your adventure! // 为您的冒险购买有用的东西！'),
-        BotCommand('view_bud','Check on your buddy! // 检查您的好友！'),
-        BotCommand('set_bud','Get a new buddy! // 结识新好友！'),
-        BotCommand('surprise','Get your daily injection of pokecoins! // 每天注射 Pokecoins！'),
-        BotCommand('bal','Check the amount of pokecoins you have. // 检查您有多少 pokecoins。'),
-        BotCommand('pokedex','Check the pokemon you have. // 检查您有的 pokemon。'),
-        BotCommand('bag','Check the items you have. // 检查您有的物件。'),
-        BotCommand('evolve','Evolve your buddy! // 升级你的伙伴！'),
-        BotCommand('add_party_member','Add pokemon into your party! // 将宠物小精灵加入您的团队！'),
-        BotCommand('view_party','Check your party. // 检查您的团队。'),
-        BotCommand('profile','View your profile. // 查看你的个人资料'),
-        BotCommand('release','Release useless pokemon. // 释放无用的宠物小精灵。'),
-        BotCommand('battle','[BETA] Start battling other trainers\'s pokemon! // [测试] 开始与其他教练的pokemon作战！'),
-        BotCommand('add_moves','Add moves to your pokemon! // 给你的pokemon加攻击动作！'),
-        BotCommand('view_moves','Check your buddy\'s moves! // 检查你的好友的攻击动作！')
+    return [
+        BotCommand('pokemon','Go catch pokemon!'),
+        BotCommand('box','Check the pokemon in your box!'),
+        BotCommand('pokemart','Buy useful stuff for your adventure!'),
+        BotCommand('view_bud','Check on your buddy!'),
+        BotCommand('set_bud','Get a new buddy!'),
+        BotCommand('surprise','Get your daily injection of pokecoins!'),
+        BotCommand('bal','Check the amount of pokecoins you have.'),
+        BotCommand('pokedex','Check the pokemon you have.'),
+        BotCommand('bag','Check the items you have.'),
+        BotCommand('evolve','Evolve your pokemon!'),
+        BotCommand('add_party_member','Add pokemon into your party!'),
+        BotCommand('view_party','Check your party.'),
+        BotCommand('profile','View your profile.'),
+        BotCommand('release','Release useless pokemon.'),
+        BotCommand('battle','[BETA] Start battling other trainers\'s pokemon!'),
+        BotCommand('add_moves','Add moves to your pokemon!'),
+        BotCommand('view_moves','Check your buddy\'s moves!')
     ]
 
 def addHandler(dispatcher):
