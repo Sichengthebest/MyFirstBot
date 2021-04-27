@@ -10,7 +10,7 @@ trainers = {
             "id": "095",
             "xp": 13000,
             "friendship": -1,
-            "moves": ['Tackle','Screech','Bide','Bind']
+            "moves": ['Tackle','Screech']
         }]
     },
     '002': {
