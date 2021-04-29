@@ -103,22 +103,28 @@ def set_bud(update,context):
             kb = pokeutils.getkb(kblist)
         update.message.reply_text(splitmsgs[0],reply_markup=kb)
     else:
-        oldpk = context.args[0]
+        oldpk = context.args[0].replace('_',' ')
         lala = False
-        pk = oldpk.capitalize()
+        pk = oldpk.title().replace(' ','-')
         count = 0
+        counts = []
+        buttons = []
         for pkdict in game[uid]['box']:
             if pk == pkdict['name']:
                 lala = True
-                break
+                counts.append(count)
             count += 1
         if not lala:
             update.message.reply_text('This pokemon is not in your box!')
             return
+        for index in counts:
+            buttons.append({f"{game[uid]['box'][index]['name']}, XP: {game[uid]['box'][index]['xp']}":f"pkbudset:{index}"})
+        kb = pokeutils.getkb(buttons)
+        update.message.reply_text(f'Which {pk} are you choosing?',reply_markup=kb)
         game[uid]['bud'] = game[uid]['box'][count]
         update.message.reply_text(f"{game[uid]['box'][count]['name']}? He/she will be your best buddy! Use /view_bud to have the details!")
         save()
-
+    
 def budNewCallback(update,context):
     user = update.effective_user
     uid = str(user.id)
@@ -268,6 +274,7 @@ def evolve(update,context):
                 pokemon_new.add_pokemon(uid,p)
                 add_bud(uid,p)
                 update.message.reply_text(f"🎉 Success! Your {game[uid]['bud']['name']} evolved into a {pokelist.pokemon[game[uid]['bud']['upgrade']]['name']}! 🎉")
+                save()
                 return
             update.message.reply_text(f"Your buddy is not ready to evolve yet! Your buddy evolves into {pokelist.pokemon[game[uid]['bud']['upgrade']]['name']} at 220 friendship, while your buddy has {game[uid]['bud']['friendship']} friendship.")
         else:
@@ -282,51 +289,60 @@ def evolve(update,context):
             pokemon_new.add_pokemon(uid,p)
             game[uid]['inv'].remove(stone)
     else:
-        oldpk = context.args[0]
+        oldpk = context.args[0].replace('_',' ').replace('-',' ')
         lala = False
-        pk = oldpk.capitalize()
+        pk = oldpk.title().replace(' ','-')
         count = 0
+        counts = []
+        buttons = []
         for pkdict in game[uid]['box']:
             if pk == pkdict['name']:
                 lala = True
-                break
+                counts.append(count)
             count += 1
         if not lala:
             update.message.reply_text('This pokemon is not in your box!')
             return
-        if game[uid]['box'][count]['upgrade'] == '':
-            update.message.reply_text(f"This pokemon does not evolve!")
-            return
-        if pokelist.pokemon[game[uid]['box'][count]['upgrade']]['evolvewith'] == '1':
-            if game[uid]['box'][count]['lvl'] < pokelist.pokemon[game[uid]['box'][count]['upgrade']]['lvl'][0]:
-                update.message.reply_text(f"Your buddy is not ready to evolve yet! Your buddy evolves into {pokelist.pokemon[game[uid]['box'][count]['upgrade']]['name']} at level {pokelist.pokemon[game[uid]['box'][count]['upgrade']]['lvl'][0]}.")
-                return
-            update.message.reply_text(f"🎉 Success! Your {game[uid]['box'][count]['name']} evolved into a {pokelist.pokemon[game[uid]['box'][count]['upgrade']]['name']}! 🎉")
-            game[uid]['box'].remove(game[uid]['box'][count])
-            p = pokelist.Pokemon(game[uid]['box'][count]['upgrade'],game[uid]['box'][count]['xp'],game[uid]['box'][count]['friendship'],[])
-            pokemon_new.add_pokemon(uid,p)
-            add_bud(uid,p)
-        elif pokelist.pokemon[game[uid]['box'][count]['upgrade']]['evolvewith'] == '3':
-            if game[uid]['box'][count]['friendship'] > 220:
-                game[uid]['box'].remove(game[uid]['box'][count])
-                p = pokelist.Pokemon(game[uid]['box'][count]['upgrade'],game[uid]['box'][count]['xp'],game[uid]['box'][count]['friendship'],[])
-                pokemon_new.add_pokemon(uid,p)
-                add_bud(uid,p)
-                update.message.reply_text(f"🎉 Success! Your {game[uid]['box'][count]['name']} evolved into a {pokelist.pokemon[game[uid]['box'][count]['upgrade']]['name']}! 🎉")
-                return
-            update.message.reply_text(f"Your buddy is not ready to evolve yet! Your buddy evolves into {pokelist.pokemon[game[uid]['box'][count]['upgrade']]['name']} at 220 friendship, while your buddy has {game[uid]['box'][count]['friendship']} friendship.")
-        else:
-            _,stone = pokelist.pokemon[game[uid]['box'][count]['upgrade']]['evolvewith'].split(':')
-            if not stone in game[uid]['inv']:
-                update.message.reply_text(f"You do not have the stone needed! Your buddy needs a {pokemon_new.stoneTrans[stone]} to evolve!")
-                return
-            update.message.reply_text(f"🎉 Success! Your {game[uid]['box'][count]['name']} evolved into a {pokelist.pokemon[game[uid]['box'][count]['upgrade']]['name']}! 🎉")
-            game[uid]['box'].remove(game[uid]['box'][count])
-            p = pokelist.Pokemon(game[uid]['box'][count]['upgrade'],game[uid]['box'][count]['xp'],game[uid]['box'][count]['friendship'],[])
-            add_bud(uid,p)
-            pokemon_new.add_pokemon(uid,p)
-            game[uid]['inv'].remove(stone)
+        for index in counts:
+            buttons.append({f"{game[uid]['box'][index]['name']}, XP: {game[uid]['box'][index]['xp']}":f"pkevochoose:{index}"})
+        kb = pokeutils.getkb(buttons)
+        update.message.reply_text(f'Which {pk} are you choosing?',reply_markup=kb)
     save()
+
+def evolveChooseCallback(update,context):
+    user = update.effective_user
+    uid = str(user.id)
+    query = update.callback_query
+    _,count = query.data.split(':')
+    if game[uid]['box'][count]['upgrade'] == '':
+        update.message.reply_text(f"This pokemon does not evolve!")
+        return
+    if pokelist.pokemon[game[uid]['box'][count]['upgrade']]['evolvewith'] == '1':
+        if game[uid]['box'][count]['lvl'] < pokelist.pokemon[game[uid]['box'][count]['upgrade']]['lvl'][0]:
+            update.message.reply_text(f"Your buddy is not ready to evolve yet! Your buddy evolves into {pokelist.pokemon[game[uid]['box'][count]['upgrade']]['name']} at level {pokelist.pokemon[game[uid]['box'][count]['upgrade']]['lvl'][0]}.")
+            return
+        update.message.reply_text(f"🎉 Success! Your {game[uid]['box'][count]['name']} evolved into a {pokelist.pokemon[game[uid]['box'][count]['upgrade']]['name']}! 🎉")
+        game[uid]['box'].remove(game[uid]['box'][count])
+        p = pokelist.Pokemon(game[uid]['box'][count]['upgrade'],game[uid]['box'][count]['xp'],game[uid]['box'][count]['friendship'],[])
+        pokemon_new.add_pokemon(uid,p)
+    elif pokelist.pokemon[game[uid]['box'][count]['upgrade']]['evolvewith'] == '3':
+        if game[uid]['box'][count]['friendship'] > 220:
+            game[uid]['box'].remove(game[uid]['box'][count])
+            p = pokelist.Pokemon(game[uid]['box'][count]['upgrade'],game[uid]['box'][count]['xp'],game[uid]['box'][count]['friendship'],[])
+            pokemon_new.add_pokemon(uid,p)
+            update.message.reply_text(f"🎉 Success! Your {game[uid]['box'][count]['name']} evolved into a {pokelist.pokemon[game[uid]['box'][count]['upgrade']]['name']}! 🎉")
+            return
+        update.message.reply_text(f"This pokemon is not ready to evolve yet! Your buddy evolves into {pokelist.pokemon[game[uid]['box'][count]['upgrade']]['name']} at 220 friendship, while your buddy has {game[uid]['box'][count]['friendship']} friendship.")
+    else:
+        _,stone = pokelist.pokemon[game[uid]['box'][count]['upgrade']]['evolvewith'].split(':')
+        if not stone in game[uid]['inv']:
+            update.message.reply_text(f"You do not have the stone needed! Your buddy needs a {pokemon_new.stoneTrans[stone]} to evolve!")
+            return
+        update.message.reply_text(f"🎉 Success! Your {game[uid]['box'][count]['name']} evolved into a {pokelist.pokemon[game[uid]['box'][count]['upgrade']]['name']}! 🎉")
+        game[uid]['box'].remove(game[uid]['box'][count])
+        p = pokelist.Pokemon(game[uid]['box'][count]['upgrade'],game[uid]['box'][count]['xp'],game[uid]['box'][count]['friendship'],[])
+        pokemon_new.add_pokemon(uid,p)
+        game[uid]['inv'].remove(stone)
 
 def get_moves(uid,id,level):
     kblist = []
@@ -412,5 +428,6 @@ def addHandler(dispatcher):
     dispatcher.add_handler(CallbackQueryHandler(budStartCallback,pattern="^pkbudstart:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(budNewCallback,pattern="^pkbudset:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(budPagesCallback,pattern="^pkbudpages:[A-Za-z0-9_]*"))
+    dispatcher.add_handler(CallbackQueryHandler(evolveChooseCallback,pattern="^pkevochoose:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(movesAddCallback,pattern="^pkbudmovesadd:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(movesReplaceCallback,pattern="^pkbudmovesreplace:[A-Za-z0-9_]*"))

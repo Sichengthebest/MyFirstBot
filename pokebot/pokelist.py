@@ -5394,7 +5394,7 @@ pokemon = {
         'friendship': 70
     },
     "413a":{
-        'name': 'Wormadam - Plant Cloak',
+        'name': 'Wormadam-Plant Cloak',
         'hp': [230,324],
         'lvl': [20,100],
         'atk': [110,238],
@@ -5407,7 +5407,7 @@ pokemon = {
         'friendship': 70
     },
     "413b":{
-        'name': 'Wormadam - Sandy Cloak',
+        'name': 'Wormadam-Sandy Cloak',
         'hp': [230,324],
         'lvl': [20,100],
         'atk': [146,282],
@@ -5420,7 +5420,7 @@ pokemon = {
         'friendship': 70
     },
     "413c":{
-        'name': 'Wormadam - Trash Cloak',
+        'name': 'Wormadam-Trash Cloak',
         'hp': [230,324],
         'lvl': [20,100],
         'atk': [128,260],
@@ -7201,7 +7201,7 @@ pokemon = {
         'friendship': 70
     },
     "550a":{
-        'name': 'Red-Striped Basculin',
+        'name': 'Red-Striped-Basculin',
         'hp': [250,344],
         'lvl': [1,100],
         'atk': [170,311],
@@ -7214,7 +7214,7 @@ pokemon = {
         'friendship': 70
     },
     "550b":{
-        'name': 'Blue-Striped Basculin',
+        'name': 'Blue-Striped-Basculin',
         'hp': [250,344],
         'lvl': [1,100],
         'atk': [170,311],
@@ -8397,7 +8397,7 @@ pokemon = {
         'friendship': 35
     },
     "641a":{
-        'name': 'Tornadus-Incarnate Forme',
+        'name': 'Tornadus-Incarnate-Forme',
         'hp': [268,362],
         'lvl': [1,100],
         'atk': [211,361],
@@ -8410,7 +8410,7 @@ pokemon = {
         'friendship': 35
     },
     "641b":{
-        'name': 'Tornadus-Therian Forme',
+        'name': 'Tornadus-Therian-Forme',
         'hp': [268,362],
         'lvl': [1,100],
         'atk': [184,328],
@@ -8423,7 +8423,7 @@ pokemon = {
         'friendship': 35
     },
     "642a":{
-        'name': 'Thundurus-Incarnate Forme',
+        'name': 'Thundurus-Incarnate-Forme',
         'hp': [268,362],
         'lvl': [1,100],
         'atk': [211,361],
@@ -8436,7 +8436,7 @@ pokemon = {
         'friendship': 35
     },
     "642b":{
-        'name': 'Thundurus-Therian Forme',
+        'name': 'Thundurus-Therian-Forme',
         'hp': [268,362],
         'lvl': [1,100],
         'atk': [193,339],
@@ -8475,7 +8475,7 @@ pokemon = {
         'friendship': 0
     },
     "645a":{
-        'name': 'Landorus-Incarnate Forme',
+        'name': 'Landorus-Incarnate-Forme',
         'hp': [288,382],
         'lvl': [1,100],
         'atk': [229,383],
@@ -8488,7 +8488,7 @@ pokemon = {
         'friendship': 35
     },
     "645b":{
-        'name': 'Landorus-Therian Forme',
+        'name': 'Landorus-Therian-Forme',
         'hp': [288,382],
         'lvl': [1,100],
         'atk': [265,427],
@@ -8527,7 +8527,7 @@ pokemon = {
         'friendship': 35
     },
     "647b":{
-        'name': 'Keldeo-Resolute Forme',
+        'name': 'Keldeo-Resolute-Forme',
         'hp': [292,386],
         'lvl': [1,100],
         'atk': [134,267],
@@ -8540,7 +8540,7 @@ pokemon = {
         'friendship': 35
     },
     "648a":{
-        'name': 'Meloetta-Aria Forme',
+        'name': 'Meloetta-Aria-Forme',
         'hp': [310,404],
         'lvl': [1,100],
         'atk': [143,278],
@@ -8553,7 +8553,7 @@ pokemon = {
         'friendship': 100
     },
     "648b":{
-        'name': 'Meloetta-Pirouette Forme',
+        'name': 'Meloetta-Pirouette-Forme',
         'hp': [310,404],
         'lvl': [1,100],
         'atk': [234,390],
@@ -8995,7 +8995,7 @@ pokemon = {
         'friendship': 70
     },
     "681a":{
-        'name': 'Aegislash-Shield Forme',
+        'name': 'Aegislash-Shield-Forme',
         'hp': [230,324],
         'lvl': [35,100],
         'atk': [94,218],
@@ -9008,7 +9008,7 @@ pokemon = {
         'friendship': 70
     },
     "681b":{
-        'name': 'Aegislash-Sword Forme',
+        'name': 'Aegislash-Sword-Forme',
         'hp': [230,324],
         'lvl': [35,100],
         'atk': [256,416],
@@ -9385,7 +9385,7 @@ pokemon = {
         'friendship': 70
     },
     "710a":{
-        'name': 'Pumpkaboo-Small Size',
+        'name': 'Pumpkaboo-Small-Size',
         'hp': [198,292],
         'lvl': [1,100],
         'atk': [123,254],
@@ -9398,7 +9398,7 @@ pokemon = {
         'friendship': 70
     },
     "711a":{
-        'name': 'Gourgeist-Small Size',
+        'name': 'Gourgeist-Small-Size',
         'hp': [220,314],
         'lvl': [1,100],
         'atk': [157,295],
@@ -9411,7 +9411,7 @@ pokemon = {
         'friendship': 70
     },
     "710b":{
-        'name': 'Pumpkaboo-Average Size',
+        'name': 'Pumpkaboo-Average-Size',
         'hp': [208,302],
         'lvl': [1,100],
         'atk': [123,254],
@@ -9424,7 +9424,7 @@ pokemon = {
         'friendship': 70
     },
     "711b":{
-        'name': 'Gourgeist-Average Size',
+        'name': 'Gourgeist-Average-Size',
         'hp': [240,334],
         'lvl': [1,100],
         'atk': [157,295],
@@ -9437,7 +9437,7 @@ pokemon = {
         'friendship': 70
     },
     "710c":{
-        'name': 'Pumpkaboo-Large Size',
+        'name': 'Pumpkaboo-Large-Size',
         'hp': [218,312],
         'lvl': [1,100],
         'atk': [123,254],
@@ -9450,7 +9450,7 @@ pokemon = {
         'friendship': 70
     },
     "711c":{
-        'name': 'Gourgeist-Large Size',
+        'name': 'Gourgeist-Large-Size',
         'hp': [260,354],
         'lvl': [1,100],
         'atk': [157,295],
@@ -9463,7 +9463,7 @@ pokemon = {
         'friendship': 70
     },
     "710d":{
-        'name': 'Pumpkaboo-Super Size',
+        'name': 'Pumpkaboo-Super-Size',
         'hp': [228,322],
         'lvl': [1,100],
         'atk': [123,254],
@@ -9476,7 +9476,7 @@ pokemon = {
         'friendship': 70
     },
     "711d":{
-        'name': 'Gourgeist-Super Size',
+        'name': 'Gourgeist-Super-Size',
         'hp': [280,374],
         'lvl': [1,100],
         'atk': [157,295],
@@ -9567,7 +9567,7 @@ pokemon = {
         'friendship': 0
     },
     "718a":{
-        'name': 'Zygarde-50% Forme',
+        'name': 'Zygarde-50%-Forme',
         'hp': [326,420],
         'lvl': [1,100],
         'atk': [184,328],
@@ -9580,7 +9580,7 @@ pokemon = {
         'friendship': 0
     },
     "718b":{
-        'name': 'Zygarde-10% Forme',
+        'name': 'Zygarde-10%-Forme',
         'hp': [218,312],
         'lvl': [1,100],
         'atk': [184,328],
@@ -9593,7 +9593,7 @@ pokemon = {
         'friendship': 0
     },
     "718c":{
-        'name': 'Zygarde-Complete Forme',
+        'name': 'Zygarde-Complete-Forme',
         'hp': [542,636],
         'lvl': [1,100],
         'atk': [184,328],
