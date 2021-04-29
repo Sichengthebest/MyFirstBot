@@ -201,7 +201,7 @@ def pokemonCatchCallback(update,context):
     p = pokelist.Pokemon(pkmonid,lvlxp,-1,[])
     catchrate = getcatchrate(ball,p)
     money,xp = getadd(rarity)
-    pokemonroll = random.randint(1,100)
+    pokemonroll = random.randint(1,1)
     ssroll = random.randint(1,10000)
     if pokemonroll < 5:
         stones = ['dss','dst','daw','dus','fir','ice','lea','moo','ova','dub','dra','pro','rea','sac','shi','sun','thu','upg','wat','whi','ele','mag','met','tra']
@@ -217,15 +217,14 @@ You have earned {money} pokecoins!'''
         if game[str(uid)]['bud'] == {}:
             msg2 = '\n-------------------------\nYou do not have a buddy! Use /set_bud to get one!' 
         else:
+            msg2 = f'{add_xp(str(uid),xp)}'
             if pokemonroll < 5:
-                msg2 = f'{add_xp(str(uid),xp)}\nOh? and you found a/an {stoneget}! Use it to evolve certain pokemon.'
+                msg2 += f'\nOh? and you found a/an {stoneget}! Use it to evolve certain pokemon.'
                 game[str(uid)]['inv'].append(stonesave)
             if ssroll == 10000:
                 ssstone = 'huk'
-                msg2 = f'{add_xp(str(uid),xp)}\nWOW! You have found a {stoneTrans[ssstone]}! Use that stone to evolve certain Special Spawn pokemon!'
+                msg2 += f'\nWOW! You have found a {stoneTrans[ssstone]}! Use that stone to evolve certain Special Spawn pokemon!'
                 game[str(uid)]['inv'].append(ssstone)
-            else:
-                msg2 = f'{add_xp(str(uid),xp)}'
         game[str(uid)]['pokecoins'] += money
         add_pokemon(str(uid),p)
     game[str(uid)][ball] -= 1
