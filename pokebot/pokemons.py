@@ -306,7 +306,10 @@ def buy_stuff(user,c,num,ball):
     game[uid]['pokecoins'] -= totalcost
     game[uid][ball] += int(num)
     save()
-    return f"Success! @{user.username} , you have bought {num} {ballTrans[f'pk:{ball}']}(s) with {totalcost} pokecoins and you have {game[uid]['pokecoins']} pokecoins remaining.\nYou now have {game[uid]['pb']} Pokeballs, {game[uid]['gb']} Greatballs, {game[uid]['ub']} Ultraballs and {game[uid]['mb']} Masterballs."
+    username = user.username
+    if username == None:
+        username = user.first_name
+    return f"Success! @{username} , you have bought {num} {ballTrans[f'pk:{ball}']}(s) with {totalcost} pokecoins and you have {game[uid]['pokecoins']} pokecoins remaining.\nYou now have {game[uid]['pb']} Pokeballs, {game[uid]['gb']} Greatballs, {game[uid]['ub']} Ultraballs and {game[uid]['mb']} Masterballs."
 
 def surprise(update,context):
     user = update.effective_user
@@ -324,11 +327,11 @@ def surprise(update,context):
         game[uid]['pb'] += pb
         game[uid]['gb'] += gb
         game[uid]['ub'] += ub
-        update.message.reply_text(f"Here are your daily pokecoins, {user.first_name}\n{c} pokecoins were placed in your wallet.\nYou also got:\n{pb} Pokeballs\n{gb} Greatballs\n...and {ub} Ultraballs\n这是您的每天打卡的 pokecoins，{user.first_name}\n{c} pokecoins已被放置在您的钱包中。")
+        update.message.reply_text(f"Here are your daily pokecoins, {user.first_name}\n{c} pokecoins were placed in your wallet.\nYou also got:\n{pb} Pokeballs\n{gb} Greatballs\n...and {ub} Ultraballs")
         dailytime = datetime.now() + timedelta(days=1)
         game[uid]['dailytime'] = dailytime.strftime("%Y/%m/%d %H:%M:%S")
     else:
-        update.message.reply_text("Slow it down, cmon!!! I'm not made of money dude, one day hasn't passed yet!\n放慢速度，呆瓜！我不是用钱做的，小家伙，一天还没有过去！") 
+        update.message.reply_text("Slow it down, cmon!!! I'm not made of money dude, one day hasn't passed yet!") 
     save()
 
 def reset(update,context):
