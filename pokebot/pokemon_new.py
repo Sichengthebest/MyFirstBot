@@ -153,13 +153,7 @@ def pokemon(update,context):
     if t < datetime.strptime(game[str(uid)]['gametime'],"%Y/%m/%d %H:%M:%S"):
         difference = datetime.strptime(game[str(uid)]['gametime'],"%Y/%m/%d %H:%M:%S") - datetime.now() 
         seconds = int(difference.total_seconds())
-        update.message.reply_text(f"Slow it down, cmon!!! You have caught every single pokemon around you, please wait {seconds} seconds!\n放慢速度，呆瓜！！！您已经抓到身边的每只宠物小精灵，请等待{seconds}秒！\nCreator/作者: Sichengthebest")
-        return
-    spawnbool = random.randint(0,9)
-    if spawnbool > 1:
-        update.message.reply_text('You did not find a pokemon.')
-        game[str(uid)]['gametime'] = datetime.strftime(datetime.now() + timedelta(seconds=10),"%Y/%m/%d %H:%M:%S")
-        save()
+        update.message.reply_text(f"Slow it down, cmon!!! You have caught every single pokemon around you, please wait {seconds} seconds!\nCreator: Sichengthebest")
         return
     game[str(uid)]['spawn'] = True
     if game[str(uid)]['pb'] > 0:
@@ -189,7 +183,7 @@ def pokemonCatchCallback(update,context):
     uid = user.id
     query = update.callback_query
     if str(uid) != curruid:
-        query.answer("你是谁？你在哪儿？你想做啥？这是别人的，大笨蛋！",show_alert=True)
+        query.answer("Do not touch other people's buttons!~",show_alert=True)
         return
     if ball == 'go':
         query.edit_message_caption(f'You fled the {pokelist.pokemon[pkmonid]["name"]}.')
@@ -240,7 +234,7 @@ Greatballs: {game[str(uid)]['gb']}
 Ultraballs: {game[str(uid)]['ub']}
 Masterballs: {game[str(uid)]['mb']}{msg2}''')
     game[str(uid)]['spawn'] = False
-    game[str(uid)]['gametime'] = datetime.strftime(datetime.now() + timedelta(seconds=10),"%Y/%m/%d %H:%M:%S")
+    game[str(uid)]['gametime'] = datetime.strftime(datetime.now() + timedelta(seconds=15),"%Y/%m/%d %H:%M:%S")
     save()
 
 def add_handler(dp):
