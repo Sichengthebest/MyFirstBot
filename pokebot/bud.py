@@ -121,9 +121,6 @@ def set_bud(update,context):
             buttons.append({f"{game[uid]['box'][index]['name']}, XP: {game[uid]['box'][index]['xp']}":f"pkbudset:{index}"})
         kb = pokeutils.getkb(buttons)
         update.message.reply_text(f'Which {pk} are you choosing?',reply_markup=kb)
-        game[uid]['bud'] = game[uid]['box'][count]
-        update.message.reply_text(f"{game[uid]['box'][count]['name']}? He/she will be your best buddy! Use /view_bud to have the details!")
-        save()
     
 def budNewCallback(update,context):
     user = update.effective_user
@@ -414,10 +411,13 @@ def movesReplaceCallback(update,context):
 
 def view_moves(update,context):
     uid = str(update.effective_user.id)
-    if game[uid]['bud']['moves'] == ['','','','']:
+    if game[uid]['bud']['moves'] == []:
         update.message.reply_text("Your buddy has no moves! Use the /add_moves command to get some!")
         return
-    update.message.reply_text(f"Your buddy's moves: {game[uid]['bud']['moves']}")
+    msg = ''
+    for move in game[uid]['bud']['moves']:
+        msg += f'\n{move}'
+    update.message.reply_text(f"Your buddy's moves:{msg}")
 
 def addHandler(dispatcher):
     dispatcher.add_handler(CommandHandler('view_bud',bud))

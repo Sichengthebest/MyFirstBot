@@ -9752,7 +9752,10 @@ class Pokemon():
         try:
             moves = random.sample(availmoves,k=2)
         except ValueError:
-            return []
+            try:
+                moves = random.sample(availmoves,k=1)
+            except ValueError:
+                moves = []
         return moves
     
     def __str__(self):
