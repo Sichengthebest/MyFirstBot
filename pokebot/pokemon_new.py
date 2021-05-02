@@ -155,7 +155,7 @@ def pokemon(update,context):
         seconds = int(difference.total_seconds())
         update.message.reply_text(f"Slow it down, cmon!!! You have caught every single pokemon around you, please wait {seconds} seconds!\n放慢速度，呆瓜！！！您已经抓到身边的每只宠物小精灵，请等待{seconds}秒！\nCreator/作者: Sichengthebest")
         return
-    spawnbool = random.randint(0,3)
+    spawnbool = random.randint(0,9)
     if spawnbool > 1:
         update.message.reply_text('You did not find a pokemon.')
         game[str(uid)]['gametime'] = datetime.strftime(datetime.now() + timedelta(seconds=10),"%Y/%m/%d %H:%M:%S")
@@ -201,7 +201,7 @@ def pokemonCatchCallback(update,context):
     p = pokelist.Pokemon(pkmonid,lvlxp,-1,[])
     catchrate = getcatchrate(ball,p)
     money,xp = getadd(rarity)
-    pokemonroll = random.randint(1,1)
+    pokemonroll = random.randint(1,100)
     ssroll = random.randint(1,10000)
     if pokemonroll < 5:
         stones = ['dss','dst','daw','dus','fir','ice','lea','moo','ova','dub','dra','pro','rea','sac','shi','sun','thu','upg','wat','whi','ele','mag','met','tra']
