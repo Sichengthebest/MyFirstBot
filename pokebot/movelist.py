@@ -269,7 +269,6 @@ moves = {
         'pktype': 'Water',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -284,11 +283,10 @@ moves = {
         'status': []
     },
     "Aqua Ring":{
-        'power': {'2':40},
+        'power': {'1'},
         'pktype': 'Water',
         'acc': 100,
         'selfdmg': {'3':6.25},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -929,7 +927,6 @@ moves = {
         'pktype': 'Bug',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -1078,7 +1075,6 @@ moves = {
         'pktype': 'Electric',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -2263,7 +2259,6 @@ moves = {
         'pktype': 'Electric',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False,
         'invulnerable': 0,
         'charge': 0,
@@ -2546,6 +2541,24 @@ moves = {
         'raise': [0,0,0,0],
         'eraise': [0,0,0,0],
         'raiser': [0,0,0,0],
+        'eraiser': [0,0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0,
+        'status': []
+    },
+    "Fell Stinger":{
+        'power': {'2':50},
+        'pktype': 'Bug',
+        'acc': 100,
+        'selfdmg': {},
+        'recharge': False, 
+        'invulnerable': 0,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [1,0,0,0],
+        'eraise': [0,0,0,0],
+        'raiser': [50,0,0,0],
         'eraiser': [0,0,0,0],
         'flinch': 0,
         'crithit': 0,
@@ -3097,7 +3110,6 @@ moves = {
         'pktype': 'Psychic',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 2,
@@ -3116,7 +3128,6 @@ moves = {
         'pktype': 'Steel',
         'acc': 85,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -3172,7 +3183,6 @@ moves = {
         'pktype': 'Normal',
         'acc': 90,
         'selfdmg': {},
-        
         'recharge': True, 
         'invulnerable': 0,
         'charge': 0,
@@ -4287,6 +4297,24 @@ moves = {
         'crithit': 0,
         'priority': 0,
         'status': ['par',30]
+    },
+    "Life Dew":{
+        'power': {'1'},
+        'pktype': 'Water',
+        'acc': 100,
+        'selfdmg': {'3':25},
+        'recharge': False, 
+        'invulnerable': 0,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0,0],
+        'eraise': [0,0,0,0],
+        'raiser': [0,0,0,0],
+        'eraiser': [0,0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0,
+        'status': []
     },
     "Liquidation":{
         'power': {'2':85},
