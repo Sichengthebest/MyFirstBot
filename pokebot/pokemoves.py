@@ -2037,6 +2037,104 @@ compatible = {
         'Defence Curl':3,
         'Pound':5,
         'Sweet Kiss':9
+    },
+    '175':{
+        'Charm':1,
+        'Growl':1,
+        'Sweet Kiss':9,
+        'Yawn':13,
+        'Wish':29,
+        'Ancient Power':33,
+        'Double-Edge':45
+    },
+    '176':{
+        'Charm':1,
+        'Magical Leaf':1,
+        'Growl':1,
+        'Sweet Kiss':9,
+        'Yawn':13,
+        'Fairy Wind':14,
+        'Wish':29,
+        'Ancient Power':33,
+        'Double-Edge':45
+    },
+    '177':{
+        'Leer':1,
+        'Peck':1,
+        'Stored Power':17,
+        'Ominous Wind':20,
+        'Confuse Ray':23,
+        'Wish':28,
+        'Psychic':33,
+        'Future Sight':44
+    },
+    '178':{
+        'Leer':1,
+        'Peck':1,
+        'Stored Power':1,
+        'Ominous Wind':1,
+        'Confuse Ray':1,
+        'Wish':29,
+        'Psychic':35,
+        'Future Sight':49
+    },
+    '179':{
+        'Growl':1,
+        'Tackle':1,
+        'Thunder Wave':4,
+        'Thunder Shock':8,
+        'Cotton Spore':11,
+        'Charge':15,
+        'Take Down':18,
+        'Confuse Ray':25,
+        'Power Gem':29,
+        'Discharge':32,
+        'Cotton Guard':36,
+        'Signal Beam':39,
+        'Thunder':46
+    },
+    '180':{
+        'Growl':1,
+        'Tackle':1,
+        'Thunder Wave':1,
+        'Thunder Shock':1,
+        'Cotton Spore':1,
+        'Charge':16,
+        'Take Down':20,
+        'Confuse Ray':29,
+        'Power Gem':34,
+        'Discharge':38,
+        'Cotton Guard':43,
+        'Signal Beam':47,
+        'Thunder':56
+    },
+    '181':{
+        'Fire Punch':1,
+        'Growl':1,
+        'Tackle':1,
+        'Thunder Punch':1,
+        'Thunder Wave':1,
+        'Thunder Shock':1,
+        'Zap Cannon':1,
+        'Cotton Spore':1,
+        'Charge':1,
+        'Confuse Ray':1,
+        'Power Gem':35,
+        'Discharge':40,
+        'Cotton Guard':46,
+        'Signal Beam':51,
+        'Thunder':62,
+        'Dragon Pulse':65
+    },
+    '182':{
+        'Leaf Blade':1,
+        'Magical Leaf':1,
+        'Mega Drain':1,
+        'Stun Spore':1,
+        'Quiver Dance':39,
+        'Petal Blizzard':49,
+        'Petal Dance':59,
+        'Leaf Storm':69
     }
 }
 
