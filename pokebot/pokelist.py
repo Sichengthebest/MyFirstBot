@@ -9717,21 +9717,25 @@ class Pokemon():
         self.status = ''
     
     @classmethod
-    def init(self,id:str,name:str,lvl:int,hp:int,atk:int,pktype:str,upgrade:str,defence:int,speed:int,xp:int,evolvewith:str,friendship:int):
+    def init(self,id:str,name:str,lvl:int,hp:int,currhp:int,atk:int,pktype:list,upgrade:str,defence:int,speed:int,xp:int,evolvewith:str,friendship:int,status:str,moves:list):
         p = Pokemon(id,xp,friendship,[])
         p.hp = hp
+        p.currhp = currhp
         p.atk = atk
         p.pktype = pktype
         p.upgrade = upgrade
         p.speed = speed
         p.evolvewith = evolvewith
         p.defence = defence
+        p.status = status
+        p.moves = moves
         return p
     
     @classmethod
     def init_from_dict(self,pdict):
         p = Pokemon(pdict['id'],pdict['lvl'],pdict['friendship'],pdict['moves'])
         p.hp = pdict['hp']
+        p.hp = pdict['currhp']
         p.atk = pdict['atk']
         p.pktype = pdict['pktype']
         p.upgrade = pdict['upgrade']

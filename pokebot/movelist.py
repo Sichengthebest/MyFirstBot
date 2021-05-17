@@ -10,7 +10,7 @@ self-dmg 5: loses x% of its max hp
 
 moves = {
     "Absorb":{
-        'power': {'2':20},
+        'power': 20,
         'pktype': 'Grass',
         'acc': 100,
         'selfdmg': {'2':50},
@@ -28,7 +28,7 @@ moves = {
         'status': []
     },
     "Accelerock":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Rock',
         'acc': 100,
         'selfdmg': {},
@@ -46,7 +46,7 @@ moves = {
         'status': []
     },
     "Acid":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Poison',
         'acc': 100,
         'selfdmg': {},
@@ -64,7 +64,7 @@ moves = {
         'status': []
     },
     "Acid Armor":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Poison',
         'acc': 100,
         'selfdmg': {},
@@ -82,7 +82,7 @@ moves = {
         'status': []
     },
     "Acid Spray":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Poison',
         'acc': 100,
         'selfdmg': {},
@@ -100,7 +100,7 @@ moves = {
         'status': []
     },
     "Acrobatics":{
-        'power': {'2':110},
+        'power': 110,
         'pktype': 'Flying',
         'acc': 100,
         'selfdmg': {},
@@ -118,7 +118,7 @@ moves = {
         'status': []
     },
     "Aerial Ace":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Flying',
         'acc': 100,
         'selfdmg': {},
@@ -136,7 +136,7 @@ moves = {
         'status': []
     },
     "Aeroblast":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Flying',
         'acc': 95,
         'selfdmg': {},
@@ -154,7 +154,7 @@ moves = {
         'status': []
     },
     "Agility":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Psychic',
         'acc': 100,
         'selfdmg': {},
@@ -172,7 +172,7 @@ moves = {
         'status': []
     },
     "Air Cutter":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Flying',
         'acc': 100,
         'selfdmg': {},
@@ -190,7 +190,7 @@ moves = {
         'status': []
     },
     "Air Slash":{
-        'power': {'2':75},
+        'power': 75,
         'pktype': 'Flying',
         'acc': 95,
         'selfdmg': {},
@@ -208,7 +208,7 @@ moves = {
         'status': []
     },
     "Amnesia":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Psychic',
         'acc': 100,
         'selfdmg': {},
@@ -227,7 +227,7 @@ moves = {
         'status': []
     },
     "Anchor Shot":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Steel',
         'acc': 100,
         'selfdmg': {},
@@ -246,7 +246,7 @@ moves = {
         'status': []
     },
     "Ancient Power":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Ground',
         'acc': 100,
         'selfdmg': {},
@@ -265,7 +265,7 @@ moves = {
         'status': []
     },
     "Aqua Jet":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Water',
         'acc': 100,
         'selfdmg': {},
@@ -283,7 +283,7 @@ moves = {
         'status': []
     },
     "Aqua Ring":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Water',
         'acc': 100,
         'selfdmg': {'3':6.25},
@@ -301,7 +301,7 @@ moves = {
         'status': []
     },
     "Aqua Tail":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Water',
         'acc': 90,
         'selfdmg': {},
@@ -320,7 +320,7 @@ moves = {
         'status': []
     },
     "Arm Thrust":{
-        'power': {'2':15},
+        'power': 15,
         'pktype': 'Fighting',
         'acc': 100,
         'selfdmg': {},
@@ -339,7 +339,7 @@ moves = {
         'status': []
     },
     "Assurance":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Dark',
         'acc': 100,
         'selfdmg': {},
@@ -358,7 +358,7 @@ moves = {
         'status': []
     },
     "Astonish":{
-        'power': {'2':30},
+        'power': 30,
         'pktype': 'Ghost',
         'acc': 100,
         'selfdmg': {},
@@ -377,7 +377,7 @@ moves = {
         'status': []
     },
     "Attack Order":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Bug',
         'acc': 100,
         'selfdmg': {},
@@ -395,7 +395,7 @@ moves = {
         'status': []
     },
     "Aura Sphere":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Fighting',
         'acc': 100,
         'selfdmg': {},
@@ -414,7 +414,7 @@ moves = {
         'status': []
     },
     "Aurora Beam":{
-        'power': {'2':65},
+        'power': 65,
         'pktype': 'Ice',
         'acc': 100,
         'selfdmg': {},
@@ -432,7 +432,7 @@ moves = {
         'status': []
     },
     "Autotomize":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Steel',
         'acc': 0,
         'selfdmg': {},
@@ -451,7 +451,7 @@ moves = {
         'status': []
     },
     "Avalanche":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Ice',
         'acc': 100,
         'selfdmg': {},
@@ -470,7 +470,7 @@ moves = {
         'status': []
     },
     "Baby-Doll Eyes":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Fairy',
         'acc': 100,
         'selfdmg': {},
@@ -489,7 +489,7 @@ moves = {
         'status': []
     },
     "Barrage":{
-        'power': {'2':15},
+        'power': 15,
         'pktype': 'Normal',
         'acc': 85,
         'selfdmg': {},
@@ -508,7 +508,7 @@ moves = {
         'status': []
     },
     "Barrier":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Psychic',
         'acc': 100,
         'selfdmg': {},
@@ -527,7 +527,7 @@ moves = {
         'status': []
     },
     "Beak Blast":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Flying',
         'acc': 100,
         'selfdmg': {},
@@ -546,7 +546,7 @@ moves = {
         'status': []
     },
     "Belch":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Poison',
         'acc': 90,
         'selfdmg': {},
@@ -565,7 +565,7 @@ moves = {
         'status': []
     },
     "Belly Drum":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {'4':50},
@@ -584,7 +584,7 @@ moves = {
         'status': []
     },
     "Bite":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Dark',
         'acc': 100,
         'selfdmg': {},
@@ -603,11 +603,10 @@ moves = {
         'status': []
     },
     "Blast Burn":{
-        'power': {'2':150},
+        'power': 150,
         'pktype': 'Fire',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': True, 
         'invulnerable': 0,
         'charge': 0,
@@ -622,7 +621,7 @@ moves = {
         'status': []
     },
     "Blaze Kick":{
-        'power': {'2':85},
+        'power': 85,
         'pktype': 'Fire',
         'acc': 90,
         'selfdmg': {},
@@ -641,7 +640,7 @@ moves = {
         'status': ['bur',10]
     },
     "Blizzard":{
-        'power': {'2':110},
+        'power': 110,
         'pktype': 'Ice',
         'acc': 70,
         'selfdmg': {},
@@ -660,7 +659,7 @@ moves = {
         'status': ['frz',10]
     },
     "Blue Flare":{
-        'power': {'2':130},
+        'power': 130,
         'pktype': 'Fire',
         'acc': 85,
         'selfdmg': {},
@@ -679,7 +678,7 @@ moves = {
         'status': ['bur',20]
     },
     "Body Slam":{
-        'power': {'2':85},
+        'power': 85,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -698,11 +697,10 @@ moves = {
         'status': ['par',30]
     },
     "Bolt Strike":{
-        'power': {'2':130},
+        'power': 130,
         'pktype': 'Electric',
         'acc': 85,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -717,7 +715,7 @@ moves = {
         'status': ['par',20]
     },
     "Bone Club":{
-        'power': {'2':65},
+        'power': 65,
         'pktype': 'Ground',
         'acc': 85,
         'selfdmg': {},
@@ -735,11 +733,10 @@ moves = {
         'status': []
     },
     "Bone Rush":{
-        'power': {'2':25},
+        'power': 25,
         'pktype': 'Ground',
         'acc': 90,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -754,11 +751,10 @@ moves = {
         'status': []
     },
     "Bonemerang":{
-        'power': {'2':50},
+        'power': 50,
         'pktype': 'Ground',
         'acc': 90,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -773,11 +769,10 @@ moves = {
         'status': []
     },
     "Boomburst":{
-        'power': {'2':140},
+        'power': 140,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -792,11 +787,10 @@ moves = {
         'status': []
     },
     "Bounce":{
-        'power': {'2':85},
+        'power': 85,
         'pktype': 'Flying',
         'acc': 85,
         'selfdmg': {},
-        
         'recharge': False,
         'invulnerable': 1,
         'charge': 0,
@@ -811,7 +805,7 @@ moves = {
         'status': ['par',30]
     },
     "Brave Bird":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Flying',
         'acc': 100,
         'selfdmg': {'4':33.3333333333333333333333333},
@@ -829,11 +823,10 @@ moves = {
         'status': []
     },
     "Brick Break":{
-        'power': {'2':75},
+        'power': 75,
         'pktype': 'Fighting',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -848,11 +841,10 @@ moves = {
         'status': []
     },
     "Brine":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Water',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -867,11 +859,10 @@ moves = {
         'status': []
     },
     "Brutal Swing":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Dark',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -886,7 +877,7 @@ moves = {
         'status': []
     },
     "Bubble":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Water',
         'acc': 100,
         'selfdmg': {},
@@ -904,11 +895,10 @@ moves = {
         'status': []
     },
     "Bubble Beam":{
-        'power': {'2':65},
+        'power': 65,
         'pktype': 'Water',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -923,7 +913,7 @@ moves = {
         'status': []
     },
     "Bug Bite":{
-        'power': {'2':70},
+        'power': 70,
         'pktype': 'Bug',
         'acc': 100,
         'selfdmg': {},
@@ -941,7 +931,7 @@ moves = {
         'status': []
     },
     "Bug Buzz":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Bug',
         'acc': 100,
         'selfdmg': {},
@@ -959,7 +949,7 @@ moves = {
         'status': []
     },
     "Bulk Up":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Fighting',
         'acc': 100,
         'selfdmg': {},
@@ -977,11 +967,10 @@ moves = {
         'status': []
     },
     "Bulldoze":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Ground',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -996,11 +985,10 @@ moves = {
         'status': []
     },
     "Bullet Punch":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Steel',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -1015,11 +1003,10 @@ moves = {
         'status': []
     },
     "Bullet Seed":{
-        'power': {'2':25},
+        'power': 25,
         'pktype': 'Grass',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -1034,7 +1021,7 @@ moves = {
         'status': []
     },
     "Burn Up":{
-        'power': {'2':130},
+        'power': 130,
         'pktype': 'Fire',
         'acc': 100,
         'selfdmg': {},
@@ -1052,11 +1039,10 @@ moves = {
         'status': []
     },
     "Calm Mind":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Psychic',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -1071,7 +1057,7 @@ moves = {
         'status': []
     },
     "Charge":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Electric',
         'acc': 100,
         'selfdmg': {},
@@ -1089,11 +1075,10 @@ moves = {
         'status': []
     },
     "Charge Beam":{
-        'power': {'2':50},
+        'power': 50,
         'pktype': 'Electric',
         'acc': 90,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -1108,11 +1093,10 @@ moves = {
         'status': []
     },
     "Charm":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Fairy',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -1127,11 +1111,10 @@ moves = {
         'status': []
     },
     "Chatter":{
-        'power': {'2':65},
+        'power': 65,
         'pktype': 'Flying',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -1146,11 +1129,10 @@ moves = {
         'status': ['con',50]
     },
     "Chip Away":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -1165,11 +1147,10 @@ moves = {
         'status': []
     },
     "Circle Throw":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Fighting',
         'acc': 90,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -1184,11 +1165,10 @@ moves = {
         'status': []
     },
     "Clanging Scales":{
-        'power': {'2':110},
+        'power': 110,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -1203,11 +1183,10 @@ moves = {
         'status': []
     },
     "Clangorous Soul":{
-        'power': {'2':70},
+        'power': 70,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -1222,7 +1201,7 @@ moves = {
         'status': []
     },
     "Clear Smog":{
-        'power': {'2':50},
+        'power': 50,
         'pktype': 'Poison',
         'acc': 100,
         'selfdmg': {},
@@ -1240,7 +1219,7 @@ moves = {
         'status': []
     },
     "Close Combat":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Fighting',
         'acc': 100,
         'selfdmg': {},
@@ -1258,11 +1237,10 @@ moves = {
         'status': []
     },
     "Coil":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Poison',
         'acc': 0,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -1277,11 +1255,10 @@ moves = {
         'status': []
     },
     "Comet Punch":{
-        'power': {'2':18},
+        'power': 18,
         'pktype': 'Normal',
         'acc': 85,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -1296,11 +1273,10 @@ moves = {
         'status': []
     },
     "Confide":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -1315,11 +1291,10 @@ moves = {
         'status': []
     },
     "Confuse Ray":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Ghost',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -1334,11 +1309,10 @@ moves = {
         'status': ['con',100]
     },
     "Confusion":{
-        'power': {'2':50},
+        'power': 50,
         'pktype': 'Psychic',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -1353,7 +1327,7 @@ moves = {
         'status': ['con',10]
     },
     "Constrict":{
-        'power': {'2':10},
+        'power': 10,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -1371,11 +1345,10 @@ moves = {
         'status': []
     },
     "Core Enforcer":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Dragon',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False,
         'invulnerable': 0,
         'charge': 0,
@@ -1390,7 +1363,7 @@ moves = {
         'status': []
     },
     "Cosmic Power":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Psychic',
         'acc': 100,
         'selfdmg': {},
@@ -1408,11 +1381,10 @@ moves = {
         'status': []
     },
     "Cotton Guard":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Grass',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -1427,7 +1399,7 @@ moves = {
         'status': []
     },
     "Cotton Spore":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Grass',
         'acc': 100,
         'selfdmg': {},
@@ -1445,7 +1417,7 @@ moves = {
         'status': []
     },
     "Covet":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -1463,11 +1435,10 @@ moves = {
         'status': []
     },
     "Crabhammer":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Water',
         'acc': 90,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -1482,7 +1453,7 @@ moves = {
         'status': []
     },
     "Cross Chop":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Fighting',
         'acc': 80,
         'selfdmg': {},
@@ -1500,7 +1471,7 @@ moves = {
         'status': []
     },
     "Cross Poison":{
-        'power': {'2':70},
+        'power': 70,
         'pktype': 'Poison',
         'acc': 100,
         'selfdmg': {},
@@ -1518,7 +1489,7 @@ moves = {
         'status': ['poi',10]
     },
     "Crunch":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Dark',
         'acc': 100,
         'selfdmg': {},
@@ -1537,7 +1508,7 @@ moves = {
         'status': []
     },
     "Crush Claw":{
-        'power': {'2':75},
+        'power': 75,
         'pktype': 'Normal',
         'acc': 95,
         'selfdmg': {},
@@ -1555,7 +1526,7 @@ moves = {
         'status': []
     },
     "Crush Grip":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -1573,7 +1544,7 @@ moves = {
         'status': []
     },
     "Cut":{
-        'power': {'2':50},
+        'power': 50,
         'pktype': 'Normal',
         'acc': 95,
         'selfdmg': {},
@@ -1592,7 +1563,7 @@ moves = {
         'status': []
     },
     "Dark Pulse":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Dark',
         'acc': 100,
         'selfdmg': {},
@@ -1611,7 +1582,7 @@ moves = {
         'status': []
     },
     "Dark Void":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Dark',
         'acc': 50,
         'selfdmg': {},
@@ -1630,7 +1601,7 @@ moves = {
         'status': ['sle',100]
     },
     "Dazzling Gleam":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Fairy',
         'acc': 100,
         'selfdmg': {},
@@ -1649,7 +1620,7 @@ moves = {
         'status': []
     },
     "Defence Order":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Bug',
         'acc': 100,
         'selfdmg': {},
@@ -1668,7 +1639,7 @@ moves = {
         'status': []
     },
     "Defence Curl":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -1687,7 +1658,7 @@ moves = {
         'status': []
     },
     "Diamond Storm":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Ground',
         'acc': 95,
         'selfdmg': {},
@@ -1706,7 +1677,7 @@ moves = {
         'status': []
     },
     "Dig":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Ground',
         'acc': 100,
         'selfdmg': {},
@@ -1725,7 +1696,7 @@ moves = {
         'status': []
     },
     "Disarming Voice":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Fairy',
         'acc': 100,
         'selfdmg': {},
@@ -1744,7 +1715,7 @@ moves = {
         'status': []
     },
     "Discharge":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Electric',
         'acc': 100,
         'selfdmg': {},
@@ -1763,7 +1734,7 @@ moves = {
         'status': ['par',30]
     },
     "Dive":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Water',
         'acc': 100,
         'selfdmg': {},
@@ -1782,7 +1753,7 @@ moves = {
         'status': []
     },
     "Dizzy Punch":{
-        'power': {'2':70},
+        'power': 70,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -1801,7 +1772,7 @@ moves = {
         'status': ['con',20]
     },
     "Doom Desire":{
-        'power': {'2':140},
+        'power': 140,
         'pktype': 'Steel',
         'acc': 100,
         'selfdmg': {},
@@ -1820,7 +1791,7 @@ moves = {
         'status': []
     },
     "Double Hit":{
-        'power': {'2':35},
+        'power': 35,
         'pktype': 'Normal',
         'acc': 90,
         'selfdmg': {},
@@ -1839,7 +1810,7 @@ moves = {
         'status': []
     },
     "Double Iron Bash":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Steel',
         'acc': 100,
         'selfdmg': {},
@@ -1858,7 +1829,7 @@ moves = {
         'status': []
     },
     "Double Kick":{
-        'power': {'2':30},
+        'power': 30,
         'pktype': 'Fighting',
         'acc': 100,
         'selfdmg': {},
@@ -1877,7 +1848,7 @@ moves = {
         'status': []
     },
     "Double Slap":{
-        'power': {'2':15},
+        'power': 15,
         'pktype': 'Normal',
         'acc': 85,
         'selfdmg': {},
@@ -1896,7 +1867,7 @@ moves = {
         'status': []
     },
     "Double-Edge":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {'4':33.3333333333333333333333333},
@@ -1915,7 +1886,7 @@ moves = {
         'status': []
     },
     "Draco Meteor":{
-        'power': {'2':130},
+        'power': 130,
         'pktype': 'Dragon',
         'acc': 90,
         'selfdmg': {},
@@ -1934,7 +1905,7 @@ moves = {
         'status': []
     },
     "Dragon Ascent":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Dragon',
         'acc': 100,
         'selfdmg': {},
@@ -1953,7 +1924,7 @@ moves = {
         'status': []
     },
     "Dragon Breath":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Dragon',
         'acc': 100,
         'selfdmg': {},
@@ -1972,7 +1943,7 @@ moves = {
         'status': ['par',30]
     },
     "Dragon Claw":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Dragon',
         'acc': 100,
         'selfdmg': {},
@@ -1991,7 +1962,7 @@ moves = {
         'status': []
     },
     "Dragon Dance":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Dragon',
         'acc': 100,
         'selfdmg': {},
@@ -2010,7 +1981,7 @@ moves = {
         'status': []
     },
     "Dragon Hammer":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Dragon',
         'acc': 100,
         'selfdmg': {},
@@ -2029,7 +2000,7 @@ moves = {
         'status': []
     },
     "Dragon Pulse":{
-        'power': {'2':85},
+        'power': 85,
         'pktype': 'Dragon',
         'acc': 100,
         'selfdmg': {},
@@ -2048,7 +2019,7 @@ moves = {
         'status': []
     },
     "Dragon Rush":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Dragon',
         'acc': 75,
         'selfdmg': {},
@@ -2067,7 +2038,7 @@ moves = {
         'status': []
     },
     "Dragon Tail":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Dragon',
         'acc': 90,
         'selfdmg': {},
@@ -2086,7 +2057,7 @@ moves = {
         'status': []
     },
     "Drain Punch":{
-        'power': {'2':75},
+        'power': 75,
         'pktype': 'Fighting',
         'acc': 100,
         'selfdmg': {'2':50},
@@ -2105,7 +2076,7 @@ moves = {
         'status': []
     },
     "Drain Kiss":{
-        'power': {'2':50},
+        'power': 50,
         'pktype': 'Grass',
         'acc': 100,
         'selfdmg': {'2':75},
@@ -2124,7 +2095,7 @@ moves = {
         'status': []
     },
     "Drill Peck":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Flying',
         'acc': 100,
         'selfdmg': {},
@@ -2143,7 +2114,7 @@ moves = {
         'status': []
     },
     "Drill Run":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Ground',
         'acc': 95,
         'selfdmg': {},
@@ -2161,7 +2132,7 @@ moves = {
         'status': []
     },
     "Dual Chop":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Dragon',
         'acc': 90,
         'selfdmg': {},
@@ -2180,7 +2151,7 @@ moves = {
         'status': []
     },
     "Dynamic Punch":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Fighting',
         'acc': 50,
         'selfdmg': {},
@@ -2199,11 +2170,10 @@ moves = {
         'status': ['con',100]
     },
     "Earth Power":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Ground',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 0,
         'charge': 0,
@@ -2218,7 +2188,7 @@ moves = {
         'status': []
     },
     "Earthquake":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Ground',
         'acc': 100,
         'selfdmg': {},
@@ -2237,7 +2207,7 @@ moves = {
         'status': []
     },
     "Echoed Voice":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -2255,7 +2225,7 @@ moves = {
         'status': []
     },
     "Eerie Impulse":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Electric',
         'acc': 100,
         'selfdmg': {},
@@ -2273,7 +2243,7 @@ moves = {
         'status': []
     },
     "Egg Bomb":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Normal',
         'acc': 75,
         'selfdmg': {},
@@ -2292,7 +2262,7 @@ moves = {
         'status': []
     },
     "Electroweb":{
-        'power': {'2':55},
+        'power': 55,
         'pktype': 'Electric',
         'acc': 95,
         'selfdmg': {},
@@ -2311,7 +2281,7 @@ moves = {
         'status': []
     },
     "Ember":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Fire',
         'acc': 100,
         'selfdmg': {},
@@ -2329,7 +2299,7 @@ moves = {
         'status': ['bur',10]
     },
     "Energy Ball":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Grass',
         'acc': 100,
         'selfdmg': {},
@@ -2348,7 +2318,7 @@ moves = {
         'status': []
     },
     "Eruption":{
-        'power': {'2':130},
+        'power': 130,
         'pktype': 'Fire',
         'acc': 100,
         'selfdmg': {},
@@ -2366,7 +2336,7 @@ moves = {
         'status': []
     },
     "Explosion":{
-        'power': {'2':250},
+        'power': 250,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {'5':100},
@@ -2384,7 +2354,7 @@ moves = {
         'status': []
     },
     "Extrasensory":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Psychic',
         'acc': 100,
         'selfdmg': {},
@@ -2403,7 +2373,7 @@ moves = {
         'status': []
     },
     "Extreme Speed":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -2422,7 +2392,7 @@ moves = {
         'status': []
     },
     "Facade":{
-        'power': {'2':70},
+        'power': 70,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -2440,7 +2410,7 @@ moves = {
         'status': []
     },
     "Fairy Wind":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Fairy',
         'acc': 100,
         'selfdmg': {},
@@ -2458,7 +2428,7 @@ moves = {
         'status': []
     },
     "Fake Out":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -2476,7 +2446,7 @@ moves = {
         'status': []
     },
     "Fake Tears":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Dark',
         'acc': 100,
         'selfdmg': {},
@@ -2494,7 +2464,7 @@ moves = {
         'status': []
     },
     "False Swipe":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -2512,7 +2482,7 @@ moves = {
         'status': []
     },
     "Feather Dance":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Flying',
         'acc': 100,
         'selfdmg': {},
@@ -2530,7 +2500,7 @@ moves = {
         'status': []
     },
     "Feint Attack":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -2548,7 +2518,7 @@ moves = {
         'status': []
     },
     "Fell Stinger":{
-        'power': {'2':50},
+        'power': 50,
         'pktype': 'Bug',
         'acc': 100,
         'selfdmg': {},
@@ -2566,7 +2536,7 @@ moves = {
         'status': []
     },
     "Fiery Dance":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Fire',
         'acc': 100,
         'selfdmg': {},
@@ -2584,7 +2554,7 @@ moves = {
         'status': []
     },
     "Fire Blast":{
-        'power': {'2':110},
+        'power': 110,
         'pktype': 'Fire',
         'acc': 85,
         'selfdmg': {},
@@ -2602,7 +2572,7 @@ moves = {
         'status': ['bur',10]
     },
     "Fire Fang":{
-        'power': {'2':65},
+        'power': 65,
         'pktype': 'Fire',
         'acc': 95,
         'selfdmg': {},
@@ -2620,7 +2590,7 @@ moves = {
         'status': ['bur',10]
     },
     "Fire Lash":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Fire',
         'acc': 100,
         'selfdmg': {},
@@ -2638,7 +2608,7 @@ moves = {
         'status': []
     },
     "Fire Pledge":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Fire',
         'acc': 100,
         'selfdmg': {},
@@ -2657,7 +2627,7 @@ moves = {
         'status': []
     },
     "Fire Punch":{
-        'power': {'2':75},
+        'power': 75,
         'pktype': 'Fire',
         'acc': 100,
         'selfdmg': {},
@@ -2676,7 +2646,7 @@ moves = {
         'status': ['bur',10]
     },
     "Fissure":{
-        'power': {'3':100},
+        'power': 1000000,
         'pktype': 'Ground',
         'acc': 30,
         'selfdmg': {},
@@ -2694,7 +2664,7 @@ moves = {
         'status': []
     },
     "Flame Burst":{
-        'power': {'2':70},
+        'power': 70,
         'pktype': 'Fire',
         'acc': 100,
         'selfdmg': {'5':6.25},
@@ -2712,7 +2682,7 @@ moves = {
         'status': []
     },
     "Flame Charge":{
-        'power': {'2':50},
+        'power': 50,
         'pktype': 'Fire',
         'acc': 100,
         'selfdmg': {},
@@ -2731,7 +2701,7 @@ moves = {
         'status': []
     },
     "Flame Wheel":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Fire',
         'acc': 100,
         'selfdmg': {},
@@ -2750,7 +2720,7 @@ moves = {
         'status': ['bur',10]
     },
     "Flamethrower":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Fire',
         'acc': 100,
         'selfdmg': {},
@@ -2769,7 +2739,7 @@ moves = {
         'status': ['bur',10]
     },
     "Flare Blitz":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Fire',
         'acc': 100,
         'selfdmg': {'4':33.3333333333333333333333333},
@@ -2787,7 +2757,7 @@ moves = {
         'status': ['bur',10]
     },
     "Flash":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -2805,7 +2775,7 @@ moves = {
         'status': []
     },
     "Flash Cannon":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Steel',
         'acc': 100,
         'selfdmg': {},
@@ -2823,7 +2793,7 @@ moves = {
         'status': []
     },
     "Flatter":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Dark',
         'acc': 100,
         'selfdmg': {},
@@ -2842,7 +2812,7 @@ moves = {
         'status': ['con',100]
     },
     "Fleur Cannon":{
-        'power': {'2':130},
+        'power': 130,
         'pktype': 'Normal',
         'acc': 90,
         'selfdmg': {},
@@ -2861,7 +2831,7 @@ moves = {
         'status': []
     },
     "Floral Healing":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Fairy',
         'acc': 100,
         'selfdmg': {'3':50},
@@ -2880,7 +2850,7 @@ moves = {
         'status': []
     },
     "Fly":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Flying',
         'acc': 95,
         'selfdmg': {},
@@ -2899,7 +2869,7 @@ moves = {
         'status': []
     },
     "Flying Press":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Fighting',
         'acc': 95,
         'selfdmg': {},
@@ -2918,7 +2888,7 @@ moves = {
         'status': []
     },
     "Focus Blast":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Fighting',
         'acc': 70,
         'selfdmg': {},
@@ -2937,7 +2907,7 @@ moves = {
         'status': []
     },
     "Force Palm":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Fighting',
         'acc': 100,
         'selfdmg': {},
@@ -2956,7 +2926,7 @@ moves = {
         'status': ['par',30]
     },
     "Freeze Shock":{
-        'power': {'2':140},
+        'power': 140,
         'pktype': 'Ice',
         'acc': 90,
         'selfdmg': {},
@@ -2975,7 +2945,7 @@ moves = {
         'status': ['par',30]
     },
     "Freeze-Dry":{
-        'power': {'2':70},
+        'power': 70,
         'pktype': 'Ice',
         'acc': 100,
         'selfdmg': {},
@@ -2994,7 +2964,7 @@ moves = {
         'status': ['frz',10]
     },
     "Frenzy Plant":{
-        'power': {'2':150},
+        'power': 150,
         'pktype': 'Grass',
         'acc': 90,
         'selfdmg': {},
@@ -3013,7 +2983,7 @@ moves = {
         'status': []
     },
     "Frost Breath":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Ice',
         'acc': 90,
         'selfdmg': {},
@@ -3032,7 +3002,7 @@ moves = {
         'status': []
     },
     "Fury Attack":{
-        'power': {'2':15},
+        'power': 15,
         'pktype': 'Normal',
         'acc': 80,
         'selfdmg': {},
@@ -3050,7 +3020,7 @@ moves = {
         'status': []
     },
     "Fury Swipes":{
-        'power': {'2':18},
+        'power': 18,
         'pktype': 'Normal',
         'acc': 85,
         'selfdmg': {},
@@ -3068,7 +3038,7 @@ moves = {
         'status': []
     },
     "Fusion Bolt":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Electric',
         'acc': 100,
         'selfdmg': {},
@@ -3087,7 +3057,7 @@ moves = {
         'status': []
     },
     "Fusion Flare":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Fire',
         'acc': 100,
         'selfdmg': {},
@@ -3106,7 +3076,7 @@ moves = {
         'status': []
     },
     "Future Sight":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Psychic',
         'acc': 100,
         'selfdmg': {},
@@ -3124,7 +3094,7 @@ moves = {
         'status': []
     },
     "Gear Grind":{
-        'power': {'2':50},
+        'power': 50,
         'pktype': 'Steel',
         'acc': 85,
         'selfdmg': {},
@@ -3142,7 +3112,7 @@ moves = {
         'status': []
     },
     "Geomancy":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Fairy',
         'acc': 100,
         'selfdmg': {},
@@ -3161,7 +3131,7 @@ moves = {
         'status': []
     },
     "Giga Drain":{
-        'power': {'2':75},
+        'power': 75,
         'pktype': 'Grass',
         'acc': 100,
         'selfdmg': {'2':50},
@@ -3179,7 +3149,7 @@ moves = {
         'status': []
     },
     "Giga Impact":{
-        'power': {'2':150},
+        'power': 150,
         'pktype': 'Normal',
         'acc': 90,
         'selfdmg': {},
@@ -3197,7 +3167,7 @@ moves = {
         'status': []
     },
     "Glaciate":{
-        'power': {'2':65},
+        'power': 65,
         'pktype': 'Ice',
         'acc': 95,
         'selfdmg': {},
@@ -3216,7 +3186,7 @@ moves = {
         'status': []
     },
     "Glare":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -3234,7 +3204,7 @@ moves = {
         'status': ['par',100]
     },
     "Grass Pledge":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Grass',
         'acc': 100,
         'selfdmg': {},
@@ -3253,7 +3223,7 @@ moves = {
         'status': []
     },
     "Grass Whistle":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Grass',
         'acc': 55,
         'selfdmg': {},
@@ -3272,7 +3242,7 @@ moves = {
         'status': ['sle',100]
     },
     "Growl":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -3290,7 +3260,7 @@ moves = {
         'status': []
     },
     "Growth":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -3308,26 +3278,8 @@ moves = {
         'priority': 0,
         'status': []
     },
-    "Guardian of Alola":{
-        'power': {'3':75},
-        'pktype': 'Normal',
-        'acc': 30,
-        'selfdmg': {},
-        'recharge': False, 
-        'invulnerable': 0,
-        'charge': 0,
-        'timesperturn': [1,1],
-        'raise': [0,0,0,0],
-        'eraise': [0,0,0,0],
-        'raiser': [0,0,0,0],
-        'eraiser': [0,0,0,0],
-        'flinch': 0,
-        'crithit': 0,
-        'priority': 0,
-        'status': []
-    },
     "Guillotine":{
-        'power': {'3':100},
+        'power': 1000000,
         'pktype': 'Normal',
         'acc': 30,
         'selfdmg': {},
@@ -3345,7 +3297,7 @@ moves = {
         'status': []
     },
     "Gunk Shot":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Poison',
         'acc': 80,
         'selfdmg': {},
@@ -3363,7 +3315,7 @@ moves = {
         'status': ['poi',30]
     },
     "Gust":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Flying',
         'acc': 100,
         'selfdmg': {},
@@ -3381,7 +3333,7 @@ moves = {
         'status': []
     },
     "Hammer Arm":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Fighting',
         'acc': 90,
         'selfdmg': {},
@@ -3399,7 +3351,7 @@ moves = {
         'status': []
     },
     "Harden":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -3417,7 +3369,7 @@ moves = {
         'status': []
     },
     "Head Charge":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Grass',
         'acc': 100,
         'selfdmg': {'4':25},
@@ -3435,7 +3387,7 @@ moves = {
         'status': []
     },
     "Head Smash":{
-        'power': {'2':150},
+        'power': 150,
         'pktype': 'Rock',
         'acc': 80,
         'selfdmg': {'4':50},
@@ -3453,7 +3405,7 @@ moves = {
         'status': []
     },
     "Headbutt":{
-        'power': {'2':70},
+        'power': 70,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -3471,7 +3423,7 @@ moves = {
         'status': []
     },
     "Heal Order":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Bug',
         'acc': 100,
         'selfdmg': {'3':50},
@@ -3489,7 +3441,7 @@ moves = {
         'status': []
     },
     "Heart Stamp":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Psychic',
         'acc': 100,
         'selfdmg': {},
@@ -3507,7 +3459,7 @@ moves = {
         'status': []
     },
     "Heat Wave":{
-        'power': {'2':95},
+        'power': 95,
         'pktype': 'Fire',
         'acc': 90,
         'selfdmg': {},
@@ -3525,7 +3477,7 @@ moves = {
         'status': ['bur',10]
     },
     "Hex":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Ghost',
         'acc': 100,
         'selfdmg': {},
@@ -3542,8 +3494,26 @@ moves = {
         'priority': 0,
         'status': []
     },
+    "Hidden Power":{
+        'power': 60,
+        'pktype': 'Normal',
+        'acc': 100,
+        'selfdmg': {},
+        'recharge': False, 
+        'invulnerable': 0,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0,0],
+        'eraise': [0,0,0,0],
+        'raiser': [0,0,0,0],
+        'eraiser': [0,0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 0,
+        'status': []
+    },
     "High Horsepower":{
-        'power': {'2':95},
+        'power': 95,
         'pktype': 'Ground',
         'acc': 95,
         'selfdmg': {},
@@ -3561,7 +3531,7 @@ moves = {
         'status': []
     },
     "High Jump Kick":{
-        'power': {'2':130},
+        'power': 130,
         'pktype': 'Fighting',
         'acc': 90,
         'selfdmg': {'5':5},
@@ -3579,7 +3549,7 @@ moves = {
         'status': []
     },
     "Hone Claws":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Dark',
         'acc': 100,
         'selfdmg': {},
@@ -3597,7 +3567,7 @@ moves = {
         'status': []
     },
     "Horn Attack":{
-        'power': {'2':65},
+        'power': 65,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -3615,7 +3585,7 @@ moves = {
         'status': []
     },
     "Horn Drill":{
-        'power': {'3':100},
+        'power': 1000000,
         'pktype': 'Normal',
         'acc': 30,
         'selfdmg': {},
@@ -3633,7 +3603,7 @@ moves = {
         'status': []
     },
     "Horn Leech":{
-        'power': {'2':75},
+        'power': 75,
         'pktype': 'Grass',
         'acc': 100,
         'selfdmg': {'2':50},
@@ -3651,7 +3621,7 @@ moves = {
         'status': []
     },
     "Howl":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -3669,7 +3639,7 @@ moves = {
         'status': []
     },
     "Hurricane":{
-        'power': {'2':110},
+        'power': 110,
         'pktype': 'Flying',
         'acc': 70,
         'selfdmg': {},
@@ -3687,7 +3657,7 @@ moves = {
         'status': ['con',30]
     },
     "Hydro Cannon":{
-        'power': {'2':150},
+        'power': 150,
         'pktype': 'Water',
         'acc': 90,
         'selfdmg': {},
@@ -3705,7 +3675,7 @@ moves = {
         'status': []
     },
     "Hydro Pump":{
-        'power': {'2':110},
+        'power': 110,
         'pktype': 'Water',
         'acc': 80,
         'selfdmg': {},
@@ -3723,7 +3693,7 @@ moves = {
         'status': []
     },
     "Hyper Beam":{
-        'power': {'2':150},
+        'power': 150,
         'pktype': 'Normal',
         'acc': 90,
         'selfdmg': {},
@@ -3741,7 +3711,7 @@ moves = {
         'status': []
     },
     "Hyper Fang":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Normal',
         'acc': 90,
         'selfdmg': {},
@@ -3759,7 +3729,7 @@ moves = {
         'status': []
     },
     "Hyper Voice":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -3777,7 +3747,7 @@ moves = {
         'status': []
     },
     "Hyperspace Fury":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Dark',
         'acc': 100,
         'selfdmg': {},
@@ -3795,7 +3765,7 @@ moves = {
         'status': []
     },
     "Hyperspace Hole":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Psychic',
         'acc': 100,
         'selfdmg': {},
@@ -3813,7 +3783,7 @@ moves = {
         'status': []
     },
     "Hypnosis":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Psychic',
         'acc': 60,
         'selfdmg': {},
@@ -3831,7 +3801,7 @@ moves = {
         'status': ['sle',100]
     },
     "Ice Beam":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Ice',
         'acc': 100,
         'selfdmg': {},
@@ -3849,7 +3819,7 @@ moves = {
         'status': ['frz',10]
     },
     "Ice Burn":{
-        'power': {'2':140},
+        'power': 140,
         'pktype': 'Ice',
         'acc': 90,
         'selfdmg': {},
@@ -3867,7 +3837,7 @@ moves = {
         'status': ['bur',30]
     },
     "Ice Fang":{
-        'power': {'2':65},
+        'power': 65,
         'pktype': 'Ice',
         'acc': 95,
         'selfdmg': {},
@@ -3885,7 +3855,7 @@ moves = {
         'status': ['frz',10]
     },
     "Ice Hammer":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Ice',
         'acc': 90,
         'selfdmg': {},
@@ -3903,7 +3873,7 @@ moves = {
         'status': []
     },
     "Ice Punch":{
-        'power': {'2':75},
+        'power': 75,
         'pktype': 'Ice',
         'acc': 100,
         'selfdmg': {},
@@ -3921,7 +3891,7 @@ moves = {
         'status': ['frz',10]
     },
     "Ice Shard":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Ice',
         'acc': 100,
         'selfdmg': {},
@@ -3939,7 +3909,7 @@ moves = {
         'status': []
     },
     "Icicle Crash":{
-        'power': {'2':85},
+        'power': 85,
         'pktype': 'Ice',
         'acc': 90,
         'selfdmg': {},
@@ -3957,7 +3927,7 @@ moves = {
         'status': []
     },
     "Icicle Spear":{
-        'power': {'2':25},
+        'power': 25,
         'pktype': 'Ice',
         'acc': 100,
         'selfdmg': {},
@@ -3975,8 +3945,8 @@ moves = {
         'status': []
     },
     "Icy Wind":{
-        'power': {'2':55},
-        'pktype': 'Normal',
+        'power': 55,
+        'pktype': 'Ice',
         'acc': 95,
         'selfdmg': {},
         'recharge': False, 
@@ -3993,7 +3963,7 @@ moves = {
         'status': []
     },
     "Incinerate":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Fire',
         'acc': 100,
         'selfdmg': {},
@@ -4011,7 +3981,7 @@ moves = {
         'status': []
     },
     "Inferno":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Fire',
         'acc': 50,
         'selfdmg': {},
@@ -4029,7 +3999,7 @@ moves = {
         'status': ['bur',100]
     },
     "Iron Defense":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Steel',
         'acc': 100,
         'selfdmg': {},
@@ -4047,7 +4017,7 @@ moves = {
         'status': []
     },
     "Iron Head":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Steel',
         'acc': 100,
         'selfdmg': {},
@@ -4065,7 +4035,7 @@ moves = {
         'status': []
     },
     "Judgement":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -4083,7 +4053,7 @@ moves = {
         'status': []
     },
     "Jump Kick":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Fighting',
         'acc': 95,
         'selfdmg': {'5':5},
@@ -4101,7 +4071,7 @@ moves = {
         'status': []
     },
     "Karate Chop":{
-        'power': {'2':50},
+        'power': 50,
         'pktype': 'Fighting',
         'acc': 100,
         'selfdmg': {},
@@ -4119,7 +4089,7 @@ moves = {
         'status': []
     },
     "Kinesis":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Psychic',
         'acc': 100,
         'selfdmg': {},
@@ -4137,7 +4107,7 @@ moves = {
         'status': []
     },
     "Knock Off":{
-        'power': {'2':70},
+        'power': 80,
         'pktype': 'Dark',
         'acc': 100,
         'selfdmg': {},
@@ -4155,7 +4125,7 @@ moves = {
         'status': []
     },
     "Land's Wrath":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Ground',
         'acc': 100,
         'selfdmg': {},
@@ -4173,7 +4143,7 @@ moves = {
         'status': []
     },
     "Lava Plume":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Fire',
         'acc': 100,
         'selfdmg': {},
@@ -4191,7 +4161,7 @@ moves = {
         'status': ['bur',30]
     },
     "Leaf Blade":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Grass',
         'acc': 100,
         'selfdmg': {},
@@ -4209,7 +4179,7 @@ moves = {
         'status': []
     },
     "Leaf Storm":{
-        'power': {'2':130},
+        'power': 130,
         'pktype': 'Grass',
         'acc': 90,
         'selfdmg': {},
@@ -4227,7 +4197,7 @@ moves = {
         'status': []
     },
     "Leaf Tornado":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Grass',
         'acc': 100,
         'selfdmg': {},
@@ -4245,7 +4215,7 @@ moves = {
         'status': []
     },
     "Leech Life":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Bug',
         'acc': 100,
         'selfdmg': {'4':50},
@@ -4263,7 +4233,7 @@ moves = {
         'status': []
     },
     "Leer":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -4281,7 +4251,7 @@ moves = {
         'status': []
     },
     "Lick":{
-        'power': {'2':30},
+        'power': 30,
         'pktype': 'Ghost',
         'acc': 100,
         'selfdmg': {},
@@ -4299,7 +4269,7 @@ moves = {
         'status': ['par',30]
     },
     "Life Dew":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Water',
         'acc': 100,
         'selfdmg': {'3':25},
@@ -4317,7 +4287,7 @@ moves = {
         'status': []
     },
     "Liquidation":{
-        'power': {'2':85},
+        'power': 85,
         'pktype': 'Water',
         'acc': 100,
         'selfdmg': {},
@@ -4335,7 +4305,7 @@ moves = {
         'status': []
     },
     "Lovely Kiss":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 75,
         'selfdmg': {},
@@ -4353,7 +4323,7 @@ moves = {
         'status': ['sle',100]
     },
     "Low Sweep":{
-        'power': {'2':65},
+        'power': 65,
         'pktype': 'Fighting',
         'acc': 100,
         'selfdmg': {},
@@ -4371,7 +4341,7 @@ moves = {
         'status': []
     },
     "Lunge":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Bug',
         'acc': 100,
         'selfdmg': {},
@@ -4389,7 +4359,7 @@ moves = {
         'status': []
     },
     "Luster Purge":{
-        'power': {'2':70},
+        'power': 70,
         'pktype': 'Psychic',
         'acc': 100,
         'selfdmg': {},
@@ -4407,7 +4377,7 @@ moves = {
         'status': []
     },
     "Mach Punch":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Fighting',
         'acc': 100,
         'selfdmg': {},
@@ -4425,7 +4395,7 @@ moves = {
         'status': []
     },
     "Magical Leaf":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Grass',
         'acc': 100,
         'selfdmg': {},
@@ -4443,7 +4413,7 @@ moves = {
         'status': []
     },
     "Magnet Bomb":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Steel',
         'acc': 100,
         'selfdmg': {},
@@ -4461,7 +4431,7 @@ moves = {
         'status': []
     },
     "Magnitude":{
-        'power': {'2':75},
+        'power': 75,
         'pktype': 'Ground',
         'acc': 100,
         'selfdmg': {},
@@ -4479,7 +4449,7 @@ moves = {
         'status': []
     },
     "Meditate":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Psychic',
         'acc': 100,
         'selfdmg': {},
@@ -4497,7 +4467,7 @@ moves = {
         'status': []
     },
     "Mega Drain":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Grass',
         'acc': 100,
         'selfdmg': {'2':50},
@@ -4515,7 +4485,7 @@ moves = {
         'status': []
     },
     "Mega Kick":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Normal',
         'acc': 75,
         'selfdmg': {},
@@ -4533,7 +4503,7 @@ moves = {
         'status': []
     },
     "Mega Punch":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Normal',
         'acc': 85,
         'selfdmg': {},
@@ -4551,7 +4521,7 @@ moves = {
         'status': []
     },
     "Megahorn":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Bug',
         'acc': 85,
         'selfdmg': {},
@@ -4569,7 +4539,7 @@ moves = {
         'status': []
     },
     "Memento":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Dark',
         'acc': 100,
         'selfdmg': {'5':100},
@@ -4578,7 +4548,7 @@ moves = {
         'charge': 0,
         'timesperturn': [1,1],
         'raise': [0,0,0,0],
-        'eraise': [0,-2,0,0],
+        'eraise': [0,-3,0,0],
         'raiser': [0,0,0,0],
         'eraiser': [0,100,0,0],
         'flinch': 0,
@@ -4587,7 +4557,7 @@ moves = {
         'status': []
     },
     "Metal Claw":{
-        'power': {'2':50},
+        'power': 50,
         'pktype': 'Steel',
         'acc': 95,
         'selfdmg': {},
@@ -4605,7 +4575,7 @@ moves = {
         'status': []
     },
     "Metal Sound":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Steel',
         'acc': 85,
         'selfdmg': {},
@@ -4623,7 +4593,7 @@ moves = {
         'status': []
     },
     "Meteor Mash":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Steel',
         'acc': 90,
         'selfdmg': {},
@@ -4641,7 +4611,7 @@ moves = {
         'status': []
     },
     "Milk Drink":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {'3':50},
@@ -4659,7 +4629,7 @@ moves = {
         'status': []
     },
     "Mind Blown":{
-        'power': {'2':150},
+        'power': 150,
         'pktype': 'Fire',
         'acc': 100,
         'selfdmg': {'5':50},
@@ -4677,7 +4647,7 @@ moves = {
         'status': []
     },
     "Mirror Shot":{
-        'power': {'2':65},
+        'power': 65,
         'pktype': 'Steel',
         'acc': 85,
         'selfdmg': {},
@@ -4695,7 +4665,7 @@ moves = {
         'status': []
     },
     "Mist Ball":{
-        'power': {'2':70},
+        'power': 70,
         'pktype': 'Psychic',
         'acc': 100,
         'selfdmg': {},
@@ -4713,7 +4683,7 @@ moves = {
         'status': []
     },
     "Moonblast":{
-        'power': {'2':95},
+        'power': 95,
         'pktype': 'Fairy',
         'acc': 100,
         'selfdmg': {},
@@ -4731,7 +4701,7 @@ moves = {
         'status': []
     },
     "Moongeist Beam":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Ghost',
         'acc': 100,
         'selfdmg': {},
@@ -4749,7 +4719,7 @@ moves = {
         'status': []
     },
     "Mud Bomb":{
-        'power': {'2':65},
+        'power': 65,
         'pktype': 'Ground',
         'acc': 85,
         'selfdmg': {},
@@ -4767,7 +4737,7 @@ moves = {
         'status': []
     },
     "Mud Shot":{
-        'power': {'2':55},
+        'power': 55,
         'pktype': 'Ground',
         'acc': 95,
         'selfdmg': {},
@@ -4785,7 +4755,7 @@ moves = {
         'status': []
     },
     "Mud Slap":{
-        'power': {'2':20},
+        'power': 20,
         'pktype': 'Ground',
         'acc': 100,
         'selfdmg': {},
@@ -4803,7 +4773,7 @@ moves = {
         'status': []
     },
     "Muddy Water":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Water',
         'acc': 85,
         'selfdmg': {},
@@ -4821,7 +4791,7 @@ moves = {
         'status': []
     },
     "Mystical Fire":{
-        'power': {'2':75},
+        'power': 75,
         'pktype': 'Fire',
         'acc': 100,
         'selfdmg': {},
@@ -4839,7 +4809,7 @@ moves = {
         'status': []
     },
     "Nasty Plot":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Dark',
         'acc': 100,
         'selfdmg': {},
@@ -4857,7 +4827,7 @@ moves = {
         'status': []
     },
     "Needle Arm":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Grass',
         'acc': 100,
         'selfdmg': {},
@@ -4875,7 +4845,7 @@ moves = {
         'status': []
     },
     "Night Daze":{
-        'power': {'2':85},
+        'power': 85,
         'pktype': 'Dark',
         'acc': 95,
         'selfdmg': {},
@@ -4893,7 +4863,7 @@ moves = {
         'status': []
     },
     "Night Slash":{
-        'power': {'2':70},
+        'power': 70,
         'pktype': 'Dark',
         'acc': 100,
         'selfdmg': {},
@@ -4911,7 +4881,7 @@ moves = {
         'status': []
     },
     "Noble Roar":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -4929,7 +4899,7 @@ moves = {
         'status': []
     },
     "Nuzzle":{
-        'power': {'2':20},
+        'power': 20,
         'pktype': 'Electric',
         'acc': 100,
         'selfdmg': {},
@@ -4947,7 +4917,7 @@ moves = {
         'status': ['par',100]
     },
     "Oblivion Wing":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Flying',
         'acc': 100,
         'selfdmg': {'2':75},
@@ -4965,7 +4935,7 @@ moves = {
         'status': []
     },
     "Octazooka":{
-        'power': {'2':65},
+        'power': 65,
         'pktype': 'Water',
         'acc': 85,
         'selfdmg': {},
@@ -4983,7 +4953,7 @@ moves = {
         'status': []
     },
     "Ominous Wind":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Ghost',
         'acc': 100,
         'selfdmg': {},
@@ -5001,7 +4971,7 @@ moves = {
         'status': []
     },
     "Origin Pulse":{
-        'power': {'2':110},
+        'power': 110,
         'pktype': 'Water',
         'acc': 85,
         'selfdmg': {},
@@ -5019,7 +4989,7 @@ moves = {
         'status': []
     },
     "Outrage":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Dragon',
         'acc': 100,
         'selfdmg': {'1':10},
@@ -5037,7 +5007,7 @@ moves = {
         'status': []
     },
     "Overheat":{
-        'power': {'2':130},
+        'power': 130,
         'pktype': 'Fire',
         'acc': 90,
         'selfdmg': {},
@@ -5055,7 +5025,7 @@ moves = {
         'status': []
     },
     "Parabolic Charge":{
-        'power': {'2':65},
+        'power': 65,
         'pktype': 'Electric',
         'acc': 100,
         'selfdmg': {'2':50},
@@ -5073,7 +5043,7 @@ moves = {
         'status': []
     },
     "Parting Shot":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Dark',
         'acc': 100,
         'selfdmg': {},
@@ -5091,7 +5061,7 @@ moves = {
         'status': []
     },
     "Payback":{
-        'power': {'2':65},
+        'power': 100,
         'pktype': 'Dark',
         'acc': 100,
         'selfdmg': {},
@@ -5105,11 +5075,11 @@ moves = {
         'eraiser': [0,0,0,0],
         'flinch': 0,
         'crithit': 0,
-        'priority': 0,
+        'priority': -7,
         'status': []
     },
     "Peck":{
-        'power': {'2':35},
+        'power': 35,
         'pktype': 'Flying',
         'acc': 100,
         'selfdmg': {},
@@ -5127,7 +5097,7 @@ moves = {
         'status': []
     },
     "Perish Song":{
-        'power': {'3':100},
+        'power': 1000000,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {'5':100},
@@ -5145,7 +5115,7 @@ moves = {
         'status': []
     },
     "Petal Blizzard":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Grass',
         'acc': 100,
         'selfdmg': {},
@@ -5163,7 +5133,7 @@ moves = {
         'status': []
     },
     "Petal Dance":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Grass',
         'acc': 100,
         'selfdmg': {'1':10},
@@ -5181,7 +5151,7 @@ moves = {
         'status': []
     },
     "Phantom Force":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Ghost',
         'acc': 100,
         'selfdmg': {},
@@ -5199,7 +5169,7 @@ moves = {
         'status': []
     },
     "Photon Geyser":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Psychic',
         'acc': 100,
         'selfdmg': {},
@@ -5217,7 +5187,7 @@ moves = {
         'status': []
     },
     "Pin Missile":{
-        'power': {'2':25},
+        'power': 25,
         'pktype': 'Bug',
         'acc': 100,
         'selfdmg': {},
@@ -5235,7 +5205,7 @@ moves = {
         'status': []
     },
     "Plasma Fists":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Electric',
         'acc': 100,
         'selfdmg': {},
@@ -5253,7 +5223,7 @@ moves = {
         'status': []
     },
     "Play Nice":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -5271,7 +5241,7 @@ moves = {
         'status': []
     },
     "Play Rough":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Fairy',
         'acc': 90,
         'selfdmg': {},
@@ -5289,7 +5259,7 @@ moves = {
         'status': []
     },
     "Pluck":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Flying',
         'acc': 100,
         'selfdmg': {},
@@ -5307,7 +5277,7 @@ moves = {
         'status': []
     },
     "Poison Fang":{
-        'power': {'2':50},
+        'power': 50,
         'pktype': 'Poison',
         'acc': 100,
         'selfdmg': {},
@@ -5325,7 +5295,7 @@ moves = {
         'status': ['poi',50]
     },
     "Poison Gas":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Poison',
         'acc': 90,
         'selfdmg': {},
@@ -5343,7 +5313,7 @@ moves = {
         'status': ['poi',100]
     },
     "Poison Jab":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Poison',
         'acc': 100,
         'selfdmg': {},
@@ -5361,7 +5331,7 @@ moves = {
         'status': ['poi',30]
     },
     "Poison Powder":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Poison',
         'acc': 75,
         'selfdmg': {},
@@ -5379,7 +5349,7 @@ moves = {
         'status': ['poi',30]
     },
     "Poison Sting":{
-        'power': {'2':15},
+        'power': 15,
         'pktype': 'Poison',
         'acc': 100,
         'selfdmg': {},
@@ -5397,7 +5367,7 @@ moves = {
         'status': ['poi',30]
     },
     "Poison Tail":{
-        'power': {'2':50},
+        'power': 50,
         'pktype': 'Poison',
         'acc': 100,
         'selfdmg': {},
@@ -5415,7 +5385,7 @@ moves = {
         'status': ['poi',10]
     },
     "Pollen Puff":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Bug',
         'acc': 100,
         'selfdmg': {},
@@ -5433,7 +5403,7 @@ moves = {
         'status': []
     },
     "Pound":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -5451,7 +5421,7 @@ moves = {
         'status': []
     },
     "Powder Snow":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Ice',
         'acc': 100,
         'selfdmg': {},
@@ -5469,7 +5439,7 @@ moves = {
         'status': ['frz',10]
     },
     "Power Gem":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Rock',
         'acc': 100,
         'selfdmg': {},
@@ -5487,7 +5457,7 @@ moves = {
         'status': []
     },
     "Power Trip":{
-        'power': {'2':50},
+        'power': 50,
         'pktype': 'Dark',
         'acc': 100,
         'selfdmg': {},
@@ -5505,7 +5475,7 @@ moves = {
         'status': []
     },
     "Power Whip":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Grass',
         'acc': 85,
         'selfdmg': {},
@@ -5523,7 +5493,7 @@ moves = {
         'status': []
     },
     "Power-Up Punch":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Fighting',
         'acc': 100,
         'selfdmg': {},
@@ -5541,7 +5511,7 @@ moves = {
         'status': []
     },
     "Precipice Blades":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Ground',
         'acc': 85,
         'selfdmg': {},
@@ -5559,7 +5529,7 @@ moves = {
         'status': []
     },
     "Prismatic Laser":{
-        'power': {'2':160},
+        'power': 160,
         'pktype': 'Psychic',
         'acc': 100,
         'selfdmg': {},
@@ -5577,7 +5547,7 @@ moves = {
         'status': []
     },
     "Psybeam":{
-        'power': {'2':65},
+        'power': 65,
         'pktype': 'Psychic',
         'acc': 100,
         'selfdmg': {},
@@ -5595,7 +5565,7 @@ moves = {
         'status': ['con',10]
     },
     "Psychic":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Psychic',
         'acc': 100,
         'selfdmg': {},
@@ -5613,7 +5583,7 @@ moves = {
         'status': []
     },
     "Psychic Fangs":{
-        'power': {'2':85},
+        'power': 85,
         'pktype': 'Psychic',
         'acc': 100,
         'selfdmg': {},
@@ -5631,7 +5601,7 @@ moves = {
         'status': []
     },
     "Psycho Boost":{
-        'power': {'2':140},
+        'power': 140,
         'pktype': 'Psychic',
         'acc': 90,
         'selfdmg': {},
@@ -5649,7 +5619,7 @@ moves = {
         'status': []
     },
     "Psycho Cut":{
-        'power': {'2':70},
+        'power': 70,
         'pktype': 'Psychic',
         'acc': 100,
         'selfdmg': {},
@@ -5667,7 +5637,7 @@ moves = {
         'status': []
     },
     "Psyshock":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Psychic',
         'acc': 100,
         'selfdmg': {},
@@ -5685,7 +5655,7 @@ moves = {
         'status': []
     },
     "Psystrike":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Psychic',
         'acc': 100,
         'selfdmg': {},
@@ -5702,8 +5672,26 @@ moves = {
         'priority': 0,
         'status': []
     },
+    "Pursuit":{
+        'power': 55,
+        'pktype': 'Dark',
+        'acc': 100,
+        'selfdmg': {},
+        'recharge': False, 
+        'invulnerable': 0,
+        'charge': 0,
+        'timesperturn': [1,1],
+        'raise': [0,0,0,0],
+        'eraise': [0,0,0,0],
+        'raiser': [0,0,0,0],
+        'eraiser': [0,0,0,0],
+        'flinch': 0,
+        'crithit': 0,
+        'priority': 7,
+        'status': []
+    },
     "Quick Attack":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -5721,7 +5709,7 @@ moves = {
         'status': []
     },
     "Quiver Dance":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Bug',
         'acc': 100,
         'selfdmg': {},
@@ -5739,7 +5727,7 @@ moves = {
         'status': []
     },
     "Rapid Spin":{
-        'power': {'2':50},
+        'power': 50,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -5757,7 +5745,7 @@ moves = {
         'status': []
     },
     "Razor Leaf":{
-        'power': {'2':55},
+        'power': 55,
         'pktype': 'Grass',
         'acc': 95,
         'selfdmg': {},
@@ -5775,7 +5763,7 @@ moves = {
         'status': []
     },
     "Razor Shell":{
-        'power': {'2':75},
+        'power': 75,
         'pktype': 'Water',
         'acc': 95,
         'selfdmg': {},
@@ -5793,7 +5781,7 @@ moves = {
         'status': []
     },
     "Razor Wind":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -5811,7 +5799,7 @@ moves = {
         'status': []
     },
     "Recover":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {'3':50},
@@ -5829,7 +5817,7 @@ moves = {
         'status': []
     },
     "Relic Song":{
-        'power': {'2':75},
+        'power': 75,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -5847,7 +5835,7 @@ moves = {
         'status': ['sle',10]
     },
     "Rest":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Psychic',
         'acc': 100,
         'selfdmg': {'3':100},
@@ -5865,7 +5853,7 @@ moves = {
         'status': []
     },
     "Retaliate":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -5883,7 +5871,7 @@ moves = {
         'status': []
     },
     "Revelation Dance":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Flying',
         'acc': 100,
         'selfdmg': {},
@@ -5901,7 +5889,7 @@ moves = {
         'status': []
     },
     "Revenge":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Fighting',
         'acc': 100,
         'selfdmg': {},
@@ -5919,7 +5907,7 @@ moves = {
         'status': []
     },
     "Roar of Time":{
-        'power': {'2':150},
+        'power': 150,
         'pktype': 'Dragon',
         'acc': 90,
         'selfdmg': {},
@@ -5937,7 +5925,7 @@ moves = {
         'status': []
     },
     "Rock Blast":{
-        'power': {'2':25},
+        'power': 25,
         'pktype': 'Rock',
         'acc': 90,
         'selfdmg': {},
@@ -5955,7 +5943,7 @@ moves = {
         'status': []
     },
     "Rock Climb":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Normal',
         'acc': 85,
         'selfdmg': {},
@@ -5973,7 +5961,7 @@ moves = {
         'status': ['con',20]
     },
     "Rock Polish":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Rock',
         'acc': 100,
         'selfdmg': {},
@@ -5991,7 +5979,7 @@ moves = {
         'status': []
     },
     "Rock Slide":{
-        'power': {'2':75},
+        'power': 75,
         'pktype': 'Rock',
         'acc': 90,
         'selfdmg': {},
@@ -6009,7 +5997,7 @@ moves = {
         'status': []
     },
     "Rock Smash":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Fighting',
         'acc': 100,
         'selfdmg': {},
@@ -6027,7 +6015,7 @@ moves = {
         'status': []
     },
     "Rock Throw":{
-        'power': {'2':50},
+        'power': 50,
         'pktype': 'Rock',
         'acc': 90,
         'selfdmg': {},
@@ -6045,7 +6033,7 @@ moves = {
         'status': []
     },
     "Rock Tomb":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Rock',
         'acc': 95,
         'selfdmg': {},
@@ -6063,7 +6051,7 @@ moves = {
         'status': []
     },
     "Rock Wrecker":{
-        'power': {'2':150},
+        'power': 150,
         'pktype': 'Rock',
         'acc': 90,
         'selfdmg': {},
@@ -6081,7 +6069,7 @@ moves = {
         'status': []
     },
     "Rolling Kick":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Fighting',
         'acc': 85,
         'selfdmg': {},
@@ -6099,7 +6087,7 @@ moves = {
         'status': []
     },
     "Roost":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Flying',
         'acc': 100,
         'selfdmg': {'3':50},
@@ -6117,7 +6105,7 @@ moves = {
         'status': []
     },
     "Round":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -6135,7 +6123,7 @@ moves = {
         'status': []
     },
     "Sacred Fire":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Fire',
         'acc': 95,
         'selfdmg': {},
@@ -6153,7 +6141,7 @@ moves = {
         'status': ['bur',50]
     },
     "Sacred Sword":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Fighting',
         'acc': 100,
         'selfdmg': {},
@@ -6171,7 +6159,7 @@ moves = {
         'status': []
     },
     "Sand Attack":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Ground',
         'acc': 100,
         'selfdmg': {},
@@ -6189,7 +6177,7 @@ moves = {
         'status': []
     },
     "Scald":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Water',
         'acc': 100,
         'selfdmg': {},
@@ -6207,7 +6195,7 @@ moves = {
         'status': ['bur',30]
     },
     "Scary Face":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -6225,7 +6213,7 @@ moves = {
         'status': []
     },
     "Scratch":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -6243,7 +6231,7 @@ moves = {
         'status': []
     },
     "Screech":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 85,
         'selfdmg': {},
@@ -6261,7 +6249,7 @@ moves = {
         'status': []
     },
     "Searing Shot":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Fire',
         'acc': 100,
         'selfdmg': {},
@@ -6279,7 +6267,7 @@ moves = {
         'status': ['bur',30]
     },
     "Secret Sword":{
-        'power': {'2':85},
+        'power': 85,
         'pktype': 'Fighting',
         'acc': 100,
         'selfdmg': {},
@@ -6297,7 +6285,7 @@ moves = {
         'status': []
     },
     "Seed Bomb":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Grass',
         'acc': 100,
         'selfdmg': {},
@@ -6315,7 +6303,7 @@ moves = {
         'status': []
     },
     "Seed Flare":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Grass',
         'acc': 85,
         'selfdmg': {},
@@ -6333,7 +6321,7 @@ moves = {
         'status': []
     },
     "Self-Destruct":{
-        'power': {'2':200},
+        'power': 200,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {'5':100},
@@ -6351,7 +6339,7 @@ moves = {
         'status': []
     },
     "Shadow Ball":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Ghost',
         'acc': 100,
         'selfdmg': {},
@@ -6369,7 +6357,7 @@ moves = {
         'status': []
     },
     "Shadow Bone":{
-        'power': {'2':85},
+        'power': 85,
         'pktype': 'Ghost',
         'acc': 100,
         'selfdmg': {},
@@ -6387,7 +6375,7 @@ moves = {
         'status': []
     },
     "Shadow Claw":{
-        'power': {'2':70},
+        'power': 70,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -6405,7 +6393,7 @@ moves = {
         'status': []
     },
     "Shadow Force":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Ghost',
         'acc': 100,
         'selfdmg': {},
@@ -6423,7 +6411,7 @@ moves = {
         'status': []
     },
     "Shadow Punch":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Ghost',
         'acc': 100,
         'selfdmg': {},
@@ -6441,7 +6429,7 @@ moves = {
         'status': []
     },
     "Shadow Sneak":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Ghost',
         'acc': 100,
         'selfdmg': {},
@@ -6459,7 +6447,7 @@ moves = {
         'status': []
     },
     "Sharpen":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -6495,7 +6483,7 @@ moves = {
         'status': []
     },
     "Shell Smash":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -6513,7 +6501,7 @@ moves = {
         'status': []
     },
     "Shift Gear":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Steel',
         'acc': 100,
         'selfdmg': {},
@@ -6531,7 +6519,7 @@ moves = {
         'status': []
     },
     "Shock Wave":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Electric',
         'acc': 100,
         'selfdmg': {},
@@ -6549,7 +6537,7 @@ moves = {
         'status': []
     },
     "Shore Up":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Ground',
         'acc': 100,
         'selfdmg': {'3':50},
@@ -6567,7 +6555,7 @@ moves = {
         'status': []
     },
     "Signal Beam":{
-        'power': {'2':75},
+        'power': 75,
         'pktype': 'Bug',
         'acc': 100,
         'selfdmg': {},
@@ -6585,7 +6573,7 @@ moves = {
         'status': ['con',10]
     },
     "Silver Wind":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Bug',
         'acc': 100,
         'selfdmg': {},
@@ -6603,7 +6591,7 @@ moves = {
         'status': []
     },
     "Sing":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 55,
         'selfdmg': {},
@@ -6621,7 +6609,7 @@ moves = {
         'status': ['sle',100]
     },
     "Skull Bash":{
-        'power': {'2':130},
+        'power': 130,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -6639,7 +6627,7 @@ moves = {
         'status': []
     },
     "Sky Attack":{
-        'power': {'2':140},
+        'power': 140,
         'pktype': 'Flying',
         'acc': 90,
         'selfdmg': {},
@@ -6657,7 +6645,7 @@ moves = {
         'status': []
     },
     "Sky Drop":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Flying',
         'acc': 100,
         'selfdmg': {},
@@ -6675,7 +6663,7 @@ moves = {
         'status': []
     },
     "Sky Uppercut":{
-        'power': {'2':85},
+        'power': 85,
         'pktype': 'Fighting',
         'acc': 90,
         'selfdmg': {},
@@ -6693,7 +6681,7 @@ moves = {
         'status': []
     },
     "Slack Off":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {'3':50},
@@ -6711,7 +6699,7 @@ moves = {
         'status': []
     },
     "Slam":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Normal',
         'acc': 75,
         'selfdmg': {},
@@ -6729,7 +6717,7 @@ moves = {
         'status': []
     },
     "Slash":{
-        'power': {'2':70},
+        'power': 70,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -6747,7 +6735,7 @@ moves = {
         'status': []
     },
     "Sleep Powder":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Grass',
         'acc': 75,
         'selfdmg': {},
@@ -6765,7 +6753,7 @@ moves = {
         'status': ['sle',100]
     },
     "Sludge":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Poison',
         'acc': 100,
         'selfdmg': {},
@@ -6783,7 +6771,7 @@ moves = {
         'status': ['poi',30]
     },
     "Sludge Bomb":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Poison',
         'acc': 100,
         'selfdmg': {},
@@ -6801,7 +6789,7 @@ moves = {
         'status': ['poi',30]
     },
     "Sludge Wave":{
-        'power': {'2':95},
+        'power': 95,
         'pktype': 'Poison',
         'acc': 100,
         'selfdmg': {},
@@ -6819,7 +6807,7 @@ moves = {
         'status': ['poi',10]
     },
     "Smack Down":{
-        'power': {'2':50},
+        'power': 50,
         'pktype': 'Ground',
         'acc': 100,
         'selfdmg': {},
@@ -6837,7 +6825,7 @@ moves = {
         'status': []
     },
     "Smart Strike":{
-        'power': {'2':70},
+        'power': 70,
         'pktype': 'Steel',
         'acc': 100,
         'selfdmg': {},
@@ -6855,7 +6843,7 @@ moves = {
         'status': []
     },
     "Smog":{
-        'power': {'2':30},
+        'power': 30,
         'pktype': 'Poison',
         'acc': 70,
         'selfdmg': {},
@@ -6873,7 +6861,7 @@ moves = {
         'status': ['poi',40]
     },
     "Smokescreen":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -6891,7 +6879,7 @@ moves = {
         'status': []
     },
     "Snarl":{
-        'power': {'2':55},
+        'power': 55,
         'pktype': 'Dark',
         'acc': 95,
         'selfdmg': {},
@@ -6909,7 +6897,7 @@ moves = {
         'status': []
     },
     "Soft-Boiled":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {'3':50},
@@ -6927,7 +6915,7 @@ moves = {
         'status': []
     },
     "Solar Beam":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Grass',
         'acc': 100,
         'selfdmg': {},
@@ -6945,7 +6933,7 @@ moves = {
         'status': []
     },
     "Solar Blade":{
-        'power': {'2':125},
+        'power': 125,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -6963,7 +6951,7 @@ moves = {
         'status': []
     },
     "Spacial Rend":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Dragon',
         'acc': 95,
         'selfdmg': {},
@@ -6981,7 +6969,7 @@ moves = {
         'status': []
     },
     "Spark":{
-        'power': {'2':65},
+        'power': 65,
         'pktype': 'Electric',
         'acc': 100,
         'selfdmg': {},
@@ -6999,7 +6987,7 @@ moves = {
         'status': ['par',30]
     },
     "Sparkling Aria":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Water',
         'acc': 100,
         'selfdmg': {},
@@ -7017,7 +7005,7 @@ moves = {
         'status': []
     },
     "Spectral Thief":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Ghost',
         'acc': 100,
         'selfdmg': {},
@@ -7035,7 +7023,7 @@ moves = {
         'status': []
     },
     "Spike Cannon":{
-        'power': {'2':20},
+        'power': 20,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -7053,7 +7041,7 @@ moves = {
         'status': []
     },
     "Spirit Shackle":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Ghost',
         'acc': 100,
         'selfdmg': {},
@@ -7071,7 +7059,7 @@ moves = {
         'status': []
     },
     "Splash":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Water',
         'acc': 100,
         'selfdmg': {},
@@ -7089,7 +7077,7 @@ moves = {
         'status': []
     },
     "Spore":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Grass',
         'acc': 100,
         'selfdmg': {},
@@ -7107,7 +7095,7 @@ moves = {
         'status': ['sle',100]
     },
     "Steam Eruption":{
-        'power': {'2':110},
+        'power': 110,
         'pktype': 'Water',
         'acc': 95,
         'selfdmg': {},
@@ -7125,7 +7113,7 @@ moves = {
         'status': ['bur',30]
     },
     "Steamroller":{
-        'power': {'2':65},
+        'power': 65,
         'pktype': 'Bug',
         'acc': 100,
         'selfdmg': {},
@@ -7143,7 +7131,7 @@ moves = {
         'status': []
     },
     "Steel Wing":{
-        'power': {'2':70},
+        'power': 70,
         'pktype': 'Steel',
         'acc': 90,
         'selfdmg': {},
@@ -7161,7 +7149,7 @@ moves = {
         'status': []
     },
     "Stomp":{
-        'power': {'2':65},
+        'power': 65,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -7179,7 +7167,7 @@ moves = {
         'status': []
     },
     "Stomping Tantrum":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Ground',
         'acc': 100,
         'selfdmg': {},
@@ -7197,7 +7185,7 @@ moves = {
         'status': []
     },
     "Stone Edge":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Rock',
         'acc': 80,
         'selfdmg': {},
@@ -7215,7 +7203,7 @@ moves = {
         'status': []
     },
     "Stored Power":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Psychic',
         'acc': 100,
         'selfdmg': {},
@@ -7233,7 +7221,7 @@ moves = {
         'status': []
     },
     "Storm Throw":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Fighting',
         'acc': 100,
         'selfdmg': {},
@@ -7251,7 +7239,7 @@ moves = {
         'status': []
     },
     "Strength":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -7269,7 +7257,7 @@ moves = {
         'status': []
     },
     "Strength Sap":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Grass',
         'acc': 100,
         'selfdmg': {'3':50},
@@ -7287,7 +7275,7 @@ moves = {
         'status': []
     },
     "String Shot":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Bug',
         'acc': 95,
         'selfdmg': {},
@@ -7305,7 +7293,7 @@ moves = {
         'status': []
     },
     "Struggle Bug":{
-        'power': {'2':50},
+        'power': 50,
         'pktype': 'Bug',
         'acc': 100,
         'selfdmg': {},
@@ -7323,7 +7311,7 @@ moves = {
         'status': []
     },
     "Stun Spore":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Grass',
         'acc': 75,
         'selfdmg': {},
@@ -7341,7 +7329,7 @@ moves = {
         'status': ['par',100]
     },
     "Submission":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Fighting',
         'acc': 80,
         'selfdmg': {'4':25},
@@ -7359,7 +7347,7 @@ moves = {
         'status': []
     },
     "Sucker Punch":{
-        'power': {'2':70},
+        'power': 70,
         'pktype': 'Dark',
         'acc': 100,
         'selfdmg': {},
@@ -7377,7 +7365,7 @@ moves = {
         'status': []
     },
     "Sunsteel Strike":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Steel',
         'acc': 100,
         'selfdmg': {},
@@ -7395,7 +7383,7 @@ moves = {
         'status': []
     },
     "Superpower":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Fighting',
         'acc': 100,
         'selfdmg': {},
@@ -7413,7 +7401,7 @@ moves = {
         'status': []
     },
     "Supersonic":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 55,
         'selfdmg': {},
@@ -7431,7 +7419,7 @@ moves = {
         'status': ['con',100]
     },
     "Surf":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Water',
         'acc': 100,
         'selfdmg': {},
@@ -7448,26 +7436,8 @@ moves = {
         'priority': 0,
         'status': []
     },
-    'Super Fang':{
-        'power': {'3':50},
-        'pktype': 'Normal',
-        'acc': 90,
-        'selfdmg': {},
-        'recharge': False, 
-        'invulnerable': 0,
-        'charge': 0,
-        'timesperturn': [1,1],
-        'raise': [0,0,0,0],
-        'eraise': [0,0,0,0],
-        'raiser': [0,0,0,0],
-        'eraiser': [0,0,0,0],
-        'flinch': 0,
-        'crithit': 0,
-        'priority': 0,
-        'status': []
-    },
     "Swagger":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 85,
         'selfdmg': {},
@@ -7485,7 +7455,7 @@ moves = {
         'status': ['con',100]
     },
     "Sweet Kiss":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Fairy',
         'acc': 75,
         'selfdmg': {},
@@ -7503,7 +7473,7 @@ moves = {
         'status': ['con',100]
     },
     "Swift":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -7521,7 +7491,7 @@ moves = {
         'status': []
     },
     "Swords Dance":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -7539,7 +7509,7 @@ moves = {
         'status': []
     },
     "Tackle":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -7557,7 +7527,7 @@ moves = {
         'status': []
     },
     "Tail Glow":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Bug',
         'acc': 100,
         'selfdmg': {},
@@ -7575,7 +7545,7 @@ moves = {
         'status': []
     },
     "Tail Slap":{
-        'power': {'2':25},
+        'power': 25,
         'pktype': 'Normal',
         'acc': 85,
         'selfdmg': {},
@@ -7593,7 +7563,7 @@ moves = {
         'status': []
     },
     "Tail Whip":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -7611,7 +7581,7 @@ moves = {
         'status': []
     },
     "Take Down":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Normal',
         'acc': 85,
         'selfdmg': {'4':25},
@@ -7629,7 +7599,7 @@ moves = {
         'status': []
     },
     "Tearful Look":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -7647,7 +7617,7 @@ moves = {
         'status': []
     },
     "Techno Blast":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -7665,7 +7635,7 @@ moves = {
         'status': []
     },
     "Teeter Dance":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -7683,7 +7653,7 @@ moves = {
         'status': ['con',100]
     },
     "Thief":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Dark',
         'acc': 100,
         'selfdmg': {},
@@ -7701,7 +7671,7 @@ moves = {
         'status': []
     },
     "Thousand Arrows":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Ground',
         'acc': 100,
         'selfdmg': {},
@@ -7719,7 +7689,7 @@ moves = {
         'status': []
     },
     "Thousand Waves":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Ground',
         'acc': 100,
         'selfdmg': {},
@@ -7737,7 +7707,7 @@ moves = {
         'status': []
     },
     "Thrash":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {'1':10},
@@ -7755,7 +7725,7 @@ moves = {
         'status': []
     },
     "Throat Chop":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Dark',
         'acc': 100,
         'selfdmg': {},
@@ -7773,7 +7743,7 @@ moves = {
         'status': []
     },
     "Thunder":{
-        'power': {'2':110},
+        'power': 110,
         'pktype': 'Electric',
         'acc': 70,
         'selfdmg': {},
@@ -7791,7 +7761,7 @@ moves = {
         'status': ['par',30]
     },
     "Thunder Fang":{
-        'power': {'2':65},
+        'power': 65,
         'pktype': 'Electric',
         'acc': 95,
         'selfdmg': {},
@@ -7809,7 +7779,7 @@ moves = {
         'status': ['par',10]
     },
     "Thunder Punch":{
-        'power': {'2':75},
+        'power': 75,
         'pktype': 'Electric',
         'acc': 100,
         'selfdmg': {},
@@ -7827,7 +7797,7 @@ moves = {
         'status': ['par',10]
     },
     "Thunder Shock":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Electric',
         'acc': 100,
         'selfdmg': {},
@@ -7845,7 +7815,7 @@ moves = {
         'status': []
     },
     "Thunder Wave":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Electric',
         'acc': 90,
         'selfdmg': {},
@@ -7863,7 +7833,7 @@ moves = {
         'status': ['par',100]
     },
     "Thunderbolt":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Electric',
         'acc': 100,
         'selfdmg': {},
@@ -7881,7 +7851,7 @@ moves = {
         'status': ['par',10]
     },
     "Tickle":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -7899,7 +7869,7 @@ moves = {
         'status': []
     },
     "Toxic":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Poison',
         'acc': 100,
         'selfdmg': {},
@@ -7917,7 +7887,7 @@ moves = {
         'status': ['poi',100]
     },
     "Toxic Thread":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Poison',
         'acc': 100,
         'selfdmg': {},
@@ -7935,7 +7905,7 @@ moves = {
         'status': []
     },
     "Tri Attack":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -7953,7 +7923,7 @@ moves = {
         'status': ['par','frz','bur',20]
     },
     "Trop Kick":{
-        'power': {'2':70},
+        'power': 70,
         'pktype': 'Grass',
         'acc': 100,
         'selfdmg': {},
@@ -7971,7 +7941,7 @@ moves = {
         'status': []
     },
     "Trineedle":{
-        'power': {'2':25},
+        'power': 25,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -7989,7 +7959,7 @@ moves = {
         'status': ['poi',20]
     },
     "Twister":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Dragon',
         'acc': 100,
         'selfdmg': {},
@@ -8007,7 +7977,7 @@ moves = {
         'status': []
     },
     "U-Turn":{
-        'power': {'2':70},
+        'power': 70,
         'pktype': 'Bug',
         'acc': 100,
         'selfdmg': {},
@@ -8025,7 +7995,7 @@ moves = {
         'status': []
     },
     "Uproar":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -8043,7 +8013,7 @@ moves = {
         'status': []
     },
     "V-Create":{
-        'power': {'2':180},
+        'power': 180,
         'pktype': 'Fire',
         'acc': 95,
         'selfdmg': {},
@@ -8061,7 +8031,7 @@ moves = {
         'status': []
     },
     "Vaccuum Wave":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Fighting',
         'acc': 100,
         'selfdmg': {},
@@ -8079,7 +8049,7 @@ moves = {
         'status': []
     },
     "Venoshock":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Poison',
         'acc': 100,
         'selfdmg': {},
@@ -8097,7 +8067,7 @@ moves = {
         'status': []
     },
     "Vine Whip":{
-        'power': {'2':45},
+        'power': 45,
         'pktype': 'Grass',
         'acc': 100,
         'selfdmg': {},
@@ -8115,7 +8085,7 @@ moves = {
         'status': []
     },
     "Vise Grip":{
-        'power': {'2':55},
+        'power': 55,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -8133,7 +8103,7 @@ moves = {
         'status': []
     },
     "Vital Throw":{
-        'power': {'2':70},
+        'power': 70,
         'pktype': 'Fighting',
         'acc': 100,
         'selfdmg': {},
@@ -8151,7 +8121,7 @@ moves = {
         'status': []
     },
     "Volt Tackle":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Electric',
         'acc': 100,
         'selfdmg': {'4':33.3333333333333333},
@@ -8169,7 +8139,7 @@ moves = {
         'status': ['par',10]
     },
     "Water Gun":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Water',
         'acc': 100,
         'selfdmg': {},
@@ -8187,7 +8157,7 @@ moves = {
         'status': []
     },
     "Water Pledge":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Water',
         'acc': 100,
         'selfdmg': {},
@@ -8205,7 +8175,7 @@ moves = {
         'status': []
     },
     "Water Pulse":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Water',
         'acc': 100,
         'selfdmg': {},
@@ -8223,7 +8193,7 @@ moves = {
         'status': ['con',20]
     },
     "Water Shuriken":{
-        'power': {'2':15},
+        'power': 15,
         'pktype': 'Water',
         'acc': 100,
         'selfdmg': {},
@@ -8241,7 +8211,7 @@ moves = {
         'status': []
     },
     "Water Spout":{
-        'power': {'2':130},
+        'power': 130,
         'pktype': 'Water',
         'acc': 100,
         'selfdmg': {},
@@ -8259,7 +8229,7 @@ moves = {
         'status': []
     },
     "Waterfall":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Water',
         'acc': 100,
         'selfdmg': {},
@@ -8277,7 +8247,7 @@ moves = {
         'status': []
     },
     "Weather Ball":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -8295,7 +8265,7 @@ moves = {
         'status': []
     },
     "Wild Charge":{
-        'power': {'2':90},
+        'power': 90,
         'pktype': 'Electric',
         'acc': 100,
         'selfdmg': {'4':25},
@@ -8313,7 +8283,7 @@ moves = {
         'status': []
     },
     "Will-O-Wisp":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Fire',
         'acc': 85,
         'selfdmg': {},
@@ -8331,7 +8301,7 @@ moves = {
         'status': ['bur',100]
     },
     "Wing Attack":{
-        'power': {'2':60},
+        'power': 60,
         'pktype': 'Flying',
         'acc': 100,
         'selfdmg': {},
@@ -8349,7 +8319,7 @@ moves = {
         'status': []
     },
     "Wish":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {'3':50},
@@ -8367,7 +8337,7 @@ moves = {
         'status': []
     },
     "Withdraw":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Water',
         'acc': 100,
         'selfdmg': {},
@@ -8385,7 +8355,7 @@ moves = {
         'status': []
     },
     "Wood Hammer":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Grass',
         'acc': 100,
         'selfdmg': {'4':33.33333333333333},
@@ -8403,7 +8373,7 @@ moves = {
         'status': []
     },
     "Work Up":{
-        'power': {'2':40},
+        'power': 40,
         'pktype': 'Water',
         'acc': 100,
         'selfdmg': {},
@@ -8421,7 +8391,7 @@ moves = {
         'status': []
     },
     "Wring Out":{
-        'power': {'2':100},
+        'power': 100,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -8439,7 +8409,7 @@ moves = {
         'status': []
     },
     "X-Scissor":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Bug',
         'acc': 100,
         'selfdmg': {},
@@ -8457,7 +8427,7 @@ moves = {
         'status': []
     },
     "Yawn":{
-        'power': {'1'},
+        'power': 0,
         'pktype': 'Normal',
         'acc': 100,
         'selfdmg': {},
@@ -8475,7 +8445,7 @@ moves = {
         'status': ['sle',100]
     },
     "Zap Cannon":{
-        'power': {'2':120},
+        'power': 120,
         'pktype': 'Electric',
         'acc': 50,
         'selfdmg': {},
@@ -8493,7 +8463,7 @@ moves = {
         'status': ['par',100]
     },
     "Zen Headbutt":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Psychic',
         'acc': 90,
         'selfdmg': {},
@@ -8511,7 +8481,7 @@ moves = {
         'status': []
     },
     "Zing Zap":{
-        'power': {'2':80},
+        'power': 80,
         'pktype': 'Electric',
         'acc': 100,
         'selfdmg': {},
