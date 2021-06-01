@@ -4754,7 +4754,7 @@ moves = {
         'priority': 0,
         'status': []
     },
-    "Mud Slap":{
+    "Mud-Slap":{
         'power': 20,
         'pktype': 'Ground',
         'acc': 100,

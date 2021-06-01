@@ -3,11 +3,11 @@ import pokeconfig
 import pokemon_new
 import pokelist
 import pokeutils
-import pokemons
 import pokemoves
+import movelist
 from telegram.ext import CommandHandler, CallbackQueryHandler
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, BotCommand,InputMediaPhoto
-from datetime import datetime,timedelta
+from telegram import InputMediaPhoto
+from datetime import datetime
 
 typeTrans = {
     'Grass': '🌱',
@@ -346,7 +346,8 @@ def get_moves(uid,id,level):
     for move in pokemoves.compatible[id]:
         if pokemoves.compatible[id][move] <= level:
             if not move in game[uid]['bud']['moves']:
-                kblist.append({move:f'pkbudmovesadd:{uid}:{move}'})
+                if move in movelist.moves:
+                    kblist.append({move:f'pkbudmovesadd:{uid}:{move}'})            
     return kblist
 
 def add_moves(update,context):
