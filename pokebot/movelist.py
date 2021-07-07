@@ -1681,7 +1681,6 @@ moves = {
         'pktype': 'Ground',
         'acc': 100,
         'selfdmg': {},
-        
         'recharge': False, 
         'invulnerable': 1,
         'charge': 0,

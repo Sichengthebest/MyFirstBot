@@ -1,12 +1,10 @@
 import random
 import pokeconfig
-import pokemon_new
 import pokelist,movelist,trainerlist
 import pokeutils
 import pokemons
 from telegram.ext import CommandHandler, CallbackQueryHandler
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, BotCommand, InputMediaPhoto
-from datetime import datetime,timedelta
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, InputMediaPhoto
 
 game = pokeconfig.CONFIG["pk"]
 
@@ -56,9 +54,10 @@ statusTrans = {
 def get_choice(choice,user):
     uid = str(user.id)
     trainers = ['Sunny','Maggie','Wally','Elenia','Parker','Elsa','Gordon','Velenu','Grady','Celine','Rick','Gherma','Steven','Draco']
+    trainertrans = {'Sunny':1000,'Maggie':1001,'Wally':1002,'Elenia':1003,'Parker':1004,'Elsa':1005,'Gordon':1006,'Velenu':1007,'Grady':1008,'Celine':1009,'Rick':1010,'Gherma':1011,'Steven':1012,'Draco':1013}
     trainer = random.choice(trainers)
     choicekbs = {
-        'train': [{f'Battle the current Gym Trainer ({trainer})!':f'pkbattlestart:train:{trainer}'},{'Never mind...':f'pkbattlerestart:{uid}'}],
+        'train': [{f'Battle the current Gym Trainer ({trainer})!':f'pkbattlestart:train:{trainertrans[trainer]}'},{'Never mind...':f'pkbattlerestart:{uid}'}],
         'lead': [{'I':'pkbattlegen:lead:1','II':'pkbattlegen:lead:2','III':'pkbattlegen:lead:3'},{'IV':'pkbattlegen:lead:4','V':'pkbattlegen:lead:5','VI':'pkbattlegen:lead:6'},{'Never mind...':f'pkbattlerestart:{uid}'}],
         'e4': [{'I':'pkbattlegen:e4:1','II':'pkbattlegen:e4:2','III':'pkbattlegen:e4:3'},{'IV':'pkbattlegen:e4:4','V':'pkbattlegen:e4:5','VI':'pkbattlegen:e4:6'},{'Never mind...':f'pkbattlerestart:{uid}'}],
         'champ': [{'I':'pkbattlegen:champ:1','II':'pkbattlegen:champ:2','III':'pkbattlegen:champ:3'},{'IV':'pkbattlegen:champ:4','V':'pkbattlegen:champ:5','VI':'pkbattlegen:champ:6'},{'Never mind...':f'pkbattlerestart:{uid}'}]
@@ -102,10 +101,10 @@ def get_choice_gen(choice,user,gen):
     kb = pokeutils.getkb(choicekbs[choice])
     return kb,choicetext
 
-def get_move_buttons(moves):
+def get_move_buttons(moves,index,opponent_index,choice,copk):
     buttons = []
     for move in moves:
-        buttons.append(InlineKeyboardButton(move,callback_data=f'pkbattlemove:{move}'))
+        buttons.append({move:f'pkbattlemove:{move}:{index}:{opponent_index}:{choice}:{copk.hp}:{copk.currhp}:{copk.status}:{copk.atk}:{copk.defence}:{copk.speed}'})
     return buttons
 
 def save():
@@ -133,32 +132,370 @@ def battle_choose_gen(update,context):
     kb,msg = get_choice_gen(choice,user,gen)
     query.edit_message_text(msg,reply_markup=kb)
 
-def battle(update,context):
+def battle_start(update,context):
     user = update.effective_user
     uid = str(user.id)
     query = update.callback_query
     _, type, choice = query.data.split(':')
-    if type == 'train':
-        pass
-    elif type == 'lead':
-        opponent_party = trainerlist.trainers[choice]['party']
-        party = game[uid]['party']
-        query.edit_message_text("Battle started!")
-        currentpk_index = 0
-        current_opponent_pk_index = 0
-        current_opponent_pk = pokelist.Pokemon(opponent_party[current_opponent_pk_index]['id'],opponent_party[current_opponent_pk_index]['xp'],-1,opponent_party[current_opponent_pk_index]['moves'])
-        context.bot.send_media_group(chat_id=update.effective_chat.id,media=[InputMediaPhoto(open(pokelist.Pokemon(party[currentpk_index]['id'],0,-1,[]).getPhoto(),'rb'),caption=f"{user.first_name} VS {trainerlist.trainers[choice]['name']}"),InputMediaPhoto(open(current_opponent_pk.getPhoto(),'rb'))])
-        context.bot.send_message(chat_id=update.effective_chat.id,text=f"""{user.first_name}'s {party[currentpk_index]['name']}:
+    opponent_party = trainerlist.trainers[choice]['party']
+    party = game[uid]['party']
+    query.edit_message_text("Battle started!")
+    currentpk_index = 0
+    current_opponent_pk_index = 0
+    current_opponent_pk = pokelist.Pokemon(opponent_party[current_opponent_pk_index]['id'],opponent_party[current_opponent_pk_index]['xp'],-1,opponent_party[current_opponent_pk_index]['moves'])
+    context.bot.send_media_group(chat_id=update.effective_chat.id,media=[InputMediaPhoto(open(pokelist.Pokemon(party[currentpk_index]['id'],0,-1,[]).getPhoto(),'rb'),caption=f"{user.first_name} VS {trainerlist.trainers[choice]['name']}"),InputMediaPhoto(open(current_opponent_pk.getPhoto(),'rb'))])
+    context.bot.send_message(chat_id=update.effective_chat.id,text=f"""{user.first_name}'s {party[currentpk_index]['name']}:
 LEVEL: {party[currentpk_index]['lvl']}
 HP: {party[currentpk_index]['currhp']}/{party[currentpk_index]['hp']}
-Status: {statusTrans[party[currentpk_index]['status']]}
 ====================
 {trainerlist.trainers[choice]['name']}'s {current_opponent_pk.name}:
 LEVEL: {current_opponent_pk.lvl}
 HP: {current_opponent_pk.currhp}/{current_opponent_pk.hp}
-Status: {statusTrans[current_opponent_pk.status]}
 ====================
-Which move do you want to use?""",reply_markup=InlineKeyboardMarkup([get_move_buttons(party[currentpk_index]['moves'])]))
+Which move would you like to use?""",reply_markup=pokeutils.getkb(get_move_buttons(party[currentpk_index]['moves'], currentpk_index, current_opponent_pk_index, choice, current_opponent_pk)))
+
+def battle_move(update,context):
+    user = update.effective_user
+    uid = str(user.id)
+    query = update.callback_query
+    _, move, currentpk_index_str, current_opponent_pk_index_str,choice,current_opponent_pk_hp,current_opponent_pk_currhp,current_opponent_pk_status,current_opponent_pk_atk,current_opponent_pk_def,current_opponent_pk_speed = query.data.split(':')
+    currentpk_index = int(currentpk_index_str)
+    current_opponent_pk_index = int(current_opponent_pk_index_str)
+    opponent_party = trainerlist.trainers[choice]['party']
+    party = game[uid]['party']
+    lvl = int(opponent_party[current_opponent_pk_index]['xp']/1000)+1
+    current_opponent_pk = pokelist.Pokemon.init(
+        opponent_party[current_opponent_pk_index]['id'],
+        pokelist.pokemon[opponent_party[current_opponent_pk_index]['id']]['name'],
+        lvl,
+        int(current_opponent_pk_hp),
+        int(current_opponent_pk_currhp),
+        int(float(current_opponent_pk_atk)),
+        pokelist.pokemon[opponent_party[current_opponent_pk_index]['id']]['pktype'],
+        random.choice(pokelist.pokemon[opponent_party[current_opponent_pk_index]['id']]['upgrade']),
+        int(float(current_opponent_pk_def)),
+        int(float(current_opponent_pk_speed)),
+        opponent_party[current_opponent_pk_index]['xp'],
+        pokelist.pokemon[opponent_party[current_opponent_pk_index]['id']]['evolvewith'],
+        100,
+        current_opponent_pk_status,
+        opponent_party[current_opponent_pk_index]['moves']
+    )
+    opponent_move = random.choice(trainerlist.trainers[choice]['party'][current_opponent_pk_index]['moves'])
+    # priority
+    priority = movelist.moves[move]['priority']
+    opponent_move_priority = movelist.moves[opponent_move]['priority']
+    if priority == opponent_move_priority:
+        if party[currentpk_index]['speed'] == current_opponent_pk.speed:
+            first = random.randint(1,2)
+        elif party[currentpk_index]['speed'] > current_opponent_pk.speed:
+            first = 1
+        else:
+            first = 2
+    elif priority > opponent_move_priority:
+        first = 1
+    else:
+        first = 2
+    # damage
+    p,raisenum,eraisenum = calculate_power(pokelist.Pokemon.init_from_dict(party[currentpk_index]),current_opponent_pk,move)
+    opponent_p,opponent_raisenum,opponent_eraisenum = calculate_power(current_opponent_pk,pokelist.Pokemon.init_from_dict(party[currentpk_index]),opponent_move)
+    msg = ''
+    if first == 1:
+        # if you go first
+        current_opponent_pk.currhp -= p
+        party[currentpk_index]['atk'] += raisenum[0]
+        party[currentpk_index]['defence'] += raisenum[1]
+        party[currentpk_index]['speed'] += raisenum[0]
+        current_opponent_pk.atk -= eraisenum[0]
+        current_opponent_pk.defence -= eraisenum[1]
+        current_opponent_pk.speed -= eraisenum[0]
+        if current_opponent_pk.currhp < 1:
+            # if opponent faints
+            dead_name = current_opponent_pk.name
+            current_opponent_pk_index += 1
+            if current_opponent_pk_index >= len(opponent_party):
+                # if it's opponent's last pokemon
+                msg += f"""{user.first_name}'s {party[currentpk_index]['name']}:
+LEVEL: {party[currentpk_index]['lvl']}
+HP: {party[currentpk_index]['currhp']}/{party[currentpk_index]['hp']}
+====================
+{user.first_name}'s {party[currentpk_index]['name']} used {move}!
+{move} dealt {p} damage!
+====================
+{trainerlist.trainers[choice]['name']}'s {dead_name} fainted!"""
+                query.edit_message_text(msg)
+                coinsnum = random.randint(1000,5000)
+                xpnum = 0
+                for pkmon in opponent_party:
+                    xpnum += pkmon['xp']/1000*57
+                for pkm in party:
+                    pkm['xp'] += xpnum
+                game[uid]['pokecoins'] += coinsnum
+                context.bot.send_message(chat_id=update.effective_chat.id, text=f"{user.first_name}, you won against {trainerlist.trainers[choice]['name']}! You earned {coinsnum} pokecoins and {xpnum} XP (for each of your pokemon)!")
+                index = 0
+                for pkmo in game[uid]['party']:
+                    boxindex = game[uid]['box'].index(pkmo)
+                    game[uid]['box'][boxindex] = party[index]
+                    if pkmo == game[uid]['bud']:
+                        game[uid]['bud'] = party[index]
+                    index += 1
+                game[uid]['party'] = party
+                save()
+                return
+            # if not opponent's last pokemon
+            current_opponent_pk = pokelist.Pokemon(opponent_party[current_opponent_pk_index]['id'],opponent_party[current_opponent_pk_index]['xp'],-1,opponent_party[current_opponent_pk_index]['moves'])
+            msg += f"""{user.first_name}'s {party[currentpk_index]['name']}:
+LEVEL: {party[currentpk_index]['lvl']}
+HP: {party[currentpk_index]['currhp']}/{party[currentpk_index]['hp']}
+====================
+{user.first_name}'s {party[currentpk_index]['name']} used {move}!
+{move} dealt {p} damage!
+====================
+{trainerlist.trainers[choice]['name']}'s {dead_name} fainted!
+{trainerlist.trainers[choice]['name']} sent out {current_opponent_pk.name}!
+{trainerlist.trainers[choice]['name']}'s {current_opponent_pk.name}:
+LEVEL: {current_opponent_pk.lvl}
+HP: {current_opponent_pk.currhp}/{current_opponent_pk.hp}
+====================
+Which move would you like to use?"""
+            query.edit_message_text(msg,reply_markup=pokeutils.getkb(get_move_buttons(party[currentpk_index]['moves'], currentpk_index, current_opponent_pk_index, choice, current_opponent_pk)))
+        else:
+            # if opponent doesn't faint
+            party[currentpk_index]['currhp'] -= opponent_p
+            party[currentpk_index]['atk'] -= opponent_eraisenum[0]
+            party[currentpk_index]['defence'] -= opponent_eraisenum[1]
+            party[currentpk_index]['speed'] -= opponent_eraisenum[2]
+            current_opponent_pk.atk += opponent_raisenum[0]
+            current_opponent_pk.defence += opponent_raisenum[0]
+            current_opponent_pk.speed += opponent_raisenum[0]
+            if party[currentpk_index]['currhp'] < 1:
+                # if you faint
+                my_dead_name = party[currentpk_index]['name']
+                currentpk_index += 1
+                if currentpk_index >= len(party):
+                    # if it's your last pokemon
+                    msg += f"""{user.first_name}'s {party[currentpk_index]['name']} used {move}!
+{move} dealt {p} damage!
+====================
+{trainerlist.trainers[choice]['name']}'s {current_opponent_pk.name}:
+LEVEL: {current_opponent_pk.lvl}
+HP: {current_opponent_pk.currhp}/{current_opponent_pk.hp}
+====================
+{trainerlist.trainers[choice]['name']}'s {current_opponent_pk.name} used {opponent_move}!
+{opponent_move} dealt {opponent_p} damage!
+====================
+{user.first_name}'s {my_dead_name} fainted!"""
+                    query.edit_message_text(msg)
+                    context.bot.send_message(chat_id=update.effective_chat.id, text=f"{user.first_name}, you lost against {trainerlist.trainers[choice]['name']}!")
+                    game[uid]['party'] = party
+                    save()
+                    return
+                # if it's not your last pokemon
+                msg += f"""{user.first_name}'s {party[currentpk_index]['name']} used {move}!
+{move} dealt {p} damage!
+====================
+{trainerlist.trainers[choice]['name']}'s {current_opponent_pk.name}:
+LEVEL: {current_opponent_pk.lvl}
+HP: {current_opponent_pk.currhp}/{current_opponent_pk.hp}
+====================
+{trainerlist.trainers[choice]['name']}'s {current_opponent_pk.name} used {opponent_move}!
+{opponent_move} dealt {opponent_p} damage!
+====================
+{user.first_name}'s {my_dead_name} fainted!
+{user.first_name} sent out {party[currentpk_index]['name']}!
+{user.first_name}'s {party[currentpk_index]['name']}:
+LEVEL: {party[currentpk_index]['lvl']}
+HP: {party[currentpk_index]['currhp']}/{party[currentpk_index]['hp']}
+====================
+Which move would you like to use?"""
+                query.edit_message_text(msg,reply_markup=pokeutils.getkb(get_move_buttons(party[currentpk_index]['moves'], currentpk_index, current_opponent_pk_index, choice, current_opponent_pk)))
+            else:
+                # if you don't faint
+                msg += f"""{user.first_name}'s {party[currentpk_index]['name']} used {move}!
+{move} dealt {p} damage!
+====================
+{trainerlist.trainers[choice]['name']}'s {current_opponent_pk.name}:
+LEVEL: {current_opponent_pk.lvl}
+HP: {current_opponent_pk.currhp}/{current_opponent_pk.hp}
+====================
+{trainerlist.trainers[choice]['name']}'s {current_opponent_pk.name} used {opponent_move}!
+{opponent_move} dealt {opponent_p} damage!
+====================
+{user.first_name}'s {party[currentpk_index]['name']}:
+LEVEL: {party[currentpk_index]['lvl']}
+HP: {party[currentpk_index]['currhp']}/{party[currentpk_index]['hp']}
+====================
+Which move would you like to use?"""
+                query.edit_message_text(msg,reply_markup=pokeutils.getkb(get_move_buttons(party[currentpk_index]['moves'], currentpk_index, current_opponent_pk_index, choice, current_opponent_pk)))
+    else:
+        # if opponent goes first
+        party[currentpk_index]['currhp'] -= opponent_p
+        party[currentpk_index]['atk'] -= opponent_eraisenum[0]
+        party[currentpk_index]['defence'] -= opponent_eraisenum[1]
+        party[currentpk_index]['speed'] -= opponent_eraisenum[2]
+        current_opponent_pk.atk += opponent_raisenum[0]
+        current_opponent_pk.defence += opponent_raisenum[0]
+        current_opponent_pk.speed += opponent_raisenum[0]
+        if party[currentpk_index]['currhp'] < 1:
+            # if you faint
+            my_dead_name = party[currentpk_index]['name']
+            currentpk_index += 1
+            if currentpk_index >= len(party):
+                # if it's your last pokemon
+                msg += f"""{trainerlist.trainers[choice]['name']}'s {current_opponent_pk.name}:
+LEVEL: {current_opponent_pk.lvl}
+HP: {current_opponent_pk.currhp}/{current_opponent_pk.hp}
+====================
+{trainerlist.trainers[choice]['name']}'s {current_opponent_pk.name} used {opponent_move}!
+{opponent_move} dealt {opponent_p} damage!
+====================
+{user.first_name}'s {my_dead_name} fainted!
+===================="""
+                query.edit_message_text(msg)
+                context.bot.send_message(chat_id=update.effective_chat.id, text=f"{user.first_name}, you lost against {trainerlist.trainers[choice]['name']}!")
+                game[uid]['party'] = party
+                save()
+                return
+            # if it's not your last pokemon
+            msg += f"""{trainerlist.trainers[choice]['name']}'s {current_opponent_pk.name}:
+LEVEL: {current_opponent_pk.lvl}
+HP: {current_opponent_pk.currhp}/{current_opponent_pk.hp}
+====================
+{trainerlist.trainers[choice]['name']}'s {current_opponent_pk.name} used {opponent_move}!
+{opponent_move} dealt {opponent_p} damage!
+====================
+{user.first_name}'s {my_dead_name} fainted!
+{user.first_name} sent out {party[currentpk_index]['name']}!
+{user.first_name}'s {party[currentpk_index]['name']}:
+LEVEL: {party[currentpk_index]['lvl']}
+HP: {party[currentpk_index]['currhp']}/{party[currentpk_index]['hp']}
+====================
+Which move would you like to use?"""
+            query.edit_message_text(msg,reply_markup=pokeutils.getkb(get_move_buttons(party[currentpk_index]['moves'], currentpk_index, current_opponent_pk_index, choice, current_opponent_pk)))
+        else:
+            # if you don't faint
+            current_opponent_pk.currhp -= p
+            party[currentpk_index]['atk'] += raisenum[0]
+            party[currentpk_index]['defence'] += raisenum[1]
+            party[currentpk_index]['speed'] += raisenum[0]
+            current_opponent_pk.atk -= eraisenum[0]
+            current_opponent_pk.defence -= eraisenum[1]
+            current_opponent_pk.speed -= eraisenum[0]
+            if current_opponent_pk.currhp < 1:
+                # if opponent faints
+                dead_name = current_opponent_pk.name
+                current_opponent_pk_index += 1
+                if current_opponent_pk_index >= len(opponent_party):
+                    # if it's opponent's last pokemon
+                    msg += f"""{trainerlist.trainers[choice]['name']}'s {current_opponent_pk.name} used {opponent_move}!
+{opponent_move} dealt {opponent_p} damage!
+====================
+{user.first_name}'s {party[currentpk_index]['name']}:
+LEVEL: {party[currentpk_index]['lvl']}
+HP: {party[currentpk_index]['currhp']}/{party[currentpk_index]['hp']}
+====================
+{user.first_name}'s {party[currentpk_index]['name']} used {move}!
+{move} dealt {p} damage!
+====================
+{trainerlist.trainers[choice]['name']}'s {dead_name} fainted!
+===================="""
+                    query.edit_message_text(msg)
+                    coinsnum = random.randint(1000,5000)
+                    xpnum = 0
+                    for pkmon in opponent_party:
+                        xpnum += int(pkmon['xp']/1000*57)
+                    for pkm in party:
+                        pkm['xp'] += xpnum
+                    game[uid]['pokecoins'] += coinsnum
+                    context.bot.send_message(chat_id=update.effective_chat.id, text=f"{user.first_name}, you won against {trainerlist.trainers[choice]['name']}!")
+                    index = 0
+                    for pkmo in game[uid]['party']:
+                        boxindex = game[uid]['box'].index(pkmo)
+                        game[uid]['box'][boxindex] = party[index]
+                        if pkmo == game[uid]['bud']:
+                            game[uid]['bud'] = party[index]
+                        index += 1
+                    game[uid]['party'] = party
+                    save()
+                    return
+                # otherwise
+                msg += f"""{trainerlist.trainers[choice]['name']}'s {current_opponent_pk.name} used {opponent_move}!
+{opponent_move} dealt {opponent_p} damage!
+====================
+{user.first_name}'s {party[currentpk_index]['name']}:
+LEVEL: {party[currentpk_index]['lvl']}
+HP: {party[currentpk_index]['currhp']}/{party[currentpk_index]['hp']}
+====================
+{user.first_name}'s {party[currentpk_index]['name']} used {move}!
+{move} dealt {p} damage!
+====================
+{trainerlist.trainers[choice]['name']}'s {dead_name} fainted!
+{trainerlist.trainers[choice]['name']} sent out {current_opponent_pk.name}!
+{trainerlist.trainers[choice]['name']}'s {current_opponent_pk.name}:
+LEVEL: {current_opponent_pk.lvl}
+HP: {current_opponent_pk.currhp}/{current_opponent_pk.hp}
+====================
+Which move would you like to use?"""
+                query.edit_message_text(msg,reply_markup=pokeutils.getkb(get_move_buttons(party[currentpk_index]['moves'], currentpk_index, current_opponent_pk_index, choice, current_opponent_pk)))
+            else:
+                # if opponent doesn't faint
+                msg += f"""{trainerlist.trainers[choice]['name']}'s {current_opponent_pk.name} used {opponent_move}!
+{opponent_move} dealt {opponent_p} damage!
+====================
+{user.first_name}'s {party[currentpk_index]['name']}:
+LEVEL: {party[currentpk_index]['lvl']}
+HP: {party[currentpk_index]['currhp']}/{party[currentpk_index]['hp']}
+====================
+{user.first_name}'s {party[currentpk_index]['name']} used {move}!
+{move} dealt {p} damage!
+====================
+{trainerlist.trainers[choice]['name']}'s {current_opponent_pk.name}:
+LEVEL: {current_opponent_pk.lvl}
+HP: {current_opponent_pk.currhp}/{current_opponent_pk.hp}
+====================
+Which move would you like to use?"""
+                query.edit_message_text(msg,reply_markup=pokeutils.getkb(get_move_buttons(party[currentpk_index]['moves'], currentpk_index, current_opponent_pk_index, choice, current_opponent_pk)))
+    game[uid]['party'] = party
+    save()
+
+def calculate_power(pk,opponent_pk,move):
+    # raise
+    raisers = [random.randint(0,100),random.randint(0,100),random.randint(0,100)]
+    raisenum = [0,0,0]
+    if raisers[0] <= movelist.moves[move]['raiser'][1]:
+       raisenum[0] += opponent_pk.atk*((movelist.moves[move]['raise'][1]*10)/100)
+    if raisers[1] <= movelist.moves[move]['raiser'][2]:
+        raisenum[1] += opponent_pk.defence*((movelist.moves[move]['raise'][2]*10)/100)
+    if raisers[2] <= movelist.moves[move]['raiser'][3]:
+        raisenum[2] += opponent_pk.speed*((movelist.moves[move]['raise'][3]*10)/100)
+    # un-raise
+    eraisers = [random.randint(0,100),random.randint(0,100),random.randint(0,100)]
+    eraisenum = [0,0,0]
+    if eraisers[0] <= movelist.moves[move]['eraiser'][1]:
+        eraisenum[0] += opponent_pk.atk*((movelist.moves[move]['eraise'][1]*10)/100)
+    if eraisers[1] <= movelist.moves[move]['eraiser'][2]:
+        eraisenum[1] += opponent_pk.defence*((movelist.moves[move]['eraise'][2]*10)/100)
+    if eraisers[2] <= movelist.moves[move]['eraiser'][3]:
+        eraisenum[2] += opponent_pk.speed*((movelist.moves[move]['eraise'][3]*10)/100)
+    # damage
+    damage = int(2*pk.lvl/5+2*pk.atk*movelist.moves[move]['power']/opponent_pk.defence/50)+2
+    # critical hit
+    c = movelist.moves[move]['crithit']
+    if c == 0:
+        cint = random.randint(1,24)
+    else:
+        cint = random.randint(1,8)
+    if cint == 1:
+        damage *= 1.5
+    # others
+    if movelist.moves[move]['pktype'] in pk.pktype:
+        damage *= 1.5
+    damage *= random.randint(movelist.moves[move]['timesperturn'][0],movelist.moves[move]['timesperturn'][1])
+    # accuracy check
+    acc = random.randint(0,100)
+    if acc > movelist.moves[move]['acc']:
+        damage = 0
+    return [int(damage),raisenum,eraisenum]
 
 def restart(update,context):
     user = update.effective_user
@@ -176,4 +513,5 @@ def addHandler(dispatcher):
     dispatcher.add_handler(CallbackQueryHandler(battle_choose,pattern="^pkbattlechoose:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(battle_choose_gen,pattern="^pkbattlegen:[A-Za-z0-9_]*"))
     dispatcher.add_handler(CallbackQueryHandler(restart,pattern="^pkbattlerestart:[A-Za-z0-9_]*"))
-    dispatcher.add_handler(CallbackQueryHandler(battle,pattern="^pkbattlestart:[A-Za-z0-9_]*"))
+    dispatcher.add_handler(CallbackQueryHandler(battle_start,pattern="^pkbattlestart:[A-Za-z0-9_]*"))
+    dispatcher.add_handler(CallbackQueryHandler(battle_move,pattern="^pkbattlemove:[A-Za-z0-9_]*"))

@@ -1,6 +1,4 @@
-from random import sample
 import random
-from telegram import InputMediaPhoto
 import pokeconfig, pokemoves
 
        
@@ -9859,7 +9857,11 @@ class Pokemon():
         p.speed = pdict['speed']
         p.xp = pdict['xp']
         p.evolvewith = pdict['evolvewith']
-        p.defence = pdict['def']
+        p.defence = pdict['defence']
+        if not 'status' in pdict.keys():
+            pdict['status'] = ''
+        p.status = pdict['status']
+        p.moves = pdict['moves']
         return p
 
     @classmethod

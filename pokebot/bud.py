@@ -53,7 +53,7 @@ def check_time(uid):
         }
 
 def add_bud(uid,p):  
-    pdict = {'id':p.id,'name':p.name,'hp':p.hp,'currhp':p.currhp,'atk':p.atk,'def':p.defence,'lvl':p.lvl,'xp':p.xp,'pktype':p.pktype,'upgrade':p.upgrade,'speed':p.speed,'evolvewith':p.evolvewith,'friendship':p.friendship,'moves':p.moves,'status':p.status}
+    pdict = {'id':p.id,'name':p.name,'hp':p.hp,'currhp':p.currhp,'atk':p.atk,"defence":p.defence,'lvl':p.lvl,'xp':p.xp,'pktype':p.pktype,'upgrade':p.upgrade,'speed':p.speed,'evolvewith':p.evolvewith,'friendship':p.friendship,'moves':p.moves,'status':p.status}
     game[uid]['bud'] = pdict
 
 def get_buds(uid,pagenow):
@@ -214,7 +214,7 @@ Level: {game[uid]['bud']['lvl']}{nextlvlmsg}
 ~~~~~~~~~~~~~~~~~~~~~~~~
 💖 HP: {game[uid]['bud']['currhp']}/{game[uid]['bud']['hp']}
 ⚔️ Attack: {game[uid]['bud']['atk']}
-🛡 Defence: {game[uid]['bud']['def']}
+🛡 Defence: {game[uid]['bud']["defence"]}
 ⚡️ Speed: {game[uid]['bud']['speed']}
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Use /view_moves to see your buddy's moves, and /add_moves to get some!""")

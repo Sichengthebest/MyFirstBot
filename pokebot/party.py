@@ -1,12 +1,8 @@
-import random
 import pokeconfig
-import bud
-import pokelist
 import pokeutils
 import pokemons
 from telegram.ext import CommandHandler, CallbackQueryHandler
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, BotCommand,InputMediaPhoto
-from datetime import datetime,timedelta
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, InputMediaPhoto
 
 game = pokeconfig.CONFIG["pk"]
 
