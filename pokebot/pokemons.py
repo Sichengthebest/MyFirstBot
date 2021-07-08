@@ -404,6 +404,26 @@ def release(update,context):
     kblist = get_release_members(uid,pagenow)
     kb = []
     splitmsgs,numcount = get_release_text(user)
+    if len(context.args) == 1:
+        oldpk = context.args[0].replace('_',' ')
+        lala = False
+        pk = oldpk.title().replace(' ','-')
+        count = 0
+        counts = []
+        buttons = []
+        for pkdict in game[uid]['box']:
+            if pk == pkdict['name']:
+                lala = True
+                counts.append(count)
+            count += 1
+        if not lala:
+            update.message.reply_text('This pokemon is not in your box!')
+            return
+        for index in counts:
+            buttons.append({f"{game[uid]['box'][index]['name']}, XP: {game[uid]['box'][index]['xp']}":f"pkrelease:{index}"})
+        kb = pokeutils.getkb(buttons)
+        update.message.reply_text(f'Which {pk} are you choosing?',reply_markup=kb)
+        return
     if pagenow * size > numcount:
         kb = pokeutils.getkb(kblist)
         update.message.reply_text(splitmsgs[0],reply_markup=kb)
