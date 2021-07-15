@@ -239,6 +239,10 @@ HP: {party[currentpk_index]['currhp']}/{party[currentpk_index]['hp']}
                     if pkmo == game[uid]['bud']:
                         game[uid]['bud'] = party[index]
                     index += 1
+                for pkmon in party:
+                    if pkmon['currhp'] < 1:
+                        party[party.index(pkmon)] = {}
+                print(party)
                 game[uid]['party'] = party
                 save()
                 return
@@ -407,7 +411,7 @@ HP: {party[currentpk_index]['currhp']}/{party[currentpk_index]['hp']}
                     for pkm in party:
                         pkm['xp'] += xpnum
                     game[uid]['pokecoins'] += coinsnum
-                    context.bot.send_message(chat_id=update.effective_chat.id, text=f"{user.first_name}, you won against {trainerlist.trainers[choice]['name']}!")
+                    context.bot.send_message(chat_id=update.effective_chat.id, text=f"{user.first_name}, you won against {trainerlist.trainers[choice]['name']}! You earned {coinsnum} pokecoins and {xpnum} XP (for each of your pokemon)!")
                     index = 0
                     for pkmo in game[uid]['party']:
                         boxindex = game[uid]['box'].index(pkmo)
@@ -415,6 +419,9 @@ HP: {party[currentpk_index]['currhp']}/{party[currentpk_index]['hp']}
                         if pkmo == game[uid]['bud']:
                             game[uid]['bud'] = party[index]
                         index += 1
+                    for pkmon in party:
+                        if pkmon['currhp'] < 1:
+                            party[party.index(pkmon)] = {}
                     game[uid]['party'] = party
                     save()
                     return

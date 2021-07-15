@@ -244,11 +244,7 @@ def init_q(choice,country,level,uid):
     buttons = []
     callbacks = []
     yesIndex = random.randint(0,2)
-    no1 = random.choice(choice['no'])
-    no2 = random.choice(choice['no'])
-    while no1 == no2 :
-        no2 = random.choice(choice['no'])
-    no = [no1,no2]
+    no = random.sample(choice['no'],2)
     haha = random.choice(choice['haha'])
     yes = choice['yes']
     for i in range(3):

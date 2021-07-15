@@ -102,6 +102,9 @@ def partyAddCallback(update,context):
     if game[uid]['box'][int(index)]['moves'] == []:
         query.answer('This pokemon has no moves!', show_alert=True)
         return
+    if game[uid]['box'][int(index)]['currhp'] < 1:
+        query.answer('This pokemon has no HP!', show_alert=True)
+        return
     kb = pokeutils.getkb([{'1':f'pkpartyposition:{index}:1','2':f'pkpartyposition:{index}:2','3':f'pkpartyposition:{index}:3','4':f'pkpartyposition:{index}:4','5':f'pkpartyposition:{index}:5','6':f'pkpartyposition:{index}:6'}])
     query.edit_message_text(f"{game[uid]['box'][int(index)]['name']}? OK! In which position in your party would you like to put him/her?",reply_markup=kb)
 
