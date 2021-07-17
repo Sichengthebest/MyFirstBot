@@ -206,7 +206,7 @@ def banknote(update, context):
         remove_item(user,"banknote")
         update.message.reply_text("Success! You now have %s GP of storage in your bank!\n成功！您现在在银行中拥有%s GP的存储空间！"%(coins[uid]['bankspace'],coins[uid]['bankspace']))
     else:
-        update.message.reply_text("You do not own a banknote lol\nYou can buy a banknote at the /shop\n您没有钞票哈哈哈\n您可以在 /shop 中购买钞票")
+        update.message.reply_text("You do not own a banknote lol\nYou can buy a banknote like this: /buy banknote \n您没有钞票哈哈哈\n您可以像这样购买钞票： /buy banknote")
 
 def eat(update, context):
     user = update.effective_user
