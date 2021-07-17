@@ -3,57 +3,6 @@ from telegram.ext import Dispatcher, CommandHandler, CallbackQueryHandler
 import random
 import coins
 
-#  ==================================================
-#  start
-#  /capitals
-# 
-#  ==================================================
-#  help
-#  这是 老房东 的 capitals game
-#  helpmsg
-#  |  easy  |  normal  |   hard   | extreme |
-# 
-#  ==================================================
-#  question
-#  这是 老房东 的 capitals game
-#  What is the capital of...
-#  a.lasdf;aljflasj
-#  b.alfj;aljfd;laj
-#  c.aflfj;lfjal;fdjla;k
-#  d.dszfsfdsfsd'
-#  | a | b | c | d | 我也要参加 |
-#  
-#  ==================================================
-#  final
-#  这是 老房东 的 capitals game 数据 
-#  easy 答对xx次/xx次 | hard答对xx/xx次
-#  | easy 再来一题? | 换一个级别 | 我也要参加 |
-#  ==================================================
-# 
-#  show_alert: 如果你也想玩，发 /capitals
-
-
-# kb1 = [
-#     {
-#     "text":"callbackdata",
-#     "text2":"callbackdata2"
-#     },
-#     {
-#         "text3":"callbackdata3"
-#     }
-# ]
-
-# def init_markup_new(kb):
-#     kb1 = [
-#     {
-#     "text":"callbackdata",
-#     "text2":"callbackdata2"
-#     },
-#     {
-#         "text3":"callbackdata3"
-#     }]
-
-
 countries = {
     'easy':{
         "🇫🇷 France // 法国 🇫🇷" : {
