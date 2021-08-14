@@ -1,6 +1,7 @@
 # MyFirstBot
 
 Sichengthebest's first bot. Always happy to consider new ideas! // 思成的第一个机器人。欢迎大家提新的主意！
+
 The bot's commands (for now) // 机器人的命令（暂时）:
 ```
 Start commmand // 启动命令:
